@@ -13,6 +13,10 @@ class Swagbot
 require 'socket'
 require 'open-uri'
 require 'json/ext'
+require 'rubygems'
+require 'active_record'
+require 'yaml'
+require 'pg'
 
 # Initialize variables
 def initialize(host, port, nick, chan, dir)
@@ -22,14 +26,20 @@ def initialize(host, port, nick, chan, dir)
 	@nick = nick
 	@chan = chan
 	@root_dir = dir
-        @files_dir = "#{@root_dir}/#{@nick}-files"
+  @files_dir = "#{@root_dir}/#{@nick}-files"
 	@quotedb = "#{@files_dir}/quotedb"
 	@defdb = "#{@files_dir}/definitiondb"
 	@simpsons = "#{@files_dir}/simpsons.txt"
 	@anchorman = "#{@files_dir}/anchorman.txt"
 	@blowmymind = "#{@files_dir}/blowmymind.txt"
 	@karmadb = "#{@files_dir}/karmadb"
-#	check_files
+  p "ctreaing datbase"
+  Dir.glob(@root_dir + "/app/models/*.rb").each{|f| require f}
+  dbconfig = YAML::load(File.open('database.yml'))
+  ActiveRecord::Base.establish_connection(dbconfig)
+  p "fomdosjemd"
+  
+
 end
 
 def check_files

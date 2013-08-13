@@ -1,0 +1,6 @@
+adapter: postgresql
+database: database
+username: admin
+password: redhat
+host: localhost
+port: 5432
