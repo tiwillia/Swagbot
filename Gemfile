@@ -1,4 +1,5 @@
-source "https://rubygems.org
+source 'https://rubygems.org'
 
-gem "activerecord", "->3.2"
-gem "pg"
+gem 'activerecord', '~> 3.2'
+
+gem 'pg'
