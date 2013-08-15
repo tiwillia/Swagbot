@@ -5,11 +5,30 @@ IRC bot written from scratch in Ruby
 
 TODO:
 - Implement a database (see below)
+- Change relevant methods to use the database
 - Fix methods to provide for easier coding
-- Re-write the controller method
 - Consider adding a rails backend for control
 
-I was looking into adding a postgres database, but ActiveRecord is awesome. Its
-and abstraction layer so we won't be running database commands, but the ease of
-use is there. http://api.rubyonrails.org/classes/ActiveRecord/Base.html I know 
-the link is to rails, but it can be run without rails http://blog.aizatto.com/2007/05/21/activerecord-without-rails/
+
+The database will be backed by postgresql using the activerecord abstraction layer (without rails).
+The table structure will be:
+
+User table:
+id, user(string)
+
+Karma table:
+id, grantor_id(FK, int), recipient_id(FK, int), positive(boolean)
+Note: the grantor_id and recipient_id will be mapped back to the User table.
+Note: each row will contain one karma operation, not the totals
+
+Karam stats table:
+id, user_id(FK, int), running_total(int)
+
+Quotes table:
+id, recorder_id(FK, int), quotee_id(FK, int), quote(text)
+
+Definitions table:
+id, definer_id(FK, int), word(string), definition(text)
+
+Each type of data table will have its own model rb object. This allows us to create methods that can
+for example, check if user exists, if not add them to the user table and grab their id.
