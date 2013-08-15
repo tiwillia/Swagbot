@@ -1,5 +1,5 @@
 class CreatesDefinitions < ActiveRecord::Migration
-  def change
+  def up
     create_table :definitions do |t|
       t.text :word
       t.text :definition

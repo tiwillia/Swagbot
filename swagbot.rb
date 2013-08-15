@@ -33,12 +33,9 @@ def initialize(host, port, nick, chan, dir)
 	@anchorman = "#{@files_dir}/anchorman.txt"
 	@blowmymind = "#{@files_dir}/blowmymind.txt"
 	@karmadb = "#{@files_dir}/karmadb"
-  p "ctreaing datbase"
   Dir.glob(@root_dir + "/app/models/*.rb").each{|f| require f}
-  dbconfig = YAML::load(File.open('database.yml'))
+  dbconfig = YAML::load(File.open('config/database.yml'))
   ActiveRecord::Base.establish_connection(dbconfig)
-  p "fomdosjemd"
-  
 
 end
 

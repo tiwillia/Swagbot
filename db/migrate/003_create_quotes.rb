@@ -1,5 +1,5 @@
 class CreatesPages < ActiveRecord::Migration
-  def change
+  def up
     create_table :quotes do |t|
       t.string :user_create
       t.string :user
