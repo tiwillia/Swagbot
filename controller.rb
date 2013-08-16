@@ -6,15 +6,14 @@
 # File locations
 $root_dir = "/home/tiwillia/Projects/swagbot"
 $ircfile = "#{$root_dir}/swagbot.rb"
-$pipe = "#{$root_dir}/swagpipe"
 
 # Server Settings
 $server = "irc.devel.redhat.com"
 $port = "6667"
 
 # Initial bot settings
-$botname = "swagbot"
-$channel = "#swaggers"
+$botname = "betabot"
+$channel = "#betabot"
 #################################
 
 class Controller

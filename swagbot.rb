@@ -36,7 +36,7 @@ def initialize(host, port, nick, chan, dir)
   Dir.glob(@root_dir + "/app/models/*.rb").each{|f| require f}
   dbconfig = YAML::load(File.open('config/database.yml'))
   ActiveRecord::Base.establish_connection(dbconfig)
-
+  check_files
 end
 
 def check_files
