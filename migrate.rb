@@ -1,5 +1,7 @@
 # NOTE:
-# The database must be created first. You can follow the steps below to create it:
+# The database must be created first because we are using postgres.
+#
+# You can follow the steps below to create it:
 # 1) Install postgresql and the pg gem
 # 2) start the postgresql-9.2 service and chkconfig it on
 # 3) su - root
