@@ -110,8 +110,13 @@ end
 def editkarma(giver, receiver, type, chan)
 	#Here we need to parse the db for name, get the number, add one to the number
 	#Syntax of the db will be user:number\n
-	recipient = Users.find_by(user: receiver) || Users.new(user: receiver)
-  grantor = Users.find_by(user: giver) || Users.new(user: giver)
+	if Users.where(:user => receiver).present?
+	recipient = Users.find_by(user: receiver) 
+  else
+  recipient =  Users.new(user: receiver)
+  recipient.save
+  end
+  grantor = Users.find_by(user: giver) 
   case
 	when type.eql?("add")
 		karma_amount = 1 
