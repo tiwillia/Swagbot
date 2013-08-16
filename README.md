@@ -17,7 +17,7 @@ User table:
 id, user(string)
 
 Karma table:
-id, grantor_id(FK, int), recipient_id(FK, int), positive(boolean)
+id, grantor_id(FK, int), recipient_id(FK, int), amount(integer)
 Note: the grantor_id and recipient_id will be mapped back to the User table.
 Note: each row will contain one karma operation, not the totals
 
