@@ -293,15 +293,26 @@ end
 # Otherwise, use the second one.
 def loop()
 		line = @socket.gets
-		userposting = line[/^:([\|\.\-0-9a-zA-Z]*)!/, 1]
+		
+    # Grab the nick of the userposting
+    userposting = line[/^:([\|\.\-0-9a-zA-Z]*)!/, 1]
 		if line.match(/^:.*\ PRIVMSG\ #{@nick}\ \:.*/)
                         channel = userposting
 		else
 			channel = line[/\ (#[\|\.\-0-9a-zA-Z]*)\ :/, 1]
 		end
-		if userposting.eql?("kbenson")
+		
+    # Ignore kbenson
+    if userposting.eql?("kbenson")
 			return
-		end	
+		end
+
+    # Add the user to the users table if they do not exist
+    if !Users.find_by(user: userposting)
+      new_user = Users.create(user: userposting)
+      sendchn("New user #{userposting} added to the db with id: #{new_user[:id]}", channel)
+    end	
+
 		if line.match(/.*\:#{@nick}[\,\:\ ]+.*/) then
 			params = line[/.*\:#{@nick}[\,\:\ ]+(.*)/, 1]
 			case
