@@ -107,10 +107,12 @@ def kill()
 	`logger "#{@nick} quit from #{@host}"`
 end
 
-def editkarma(who, type, chan)
+def editkarma(giver, receiver, type, chan)
 	#Here we need to parse the db for name, get the number, add one to the number
 	#Syntax of the db will be user:number\n
-	case
+	recipient = Users.find_by(user: receiver) || Users.new(user: receiver)
+  grantor = Users.find_by(user: giver) || Users.new(user: giver)
+  case
 	when type.eql?("add")
 		karma_amount = 1 
 	when type.eql?("subtract")
@@ -118,33 +120,25 @@ def editkarma(who, type, chan)
 	else
 		karma_amount = 0
 	end
-	previously_assigned = nil
-	line = File.read(@karmadb)
-	if line.match(/.*\n#{Regexp.escape(who)}\:([0-9]*).*/)
-			current_karma = line[/#{Regexp.escape(who)}\:([\-0-9]*)/, 1]
-                	case 
-			when type.eql?("add")
-				new_karma = current_karma.to_i + 1
-			when type.eql?("subtract")
-				new_karma = current_karma.to_i - 1
-			else
-				new_karma = current_karma
-			end
-			to_write = line.gsub(/(.*#{Regexp.escape(who)}\:)(#{current_karma})(.*)/, '\1' << new_karma.to_s << '\3')
-			File.open(@karmadb, "w") {|file| file.puts to_write}
-			sendchn("#{who} now has #{new_karma} karma.",chan)
-	else
-		case
-	        when type.eql?("add")
-        	        karma_amount = 1
-	        when type.eql?("subtract")
-        	        karma_amount = -1
-	        else
-        	        karma_amount = 0
-        	end
-		File.open(@karmadb, "a") {|file| file.puts "#{who}:#{karma_amount}" }
-		sendchn("#{who} now has #{karma_amount} karma.",chan)
-	end
+    
+  Karma.new do |k|
+    k.grantor_id = grantor.id
+    k.recipient_id = recipient.id
+    k.amount = karma_amount
+  end
+  
+  if KarmaStats.where(:user_id => recipient.id).present?
+    p "ture"
+    stat = KarmaStats.find_by(user_id: recipient.id)
+    stat.total = stat.total + karma_amount
+    stat.save
+  else
+    p "flase"
+    stat = KarmaStats.new(user_id: recipient.id, total: karma_amount)
+    stat.save
+  end  
+  
+	sendchn("#{receiver} now has #{stat.total} karma.",chan)
 end
 
 def rank(who, chan)
@@ -310,7 +304,7 @@ def loop()
     # Add the user to the users table if they do not exist
     if !Users.find_by(user: userposting)
       new_user = Users.create(user: userposting)
-      sendchn("New user #{userposting} added to the db with id: #{new_user[:id]}", channel)
+      sendchn("New user #{userposting} added to the db with id: #{new_user.id}", channel)
     end	
 
 		if line.match(/.*\:#{@nick}[\,\:\ ]+.*/) then
@@ -461,7 +455,7 @@ def loop()
 							if user == userposting
 								sendchn("Lol, yeah right.", channel)
 							else
-								editkarma(user, "add", channel)
+								editkarma(userposting, user, "add", channel)
 							end
 						end
 						if x.match(/[\-\.\'\.\|0-9a-zA-Z]+\-\-/)
@@ -469,14 +463,19 @@ def loop()
 							if user == userposting
 								sendchn("#{userposting}, you okay? I'm not going to let you subtract karma from yourself.", channel)
 							else
-								editkarma(user, "subtract", channel)
+								editkarma(userposting, user, "subtract", channel)
 							end
 						end
 					end
 				else
 					sendchn("Karma can only be assigned in a channel", channel)
 				end
-
+      
+        # This is just for testing, will list all id's. This may flood the channel
+        when line.match(/.*list all id.*/)
+        Users.all.each do |x|
+          sendchn("#{x.user} has id of #{x.id}", channel)
+        end
 			end
 	end
 	return nil
