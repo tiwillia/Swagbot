@@ -27,7 +27,6 @@ def initialize(host, port, nick, chan, dir)
 	@chan = chan
 	@root_dir = dir
   @files_dir = "#{@root_dir}/#{@nick}-files"
-	@defdb = "#{@files_dir}/definitiondb"
 	@simpsons = "#{@files_dir}/simpsons.txt"
 	@anchorman = "#{@files_dir}/anchorman.txt"
 	@blowmymind = "#{@files_dir}/blowmymind.txt"
@@ -38,17 +37,12 @@ def initialize(host, port, nick, chan, dir)
 end
 
 def check_files
-	puts "checking files"
 	if Dir.exist?(@files_dir) == false
 		Dir.mkdir(@files_dir, 0775)
 		Dir.chdir(@files_dir)
-		File.new("definitiondb", "w+")
-		`cp #{@root_dir}/swagbot-files/*.txt .`
 	else
 		Dir.chdir(@files_dir)
 		case
-		when File.exist?("definitiondb") == false
-                        File.new("definitiondb", "w+")
 		when File.exist?("simpsons.txt") == false
                         `cp #{@root_dir}/swagbot-files/simpsons.txt .`
 		when File.exist?("anchorman.txt") == false
@@ -57,7 +51,6 @@ def check_files
                         `cp #{@root_dir}/swagbot-files/blowmymind.txt .`
 		end			
 	end
-	puts "checked files..." 
 end
 
 # Small function to easily send commands
@@ -99,6 +92,8 @@ def kill()
 	`logger "#{@nick} quit from #{@host}"`
 end
 
+# Create a user and id if it doesn't exist
+# Return the corresponding User ActiveRecord::Relation object
 def getuser(user)
   if Users.where(:user => user).present?
     Users.find_by(user: user)
@@ -109,6 +104,7 @@ def getuser(user)
   end
 end
 
+# Random number generator, excludes 0
 def rdnum(seq)
   today = DateTime.now
   seed = today.strftime(format='%3N').to_i
@@ -230,19 +226,18 @@ def echoquote(who, chan)
 end
 
 # Definitions can be accessed with the echo_definition method
-def add_definition(word, definition, chan)
-	defdb = File.open(@defdb, "a")
-	defdb.write("#{word}:#{definition}\n")
-	sendchn("Ok, I'll remember #{word}", chan)
-	defdb.close
+def add_definition(word, definition, recorder, chan)
+	recorder = getuser(recorder)
+  definition = Definitions.create(recorder_id: recorder.id, word: word, definition: definition)
+  definition.save
+  sendchn("Ok, I'll remember #{word}", chan)
 end
 
 def forget_definition(word, chan)
-	line = File.read(@defdb)
-	if line.match(/.*#{word}:.*\n/)
-		to_write = line.gsub(/(.*)(#{word}:.*)(\n.*)/, '\1' << '\3')
-		File.open(@defdb, "w") {|file| file.puts to_write}
-		sendchn("#{word} is no longer defined.", chan)
+	definition = Definitions.where(word: word).order('id ASC')
+  if definition.present?
+    definition.last.destroy
+    sendchn("Deleted #{word}'s latest definition.", chan)
 	else
 		sendchn("How can I forget what I do not know?", chan)
 	end
@@ -250,20 +245,9 @@ end
 
 # Sends the definition added with add_definition
 def echo_definition(word, chan)
-	exists = false
-	if not File.exists?(@defdb)
-                File.new(@defdb, "a")
-        end
-	File.foreach(@defdb) {|i|
-		if i =~ /^#{word}:.*/
-			definition = i[/[0-9a-zA-Z]*:(.*)/, 1]
-			sendchn("#{word} is #{definition}", chan)
-			exists = true
-		end}
-	if exists.eql?(false)
-		sendchn("#{word} is not yet defined. Use \"#{@nick}: <noun> is <definition>\" to define it", chan)
-	end
-		
+	Definitions.where(word: word).each do |d|
+      sendchn("#{d.word} is #{d.definition}", chan)
+  end
 end
 
 # Returns a random line from the file specified
@@ -280,20 +264,6 @@ def pick_random_line(file)
 	return chosen_line
 end
 
-# Defines errors so they will be uniform througout
-def error(type, chan)
-	case type
-	when "syntax"
-		puts "Syntax error!"
-		sendchn("Error: Check syntax", chan)
-	when "no_command"
-		puts "Command not found!"
-		sendchn("Error: Command not found!", chan)
-		sendchn("Try \"#{@nick}: help\"", chan)
-	else
-		puts "Error, error method called an error that doesn't exist"
-	end
-end
 # This is the main loop that keeps swagbot running
 # This is also where we evaluate what is said in the channel
 # If you would like to add a commad (swagbot: command) do it in the first case statement
@@ -335,7 +305,7 @@ def loop()
 			when params.match(/^[\-\_\.\'\.0-9a-zA-Z]*\ is\ .*\r/)
 				word_to_define = params[/([\-\_\.\'0-9a-zA-Z]*)\ is/, 1]
 				definition = params[/[\-\_\ \.\'0-9a-zA-Z]*\ is\ (.*)\r/, 1]
-				add_definition(word_to_define, definition, channel)
+				add_definition(word_to_define, definition, userposting, channel)
 			when params.match(/^[\-\_\.0-9a-zA-Z]*\?\r/)
 				word_to_echo_def = params[/([\-\_\.0-9a-zA-Z]*)?/, 1]
 				echo_definition(word_to_echo_def, channel)
@@ -434,8 +404,6 @@ def loop()
 				when params.eql?("help blowmymind\r")
                                         sendchn("I will blow your mind", channel)
                                          
-				else
-					error("no_command", channel)	
                                 end
 			end
 		else
