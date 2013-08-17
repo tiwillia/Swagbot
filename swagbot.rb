@@ -117,6 +117,13 @@ def getuser(user)
   end
 end
 
+def rdnum(seq)
+  today = DateTime.now
+  seed = today.strftime(format='%3N').to_i
+  prng = Random.new(seed)
+  prng.rand(1..seq)
+end
+
 def editkarma(giver, receiver, type, chan)
 	#Here we need to parse the db for name, get the number, add one to the number
 	#Syntax of the db will be user:number\n
@@ -205,42 +212,31 @@ def rank(who, chan)
 end
 
 # Adds a quote to the file swagbot-files/quotedb
-def addquote(quote, name, chan)
-	quotedb = File.open(@quotedb, "a")
-	actual_quote = quote[/(.*)\r/, 1]
-	quotedb.write("\"#{actual_quote}\" - #{name}\n")
-	sendchn("Quote for #{name} added",chan)
-	quotedb.close
+def addquote(recorder, quotee, quote, chan)
+  recorder = getuser(recorder)
+  quotee = getuser(quotee)
+  quote_obj = Quotes.new(recorder_id: recorder.id, quotee_id: quotee.id, quote: quote)
+	quote_obj.save
+  sendchn("Quote for #{quotee.user} added with id: #{quote_obj.id}",chan)
 end
 
 # Reads a quote from the file swagbot-files/quotedb
 def echoquote(who, chan)
+  quotee = getuser(who)
 	if who.eql?("rand")
-		sendchn(pick_random_line(@quotedb),chan)
+    id = rdnum(Quotes.count)
+    quote = Quotes.find(id)
 	else
-		# This needs to be fixed
-		# It should not pick random lines until it finds the user
-		# It should read the file, pull out all instances of the user
-		# And then pick a random one out of there
-		quote_owner = nil
-		increment = 0
- 		while not who.eql?(quote_owner)
- 			line = pick_random_line(@quotedb)
-			linearr = line.split
- 			if who.eql?(linearr[-1])
- 				quote_owner = who
-				sendchn(line, chan)
- 			end
-			if increment > 100
-				sendchn("Could not find a quote for #{who}", chan)
-				break
-			end
-			increment += 1
-		end
-	end
+    quotee = getuser(who)
+    quote = Quotes.where(quotee_id: quotee.id).first(:offset => rand(Quotes.where(quotee_id: quotee.id).count))
+  end
+  if id == 0
+    id += 1
+  end
+  quotee = Users.find(quote.quotee_id)
+  sendchn("\"#{quote.quote}\" - #{quotee.user} \| id:#{quote.id}",chan)
 end
 
-# Adds a definition to word to swagbot-files/definitiondb
 # Definitions can be accessed with the echo_definition method
 def add_definition(word, definition, chan)
 	defdb = File.open(@defdb, "a")
@@ -355,23 +351,15 @@ def loop()
 				word_to_forget = params[/forget\ ([\-\_\ 0-9a-zA-Z]*)\r/, 1]
 				forget_definition(word_to_forget, channel)
 			when params.match(/^addquote.*\r/)
-				user_to_quote = line[/addquote\ ([0-9a-zA-Z]*)\ /, 1]
-				new_quote = line[/addquote\ [0-9a-zA-Z]*\ (.*)/, 1]
-				if user_to_quote.eql?(nil)
-					error("syntax", channel)
-					 
-				end
-				if new_quote.eql?(nil)
-					error("syntax", channel)
-					 	
-				end
-				addquote(new_quote, user_to_quote, channel)				
-				 
+				user_to_quote = line[/addquote\ ([0-9a-zA-Z\-\_\.\|]+)\ .*\r/, 1]
+				new_quote = line[/addquote\ [0-9a-zA-Z\-\_\.\|]+\ (.*)\r/, 1]
+        p new_quote
+				addquote(userposting, user_to_quote, new_quote, channel)				
 			when params.match(/^quote.*\r/)
 				if params.eql?("quote\r")
 					echoquote("rand", channel)
 				else
-					echoquote(params[/quote\ (.*)\r$/, 1], channel)
+					echoquote(params[/quote\ (.*)\r/, 1], channel)
 				end
 			when params.match(/^rank.*\r/)
 				if params.eql?("rank\r")
