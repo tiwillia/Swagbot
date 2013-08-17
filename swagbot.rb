@@ -230,8 +230,8 @@ end
 def bugzilla(url, chan)
   doc = Nokogiri::HTML(open(url))
   number = url.split("=").last
-  title = doc.xpath('//span[@id="short_desc_nonedit_display"]').first.content.strip
-  status = doc.xpath('//span[@id="static_bug_status"]').first.content.strip
+  title = doc.xpath('//span[@id="short_desc_nonedit_display"]/text()')
+  status = doc.xpath('//span[@id="static_bug_status"]/text()')
   sendchn("Bugzilla: ##{number} \"#{title}\" : #{status}", chan)
 end
 
@@ -240,15 +240,16 @@ def youtube(url, chan)
   doc = Nokogiri::HTML(open(url))
   title = doc.xpath('//span[@id="eow-title"]/@title')
   views = doc.css('span.watch-view-count').first.content.strip
-  sendchn("Youtube: \"#{title}\" #{views} views", chan)
+  sendchn("Youtube: \"#{title}\" : #{views} views", chan)
 end
 
 # This will grab the title of an imgur link and display it
 def imgur(url, chan)
   doc = Nokogiri::HTML(open(url))
+  img_id = url.split("/").last
   title = doc.xpath("//h2").last.content
   timestamp = doc.xpath('//div[@id="stats-submit-date"]/@title').to_s.gsub(/\ at.*/, "")
-  points = doc.css('span.points-pAZTcTP').first.content
+  points = doc.css("span.points-#{img_id}").first.content
   sendchn("Imgur: \"#{title}\" #{points} points, Posted on #{timestamp}", chan)
 end
 
@@ -475,6 +476,7 @@ def loop()
       when line.match(/.*http[s]*:\/\/[w\.]*bugzilla\.redhat\.com\/show_bug.cgi\?id=[a-zA-Z0-9]+[\ ]*/)
         url = line[/.*(http[s]*:\/\/[w\.]*bugzilla\.redhat\.com\/show_bug.cgi\?id=[a-zA-Z0-9]+)[\ ]*/, 1]
         bugzilla(url, channel)
+
       when line.match(/.*http[s]*:\/\/[w\.]*youtube.com\/watch.*/)
         url = line[/.*(http[s]*:\/\/[w\.]*youtube.com\/watch\?v=[a-zA-Z0-9]+)[\ ]*/, 1]
         youtube(url, channel)
