@@ -270,6 +270,7 @@ end
 # Otherwise, use the second one.
 def loop()
 		line = @socket.gets
+    line = line.gsub("\r", "")
 		
     # Grab the nick of the userposting
     userposting = line[/^:([\|\.\-0-9a-zA-Z]*)!/, 1]
@@ -302,39 +303,39 @@ def loop()
 				else
 					leave_chan(channel)
 				end
-			when params.match(/^[\-\_\.\'\.0-9a-zA-Z]*\ is\ .*\r/)
+			when params.match(/^[\-\_\.\'\.0-9a-zA-Z]*\ is\ .*/)
 				word_to_define = params[/([\-\_\.\'0-9a-zA-Z]*)\ is/, 1]
-				definition = params[/[\-\_\ \.\'0-9a-zA-Z]*\ is\ (.*)\r/, 1]
+				definition = params[/[\-\_\ \.\'0-9a-zA-Z]*\ is\ (.*)/, 1]
 				add_definition(word_to_define, definition, userposting, channel)
-			when params.match(/^[\-\_\.0-9a-zA-Z]*\?\r/)
+			when params.match(/^[\-\_\.0-9a-zA-Z]*\?/)
 				word_to_echo_def = params[/([\-\_\.0-9a-zA-Z]*)?/, 1]
 				echo_definition(word_to_echo_def, channel)
-			when params.match(/^forget\ [\-\_\ 0-9a-zA-Z]*\r/)
-				word_to_forget = params[/forget\ ([\-\_\ 0-9a-zA-Z]*)\r/, 1]
+			when params.match(/^forget\ [\-\_\ 0-9a-zA-Z]*/)
+				word_to_forget = params[/forget\ ([\-\_\ 0-9a-zA-Z]*)/, 1]
 				forget_definition(word_to_forget, channel)
-			when params.match(/^addquote.*\r/)
-				user_to_quote = line[/addquote\ ([0-9a-zA-Z\-\_\.\|]+)\ .*\r/, 1]
-				new_quote = line[/addquote\ [0-9a-zA-Z\-\_\.\|]+\ (.*)\r/, 1]
+			when params.match(/^addquote.*/)
+				user_to_quote = line[/addquote\ ([0-9a-zA-Z\-\_\.\|]+)\ .*/, 1]
+				new_quote = line[/addquote\ [0-9a-zA-Z\-\_\.\|]+\ (.*)/, 1]
         p new_quote
 				addquote(userposting, user_to_quote, new_quote, channel)				
-			when params.match(/^quote.*\r/)
-				if params.eql?("quote\r")
+			when params.match(/^quote.*/)
+				if params.eql?("quote")
 					echoquote("rand", channel)
 				else
-					echoquote(params[/quote\ (.*)\r/, 1], channel)
+					echoquote(params[/quote\ (.*)/, 1], channel)
 				end
-			when params.match(/^rank.*\r/)
-				if params.eql?("rank\r")
+			when params.match(/^rank.*/)
+				if params.eql?("rank")
 					rank("all", channel)
 				else
-					user_to_rank = params[/rank\ (.*)\r$/, 1]
+					user_to_rank = params[/rank\ (.*)/, 1]
 					rank(user_to_rank, channel)
 				end
-			when params.eql?("time\r")
+			when params.eql?("time")
 				time = Time.new
 				timenow = time.inspect
 				sendchn("The current time is #{timenow}", channel)
-			when params.eql?("weather\r")
+			when params.eql?("weather")
 				# Yahoo Weather Variables
                                 yahoo_url = 'http://query.yahooapis.com/v1/public/yql?format=json&q='
                                 query = "SELECT * FROM weather.forecast WHERE location = 27606"
@@ -349,18 +350,18 @@ def loop()
                                 sendchn("Low: #{weather_results["item"]["forecast"][0]["low"]} degrees", channel)
                                 sendchn("-----------------------------------------------------------", channel)
 			
-			when params.eql?("simpsons\r")
+			when params.eql?("simpsons")
 				quote = pick_random_line(@simpsons)
                                 sendchn("#{quote}", channel)
-			when params.eql?("anchorman\r")
+			when params.eql?("anchorman")
 				quote = pick_random_line(@anchorman)
                                 sendchn("#{quote}", channel)
-			when params.eql?("blowmymind\r")
+			when params.eql?("blowmymind")
                                 quote = pick_random_line(@blowmymind)
                                 sendchn("#{quote}", channel)
-			when params.match(/^help.*\r/)
+			when params.match(/^help.*/)
                                 case 
-                                when  params.eql?("help\r")
+                                when  params.eql?("help")
                                         sendchn("#{@nick}: help [command]", channel)
 					sendchn("#{@nick}: <noun> is <definition>", channel)
 					sendchn("#{@nick}: <noun>?", channel)
@@ -377,31 +378,31 @@ def loop()
 					sendchn("#{@nick}: blowmymind", channel)
 					sendchn("#{@nick}: leave", channel)
 					sendchn("#{@nick}: join <#channel>", channel)                                        
-                                when params.eql?("help addquote\r")
+                                when params.eql?("help addquote")
                                         sendchn("Usage: #{@nick}: addquote <name> <quote WITHOUT \"\">", channel)
                                         sendchn("Adds a quote to the quote database", channel)
                                         sendchn("Quotes can be recalled with #{@nick}: quote [name]", channel)
                                          
-                                when params.eql?("help quote\r")
+                                when params.eql?("help quote")
                                         sendchn("Usage: #{@nick}: quote [name]", channel)
                                         sendchn("Returns a quote from the quote database", channel)
                                         sendchn("If no name is supplied, a random quote will be returned", channel)
                                          
-                                when params.eql?("help time\r")
+                                when params.eql?("help time")
                                         sendchn("I don't know why you want help with this one #{userposting}...", channel)
                                         sendchn("It was more of a way to test getting the time", channel)
                                         sendchn("Eventually, the time will be used for other commands", channel)
                                          
-                                when params.eql?("help weather\r")
+                                when params.eql?("help weather")
                                         sendchn("PLACEHOLDER", channel)
                                          
-                                when params.eql?("help simpsons\r")
+                                when params.eql?("help simpsons")
                                         sendchn("Returns a random quote from The Simpsons", channel)
                                          
-                                when params.eql?("help anchorman\r")
+                                when params.eql?("help anchorman")
                                         sendchn("Returns a random quote from Anchorman", channel)
                                          
-				when params.eql?("help blowmymind\r")
+				when params.eql?("help blowmymind")
                                         sendchn("I will blow your mind", channel)
                                          
                                 end
@@ -414,8 +415,8 @@ def loop()
 				send "PONG #{$~[1]}"
 
 			# Accept invites to channels
-			when line.match(/\ INVITE #{@nick}\ \:\#.*\r/)
-				invited_channel = line[/#{@nick}\ \:(\#.*)\r/, 1]
+			when line.match(/\ INVITE #{@nick}\ \:\#.*/)
+				invited_channel = line[/#{@nick}\ \:(\#.*)/, 1]
 				join_chan(invited_channel)
 				sendchn("I was invited here by #{userposting}. If I am not welcome type \"#{@nick} leave\"", invited_channel)
 			
