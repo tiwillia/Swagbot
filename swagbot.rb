@@ -27,12 +27,10 @@ def initialize(host, port, nick, chan, dir)
 	@chan = chan
 	@root_dir = dir
   @files_dir = "#{@root_dir}/#{@nick}-files"
-	@quotedb = "#{@files_dir}/quotedb"
 	@defdb = "#{@files_dir}/definitiondb"
 	@simpsons = "#{@files_dir}/simpsons.txt"
 	@anchorman = "#{@files_dir}/anchorman.txt"
 	@blowmymind = "#{@files_dir}/blowmymind.txt"
-	@karmadb = "#{@files_dir}/karmadb"
   Dir.glob(@root_dir + "/app/models/*.rb").each{|f| require f}
   dbconfig = YAML::load(File.open('config/database.yml'))
   ActiveRecord::Base.establish_connection(dbconfig)
@@ -44,19 +42,13 @@ def check_files
 	if Dir.exist?(@files_dir) == false
 		Dir.mkdir(@files_dir, 0775)
 		Dir.chdir(@files_dir)
-		File.new("quotedb", "w+")
 		File.new("definitiondb", "w+")
-		File.new("karmadb", "w+")
 		`cp #{@root_dir}/swagbot-files/*.txt .`
 	else
 		Dir.chdir(@files_dir)
 		case
-		when File.exist?("quotedb") == false
-			File.new("quotedb", "w+")
 		when File.exist?("definitiondb") == false
                         File.new("definitiondb", "w+")
-		when File.exist?("karmadb") == false
-                        File.new("karmadb", "w+")
 		when File.exist?("simpsons.txt") == false
                         `cp #{@root_dir}/swagbot-files/simpsons.txt .`
 		when File.exist?("anchorman.txt") == false
