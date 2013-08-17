@@ -17,6 +17,7 @@ require 'rubygems'
 require 'active_record'
 require 'yaml'
 require 'pg'
+require 'nokogiri'
 
 # Initialize variables
 def initialize(host, port, nick, chan, dir)
@@ -225,6 +226,32 @@ def echoquote(who, chan)
   sendchn("\"#{quote.quote}\" - #{quotee.user} \| id:#{quote.id}",chan)
 end
 
+# This will grab the title and possibly description of a bugzilla link and display it
+def bugzilla(url, chan)
+  doc = Nokogiri::HTML(open(url))
+  number = url.split("=").last
+  title = doc.xpath('//span[@id="short_desc_nonedit_display"]').first.content.strip
+  status = doc.xpath('//span[@id="static_bug_status"]').first.content.strip
+  sendchn("Bugzilla: ##{number} \"#{title}\" : #{status}", chan)
+end
+
+# This will grab the title of a youtube link and display it
+def youtube(url, chan)
+  doc = Nokogiri::HTML(open(url))
+  title = doc.xpath('//span[@id="eow-title"]/@title')
+  views = doc.css('span.watch-view-count').first.content.strip
+  sendchn("Youtube: \"#{title}\" #{views} views", chan)
+end
+
+# This will grab the title of an imgur link and display it
+def imgur(url, chan)
+  doc = Nokogiri::HTML(open(url))
+  title = doc.xpath("//h2").last.content
+  timestamp = doc.xpath('//div[@id="stats-submit-date"]/@title').to_s.gsub(/\ at.*/, "")
+  points = doc.css('span.points-pAZTcTP').first.content
+  sendchn("Imgur: \"#{title}\" #{points} points, Posted on #{timestamp}", chan)
+end
+
 # Definitions can be accessed with the echo_definition method
 def add_definition(word, definition, recorder, chan)
 	recorder = getuser(recorder)
@@ -270,7 +297,7 @@ end
 # Otherwise, use the second one.
 def loop()
 		line = @socket.gets
-    line = line.gsub("\r", "")
+    line = line.strip
 		
     # Grab the nick of the userposting
     userposting = line[/^:([\|\.\-0-9a-zA-Z]*)!/, 1]
@@ -444,12 +471,17 @@ def loop()
 				else
 					sendchn("Karma can only be assigned in a channel", channel)
 				end
-      
-        # This is just for testing, will list all id's. This may flood the channel
-        when line.match(/.*list all id.*/)
-        Users.all.each do |x|
-          sendchn("#{x.user} has id of #{x.id}", channel)
-        end
+
+      when line.match(/.*http[s]*:\/\/[w\.]*bugzilla\.redhat\.com\/show_bug.cgi\?id=[a-zA-Z0-9]+[\ ]*/)
+        url = line[/.*(http[s]*:\/\/[w\.]*bugzilla\.redhat\.com\/show_bug.cgi\?id=[a-zA-Z0-9]+)[\ ]*/, 1]
+        bugzilla(url, channel)
+      when line.match(/.*http[s]*:\/\/[w\.]*youtube.com\/watch.*/)
+        url = line[/.*(http[s]*:\/\/[w\.]*youtube.com\/watch\?v=[a-zA-Z0-9]+)[\ ]*/, 1]
+        youtube(url, channel)
+
+      when line.match(/.*http[s]*:\/\/i.imgur.com\/.*/)
+        url = line[/.*(http[s]*:\/\/i.imgur.com\/[a-zA-Z0-9]+)\..*/, 1]
+        imgur(url, channel)
 			end
 	end
 	return nil
