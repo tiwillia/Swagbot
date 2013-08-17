@@ -139,17 +139,28 @@ def editkarma(giver, receiver, type, chan)
   end
   
   if KarmaStats.where(:user_id => recipient.id).present?
-    p "ture"
     stat = KarmaStats.find_by(user_id: recipient.id)
     stat.total = stat.total + karma_amount
     stat.save
   else
-    p "flase"
     stat = KarmaStats.new(user_id: recipient.id, total: karma_amount)
     stat.save
   end  
   
-	sendchn("#{receiver} now has #{stat.total} karma.",chan)
+  counter = 1
+  KarmaStats.where.not(total: 0).order('total DESC').each do |x|
+    x.rank = counter
+    x.save
+    counter += 1
+  end  
+  
+  if stat.rank.present?
+    rank_msg = " (rank #{stat.rank})"
+  else
+    rank_msg = ""
+  end
+
+	sendchn("#{receiver} now has #{stat.total} karma.#{rank_msg}",chan)
 end
 
 def rank(who, chan)
@@ -157,37 +168,39 @@ def rank(who, chan)
 	#If no who is specified, list the top 5
 	#if a who is specified, display their rank.
 	#Might also use this as a way to add on the to editkarma command
-	if who == "all"
-    rank = 0
-		KarmaStats.order('total DESC').limit(5).each do |x|
-      rank += 1
+  counter = 1
+  KarmaStats.where.not(total: 0).order('total DESC').each do |x|
+    x.rank = counter
+    counter += 1
+  end
+
+  if who == "all"
+		KarmaStats.where.not(total: 0).order('rank ASC').limit(5).each do |x|
       user_obj = Users.find(x.user_id)
-      amount = x.total
-			sendchn("#{rank}: #{user_obj.user} with #{amount} points of karma",chan)
+			sendchn("#{x.rank}: #{user_obj.user} with #{x.total} points of karma",chan)
 		end
 	else
-    # THIS IS BROKEN BECAUSE I WANT TO ADD A RANK COLUMN TO THE karmastats TABLE
-    user = getuser(who)
-		single = KarmaStats.find_by(user_id: user.id)
-		rank = single[/^\ *([0-9]*)\?.*/, 1]
-    amount = single[/^.*\:([\-0-9]*)/, 1]
-		case
-		when rank.to_s.match(/^1.$/)
-			suffix = "th"
-		when rank.to_s.match(/.*[4-9,0]$/)
-			suffix = "th"
-		when rank.to_s.match(/.*3$/)
-			suffix = "rd"
-		when rank.to_s.match(/.*2$/)
-			suffix = "nd"
-		when rank.to_s.match(/.*1$/)
-			suffix = "st"
-		end
-		if ! user.eql?(nil)
-			sendchn("#{user} is #{rank}#{suffix} with #{amount} points of karma",chan)
-		else
-			sendchn("#{who} has never had karma added or subtracted.",chan)
-		end
+		user = getuser(who)
+
+    if KarmaStats.where(user_id: user.id).present?
+      stat = KarmaStats.find_by(user_id: user.id)
+      rank = stat.rank
+      case
+      when rank.to_s.match(/^1.$/)
+        suffix = "th"
+      when rank.to_s.match(/.*[4-9,0]$/)
+        suffix = "th"
+      when rank.to_s.match(/.*3$/)
+        suffix = "rd"
+      when rank.to_s.match(/.*2$/)
+        suffix = "nd"
+      when rank.to_s.match(/.*1$/)
+        suffix = "st"
+      end
+      sendchn("#{user.user} is #{rank}#{suffix} with #{stat.total} points of karma",chan)
+    else
+      sendchn("#{user.user} has never had karma added or subtracted.",chan)
+    end
 	end
 end
 

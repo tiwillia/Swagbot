@@ -22,4 +22,5 @@ require 'pg'
 
   dbconfig = YAML::load(File.open('config/database.yml'))
   ActiveRecord::Base.establish_connection(dbconfig)
-  ActiveRecord::Migrator.migrate "/db/migrate/", ARGV[0] ? ARGV[0].to_i : nil
+  ActiveRecord::Migrator.migrate "db/migrate/", ARGV[0] ? ARGV[0].to_i : nil
+  p ActiveRecord::Base.connection.tables
