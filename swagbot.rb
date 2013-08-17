@@ -107,16 +107,22 @@ def kill()
 	`logger "#{@nick} quit from #{@host}"`
 end
 
+def getuser(user)
+  if Users.where(:user => user).present?
+    Users.find_by(user: user)
+  else
+    new_user = Users.new(user: user)
+    new_user.save
+    new_user
+  end
+end
+
 def editkarma(giver, receiver, type, chan)
 	#Here we need to parse the db for name, get the number, add one to the number
 	#Syntax of the db will be user:number\n
-	if Users.where(:user => receiver).present?
-	recipient = Users.find_by(user: receiver) 
-  else
-  recipient =  Users.new(user: receiver)
-  recipient.save
-  end
+  recipient = getuser(receiver)
   grantor = Users.find_by(user: giver) 
+
   case
 	when type.eql?("add")
 		karma_amount = 1 
@@ -152,18 +158,19 @@ def rank(who, chan)
 	#if a who is specified, display their rank.
 	#Might also use this as a way to add on the to editkarma command
 	if who == "all"
-		top5 = `cat #{@karmadb} | sort -rt: -k2n | tail -n 7 | tac | cat -n` 
-		top5.split("\n").each do |x|
-			rank = x[/^\ *([0-9]*)\t.*/, 1] 
-			user = x[/^\ *[0-9]*\t(.*)\:.*/, 1]
-			amount = x[/^.*\:([\-0-9]*)/, 1]
-			sendchn("#{rank}: #{user} with #{amount} points of karma",chan)
+    rank = 0
+		KarmaStats.order('total DESC').limit(5).each do |x|
+      rank += 1
+      user_obj = Users.find(x.user_id)
+      amount = x.total
+			sendchn("#{rank}: #{user_obj.user} with #{amount} points of karma",chan)
 		end
 	else
-		single = `cat #{@karmadb} | sort -rt: -k2n | tac | cat -n | sed s/"\t"/"?"/ | grep "\?#{who}:"`
+    # THIS IS BROKEN BECAUSE I WANT TO ADD A RANK COLUMN TO THE karmastats TABLE
+    user = getuser(who)
+		single = KarmaStats.find_by(user_id: user.id)
 		rank = single[/^\ *([0-9]*)\?.*/, 1]
-                user = single[/^\ *[0-9]*\?(.*)\:.*/, 1]
-                amount = single[/^.*\:([\-0-9]*)/, 1]
+    amount = single[/^.*\:([\-0-9]*)/, 1]
 		case
 		when rank.to_s.match(/^1.$/)
 			suffix = "th"
