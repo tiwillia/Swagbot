@@ -210,18 +210,22 @@ def addquote(recorder, quotee, quote, chan)
 end
 
 # Reads a quote from the file swagbot-files/quotedb
-def echoquote(who, chan)
+def echo_quote_by_user(who, chan)
   quotee = getuser(who)
-	if who.eql?("rand")
-    id = rdnum(Quotes.count)
-    quote = Quotes.find(id)
-	else
-    quotee = getuser(who)
-    quote = Quotes.where(quotee_id: quotee.id).first(:offset => rand(Quotes.where(quotee_id: quotee.id).count))
-  end
-  if id == 0
-    id += 1
-  end
+  quote = Quotes.where(quotee_id: quotee.id).first(:offset => rand(Quotes.where(quotee_id: quotee.id).count))
+  quotee = Users.find(quote.quotee_id)
+  sendchn("\"#{quote.quote}\" - #{quotee.user} \| id:#{quote.id}",chan)
+end
+
+def echo_random_quote(chan)
+  id = rdnum(Quotes.count)
+  quote = Quotes.find(id)
+  quotee = Users.find(quote.quotee_id)
+  sendchn("\"#{quote.quote}\" - #{quotee.user} \| id:#{quote.id}",chan)
+end
+
+def echo_quote_by_id(id, chan)
+  quote = Quotes.find(id)
   quotee = Users.find(quote.quotee_id)
   sendchn("\"#{quote.quote}\" - #{quotee.user} \| id:#{quote.id}",chan)
 end
@@ -272,8 +276,20 @@ def forget_definition(word, chan)
 end
 
 # Sends the definition added with add_definition
-def echo_definition(word, chan)
+def echo_definition_by_word(word, chan)
 	Definitions.where(word: word).each do |d|
+      sendchn("#{d.word} is #{d.definition}", chan)
+  end
+end
+
+def echo_definition_by_id(id, chan)
+  Definitions.where(id: id).each do |d|
+      sendchn("#{d.word} is #{d.definition}", chan)
+  end 
+end
+
+def echo_definition_by_user(who, chan)
+  Definitions.where(recorder: who).each do |d|
       sendchn("#{d.word} is #{d.definition}", chan)
   end
 end
@@ -316,7 +332,10 @@ def loop()
     # Add the user to the users table if they do not exist
     if !Users.find_by(user: userposting)
       new_user = Users.create(user: userposting)
-      sendchn("New user #{userposting} added to the db with id: #{new_user.id}", channel)
+      tions.where(id: id).each do |d|
+      sendchn("#{d.word} is #{d.definition}", chan)
+  end
+sendchn("New user #{userposting} added to the db with id: #{new_user.id}", channel)
     end	
 
 		if line.match(/.*\:#{@nick}[\,\:\ ]+.*/) then
@@ -337,7 +356,7 @@ def loop()
 				add_definition(word_to_define, definition, userposting, channel)
 			when params.match(/^[\-\_\.0-9a-zA-Z]*\?/)
 				word_to_echo_def = params[/([\-\_\.0-9a-zA-Z]*)?/, 1]
-				echo_definition(word_to_echo_def, channel)
+				echo_definition_by_word(word_to_echo_def, channel)
 			when params.match(/^forget\ [\-\_\ 0-9a-zA-Z]*/)
 				word_to_forget = params[/forget\ ([\-\_\ 0-9a-zA-Z]*)/, 1]
 				forget_definition(word_to_forget, channel)
@@ -347,10 +366,12 @@ def loop()
         p new_quote
 				addquote(userposting, user_to_quote, new_quote, channel)				
 			when params.match(/^quote.*/)
-				if params.eql?("quote")
-					echoquote("rand", channel)
-				else
-					echoquote(params[/quote\ (.*)/, 1], channel)
+				if params.match(/quote\ [0-9]+$/)
+					echo_quote_by_id(params[/quote\ (.*)/, 1], channel)
+        elsif params.match(/quote\ [a-zA-Z0-9\.\_\-\|]+/)
+          echo_quote_by_user(params[/quote\ (.*)/, 1], channel)
+        else
+          echo_random_quote(channel) 
 				end
 			when params.match(/^rank.*/)
 				if params.eql?("rank")
