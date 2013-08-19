@@ -1,5 +1,7 @@
 # NOTE:
-# The database must be created first. You can follow the steps below to create it:
+# The database must be created first because we are using postgres.
+#
+# You can follow the steps below to create it:
 # 1) Install postgresql and the pg gem
 # 2) start the postgresql-9.2 service and chkconfig it on
 # 3) su - root
@@ -20,4 +22,5 @@ require 'pg'
 
   dbconfig = YAML::load(File.open('config/database.yml'))
   ActiveRecord::Base.establish_connection(dbconfig)
-  ActiveRecord::Migrator.migrate "/db/migrate/", ARGV[0] ? ARGV[0].to_i : nil
+  ActiveRecord::Migrator.migrate "db/migrate/", ARGV[0] ? ARGV[0].to_i : nil
+  p ActiveRecord::Base.connection.tables

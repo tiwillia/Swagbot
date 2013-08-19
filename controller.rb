@@ -19,7 +19,6 @@ $channel = "#betabot"
 class Controller
 
 require 'socket'
-require 'thread'
 
 def initialize
 	load $ircfile
