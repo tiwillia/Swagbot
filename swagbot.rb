@@ -502,7 +502,7 @@ def loop()
         youtube(url)
 
       when line.match(/.*http[s]*:\/\/[i\.]*imgur.com\/.*/)
-        url = line[/.*(http[s]*:\/\/[i\.]*imgur.com\/[a-zA-Z0-9]+)\..*/, 1]
+        url = line[/.*(http[s]*:\/\/[i\.]*imgur.com\/[a-zA-Z0-9]+).*/, 1]
         imgur(url)
 			end
 	end
