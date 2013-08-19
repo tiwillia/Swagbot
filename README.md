@@ -4,13 +4,16 @@ Swagbot
 IRC bot written from scratch in Ruby
 
 TODO:
-- Change relevant methods to use the database
+- Add search methods for quotes and definitions
+- Add the ability to see who gives the most karma
 - Fix methods to provide for easier coding
 - Consider adding a rails backend for control
 
 Database implementation complete and tested. See the notes in ./migrate.rb to set up your postgres database correctly.
 
 The master branch now simply has the database implemented, but not used. This way, we can each make a branch/fork if necessary to figure out how we are going to implement the methods using the activerecord database abstraction layer.
+
+=======================
 
 The database is backed by postgresql using the activerecord abstraction layer (without rails).
 The table structure is:
