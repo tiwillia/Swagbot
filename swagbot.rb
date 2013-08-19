@@ -1,12 +1,8 @@
 #!/usr/bin/env ruby
 
-#SWAGBOT
+# SWAGBOT
 #
 # Maintained by Timothy Williams <tiwillia@redhat.com>
-
-# Todo:
-# I implemented  the sendchn method in a way that requires an argument
-# to be passed that can really be an instance variable. Need to fix that.
 
 class Swagbot
 
@@ -18,6 +14,12 @@ require 'active_record'
 require 'yaml'
 require 'pg'
 require 'nokogiri'
+
+## Configurable Varialbles##
+$karma_wait = 5
+$nickserv_password = "swagswag"
+# These will eventually be migrated to a configuration file
+##------------------------##
 
 # Initialize variables
 def initialize(host, port, nick, chan, dir)
@@ -82,7 +84,7 @@ def connect()
 	@socket = TCPSocket.open(@host, @port)
 	send "USER #{@nick} 0 * #{@nick}"
 	send "NICK #{@nick}"
-	send ":source PRIVMSG userserv :login #{@nick} swagswag"
+	send ":source PRIVMSG userserv :login #{@nick} #{$nickserv_password}"
 	send "JOIN #{@chan}"
 	`logger "#{@nick} connected to #{@host}"`
 end
@@ -132,10 +134,10 @@ def editkarma(giver, receiver, type)
   # check for the timer before we set the timer, obviously.
   time = @timers.fetch(receiver, nil)
   if time.to_i != 0
-    if time.to_i > (Time.now.to_i - 30)
-      send(":source PRIVMSG #{@userposting} :You must wait #{time.to_i - (Time.new.to_i - 30)} more seconds before changing #{receiver}'s karma.\n")
+    if time.to_i > (Time.now.to_i - $karma_wait)
+      send(":source PRIVMSG #{@userposting} :You must wait #{time.to_i - (Time.new.to_i - $karma_wait)} more seconds before changing #{receiver}'s karma.\n")
       return
-    elsif time.to_i < (Time.now.to_i - 30)
+    elsif time.to_i < (Time.now.to_i - $karma_wait)
       @timers = { receiver => Time.new.to_i }
     end
   else
