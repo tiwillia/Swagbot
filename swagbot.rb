@@ -22,7 +22,9 @@ require 'nokogiri'
 # Initialize variables
 def initialize(host, port, nick, chan, dir)
 	puts "initializing"
-	@host = host
+	@timers = Hash.new
+  @userposting = "nil"
+  @host = host
 	@port = port
 	@nick = nick
 	@chan = chan
@@ -119,12 +121,28 @@ def rdnum(seq)
   prng.rand(1..seq)
 end
 
+# Add or subtract Karma
 def editkarma(giver, receiver, type)
 	#Here we need to parse the db for name, get the number, add one to the number
 	#Syntax of the db will be user:number\n
   recipient = getuser(receiver)
   grantor = Users.find_by(user: giver) 
 
+  # Add timer
+  # check for the timer before we set the timer, obviously.
+  time = @timers.fetch(receiver, nil)
+  if time.to_i != 0
+    if time.to_i > (Time.now.to_i - 30)
+      send(":source PRIVMSG #{@userposting} :You must wait #{time.to_i - (Time.new.to_i - 30)} more seconds before changing #{receiver}'s karma.\n")
+      return
+    elsif time.to_i < (Time.now.to_i - 30)
+      @timers = { receiver => Time.new.to_i }
+    end
+  else
+    @timers = { receiver => Time.new.to_i }
+  end
+
+  # Set the Karma Amount
   case
 	when type.eql?("add")
 		karma_amount = 1 
@@ -133,13 +151,15 @@ def editkarma(giver, receiver, type)
 	else
 		karma_amount = 0
 	end
-    
+  
+  # Create the new karma row
   Karma.new do |k|
     k.grantor_id = grantor.id
     k.recipient_id = recipient.id
     k.amount = karma_amount
   end
   
+  # Update the user's karma running total in karmastats
   if KarmaStats.where(:user_id => recipient.id).present?
     stat = KarmaStats.find_by(user_id: recipient.id)
     stat.total = stat.total + karma_amount
@@ -149,6 +169,8 @@ def editkarma(giver, receiver, type)
     stat.save
   end  
   
+  # Re-calculate the rank of EVERYthing in the karmastats database
+  # Note: This is inefficient and will need to be fixed if scaling is considered
   counter = 1
   KarmaStats.where.not(total: 0).order('total DESC').each do |x|
     x.rank = counter
@@ -156,6 +178,7 @@ def editkarma(giver, receiver, type)
     counter += 1
   end  
   
+  # If no rank is present (A new karma user), don't output a message
   if stat.rank.present?
     rank_msg = " (rank #{stat.rank})"
   else
@@ -329,22 +352,22 @@ def loop()
 	line = @socket.gets
   line = line.strip
 		  
-  # Grab the nick of the userposting
-  userposting = line[/^:([\|\.\-0-9a-zA-Z]*)!/, 1]
+  # Grab the nick of the @userposting
+  @userposting = line[/^:([\|\.\-0-9a-zA-Z]*)!/, 1]
 	if line.match(/^:.*\ PRIVMSG\ #{@nick}\ \:.*/)
-    @chan = userposting
+    @chan = @userposting
 	else
 		@chan = line[/\ (#[\|\.\-0-9a-zA-Z]*)\ :/, 1]
 	end
 	
   # Ignore kbenson
-  if userposting.eql?("kbenson")
+  if @userposting.eql?("kbenson")
     return
 	end
 
   # Add the user to the users table if they do not exist
-  if !Users.find_by(user: userposting)
-    new_user = Users.create(user: userposting)
+  if !Users.find_by(user: @userposting)
+    new_user = Users.create(user: @userposting)
     new_user.save
   end	
 
@@ -355,7 +378,7 @@ def loop()
 			channel_to_join = params[/^join\ (\#[\-\_\.\'0-9a-zA-Z]+)/, 1]
 			join_chan(channel_to_join)
 		when params.match(/^leave/)
-	  	if @chan == userposting
+	  	if @chan == @userposting
 			  sendchn("Say it in the channel you want me to leave.")
 		  else
 					leave_chan(@chan)
@@ -363,7 +386,7 @@ def loop()
 		when params.match(/^[\-\_\.\'\.0-9a-zA-Z]*\ is\ .*/)
 			word_to_define = params[/([\-\_\.\'0-9a-zA-Z]*)\ is/, 1]
 			definition = params[/[\-\_\ \.\'0-9a-zA-Z]*\ is\ (.*)/, 1]
-			add_definition(word_to_define, definition, userposting)
+			add_definition(word_to_define, definition, @userposting)
 		when params.match(/^[\-\_\.0-9a-zA-Z]*\?/)
 			word_to_echo_def = params[/([\-\_\.0-9a-zA-Z]*)?/, 1]
 			echo_definition_by_word(word_to_echo_def)
@@ -373,7 +396,7 @@ def loop()
 		when params.match(/^addquote.*/)
 			user_to_quote = line[/addquote\ ([0-9a-zA-Z\-\_\.\|]+)\ .*/, 1]
 			new_quote = line[/addquote\ [0-9a-zA-Z\-\_\.\|]+\ (.*)/, 1]
-			addquote(userposting, user_to_quote, new_quote)				
+			addquote(@userposting, user_to_quote, new_quote)				
 		when params.match(/^quote.*/)
 			if params.match(/quote\ [0-9]+$/)
 				echo_quote_by_id(params[/quote\ (.*)/, 1])
@@ -443,7 +466,7 @@ def loop()
           sendchn("Usage: #{@nick}: quote [name]")
           sendchn("Returns a quote from the quote database")
           sendchn("If no name is supplied, a random quote will be returned")                               when params.eql?("help time")
-          sendchn("I don't know why you want help with this one #{userposting}...")
+          sendchn("I don't know why you want help with this one #{@userposting}...")
           sendchn("It was more of a way to test getting the time")
           sendchn("Eventually, the time will be used for other commands")                                  when params.eql?("help weather")
           sendchn("PLACEHOLDER")                               
@@ -466,26 +489,26 @@ def loop()
 			when line.match(/\ INVITE #{@nick}\ \:\#.*/)
 				invited_channel = line[/#{@nick}\ \:(\#.*)/, 1]
 				join_chan(invited_channel)
-				sendchn("I was invited here by #{userposting}. If I am not welcome type \"#{@nick} leave\"")
+				sendchn("I was invited here by #{@userposting}. If I am not welcome type \"#{@nick} leave\"")
 			
 			# Karma assignments
 			when line.match(/^.*[\-\.\'\.\|0-9a-zA-Z]+[\+\-]{2}.*/)
-				if @chan != userposting
+				if @chan != @userposting
 					line.split.each do |x| 
 						if x.match(/[\-\.\'\.\|0-9a-zA-Z]+\+\+/)
 							user = x[/([\-\.\'\.\|0-9a-zA-Z]*)\+\+/, 1]
-							if user == userposting
+							if user == @userposting
 								sendchn("Lol, yeah right.")
 							else
-								editkarma(userposting, user, "add")
+								editkarma(@userposting, user, "add")
 							end
 						end
 						if x.match(/[\-\.\'\.\|0-9a-zA-Z]+\-\-/)
 							user = x[/([\-\.\'\.\|0-9a-zA-Z]*)\-\-/, 1]
-							if user == userposting
-								sendchn("#{userposting}, you okay? I'm not going to let you subtract karma from yourself.")
+							if user == @userposting
+								sendchn("#{@userposting}, you okay? I'm not going to let you subtract karma from yourself.")
 							else
-								editkarma(userposting, user, "subtract")
+								editkarma(@userposting, user, "subtract")
 							end
 						end
 					end
