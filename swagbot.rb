@@ -385,7 +385,7 @@ def loop()
 		when params.match(/^rank.*/)
 			if params.eql?("rank")
 				rank("all")
-			else
+			elsif params.match("rank\ [a-zA-Z0-9\.\-\_\|]+")
 				user_to_rank = params[/rank\ (.*)/, 1]
 				rank(user_to_rank)
 			end
