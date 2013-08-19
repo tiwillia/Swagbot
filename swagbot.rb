@@ -60,8 +60,8 @@ def send(msg)
 end
 
 # Small function to easily send messages to @chan
-def sendchn(msg, chan)
-	@socket.send ":source PRIVMSG #{chan} :#{msg}\n" , 0
+def sendchn(msg)
+	@socket.send ":source PRIVMSG #{@chan} :#{msg}\n" , 0
 end
 
 def join_chan(chan)
@@ -89,7 +89,6 @@ end
 def kill()
 	@socket.send(":source QUIT :SWAG\n", 0)
 	@socket.close
-	`logger "#{@nick} quit from #{@host}"`
 end
 
 # Create a user and id if it doesn't exist
@@ -97,6 +96,16 @@ end
 def getuser(user)
   if Users.where(:user => user).present?
     Users.find_by(user: user)
+  else
+    new_user = Users.new(user: user)
+    new_user.save
+    new_user
+  end
+end
+
+def getuser_by_id(id, user)
+  if Users.where(:id => id).present?
+    Users.find(id: id)
   else
     new_user = Users.new(user: user)
     new_user.save
@@ -112,7 +121,7 @@ def rdnum(seq)
   prng.rand(1..seq)
 end
 
-def editkarma(giver, receiver, type, chan)
+def editkarma(giver, receiver, type)
 	#Here we need to parse the db for name, get the number, add one to the number
 	#Syntax of the db will be user:number\n
   recipient = getuser(receiver)
@@ -155,10 +164,10 @@ def editkarma(giver, receiver, type, chan)
     rank_msg = ""
   end
 
-	sendchn("#{receiver} now has #{stat.total} karma.#{rank_msg}",chan)
+	sendchn("#{receiver} now has #{stat.total} karma.#{rank_msg}")
 end
 
-def rank(who, chan)
+def rank(who)
 	#Here we are going to create a rank command
 	#If no who is specified, list the top 5
 	#if a who is specified, display their rank.
@@ -172,7 +181,7 @@ def rank(who, chan)
   if who == "all"
 		KarmaStats.where.not(total: 0).order('rank ASC').limit(5).each do |x|
       user_obj = Users.find(x.user_id)
-			sendchn("#{x.rank}: #{user_obj.user} with #{x.total} points of karma",chan)
+			sendchn("#{x.rank}: #{user_obj.user} with #{x.total} points of karma")
 		end
 	else
 		user = getuser(who)
@@ -192,104 +201,111 @@ def rank(who, chan)
       when rank.to_s.match(/.*1$/)
         suffix = "st"
       end
-      sendchn("#{user.user} is #{rank}#{suffix} with #{stat.total} points of karma",chan)
+      sendchn("#{user.user} is #{rank}#{suffix} with #{stat.total} points of karma")
     else
-      sendchn("#{user.user} has never had karma added or subtracted.",chan)
+      sendchn("#{user.user} has never had karma added or subtracted.")
     end
 	end
 end
 
 # Adds a quote to the file swagbot-files/quotedb
-def addquote(recorder, quotee, quote, chan)
+def addquote(recorder, quotee, quote)
   recorder = getuser(recorder)
-  quotee = getuser(quotee)
+  quotee = getuser_by_id(quotee_id)
   quote_obj = Quotes.new(recorder_id: recorder.id, quotee_id: quotee.id, quote: quote)
 	quote_obj.save
-  sendchn("Quote for #{quotee.user} added with id: #{quote_obj.id}",chan)
+  sendchn("Quote for #{quotee.user} added with id: #{quote_obj.id}")
 end
 
 # Reads a quote from the file swagbot-files/quotedb
-def echo_quote_by_user(who, chan)
+def echo_quote_by_user(who)
   quotee = getuser(who)
-  quote = Quotes.where(quotee_id: quotee.id).first(:offset => rand(Quotes.where(quotee_id: quotee.id).count))
-  quotee = Users.find(quote.quotee_id)
-  sendchn("\"#{quote.quote}\" - #{quotee.user} \| id:#{quote.id}",chan)
+  if Quotes.where(quotee_id: quotee.id).present?
+    quote = Quotes.where(quotee_id: quotee.id).first(:offset => rand(Quotes.where(quotee_id: quotee.id).count))
+    sendchn("\"#{quote.quote}\" - #{quotee.user} \| id:#{quote.id}")
+  else
+    sendchn("#{quotee.user} has never been quoted")
+  end
 end
 
 def echo_random_quote(chan)
   id = rdnum(Quotes.count)
   quote = Quotes.find(id)
   quotee = Users.find(quote.quotee_id)
-  sendchn("\"#{quote.quote}\" - #{quotee.user} \| id:#{quote.id}",chan)
+  sendchn("\"#{quote.quote}\" - #{quotee.user} \| id:#{quote.id}")
 end
 
-def echo_quote_by_id(id, chan)
-  quote = Quotes.find(id)
-  quotee = Users.find(quote.quotee_id)
-  sendchn("\"#{quote.quote}\" - #{quotee.user} \| id:#{quote.id}",chan)
+def echo_quote_by_id(id)
+  if Quotes.find(id).present?
+    quote = Quotes.find(id)
+    quotee = getuser_by_id(quote.quotee_id)
+    sendchn("\"#{quote.quote}\" - #{quotee.user} \| id:#{quote.id}")
+  else
+     sendchn("No quote with id: #{id} exists.")
+  end
 end
 
 # This will grab the title and possibly description of a bugzilla link and display it
-def bugzilla(url, chan)
+def bugzilla(url)
   doc = Nokogiri::HTML(open(url))
   number = url.split("=").last
   title = doc.xpath('//span[@id="short_desc_nonedit_display"]/text()')
   status = doc.xpath('//span[@id="static_bug_status"]/text()')
-  sendchn("Bugzilla: ##{number} \"#{title}\" : #{status}", chan)
+  sendchn("Bugzilla: ##{number} \"#{title}\" : #{status}")
 end
 
 # This will grab the title of a youtube link and display it
-def youtube(url, chan)
+def youtube(url)
   doc = Nokogiri::HTML(open(url))
   title = doc.xpath('//span[@id="eow-title"]/@title')
   views = doc.css('span.watch-view-count').first.content.strip
-  sendchn("Youtube: \"#{title}\" : #{views} views", chan)
+  sendchn("Youtube: \"#{title}\" : #{views} views")
 end
 
 # This will grab the title of an imgur link and display it
-def imgur(url, chan)
+def imgur(url)
   doc = Nokogiri::HTML(open(url))
   img_id = url.split("/").last
   title = doc.xpath("//h2").last.content
   timestamp = doc.xpath('//div[@id="stats-submit-date"]/@title').to_s.gsub(/\ at.*/, "")
   points = doc.css("span.points-#{img_id}").first.content
-  sendchn("Imgur: \"#{title}\" #{points} points, Posted on #{timestamp}", chan)
+  sendchn("Imgur: \"#{title}\" #{points} points, Posted on #{timestamp}")
 end
 
 # Definitions can be accessed with the echo_definition method
-def add_definition(word, definition, recorder, chan)
+def add_definition(word, definition, recorder)
 	recorder = getuser(recorder)
   definition = Definitions.create(recorder_id: recorder.id, word: word, definition: definition)
   definition.save
-  sendchn("Ok, I'll remember #{word}", chan)
+  sendchn("Ok, I'll remember #{word}")
 end
 
-def forget_definition(word, chan)
+def forget_definition(word)
 	definition = Definitions.where(word: word).order('id ASC')
   if definition.present?
     definition.last.destroy
-    sendchn("Deleted #{word}'s latest definition.", chan)
+    sendchn("Deleted #{word}'s latest definition.")
 	else
-		sendchn("How can I forget what I do not know?", chan)
+		sendchn("How can I forget what I do not know?")
 	end
 end
 
 # Sends the definition added with add_definition
-def echo_definition_by_word(word, chan)
+def echo_definition_by_word(word)
 	Definitions.where(word: word).each do |d|
-      sendchn("#{d.word} is #{d.definition}", chan)
+      sendchn("#{d.word} is #{d.definition}")
   end
 end
 
-def echo_definition_by_id(id, chan)
+def echo_definition_by_id(id)
   Definitions.where(id: id).each do |d|
-      sendchn("#{d.word} is #{d.definition}", chan)
+      sendchn("#{d.word} is #{d.definition}")
   end 
 end
 
-def echo_definition_by_user(who, chan)
+def echo_definition_by_user(who)
   Definitions.where(recorder: who).each do |d|
-      sendchn("#{d.word} is #{d.definition}", chan)
+      sendchn("#{d.word} is #{d.definition}")
   end
 end
 
@@ -318,9 +334,9 @@ def loop()
   # Grab the nick of the userposting
   userposting = line[/^:([\|\.\-0-9a-zA-Z]*)!/, 1]
 	if line.match(/^:.*\ PRIVMSG\ #{@nick}\ \:.*/)
-    channel = userposting
+    @chan = userposting
 	else
-		channel = line[/\ (#[\|\.\-0-9a-zA-Z]*)\ :/, 1]
+		@chan = line[/\ (#[\|\.\-0-9a-zA-Z]*)\ :/, 1]
 	end
 	
   # Ignore kbenson
@@ -341,44 +357,44 @@ def loop()
 			channel_to_join = params[/^join\ (\#[\-\_\.\'0-9a-zA-Z]+)/, 1]
 			join_chan(channel_to_join)
 		when params.match(/^leave/)
-	  	if channel == userposting
-			  sendchn("Say it in the channel you want me to leave.", channel)
+	  	if @chan == userposting
+			  sendchn("Say it in the channel you want me to leave.")
 		  else
-					leave_chan(channel)
+					leave_chan(@chan)
 			end
 		when params.match(/^[\-\_\.\'\.0-9a-zA-Z]*\ is\ .*/)
 			word_to_define = params[/([\-\_\.\'0-9a-zA-Z]*)\ is/, 1]
 			definition = params[/[\-\_\ \.\'0-9a-zA-Z]*\ is\ (.*)/, 1]
-			add_definition(word_to_define, definition, userposting, channel)
+			add_definition(word_to_define, definition, userposting)
 		when params.match(/^[\-\_\.0-9a-zA-Z]*\?/)
 			word_to_echo_def = params[/([\-\_\.0-9a-zA-Z]*)?/, 1]
-			echo_definition_by_word(word_to_echo_def, channel)
+			echo_definition_by_word(word_to_echo_def)
 		when params.match(/^forget\ [\-\_\ 0-9a-zA-Z]*/)
 			word_to_forget = params[/forget\ ([\-\_\ 0-9a-zA-Z]*)/, 1]
-			forget_definition(word_to_forget, channel)
+			forget_definition(word_to_forget)
 		when params.match(/^addquote.*/)
 			user_to_quote = line[/addquote\ ([0-9a-zA-Z\-\_\.\|]+)\ .*/, 1]
 			new_quote = line[/addquote\ [0-9a-zA-Z\-\_\.\|]+\ (.*)/, 1]
-			addquote(userposting, user_to_quote, new_quote, channel)				
+			addquote(userposting, user_to_quote, new_quote)				
 		when params.match(/^quote.*/)
 			if params.match(/quote\ [0-9]+$/)
-				echo_quote_by_id(params[/quote\ (.*)/, 1], channel)
+				echo_quote_by_id(params[/quote\ (.*)/, 1])
       elsif params.match(/quote\ [a-zA-Z0-9\.\_\-\|]+/)
-        echo_quote_by_user(params[/quote\ (.*)/, 1], channel)
+        echo_quote_by_user(params[/quote\ (.*)/, 1])
       else
-        echo_random_quote(channel) 
+        echo_random_quote(@chan) 
 			end
 		when params.match(/^rank.*/)
 			if params.eql?("rank")
-				rank("all", channel)
+				rank("all")
 			else
 				user_to_rank = params[/rank\ (.*)/, 1]
-				rank(user_to_rank, channel)
+				rank(user_to_rank)
 			end
 		when params.eql?("time")
 			time = Time.new
 			timenow = time.inspect
-			sendchn("The current time is #{timenow}", channel)
+			sendchn("The current time is #{timenow}")
 		when params.eql?("weather")
 			# Yahoo Weather Variables
       yahoo_url = 'http://query.yahooapis.com/v1/public/yql?format=json&q='
@@ -387,58 +403,58 @@ def loop()
       # Pull and parse data
       weather_data = JSON.parse(open(url).read)
       weather_results = weather_data["query"]["results"]["channel"]
-      sendchn("------------------Weather For 27606---------------", channel)
-			sendchn("Current conditions: #{weather_results["wind"]["chill"]} degrees and #{weather_results["item"]["forecast"][0]["text"]}", channel)
-      sendchn("Windspeed: #{weather_results["wind"]["speed"]}mph", channel)
-      sendchn("High: #{weather_results["item"]["forecast"][0]["high"]} degrees", channel)
-      sendchn("Low: #{weather_results["item"]["forecast"][0]["low"]} degrees", channel)
-      sendchn("-----------------------------------------------------------", channel)
+      sendchn("------------------Weather For 27606---------------")
+			sendchn("Current conditions: #{weather_results["wind"]["chill"]} degrees and #{weather_results["item"]["forecast"][0]["text"]}")
+      sendchn("Windspeed: #{weather_results["wind"]["speed"]}mph")
+      sendchn("High: #{weather_results["item"]["forecast"][0]["high"]} degrees")
+      sendchn("Low: #{weather_results["item"]["forecast"][0]["low"]} degrees")
+      sendchn("-----------------------------------------------------------")
 			
 		when params.eql?("simpsons")
 			quote = pick_random_line(@simpsons)
-      sendchn("#{quote}", channel)
+      sendchn("#{quote}")
 		when params.eql?("anchorman")
 			quote = pick_random_line(@anchorman)
-      sendchn("#{quote}", channel)
+      sendchn("#{quote}")
 		when params.eql?("blowmymind")
       quote = pick_random_line(@blowmymind)
-      sendchn("#{quote}", channel)
+      sendchn("#{quote}")
 			when params.match(/^help.*/)
         case 
         when  params.eql?("help")
-          sendchn("#{@nick}: help [command]", channel)
-					sendchn("#{@nick}: <noun> is <definition>", channel)
-					sendchn("#{@nick}: <noun>?", channel)
-          sendchn("#{@nick}: addquote <name> <quote WITHOUT \"\">", channel)
-          sendchn("#{@nick}: quote [name]", channel)
-          sendchn("<name>++", channel)
-          sendchn("<name>--", channel)
-					sendchn("#{@nick} rank", channel)
-					sendchn("#{@nick} rank <name>", channel)
-          sendchn("#{@nick}: time", channel)
-          sendchn("#{@nick}: weather", channel)
-          sendchn("#{@nick}: simpsons", channel)
-          sendchn("#{@nick}: anchorman", channel)
-					sendchn("#{@nick}: blowmymind", channel)
-					sendchn("#{@nick}: leave", channel)
-					sendchn("#{@nick}: join <#channel>", channel)                                        
+          sendchn("#{@nick}: help [command]")
+					sendchn("#{@nick}: <noun> is <definition>")
+					sendchn("#{@nick}: <noun>?")
+          sendchn("#{@nick}: addquote <name> <quote WITHOUT \"\">")
+          sendchn("#{@nick}: quote [name]")
+          sendchn("<name>++")
+          sendchn("<name>--")
+					sendchn("#{@nick} rank")
+					sendchn("#{@nick} rank <name>")
+          sendchn("#{@nick}: time")
+          sendchn("#{@nick}: weather")
+          sendchn("#{@nick}: simpsons")
+          sendchn("#{@nick}: anchorman")
+					sendchn("#{@nick}: blowmymind")
+					sendchn("#{@nick}: leave")
+					sendchn("#{@nick}: join <#channel>")                                        
         when params.eql?("help addquote")
-          sendchn("Usage: #{@nick}: addquote <name> <quote WITHOUT \"\">", channel)
-          sendchn("Adds a quote to the quote database", channel)
-          sendchn("Quotes can be recalled with #{@nick}: quote [name]", channel)                                    when params.eql?("help quote")
-          sendchn("Usage: #{@nick}: quote [name]", channel)
-          sendchn("Returns a quote from the quote database", channel)
-          sendchn("If no name is supplied, a random quote will be returned", channel)                               when params.eql?("help time")
-          sendchn("I don't know why you want help with this one #{userposting}...", channel)
-          sendchn("It was more of a way to test getting the time", channel)
-          sendchn("Eventually, the time will be used for other commands", channel)                                  when params.eql?("help weather")
-          sendchn("PLACEHOLDER", channel)                               
+          sendchn("Usage: #{@nick}: addquote <name> <quote WITHOUT \"\">")
+          sendchn("Adds a quote to the quote database")
+          sendchn("Quotes can be recalled with #{@nick}: quote [name]")                                    when params.eql?("help quote")
+          sendchn("Usage: #{@nick}: quote [name]")
+          sendchn("Returns a quote from the quote database")
+          sendchn("If no name is supplied, a random quote will be returned")                               when params.eql?("help time")
+          sendchn("I don't know why you want help with this one #{userposting}...")
+          sendchn("It was more of a way to test getting the time")
+          sendchn("Eventually, the time will be used for other commands")                                  when params.eql?("help weather")
+          sendchn("PLACEHOLDER")                               
         when params.eql?("help simpsons")
-          sendchn("Returns a random quote from The Simpsons", channel)                                
+          sendchn("Returns a random quote from The Simpsons")                                
         when params.eql?("help anchorman")
-          sendchn("Returns a random quote from Anchorman", channel)
+          sendchn("Returns a random quote from Anchorman")
         when params.eql?("help blowmymind")
-          sendchn("I will blow your mind", channel)                                
+          sendchn("I will blow your mind")                                
         end
 			end
 		else
@@ -452,44 +468,44 @@ def loop()
 			when line.match(/\ INVITE #{@nick}\ \:\#.*/)
 				invited_channel = line[/#{@nick}\ \:(\#.*)/, 1]
 				join_chan(invited_channel)
-				sendchn("I was invited here by #{userposting}. If I am not welcome type \"#{@nick} leave\"", invited_channel)
+				sendchn("I was invited here by #{userposting}. If I am not welcome type \"#{@nick} leave\"")
 			
 			# Karma assignments
 			when line.match(/^.*[\-\.\'\.\|0-9a-zA-Z]+[\+\-]{2}.*/)
-				if channel != userposting
+				if @chan != userposting
 					line.split.each do |x| 
 						if x.match(/[\-\.\'\.\|0-9a-zA-Z]+\+\+/)
 							user = x[/([\-\.\'\.\|0-9a-zA-Z]*)\+\+/, 1]
 							if user == userposting
-								sendchn("Lol, yeah right.", channel)
+								sendchn("Lol, yeah right.")
 							else
-								editkarma(userposting, user, "add", channel)
+								editkarma(userposting, user, "add")
 							end
 						end
 						if x.match(/[\-\.\'\.\|0-9a-zA-Z]+\-\-/)
 							user = x[/([\-\.\'\.\|0-9a-zA-Z]*)\-\-/, 1]
 							if user == userposting
-								sendchn("#{userposting}, you okay? I'm not going to let you subtract karma from yourself.", channel)
+								sendchn("#{userposting}, you okay? I'm not going to let you subtract karma from yourself.")
 							else
-								editkarma(userposting, user, "subtract", channel)
+								editkarma(userposting, user, "subtract")
 							end
 						end
 					end
 				else
-					sendchn("Karma can only be assigned in a channel", channel)
+					sendchn("Karma can only be assigned in a channel")
 				end
 
       when line.match(/.*http[s]*:\/\/[w\.]*bugzilla\.redhat\.com\/show_bug.cgi\?id=[a-zA-Z0-9]+[\ ]*/)
         url = line[/.*(http[s]*:\/\/[w\.]*bugzilla\.redhat\.com\/show_bug.cgi\?id=[a-zA-Z0-9]+)[\ ]*/, 1]
-        bugzilla(url, channel)
+        bugzilla(url)
 
       when line.match(/.*http[s]*:\/\/[w\.]*youtube.com\/watch.*/)
         url = line[/.*(http[s]*:\/\/[w\.]*youtube.com\/watch\?v=[a-zA-Z0-9]+)[\ ]*/, 1]
-        youtube(url, channel)
+        youtube(url)
 
       when line.match(/.*http[s]*:\/\/i.imgur.com\/.*/)
         url = line[/.*(http[s]*:\/\/i.imgur.com\/[a-zA-Z0-9]+)\..*/, 1]
-        imgur(url, channel)
+        imgur(url)
 			end
 	end
 	return nil
