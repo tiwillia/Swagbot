@@ -103,13 +103,11 @@ def getuser(user)
   end
 end
 
-def getuser_by_id(id, user)
+def getuser_by_id(id)
   if Users.where(:id => id).present?
-    Users.find(id: id)
+    Users.find(id)
   else
-    new_user = Users.new(user: user)
-    new_user.save
-    new_user
+    nil 
   end
 end
 
@@ -503,8 +501,8 @@ def loop()
         url = line[/.*(http[s]*:\/\/[w\.]*youtube.com\/watch\?v=[a-zA-Z0-9]+)[\ ]*/, 1]
         youtube(url)
 
-      when line.match(/.*http[s]*:\/\/i.imgur.com\/.*/)
-        url = line[/.*(http[s]*:\/\/i.imgur.com\/[a-zA-Z0-9]+)\..*/, 1]
+      when line.match(/.*http[s]*:\/\/[i\.]*imgur.com\/.*/)
+        url = line[/.*(http[s]*:\/\/[i\.]*imgur.com\/[a-zA-Z0-9]+)\..*/, 1]
         imgur(url)
 			end
 	end
