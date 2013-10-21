@@ -1,0 +1,18 @@
+== Swagbot (or something...)
+
+Irc bot with a rails backend utilizing a postgresql database
+
+* Ruby version: 2.0.0
+
+* System dependencies: Postgresql database
+
+* Database creation:
+
+* Database initialization: rake db:create; rake db:migrate
+
+* Configuration file: config/appication.yml
+  * You will have to use application.example.yml and rename it to application.yml
+=======================
+= TODO
+* Implement a configuration file... or table? that is editable through rails
+* Stop adding features damnit, and fix the issues.

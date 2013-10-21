@@ -1,0 +1,11 @@
+<h1 class=title>New Bot</h1>
+<%= form_for @bot do |b| %>
+<p>
+<%= b.label :nick %><%= b.text_field :nick, :size => 20 %><br>
+<%= b.label :channel %><%= b.text_field :channel, :size => 20 %><br>
+<%= b.label :bot_file %><%= b.text_field :irc_file, :size => 20 %><br>
+</p>
+<p>
+<%= b.submit %>
+</p>
+<% end %>

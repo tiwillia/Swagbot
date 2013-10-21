@@ -1,0 +1,507 @@
+
+
+Started GET "/" for 10.13.212.34 at 2013-10-07 16:39:24 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BotsController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "bots"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bots"[0m
+  [1m[35mBot Load (0.4ms)[0m  SELECT "bots".* FROM "bots" ORDER BY "bots"."id" ASC LIMIT 1
+  [1m[36mBot Load (2.0ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsers Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'betabot' LIMIT 1
+  [1m[36mUsers Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'USERSERV' LIMIT 1[0m
+  [1m[35mUsers Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mUsers Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mUsers Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'you'[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "user") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", Mon, 07 Oct 2013 20:39:35 UTC +00:00], ["updated_at", Mon, 07 Oct 2013 20:39:35 UTC +00:00], ["user", "you"]]
+  [1m[35m (13.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.9ms)[0m  INSERT INTO "quotes" ("created_at", "quote", "quotee_id", "recorder_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", Mon, 07 Oct 2013 20:39:35 UTC +00:00], ["quote", "test"], ["quotee_id", 4], ["recorder_id", 3], ["updated_at", Mon, 07 Oct 2013 20:39:35 UTC +00:00]]
+  [1m[36m (15.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mUsers Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mUsers Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mUsers Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'other'[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "user") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", Mon, 07 Oct 2013 20:39:40 UTC +00:00], ["updated_at", Mon, 07 Oct 2013 20:39:40 UTC +00:00], ["user", "other"]]
+  [1m[35m (11.9ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "quotes" ("created_at", "quote", "quotee_id", "recorder_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", Mon, 07 Oct 2013 20:39:40 UTC +00:00], ["quote", "test"], ["quotee_id", 5], ["recorder_id", 3], ["updated_at", Mon, 07 Oct 2013 20:39:40 UTC +00:00]]
+  [1m[36m (11.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mUsers Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mUsers Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mUsers Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'thatoneguy'[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "user") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", Mon, 07 Oct 2013 20:39:45 UTC +00:00], ["updated_at", Mon, 07 Oct 2013 20:39:45 UTC +00:00], ["user", "thatoneguy"]]
+  [1m[35m (32.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "quotes" ("created_at", "quote", "quotee_id", "recorder_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", Mon, 07 Oct 2013 20:39:45 UTC +00:00], ["quote", "test"], ["quotee_id", 6], ["recorder_id", 3], ["updated_at", Mon, 07 Oct 2013 20:39:45 UTC +00:00]]
+  [1m[36m (9.7ms)[0m  [1mCOMMIT[0m
+Completed   in 257748ms
+
+
+Started GET "/" for 10.13.212.34 at 2013-10-10 19:04:48 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (2.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BotsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "bots"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bots"[0m
+  [1m[35mBot Load (0.4ms)[0m  SELECT "bots".* FROM "bots" ORDER BY "bots"."id" ASC LIMIT 1
+  [1m[36mBot Load (14.4ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 500 Internal Server Error in 2161ms
+
+NoMethodError (undefined method `[]' for nil:NilClass):
+  lib/swagbot.rb:492:in `loop'
+  app/controllers/bots_controller.rb:45:in `block in create'
+  app/controllers/bots_controller.rb:33:in `loop'
+  app/controllers/bots_controller.rb:33:in `create'
+  app/controllers/bots_controller.rb:15:in `index'
+
+
+  Rendered /usr/local/share/gems/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /usr/local/share/gems/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /usr/local/share/gems/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /usr/local/share/gems/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.0ms)
+
+
+Started GET "/" for 10.13.212.34 at 2013-10-10 19:05:42 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BotsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "bots"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bots"[0m
+  [1m[35mBot Load (0.5ms)[0m  SELECT "bots".* FROM "bots" ORDER BY "bots"."id" ASC LIMIT 1
+  [1m[36mBot Load (2.4ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsers Load (14.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'betabot' LIMIT 1
+  [1m[36mUsers Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'USERSERV' LIMIT 1[0m
+  [1m[35mUsers Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "quotes"[0m
+  [1m[35m (0.2ms)[0m  SELECT id FROM "quotes"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "quotes"[0m
+  [1m[35mQuotes Load (0.4ms)[0m  SELECT "quotes".* FROM "quotes" WHERE "quotes"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mUsers Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "definitions"[0m
+  [1m[35mDefinitions Load (0.3ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'test'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mUsers Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (60.2ms)[0m  [1mINSERT INTO "definitions" ("created_at", "definition", "recorder_id", "updated_at", "word") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", Thu, 10 Oct 2013 23:06:03 UTC +00:00], ["definition", "testing"], ["recorder_id", 3], ["updated_at", Thu, 10 Oct 2013 23:06:03 UTC +00:00], ["word", "test"]]
+  [1m[35m (23.2ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36mUsers Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "definitions"
+  [1m[36mDefinitions Load (0.2ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'test'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'test'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+Completed   in 36640ms
+
+
+Started GET "/" for 10.13.212.34 at 2013-10-10 19:06:53 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BotsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "bots"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bots"[0m
+  [1m[35mBot Load (0.4ms)[0m  SELECT "bots".* FROM "bots" ORDER BY "bots"."id" ASC LIMIT 1
+  [1m[36mBot Load (2.4ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsers Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'betabot' LIMIT 1
+  [1m[36mUsers Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'USERSERV' LIMIT 1[0m
+  [1m[35mUsers Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "definitions"
+  [1m[36mDefinitions Load (0.2ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'test'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'test'
+Completed   in 16461ms
+
+
+Started GET "/" for 10.13.212.34 at 2013-10-10 19:07:35 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BotsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "bots"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bots"[0m
+  [1m[35mBot Load (0.4ms)[0m  SELECT "bots".* FROM "bots" ORDER BY "bots"."id" ASC LIMIT 1
+  [1m[36mBot Load (2.4ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mDefinitions Load (0.3ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'NOTICE'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'NOTICE'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'NOTICE'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'NOTICE'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'NOTICE'
+  [1m[36mDefinitions Load (0.2ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''[0m
+  [1m[35mUsers Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'betabot' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''
+  [1m[36mUsers Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'USERSERV' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''
+  [1m[36mUsers Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "definitions"
+  [1m[36mDefinitions Load (0.2ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'test'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'test'
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = ''
+Completed   in 305407ms
+
+
+Started GET "/" for 10.13.212.34 at 2013-10-10 19:13:28 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BotsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "bots"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bots"[0m
+  [1m[35mBot Load (0.4ms)[0m  SELECT "bots".* FROM "bots" ORDER BY "bots"."id" ASC LIMIT 1
+  [1m[36mBot Load (2.2ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsers Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'betabot' LIMIT 1
+  [1m[36mUsers Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'USERSERV' LIMIT 1[0m
+  [1m[35mUsers Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim|brb' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "user") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Thu, 10 Oct 2013 23:13:33 UTC +00:00], ["updated_at", Thu, 10 Oct 2013 23:13:33 UTC +00:00], ["user", "tim|brb"]]
+  [1m[36m (18.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mDefinitions Load (0.3ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'test'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'test'[0m
+  [1m[35mUsers Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim|brb' LIMIT 1
+  [1m[36mUsers Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mDefinitions Load (0.4ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'who'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'test'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'test'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mDefinitions Load (0.5ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'when'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "definitions"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'test'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'test'
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'test'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'test'[0m
+Completed   in 41452ms
+
+
+Started GET "/" for 10.13.145.130 at 2013-10-17 20:07:15 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (12.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BotsController#index as */*
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "bots"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bots"[0m
+  [1m[35mBot Load (0.4ms)[0m  SELECT "bots".* FROM "bots" ORDER BY "bots"."id" ASC LIMIT 1
+  [1m[36mBot Load (7.3ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsers Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'betabot' LIMIT 1
+  [1m[36mUsers Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'USERSERV' LIMIT 1[0m
+  [1m[35mUsers Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "quotes"[0m
+  [1m[35m (0.2ms)[0m  SELECT id FROM "quotes"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "quotes"[0m
+  [1m[35mQuotes Load (0.4ms)[0m  SELECT "quotes".* FROM "quotes" WHERE "quotes"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mUsers Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mUsers Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (44.9ms)[0m  INSERT INTO "definitions" ("created_at", "definition", "recorder_id", "updated_at", "word") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", Fri, 18 Oct 2013 00:07:54 UTC +00:00], ["definition", "here"], ["recorder_id", 3], ["updated_at", Fri, 18 Oct 2013 00:07:54 UTC +00:00], ["word", "test"]]
+  [1m[36m (66.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mUsers Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "definitions"[0m
+  [1m[35mDefinitions Load (0.3ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'test'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'test'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+Completed   in 64720ms
+
+
+Started GET "/" for 10.13.145.130 at 2013-10-17 20:08:57 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BotsController#index as */*
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "bots"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bots"[0m
+  [1m[35mBot Load (0.4ms)[0m  SELECT "bots".* FROM "bots" ORDER BY "bots"."id" ASC LIMIT 1
+  [1m[36mBot Load (2.4ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsers Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'betabot' LIMIT 1
+  [1m[36mUsers Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'USERSERV' LIMIT 1[0m
+  [1m[35mUsers Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+Completed   in 13531ms
+
+
+Started GET "/" for 10.13.145.130 at 2013-10-17 20:10:11 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BotsController#index as */*
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "bots"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bots"[0m
+  [1m[35mBot Load (0.4ms)[0m  SELECT "bots".* FROM "bots" ORDER BY "bots"."id" ASC LIMIT 1
+  [1m[36mBot Load (2.2ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsers Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'betabot' LIMIT 1
+  [1m[36mUsers Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'USERSERV' LIMIT 1[0m
+  [1m[35mUsers Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mDefinitions Load (0.3ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'test'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'test'
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "definitions"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'test'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'test'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mDefinitions Load (0.4ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'thing'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'thing'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mDefinitions Load (0.4ms)[0m  [1mSELECT "definitions".* FROM "definitions" WHERE "definitions"."word" = 'dfkljaioenae'[0m
+Completed   in 17770ms
+
+
+Started GET "/" for 10.13.212.34 at 2013-10-21 15:17:58 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BotsController#index as HTML
+  [1m[35m (0.9ms)[0m  SELECT COUNT(*) FROM "bots"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bots"[0m
+  [1m[35mBot Load (12.0ms)[0m  SELECT "bots".* FROM "bots" ORDER BY "bots"."id" ASC LIMIT 1
+  [1m[36mBot Load (19.7ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 500 Internal Server Error in 109ms
+
+SyntaxError (/home/tiwillia/Projects/Swagbot/lib/swagbot.rb:493: syntax error, unexpected ( arg, expecting keyword_then or ',' or ';' or '\n'
+      when line.match (/.*#{@nick}\ \:\!op$/)
+                       ^):
+  app/controllers/bots_controller.rb:31:in `create'
+  app/controllers/bots_controller.rb:15:in `index'
+
+
+  Rendered /usr/local/share/gems/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /usr/local/share/gems/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /usr/local/share/gems/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /usr/local/share/gems/gems/actionpack-4.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.2ms)
+
+
+Started GET "/" for 10.13.212.34 at 2013-10-21 15:18:36 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BotsController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "bots"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bots"[0m
+  [1m[35mBot Load (0.3ms)[0m  SELECT "bots".* FROM "bots" ORDER BY "bots"."id" ASC LIMIT 1
+  [1m[36mBot Load (2.1ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsers Load (6.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'betabot' LIMIT 1
+  [1m[36mUsers Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'USERSERV' LIMIT 1[0m
+  [1m[35mUsers Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mUsers Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'betabot'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'betabot' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (70.2ms)[0m  [1mINSERT INTO "karma" ("amount", "created_at", "grantor_id", "recipient_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", 1], ["created_at", Mon, 21 Oct 2013 19:18:42 UTC +00:00], ["grantor_id", 3], ["recipient_id", 1], ["updated_at", Mon, 21 Oct 2013 19:18:42 UTC +00:00]]
+  [1m[35m (18.7ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36mKarmastats Load (1.1ms)[0m  [1mSELECT "karmastats".* FROM "karmastats" WHERE "karmastats"."user_id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "karmastats".* FROM "karmastats" WHERE "karmastats"."user_id" = 1 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  UPDATE "karmastats" SET "total" = $1, "updated_at" = $2 WHERE "karmastats"."id" = 1  [["total", -4], ["updated_at", Mon, 21 Oct 2013 19:18:42 UTC +00:00]]
+  [1m[36m (12.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mUsers Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mUsers Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'betabot'[0m
+  [1m[35mUsers Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'betabot' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+Completed   in 41391ms
+
+
+Started GET "/" for 10.13.212.34 at 2013-10-21 15:23:03 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BotsController#index as */*
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "bots"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bots"[0m
+  [1m[35mBot Load (0.4ms)[0m  SELECT "bots".* FROM "bots" ORDER BY "bots"."id" ASC LIMIT 1
+  [1m[36mBot Load (2.0ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsers Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'betabot' LIMIT 1
+  [1m[36mUsers Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'USERSERV' LIMIT 1[0m
+  [1m[35mUsers Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+Completed   in 44982ms
+
+
+Started GET "/" for 10.13.212.34 at 2013-10-21 15:25:27 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BotsController#index as */*
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "bots"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bots"[0m
+  [1m[35mBot Load (0.4ms)[0m  SELECT "bots".* FROM "bots" ORDER BY "bots"."id" ASC LIMIT 1
+  [1m[36mBot Load (2.0ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsers Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'betabot' LIMIT 1
+  [1m[36mUsers Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'USERSERV' LIMIT 1[0m
+  [1m[35mUsers Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+Completed   in 41118ms
+
+
+Started GET "/" for 10.13.212.34 at 2013-10-21 15:33:33 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BotsController#index as */*
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "bots"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bots"[0m
+  [1m[35mBot Load (0.4ms)[0m  SELECT "bots".* FROM "bots" ORDER BY "bots"."id" ASC LIMIT 1
+  [1m[36mBot Load (2.0ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsers Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'betabot' LIMIT 1
+  [1m[36mUsers Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'USERSERV' LIMIT 1[0m
+  [1m[35mUsers Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+Completed   in 25981ms
+
+
+Started GET "/" for 10.13.212.34 at 2013-10-21 15:37:04 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BotsController#index as */*
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "bots"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bots"[0m
+  [1m[35mBot Load (0.4ms)[0m  SELECT "bots".* FROM "bots" ORDER BY "bots"."id" ASC LIMIT 1
+  [1m[36mBot Load (2.0ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsers Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'betabot' LIMIT 1
+  [1m[36mUsers Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'USERSERV' LIMIT 1[0m
+  [1m[35mUsers Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+Completed   in 80271ms
+
+
+Started GET "/" for 10.13.212.34 at 2013-10-21 15:38:53 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BotsController#index as */*
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "bots"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bots"[0m
+  [1m[35mBot Load (0.4ms)[0m  SELECT "bots".* FROM "bots" ORDER BY "bots"."id" ASC LIMIT 1
+  [1m[36mBot Load (2.0ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsers Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'betabot' LIMIT 1
+  [1m[36mUsers Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'USERSERV' LIMIT 1[0m
+  [1m[35mUsers Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+Completed   in 16301ms
+
+
+Started GET "/" for 10.13.212.34 at 2013-10-21 15:39:30 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BotsController#index as */*
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "bots"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bots"[0m
+  [1m[35mBot Load (0.4ms)[0m  SELECT "bots".* FROM "bots" ORDER BY "bots"."id" ASC LIMIT 1
+  [1m[36mBot Load (2.0ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsers Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'betabot' LIMIT 1
+  [1m[36mUsers Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'USERSERV' LIMIT 1[0m
+  [1m[35mUsers Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+Completed   in 537505ms
+
+
+Started GET "/" for 10.13.212.34 at 2013-10-21 15:49:17 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BotsController#index as */*
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "bots"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bots"[0m
+  [1m[35mBot Load (0.4ms)[0m  SELECT "bots".* FROM "bots" ORDER BY "bots"."id" ASC LIMIT 1
+  [1m[36mBot Load (1.9ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsers Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'betabot' LIMIT 1
+  [1m[36mUsers Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'USERSERV' LIMIT 1[0m
+  [1m[35mUsers Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+Completed   in 17265ms
+
+
+Started GET "/" for 10.13.212.34 at 2013-10-21 15:49:38 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BotsController#index as */*
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "bots"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bots"[0m
+  [1m[35mBot Load (0.4ms)[0m  SELECT "bots".* FROM "bots" ORDER BY "bots"."id" ASC LIMIT 1
+  [1m[36mBot Load (2.0ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsers Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'betabot' LIMIT 1
+  [1m[36mUsers Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'USERSERV' LIMIT 1[0m
+  [1m[35mUsers Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+Completed   in 14483ms
+
+
+Started GET "/" for 10.13.212.34 at 2013-10-21 15:50:30 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BotsController#index as */*
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "bots"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bots"[0m
+  [1m[35mBot Load (0.4ms)[0m  SELECT "bots".* FROM "bots" ORDER BY "bots"."id" ASC LIMIT 1
+  [1m[36mBot Load (2.0ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsers Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'betabot' LIMIT 1
+  [1m[36mUsers Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'USERSERV' LIMIT 1[0m
+  [1m[35mUsers Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+Completed   in 11006ms
+
+
+Started GET "/" for 10.13.212.34 at 2013-10-21 15:50:43 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BotsController#index as */*
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "bots"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "bots"[0m
+  [1m[35mBot Load (0.4ms)[0m  SELECT "bots".* FROM "bots" ORDER BY "bots"."id" ASC LIMIT 1
+  [1m[36mBot Load (2.0ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUsers Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'betabot' LIMIT 1
+  [1m[36mUsers Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'USERSERV' LIMIT 1[0m
+  [1m[35mUsers Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'betabot' LIMIT 1
+Completed   in 14978ms

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  grantor_id: 1
+  recipient_id: 1
+  amount: 1
+
+two:
+  grantor_id: 1
+  recipient_id: 1
+  amount: 1
