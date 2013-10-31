@@ -165,6 +165,7 @@ def rank(who)
   counter = 1
   Karmastats.where.not(total: 0).order('total DESC').each do |x|
     x.rank = counter
+    x.save
     counter += 1
   end
 
