@@ -343,8 +343,8 @@ def loop()
 		@chan = line[/\ (#[\|\.\-0-9a-zA-Z]*)\ :/, 1]
 	end
 	
-  # Ignore kbenson
-  if @userposting.eql?("kbenson")
+  # Ignore unifiedbot
+  if @userposting.eql?("unifiedbot")
     return
 	end
 
@@ -485,7 +485,7 @@ def loop()
 				else
 					sendchn("Karma can only be assigned in a channel")
 				end
-      when line.match(/.*#{@nick}\ \:[\-\.\'\.\|0-9a-zA-Z]+\?$/)
+      when line.match(/.*\:[\-\.\'\.\|0-9a-zA-Z]+\?$/)
         word_to_echo_def = line[/([\-\_\.0-9a-zA-Z]*)\?/, 1]
         echo_definition_by_word(word_to_echo_def)
 
