@@ -28,7 +28,7 @@ def create(*p)
   @@queue << "start"
   puts "Loading new bot"
 #  bot_thread = Thread.new {
-    bot = Swagbot.new("irc.devel.redhat.com", 6667, @bot.nick, @bot.channel)
+    bot = Swagbot.new(CONFIG[:irc_server_url], CONFIG[:irc_server_port], @bot.nick, @bot.channel)
     puts bot.inspect.split
     loop {
     popit = @@queue.pop(true) rescue nil

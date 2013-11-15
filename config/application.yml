@@ -1,2 +1,4 @@
 karma_timeout: 5
 nickserv_password: "swagswag"
+irc_server_url: "irc.devel.redhat.com"
+irc_server_port: 6667
