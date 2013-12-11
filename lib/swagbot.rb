@@ -508,6 +508,9 @@ def loop()
       when line.match(/.*http[s]*:\/\/[i\.]*imgur.com\/.*/)
         url = line[/.*(http[s]*:\/\/[i\.]*imgur.com\/[a-zA-Z0-9\-\_]+).*/, 1]
         imgur(url)
+      when line.match(/.*\!http\ [1-5]{1}[0-9]{2}/)
+        url = line[/.*\!http\ ([1-5]{1}[0-9]{2})/, 1]
+        sendchn("http://httpstatusdogs.com/" + url)
 			end
 	end
 	return nil
