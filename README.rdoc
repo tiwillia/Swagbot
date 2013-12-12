@@ -1,8 +1,8 @@
-== Swagbot (or something...)
+# Swagbot (or something...)
 
 Irc bot with a rails backend utilizing a postgresql database
 
-* Ruby version: 2.0.0
+* Ruby version: 1.9.2/2.0
 
 * System dependencies: Postgresql database
 
@@ -13,6 +13,10 @@ Irc bot with a rails backend utilizing a postgresql database
 * Configuration file: config/appication.yml
   * You will have to use application.example.yml and rename it to application.yml
 =======================
-= TODO
-* Implement a configuration file... or table? that is editable through rails
-* Stop adding features damnit, and fix the issues.
+### TODO
+- Finish implementing web interface
+  - Use bootstrap
+  - Make the database query-able from the interface (definitions and quotes really)
+  - Use the bots table for full bot settings
+- Make definitions and karma not case-sensitive
+- Finish making it so numerous bots can be spun up in one instance. This whole spinning up a new gear for everyone is really fucking annoying.
