@@ -1,14 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>FUCK</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <title><%= CONFIG[:project_name] %></title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="wrapper">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#"><%= CONFIG[:project_name] %></a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+  
+    <div class="container-fluid">
+      <% if flash[:success] || flash[:info] || flash[:error] %>
+        <div class="row">
+          <div class="span4">
+            <% if flash[:success] %>
+              <% alert_type = "success"; alert = flash[:success] %>
+            <% elsif flash[:info] %>
+              <% alert_type = "info"; alert = flash[:info] %>
+            <% elsif flash[:error] %>
+              <% alert_type = "error"; alert = flash[:error] %>
+            <% end %>
+            <div class="alert alert-<%= alert_type %>">
+              <strong><%= alert %></strong>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <%= yield %>
+    </div>
+    <div class="push"></div>
+    </div>
+    <div class="footer">
+      <div class="text-bottom span2 offset10">
+        <p>
+          <a href="http://openshift.com"><img src="/assets/powered-by-openshift.png"></a>
+        </p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

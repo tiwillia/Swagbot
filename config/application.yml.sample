@@ -1,0 +1,8 @@
+# Configuration goes here in YAML
+# These can be called in code with CONFIG[:key]
+# Be sure to rename this file to application.yml
+#   This is needed so that application.yml can be kept out of the git repo. 
+#   That way passwords and such can be stored inside.
+#
+# username: "example_user"
+# password: "example_password"

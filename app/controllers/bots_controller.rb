@@ -6,7 +6,7 @@ def index
   @bot = Bot.all
   redirect_to(:action => "new") and return if @bot.empty?
   if @bot.many?
-    @bot.destroy_all
+    Bot.destroy_all
     redirect_to(:action => "new")
   end
   @bot = Bot.first
