@@ -51,12 +51,12 @@ end
 # And joins the @chan
 def connect()
 	@socket = TCPSocket.open(@host, @port)
-  if @server_password
+  if not @server_password == ""
     send "PASS #{@server_password}"
   end
 	send "USER #{@nick} 0 * #{@nick}"
 	send "NICK #{@nick}"
-  if @nickserv_password
+  if not @nickserv_password == ""
     send ":source PRIVMSG userserv :login #{@nick} #{@nickserv_password}"
   end
 	send "JOIN #{@chan}"

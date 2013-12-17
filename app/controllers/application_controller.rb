@@ -6,12 +6,18 @@ class ApplicationController < ActionController::Base
   def create_bot_controls(bot_id)
     if not defined? @@bot_controls
       @@bot_controls = Hash.new
+      if not Bot.all.empty?
+        Bot.all.each do |bot|
+          @@bot_controls[bot.id] = Hash[ :thread => nil, :queue => Queue.new, :state => "stopped" ]  
+        end
+      end
     end
-    if @@bot_controls[bot_id]
-      @@bot_controls[bot_id]
+    if defined? @@bot_controls[bot_id]
+      if not defined? @@bot_controls[bot_id][:thread]
+        @@bot_controls[bot_id][:thread] = nil
+      end
     else
       @@bot_controls[bot_id] = Hash[ :thread => nil, :queue => Queue.new, :state => "stopped" ]
-      @@bot_controls[bot_id]
     end
   end
 

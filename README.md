@@ -1,22 +1,17 @@
-# Rails Openshift Template #
-This template made from rails-example
+# Swagbot (or something...)
 
-The following changes have been implemented:
-- Global YAML config file added (/config/application.yml)
-    - See /config/application.yml.sample
-- Added twitter's bootstrap
-    - See https://github.com/seyhunak/twitter-bootstrap-rails
+Irc bot with a rails backend utilizing a postgresql database
 
-Paperclip configuration requires the following in your model:
+* Ruby version: 1.9.2/2.0
 
-has_attached_file :photo,
-  :styles => {
-    :thumb => "100x100#",
-    :medium => "256x192" },
-  :url => "/images/:id.:extension",
-  :path => "#{CONFIG[:data_dir]}public/images/:id.:extension"
+* System dependencies: Postgresql database
 
-TODO
-- holy shit
-- getuser for grantor in editkarma is fucked up, creates a new user everytime.
+* Database creation:
 
+* Database initialization: rake db:create; rake db:migrate
+
+* Configuration file: config/appication.yml
+  * You will have to use application.example.yml and rename it to application.yml
+=======================
+### TODO
+* Sadly, a huge design necessity was missed. Multiple bots can be spun up, but they all use the same databases. I need to add numerous "has" and "belongs_to" relations to the bots database table and the others.
