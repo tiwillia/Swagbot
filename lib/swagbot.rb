@@ -25,6 +25,7 @@ def initialize(params)
 	@chan = params[:channel]
   @server_password = params[:server_password]
   @nickserv_password = params[:nickserv_password]
+  @bot = params[:bot]
 end
 
 # Small function to easily send commands

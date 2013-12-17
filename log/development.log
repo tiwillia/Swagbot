@@ -45188,3 +45188,1357 @@ Binary data inserted for `string` type on column `user`
   [1m[35mQuotes Load (0.4ms)[0m  SELECT "quotes".* FROM "quotes" WHERE "quotes"."id" = ? LIMIT 1  [["id", 1]]
   [1m[36mUsers Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
   [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "users" WHERE "users"."user" = 'secondbot'
+Connecting to database specified by database.yml
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateDefinitions (20130820061449)
+Migrating to CreateKarma (20130820061535)
+Migrating to CreateKarmastats (20130820061641)
+Migrating to CreateQuotes (20130820061726)
+Migrating to CreateUsers (20130820061750)
+Migrating to CreateBots (20130821012700)
+Migrating to RemoveIrcFileFromBots (20131214170029)
+Migrating to AddMoreToBots (20131214170205)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (24.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (16.3ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreateDefinitions (20130820061449)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "definitions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "recorder_id" integer, "word" varchar(255), "definition" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130820061449')[0m
+  [1m[35m (19.9ms)[0m  commit transaction
+Migrating to CreateKarma (20130820061535)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "karma" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "grantor_id" integer, "recipient_id" integer, "amount" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130820061535')[0m
+  [1m[35m (26.7ms)[0m  commit transaction
+Migrating to CreateKarmastats (20130820061641)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "karmastats" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "total" integer, "rank" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130820061641')[0m
+  [1m[35m (22.4ms)[0m  commit transaction
+Migrating to CreateQuotes (20130820061726)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "quotes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "recorder_id" integer, "quotee_id" integer, "quote" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130820061726')[0m
+  [1m[35m (21.0ms)[0m  commit transaction
+Migrating to CreateUsers (20130820061750)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130820061750')[0m
+  [1m[35m (20.7ms)[0m  commit transaction
+Migrating to CreateBots (20130821012700)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "bots" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nick" varchar(255), "channel" varchar(255), "irc_file" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130821012700')[0m
+  [1m[35m (21.5ms)[0m  commit transaction
+Migrating to RemoveIrcFileFromBots (20131214170029)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TEMPORARY TABLE "altered_bots" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nick" varchar(255), "channel" varchar(255), "irc_file" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "bots"[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "bots"
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "bots" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nick" varchar(255), "channel" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "altered_bots"
+  [1m[36m (0.3ms)[0m  [1mDROP TABLE "altered_bots"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20131214170029')
+  [1m[36m (19.5ms)[0m  [1mcommit transaction[0m
+Migrating to AddMoreToBots (20131214170205)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "bots" ADD "server" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "bots" ADD "port" integer
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "bots" ADD "server_password" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "bots" ADD "nickserv_password" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131214170205')[0m
+  [1m[35m (24.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+Connecting to database specified by database.yml
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+Connecting to database specified by database.yml
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+Connecting to database specified by database.yml
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+Connecting to database specified by database.yml
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (23.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (54.6ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreateDefinitions (20130820061449)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "definitions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "recorder_id" integer, "word" varchar(255), "definition" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130820061449')[0m
+  [1m[35m (29.5ms)[0m  commit transaction
+Migrating to CreateKarma (20130820061535)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "karma" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "grantor_id" integer, "recipient_id" integer, "amount" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130820061535')[0m
+  [1m[35m (17.5ms)[0m  commit transaction
+Migrating to CreateKarmastats (20130820061641)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "karmastats" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "total" integer, "rank" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130820061641')[0m
+  [1m[35m (18.8ms)[0m  commit transaction
+Migrating to CreateQuotes (20130820061726)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "quotes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "recorder_id" integer, "quotee_id" integer, "quote" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130820061726')[0m
+  [1m[35m (18.8ms)[0m  commit transaction
+Migrating to CreateUsers (20130820061750)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130820061750')[0m
+  [1m[35m (18.9ms)[0m  commit transaction
+Migrating to CreateBots (20130821012700)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "bots" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nick" varchar(255), "channel" varchar(255), "irc_file" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130821012700')[0m
+  [1m[35m (20.3ms)[0m  commit transaction
+Migrating to RemoveIrcFileFromBots (20131214170029)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TEMPORARY TABLE "altered_bots" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nick" varchar(255), "channel" varchar(255), "irc_file" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "bots"[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "bots"
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "bots" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nick" varchar(255), "channel" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "altered_bots"
+  [1m[36m (0.3ms)[0m  [1mDROP TABLE "altered_bots"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20131214170029')
+  [1m[36m (24.4ms)[0m  [1mcommit transaction[0m
+Migrating to AddMoreToBots (20131214170205)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "bots" ADD "server" varchar(255)[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "bots" ADD "port" integer
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "bots" ADD "server_password" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "bots" ADD "nickserv_password" varchar(255)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131214170205')[0m
+  [1m[35m (24.2ms)[0m  commit transaction
+Migrating to AddBotIdToKarma (20131217183746)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "karmas" ADD "bot_id" integer
+SQLite3::SQLException: no such table: karmas: ALTER TABLE "karmas" ADD "bot_id" integer
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (23.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (21.4ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreateDefinitions (20130820061449)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "definitions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "recorder_id" integer, "word" varchar(255), "definition" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130820061449')[0m
+  [1m[35m (22.5ms)[0m  commit transaction
+Migrating to CreateKarmaEntries (20130820061535)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (36.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (43.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreateDefinitions (20130820061449)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "definitions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "recorder_id" integer, "word" varchar(255), "definition" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130820061449')[0m
+  [1m[35m (18.1ms)[0m  commit transaction
+Migrating to CreateKarmaEntries (20130820061535)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (51.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (40.6ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreateDefinitions (20130820061449)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "definitions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "recorder_id" integer, "word" varchar(255), "definition" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130820061449')[0m
+  [1m[35m (19.3ms)[0m  commit transaction
+Migrating to CreateKarmaEntries (20130820061535)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "karma_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "grantor_id" integer, "recipient_id" integer, "amount" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130820061535')[0m
+  [1m[35m (41.8ms)[0m  commit transaction
+Migrating to CreateKarmastats (20130820061641)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "karmastats" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "total" integer, "rank" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130820061641')[0m
+  [1m[35m (19.4ms)[0m  commit transaction
+Migrating to CreateQuotes (20130820061726)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "quotes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "recorder_id" integer, "quotee_id" integer, "quote" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130820061726')[0m
+  [1m[35m (50.3ms)[0m  commit transaction
+Migrating to CreateUsers (20130820061750)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130820061750')[0m
+  [1m[35m (21.0ms)[0m  commit transaction
+Migrating to CreateBots (20130821012700)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "bots" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nick" varchar(255), "channel" varchar(255), "irc_file" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130821012700')[0m
+  [1m[35m (43.1ms)[0m  commit transaction
+Migrating to RemoveIrcFileFromBots (20131214170029)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TEMPORARY TABLE "altered_bots" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nick" varchar(255), "channel" varchar(255), "irc_file" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "bots"[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "bots"
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "bots" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nick" varchar(255), "channel" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "altered_bots"
+  [1m[36m (0.3ms)[0m  [1mDROP TABLE "altered_bots"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20131214170029')
+  [1m[36m (52.8ms)[0m  [1mcommit transaction[0m
+Migrating to AddMoreToBots (20131214170205)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "bots" ADD "server" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "bots" ADD "port" integer
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "bots" ADD "server_password" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "bots" ADD "nickserv_password" varchar(255)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131214170205')[0m
+  [1m[35m (46.2ms)[0m  commit transaction
+Migrating to AddBotIdToKarmaEntries (20131217183746)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (29.7ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (16.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreateDefinitions (20130820061449)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "definitions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "recorder_id" integer, "word" varchar(255), "definition" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130820061449')[0m
+  [1m[35m (21.4ms)[0m  commit transaction
+Migrating to CreateKarmaEntries (20130820061535)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "karma_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "grantor_id" integer, "recipient_id" integer, "amount" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130820061535')[0m
+  [1m[35m (19.9ms)[0m  commit transaction
+Migrating to CreateKarmastats (20130820061641)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "karmastats" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "total" integer, "rank" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130820061641')[0m
+  [1m[35m (19.9ms)[0m  commit transaction
+Migrating to CreateQuotes (20130820061726)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "quotes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "recorder_id" integer, "quotee_id" integer, "quote" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130820061726')[0m
+  [1m[35m (17.9ms)[0m  commit transaction
+Migrating to CreateUsers (20130820061750)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130820061750')[0m
+  [1m[35m (17.8ms)[0m  commit transaction
+Migrating to CreateBots (20130821012700)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "bots" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nick" varchar(255), "channel" varchar(255), "irc_file" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130821012700')[0m
+  [1m[35m (15.9ms)[0m  commit transaction
+Migrating to RemoveIrcFileFromBots (20131214170029)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TEMPORARY TABLE "altered_bots" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nick" varchar(255), "channel" varchar(255), "irc_file" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "bots"[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "bots"
+  [1m[36m (0.2ms)[0m  [1mCREATE TABLE "bots" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nick" varchar(255), "channel" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "altered_bots"
+  [1m[36m (0.3ms)[0m  [1mDROP TABLE "altered_bots"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20131214170029')
+  [1m[36m (20.7ms)[0m  [1mcommit transaction[0m
+Migrating to AddMoreToBots (20131214170205)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "bots" ADD "server" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "bots" ADD "port" integer
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "bots" ADD "server_password" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "bots" ADD "nickserv_password" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131214170205')[0m
+  [1m[35m (25.3ms)[0m  commit transaction
+Migrating to AddBotIdToKarmaEntries (20131217183746)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "karma_entries" ADD "bot_id" integer
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131217183746')[0m
+  [1m[35m (20.4ms)[0m  commit transaction
+Migrating to AddBotIdToKarmastats (20131217183749)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "karmastats" ADD "bot_id" integer
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131217183749')[0m
+  [1m[35m (17.8ms)[0m  commit transaction
+Migrating to AddBotIdToUsers (20131217183751)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "users" ADD "bot_id" integer
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131217183751')[0m
+  [1m[35m (20.0ms)[0m  commit transaction
+Migrating to AddBotIdToQuotes (20131217183754)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "quotes" ADD "bot_id" integer
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131217183754')[0m
+  [1m[35m (16.7ms)[0m  commit transaction
+Migrating to AddBotIdToDefinitions (20131217183757)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "definitions" ADD "bot_id" integer
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131217183757')[0m
+  [1m[35m (17.6ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+Connecting to database specified by database.yml
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 66.187.233.202 at 2013-12-17 19:29:25 +0000
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 101.5ms (Views: 101.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 19:29:26 +0000
+Served asset /application.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 19:29:26 +0000
+Served asset /bots.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 19:29:26 +0000
+Served asset /glyphicons.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 19:29:26 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 19:29:26 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 19:29:26 +0000
+Served asset /welcome.css - 304 Not Modified (37ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 19:29:26 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 19:29:26 +0000
+Served asset /jquery.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 19:29:26 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 19:29:26 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 19:29:26 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 19:29:26 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 19:29:26 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 19:29:26 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 19:29:27 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 19:29:27 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 19:29:27 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 19:29:27 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 19:29:27 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 19:29:27 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 19:29:27 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 19:29:27 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (60ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 19:29:27 +0000
+Served asset /bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 19:29:27 +0000
+Served asset /bots.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 19:29:27 +0000
+Served asset /welcome.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 19:29:27 +0000
+Served asset /application.js - 304 Not Modified (28ms)
+
+
+Started GET "/bots/index" for 66.187.233.202 at 2013-12-17 19:29:29 +0000
+
+ActionController::RoutingError (undefined method `before_connect' for #<Class:0x0000000406bf68>):
+  app/models/bot.rb:15:in `<class:Bot>'
+  app/models/bot.rb:1:in `<top (required)>'
+  app/controllers/bots_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+Connecting to database specified by database.yml
+
+
+Started GET "/bots/index" for 66.187.233.202 at 2013-12-17 19:31:40 +0000
+Processing by BotsController#index as HTML
+  [1m[36mBot Load (0.2ms)[0m  [1mSELECT "bots".* FROM "bots" [0m
+Completed 500 Internal Server Error in 1.9ms
+
+NoMethodError (undefined method `_run_initialize_callbacks
+' for nil:NilClass):
+  app/models/bot.rb:57:in `send'
+  app/controllers/bots_controller.rb:9:in `new'
+  app/controllers/bots_controller.rb:9:in `index'
+
+
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.7ms)
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 66.187.233.202 at 2013-12-17 19:34:44 +0000
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 114.6ms (Views: 114.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 19:34:45 +0000
+Served asset /application.css - 304 Not Modified (13ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 19:34:45 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 19:34:45 +0000
+Served asset /bots.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 19:34:45 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (39ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 19:34:45 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 19:34:45 +0000
+Served asset /glyphicons.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 19:34:45 +0000
+Served asset /welcome.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 19:34:45 +0000
+Served asset /jquery.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 19:34:45 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 19:34:45 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 19:34:45 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 19:34:45 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 19:34:45 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 19:34:46 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 19:34:46 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 19:34:46 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 19:34:46 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 19:34:46 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 19:34:46 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 19:34:46 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 19:34:46 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 19:34:46 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (24ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 19:34:46 +0000
+Served asset /bootstrap.js - 304 Not Modified (43ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 19:34:46 +0000
+Served asset /bots.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 19:34:46 +0000
+Served asset /welcome.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 19:34:46 +0000
+Served asset /application.js - 304 Not Modified (28ms)
+
+
+Started GET "/bots/index" for 66.187.233.202 at 2013-12-17 19:34:49 +0000
+Processing by BotsController#index as HTML
+  [1m[36mBot Load (0.2ms)[0m  [1mSELECT "bots".* FROM "bots" [0m
+Completed 500 Internal Server Error in 2.1ms
+
+NoMethodError (undefined method `_run_initialize_callbacks
+' for nil:NilClass):
+  app/models/bot.rb:56:in `send'
+  app/controllers/bots_controller.rb:9:in `new'
+  app/controllers/bots_controller.rb:9:in `index'
+
+
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.4ms)
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+Connecting to database specified by database.yml
+
+
+Started GET "/bots/index" for 66.187.233.202 at 2013-12-17 19:39:51 +0000
+Processing by BotsController#index as HTML
+  [1m[36mBot Load (0.2ms)[0m  [1mSELECT "bots".* FROM "bots" [0m
+Redirected to http://timdev:3000/bots/new
+Completed 302 Found in 15.6ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/bots/new" for 66.187.233.202 at 2013-12-17 19:39:52 +0000
+Processing by BotsController#new as HTML
+  Rendered bots/_form.html.erb (14.6ms)
+  Rendered bots/new.html.erb within layouts/application (19.2ms)
+Completed 200 OK in 118.0ms (Views: 117.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 19:39:52 +0000
+Served asset /application.css - 304 Not Modified (12ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 19:39:52 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 19:39:52 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (38ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 19:39:52 +0000
+Served asset /glyphicons.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 19:39:52 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 19:39:52 +0000
+Served asset /bots.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 19:39:52 +0000
+Served asset /welcome.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 19:39:53 +0000
+Served asset /jquery.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 19:39:53 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 19:39:53 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 19:39:53 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 19:39:53 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 19:39:53 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 19:39:53 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 19:39:53 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 19:39:53 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 19:39:53 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 19:39:53 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 19:39:53 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 19:39:53 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 19:39:53 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 19:39:53 +0000
+Served asset /bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 19:39:53 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (63ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 19:39:54 +0000
+Served asset /bots.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 19:39:54 +0000
+Served asset /welcome.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 19:39:54 +0000
+Served asset /application.js - 304 Not Modified (28ms)
+
+
+Started POST "/bots" for 66.187.233.202 at 2013-12-17 19:43:01 +0000
+Processing by BotsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NICUTyIXYnWShzF/T408SSN0xlt8D6GI/ILlu/H8uyw=", "bot"=>{"nick"=>"betabot", "channel"=>"#thatonechannel", "server"=>"irc.devel.redhat.com", "port"=>"6667", "server_password"=>"[FILTERED]", "nickserv_password"=>"[FILTERED]"}, "commit"=>"Create New Bot"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (4.4ms)[0m  [1mINSERT INTO "bots" ("channel", "created_at", "nick", "nickserv_password", "port", "server", "server_password", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["channel", "#thatonechannel"], ["created_at", Tue, 17 Dec 2013 19:43:01 UTC +00:00], ["nick", "betabot"], ["nickserv_password", "swagswag"], ["port", 6667], ["server", "irc.devel.redhat.com"], ["server_password", ""], ["updated_at", Tue, 17 Dec 2013 19:43:01 UTC +00:00]]
+  [1m[35m (25.5ms)[0m  commit transaction
+Redirected to http://timdev:3000/bots/1
+Completed 302 Found in 48.0ms (ActiveRecord: 30.0ms)
+
+
+Started GET "/bots/1" for 66.187.233.202 at 2013-12-17 19:43:01 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBot Load (0.3ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered bots/_show_bot.html.erb (1.4ms)
+  Rendered bots/show.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 25.8ms (Views: 22.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 19:43:02 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 19:43:02 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 19:43:02 +0000
+Served asset /bots.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 19:43:02 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 19:43:02 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 19:43:02 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 19:43:02 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:02 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:02 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:02 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:02 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:02 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:02 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:03 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:03 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:03 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:03 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:03 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:03 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:03 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:03 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:03 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:03 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:03 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:03 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:03 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/bots/1/start" for 66.187.233.202 at 2013-12-17 19:43:09 +0000
+Processing by BotsController#start as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBot Load (0.2ms)[0m  SELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mBot Load (0.2ms)[0m  [1mSELECT "bots".* FROM "bots" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "bots".* FROM "bots" 
+Redirected to http://timdev:3000/bots/1
+Completed 302 Found in 4.3ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/bots/1" for 66.187.233.202 at 2013-12-17 19:43:10 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBot Load (0.2ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered bots/_show_bot.html.erb (0.5ms)
+  Rendered bots/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 21.0ms (Views: 19.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 19:43:10 +0000
+Served asset /bots.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 19:43:10 +0000
+Served asset /application.css - 304 Not Modified (42ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 19:43:10 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 19:43:10 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 19:43:10 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 19:43:10 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 19:43:10 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:10 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:10 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:10 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:10 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:10 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:11 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:11 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:11 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:11 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:11 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:11 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:11 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:11 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:11 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:11 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:11 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:11 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:11 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:11 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/bots/1/stop" for 66.187.233.202 at 2013-12-17 19:43:56 +0000
+Processing by BotsController#stop as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBot Load (0.2ms)[0m  SELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1  [["id", "1"]]
+Redirected to http://timdev:3000/bots/1
+Completed 302 Found in 2.9ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/bots/1" for 66.187.233.202 at 2013-12-17 19:43:57 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBot Load (0.2ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered bots/_show_bot.html.erb (0.5ms)
+  Rendered bots/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 65.4ms (Views: 64.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 19:43:57 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 19:43:57 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 19:43:57 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 19:43:57 +0000
+Served asset /bots.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 19:43:57 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 19:43:57 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 19:43:58 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:58 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:58 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:58 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:58 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:58 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:58 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:58 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:58 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:58 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:58 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:58 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:58 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:58 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:58 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:58 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:58 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:58 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:59 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 19:43:59 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/bots/1" for 66.187.233.202 at 2013-12-17 19:44:05 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBot Load (0.2ms)[0m  SELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered bots/_show_bot.html.erb (0.4ms)
+  Rendered bots/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 58.0ms (Views: 56.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 19:44:06 +0000
+Served asset /bots.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 19:44:06 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 19:44:06 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 19:44:06 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 19:44:06 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 19:44:06 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 19:44:06 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:06 +0000
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:06 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:06 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:06 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:06 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:07 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:07 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:07 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:07 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:07 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:07 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:07 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:07 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:07 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:07 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:07 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:07 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:07 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:07 +0000
+Served asset /application.js - 304 Not Modified (42ms)
+
+
+Started GET "/bots/1/start" for 66.187.233.202 at 2013-12-17 19:44:09 +0000
+Processing by BotsController#start as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBot Load (0.2ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Completed 500 Internal Server Error in 1.5ms
+
+NoMethodError (undefined method `<<' for nil:NilClass):
+  app/controllers/bots_controller.rb:73:in `start'
+
+
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.9ms)
+
+
+Started GET "/bots/" for 66.187.233.202 at 2013-12-17 19:44:48 +0000
+Processing by BotsController#index as HTML
+  [1m[35mBot Load (0.3ms)[0m  SELECT "bots".* FROM "bots" 
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "bots".* FROM "bots" [0m
+  Rendered bots/_show_bot.html.erb (0.5ms)
+  Rendered bots/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 24.0ms (Views: 21.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 19:44:49 +0000
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 19:44:49 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 19:44:49 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 19:44:49 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 19:44:49 +0000
+Served asset /bots.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 19:44:49 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 19:44:49 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:49 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:49 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:49 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:49 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:49 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:49 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:50 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:50 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:50 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:50 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:50 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:50 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:50 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:50 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:50 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:50 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (42ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:50 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:50 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 19:44:50 +0000
+Served asset /application.js - 304 Not Modified (3ms)
