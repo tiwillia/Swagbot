@@ -5,12 +5,12 @@ class ApplicationController < ActionController::Base
 
   def create_bot_controls(bot_id)
     if not defined? @@bot_controls
-      @@bot_controls = Array.new
+      @@bot_controls = Hash.new
     end
     if @@bot_controls[bot_id]
       @@bot_controls[bot_id]
     else
-      @@bot_controls[bot_id]= Hash[ :thread => nil, :queue => Queue.new, :state => "stopped" ]
+      @@bot_controls[bot_id] = Hash[ :thread => nil, :queue => Queue.new, :state => "stopped" ]
       @@bot_controls[bot_id]
     end
   end
@@ -27,6 +27,8 @@ class ApplicationController < ActionController::Base
                  }
         bot_ob = Swagbot.new(params)
         bot_ob.connect()
+        puts "bot started: " + bot_ob.inspect
+        @@bot_controls[bot.id][:state] = "running"
         loop {
           command = @@bot_controls[bot.id][:queue].pop(true) rescue nil
           if command
@@ -54,5 +56,11 @@ class ApplicationController < ActionController::Base
       false
     end
   end
+
+def bot_controls
+  @@bot_controls
+end
+
+helper_method :bot_controls
 
 end

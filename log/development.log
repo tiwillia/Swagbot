@@ -34007,3 +34007,4479 @@ Served asset /welcome.js - 304 Not Modified (0ms)
 
 Started GET "/assets/application.js?body=1" for 174.109.202.194 at 2013-12-17 05:46:39 +0000
 Served asset /application.js - 304 Not Modified (41ms)
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+Connecting to database specified by database.yml
+
+
+Started GET "/welcome/index" for 66.187.233.202 at 2013-12-17 12:51:24 +0000
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 100.9ms (Views: 100.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /application.css - 304 Not Modified (47ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /glyphicons.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /bots.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /welcome.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /jquery.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (19ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /bots.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /welcome.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:25 +0000
+Served asset /application.js - 304 Not Modified (65ms)
+
+
+Started GET "/bots/index" for 66.187.233.202 at 2013-12-17 12:51:27 +0000
+Processing by BotsController#index as HTML
+  [1m[36mBot Load (0.2ms)[0m  [1mSELECT "bots".* FROM "bots" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "bots".* FROM "bots" 
+  Rendered bots/_show_bot.html.erb (1.4ms)
+  Rendered bots/_show_bot.html.erb (0.5ms)
+  Rendered bots/index.html.erb within layouts/application (43.3ms)
+Completed 200 OK in 78.8ms (Views: 62.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 12:51:27 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 12:51:27 +0000
+Served asset /bots.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 12:51:27 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 12:51:27 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 12:51:27 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 12:51:27 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 12:51:27 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:27 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:27 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:27 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:27 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:27 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:27 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:27 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:27 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:28 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:28 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:28 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:28 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:28 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:28 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:28 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:28 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:28 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:28 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:28 +0000
+Served asset /application.js - 304 Not Modified (41ms)
+
+
+Started GET "/bots/1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBot Load (0.3ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered bots/_show_bot.html.erb (0.5ms)
+  Rendered bots/show.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 23.0ms (Views: 20.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /bots.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 12:51:42 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/welcome/index" for 66.187.233.202 at 2013-12-17 12:52:07 +0000
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 18.3ms (Views: 18.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /bots.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (41ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /bots.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 12:52:08 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/" for 66.187.233.202 at 2013-12-17 13:00:43 +0000
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 19.8ms (Views: 19.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:00:44 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 200 OK (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:00:44 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 200 OK (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:00:44 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:00:44 +0000
+Served asset /bots.css - 200 OK (0ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:00:44 +0000
+Served asset /glyphicons.css - 200 OK (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:00:44 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:00:44 +0000
+Served asset /bootstrap_and_overrides.css - 200 OK (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:44 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:44 +0000
+Served asset /twitter/bootstrap/alert.js - 200 OK (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:44 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:44 +0000
+Served asset /twitter/bootstrap/transition.js - 200 OK (42ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:44 +0000
+Served asset /twitter/bootstrap/modal.js - 200 OK (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:44 +0000
+Served asset /twitter/bootstrap/tab.js - 200 OK (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:44 +0000
+Served asset /twitter/bootstrap/tooltip.js - 200 OK (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:44 +0000
+Served asset /twitter/bootstrap/button.js - 200 OK (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:44 +0000
+Served asset /twitter/bootstrap/dropdown.js - 200 OK (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:45 +0000
+Served asset /twitter/bootstrap/popover.js - 200 OK (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:45 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 200 OK (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:45 +0000
+Served asset /twitter/bootstrap/collapse.js - 200 OK (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:45 +0000
+Served asset /twitter/bootstrap/carousel.js - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:45 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:45 +0000
+Served asset /twitter/bootstrap/affix.js - 200 OK (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:45 +0000
+Served asset /twitter/bootstrap.js - 200 OK (1ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:45 +0000
+Served asset /bots.js - 200 OK (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:45 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:45 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/bots/index" for 66.187.233.202 at 2013-12-17 13:00:46 +0000
+Processing by BotsController#index as HTML
+  [1m[35mBot Load (0.3ms)[0m  SELECT "bots".* FROM "bots" 
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "bots".* FROM "bots" [0m
+  Rendered bots/_show_bot.html.erb (0.4ms)
+  Rendered bots/_show_bot.html.erb (0.4ms)
+  Rendered bots/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 22.2ms (Views: 20.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:00:47 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:00:47 +0000
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:47 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:47 +0000
+Served asset /jquery.js - 304 Not Modified (43ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:47 +0000
+Served asset /application.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:47 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:47 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/bots/new" for 66.187.233.202 at 2013-12-17 13:00:51 +0000
+Processing by BotsController#new as HTML
+  Rendered bots/_form.html.erb (13.2ms)
+  Rendered bots/new.html.erb within layouts/application (14.5ms)
+Completed 200 OK in 36.7ms (Views: 35.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:51 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:51 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:00:51 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:00:51 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:51 +0000
+Served asset /welcome.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:51 +0000
+Served asset /application.js - 304 Not Modified (44ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:00:51 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/welcome/index" for 66.187.233.202 at 2013-12-17 13:01:06 +0000
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 19.5ms (Views: 19.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:01:06 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:01:06 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:01:06 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:01:06 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:01:06 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:01:06 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:01:06 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/welcome/index" for 66.187.233.202 at 2013-12-17 13:01:10 +0000
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 17.8ms (Views: 17.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:01:10 +0000
+Served asset /jquery.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:01:10 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:01:10 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (38ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:01:10 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:01:10 +0000
+Served asset /application.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:01:10 +0000
+Served asset /welcome.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:01:10 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+Connecting to database specified by database.yml
+
+
+Started GET "/bots/index" for 66.187.233.202 at 2013-12-17 13:12:31 +0000
+Processing by BotsController#index as HTML
+  [1m[36mBot Load (0.2ms)[0m  [1mSELECT "bots".* FROM "bots" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "bots".* FROM "bots" 
+  Rendered bots/_show_bot.html.erb (1.3ms)
+  Rendered bots/_show_bot.html.erb (0.3ms)
+  Rendered bots/index.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 120.0ms (Views: 106.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:12:31 +0000
+Served asset /application.css - 304 Not Modified (12ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:12:31 +0000
+Served asset /welcome.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:12:31 +0000
+Served asset /jquery.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:12:31 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:12:32 +0000
+Served asset /application.js - 304 Not Modified (31ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:12:32 +0000
+Served asset /welcome.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:12:32 +0000
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/bots/1/start" for 66.187.233.202 at 2013-12-17 13:12:34 +0000
+Processing by BotsController#start as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBot Load (0.4ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Redirected to http://timdev:3000/bots/1
+Completed 302 Found in 4.0ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/bots/1" for 66.187.233.202 at 2013-12-17 13:12:35 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBot Load (0.2ms)[0m  SELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered bots/_show_bot.html.erb (0.7ms)
+  Rendered bots/show.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 27.6ms (Views: 25.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:12:35 +0000
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:12:35 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:12:35 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:12:35 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:12:35 +0000
+Served asset /application.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:12:35 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:12:35 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/bots/1" for 66.187.233.202 at 2013-12-17 13:13:12 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBot Load (0.2ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered bots/_show_bot.html.erb (0.3ms)
+  Rendered bots/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 19.9ms (Views: 18.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:13:12 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:13:12 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:13:12 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:13:12 +0000
+Served asset /bots.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:13:12 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:13:12 +0000
+Served asset /glyphicons.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:13:13 +0000
+Served asset /jquery.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:13:13 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:13:13 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:13:13 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:13:13 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:13:13 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:13:13 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:13:13 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:13:13 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:13:13 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (42ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:13:13 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:13:13 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:13:13 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:13:13 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:13:13 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:13:14 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (18ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:13:14 +0000
+Served asset /bots.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:13:14 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:13:14 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:13:14 +0000
+Served asset /application.js - 304 Not Modified (4ms)
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+Connecting to database specified by database.yml
+
+
+Started GET "/bots/1" for 66.187.233.202 at 2013-12-17 13:14:12 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBot Load (0.3ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered bots/_show_bot.html.erb (1.5ms)
+  Rendered bots/show.html.erb within layouts/application (40.3ms)
+Completed 200 OK in 119.8ms (Views: 103.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:13 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (13ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:13 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:13 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:13 +0000
+Served asset /glyphicons.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:13 +0000
+Served asset /application.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:13 +0000
+Served asset /bots.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:13 +0000
+Served asset /welcome.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:13 +0000
+Served asset /jquery.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:13 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:13 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:13 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:13 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:13 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:13 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:13 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:13 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (44ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:13 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:13 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:14 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:14 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:14 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:14 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (19ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:14 +0000
+Served asset /bootstrap.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:14 +0000
+Served asset /bots.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:14 +0000
+Served asset /welcome.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:14 +0000
+Served asset /application.js - 304 Not Modified (28ms)
+
+
+Started GET "/bots/1/start" for 66.187.233.202 at 2013-12-17 13:14:16 +0000
+Processing by BotsController#start as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBot Load (0.2ms)[0m  SELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1  [["id", "1"]]
+Redirected to http://timdev:3000/bots/1
+Completed 302 Found in 41.3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/bots/1" for 66.187.233.202 at 2013-12-17 13:14:17 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBot Load (0.2ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered bots/_show_bot.html.erb (0.5ms)
+  Rendered bots/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 21.8ms (Views: 20.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:17 +0000
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:17 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:17 +0000
+Served asset /bots.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:17 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:17 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:17 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:17 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:17 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:17 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:17 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:17 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:17 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:18 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:18 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:18 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:18 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:18 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:18 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:18 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:18 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:18 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:18 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:18 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:18 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:18 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:18 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/bots/1" for 66.187.233.202 at 2013-12-17 13:14:28 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBot Load (0.2ms)[0m  SELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered bots/_show_bot.html.erb (0.4ms)
+  Rendered bots/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 22.1ms (Views: 20.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:28 +0000
+Served asset /bots.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:29 +0000
+Served asset /application.css - 304 Not Modified (42ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:29 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:29 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:29 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:29 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:29 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:29 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:29 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:29 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:29 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:29 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:29 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:29 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:29 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:29 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:29 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:29 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:29 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:30 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:30 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:30 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:30 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:30 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:30 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:30 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/bots/1/stop" for 66.187.233.202 at 2013-12-17 13:14:56 +0000
+Processing by BotsController#stop as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBot Load (0.2ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Redirected to http://timdev:3000/bots/1
+Completed 302 Found in 2.9ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/bots/1" for 66.187.233.202 at 2013-12-17 13:14:56 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBot Load (0.2ms)[0m  SELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered bots/_show_bot.html.erb (0.4ms)
+  Rendered bots/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 58.5ms (Views: 57.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:56 +0000
+Served asset /application.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:56 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:56 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:56 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:56 +0000
+Served asset /bots.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:56 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:14:57 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:57 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:57 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:57 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:57 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:57 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:57 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:57 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:57 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:57 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:57 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:57 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:57 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:57 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:57 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:57 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:57 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:57 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:58 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:14:58 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+Connecting to database specified by database.yml
+
+
+Started GET "/bots/1" for 66.187.233.202 at 2013-12-17 13:20:51 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBot Load (0.3ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered bots/_show_bot.html.erb (1.5ms)
+  Rendered bots/show.html.erb within layouts/application (39.9ms)
+Completed 200 OK in 119.5ms (Views: 103.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:20:52 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:20:52 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:20:52 +0000
+Served asset /glyphicons.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:20:52 +0000
+Served asset /bots.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:20:52 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:20:52 +0000
+Served asset /application.css - 304 Not Modified (13ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:20:52 +0000
+Served asset /welcome.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:52 +0000
+Served asset /jquery.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:52 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:52 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:52 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:52 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:53 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:53 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:53 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:53 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:53 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:53 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:53 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:53 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:53 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:53 +0000
+Served asset /bots.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:53 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (18ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:53 +0000
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:53 +0000
+Served asset /welcome.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:53 +0000
+Served asset /application.js - 304 Not Modified (27ms)
+
+
+Started GET "/bots/1/start" for 66.187.233.202 at 2013-12-17 13:20:55 +0000
+Processing by BotsController#start as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBot Load (0.2ms)[0m  SELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1  [["id", "1"]]
+Redirected to http://timdev:3000/bots/1
+Completed 302 Found in 40.9ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/bots/1" for 66.187.233.202 at 2013-12-17 13:20:55 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBot Load (0.2ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered bots/_show_bot.html.erb (0.5ms)
+  Rendered bots/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 22.1ms (Views: 20.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:20:56 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:20:56 +0000
+Served asset /bots.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:20:56 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:20:56 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:20:56 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:20:56 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:20:56 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:56 +0000
+Served asset /jquery.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:56 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:56 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:56 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:56 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:57 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:57 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:57 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:57 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:57 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:57 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:57 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:57 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:57 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:57 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:57 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:57 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:57 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:20:57 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+Connecting to database specified by database.yml
+
+
+Started GET "/bots/1" for 66.187.233.202 at 2013-12-17 13:22:26 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBot Load (0.3ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered bots/_show_bot.html.erb (1.5ms)
+  Rendered bots/show.html.erb within layouts/application (40.0ms)
+Completed 200 OK in 119.6ms (Views: 103.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:22:27 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:22:27 +0000
+Served asset /application.css - 304 Not Modified (13ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:22:27 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:22:27 +0000
+Served asset /bots.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:22:27 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:22:27 +0000
+Served asset /glyphicons.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:22:27 +0000
+Served asset /welcome.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:27 +0000
+Served asset /jquery.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:27 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:27 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:27 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:27 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:27 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:27 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:27 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:27 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:27 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:27 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:28 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:28 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:28 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:28 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (21ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:28 +0000
+Served asset /bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:28 +0000
+Served asset /bots.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:28 +0000
+Served asset /welcome.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:28 +0000
+Served asset /application.js - 304 Not Modified (25ms)
+
+
+Started GET "/bots/1/start" for 66.187.233.202 at 2013-12-17 13:22:30 +0000
+Processing by BotsController#start as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBot Load (0.2ms)[0m  SELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1  [["id", "1"]]
+Redirected to http://timdev:3000/bots/1
+Completed 302 Found in 40.7ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/bots/1" for 66.187.233.202 at 2013-12-17 13:22:30 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBot Load (0.2ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered bots/_show_bot.html.erb (0.4ms)
+  Rendered bots/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 21.9ms (Views: 20.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:22:30 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:22:30 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:22:30 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:22:30 +0000
+Served asset /bots.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:22:30 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:22:30 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:22:31 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:31 +0000
+Served asset /jquery.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:31 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:31 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:31 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:31 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:31 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:31 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:31 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:31 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:31 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:31 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:31 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:31 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:31 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:31 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:31 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:31 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:32 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:22:32 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+Connecting to database specified by database.yml
+
+
+Started GET "/bots/1" for 66.187.233.202 at 2013-12-17 13:24:47 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBot Load (0.3ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered bots/_show_bot.html.erb (1.5ms)
+  Rendered bots/show.html.erb within layouts/application (40.2ms)
+Completed 200 OK in 120.9ms (Views: 104.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:24:48 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:24:48 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:24:48 +0000
+Served asset /application.css - 304 Not Modified (14ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:24:48 +0000
+Served asset /bots.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:24:48 +0000
+Served asset /glyphicons.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:24:48 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:48 +0000
+Served asset /jquery.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:24:48 +0000
+Served asset /welcome.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:48 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:48 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:48 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:48 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:49 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:49 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:49 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:49 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:49 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:49 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:49 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:49 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:49 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:49 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (21ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:49 +0000
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:49 +0000
+Served asset /bots.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:49 +0000
+Served asset /application.js - 304 Not Modified (28ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:49 +0000
+Served asset /welcome.js - 304 Not Modified (1ms)
+
+
+Started GET "/bots/1/start" for 66.187.233.202 at 2013-12-17 13:24:52 +0000
+Processing by BotsController#start as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBot Load (0.2ms)[0m  SELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1  [["id", "1"]]
+Redirected to http://timdev:3000/bots/1
+Completed 302 Found in 42.3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/bots/1" for 66.187.233.202 at 2013-12-17 13:24:52 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBot Load (0.2ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered bots/_show_bot.html.erb (0.5ms)
+  Rendered bots/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 20.0ms (Views: 18.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:24:53 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:24:53 +0000
+Served asset /bots.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:24:53 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:24:53 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:24:53 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:24:53 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:24:53 +0000
+Served asset /welcome.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:53 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:53 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:53 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:53 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:53 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:53 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:54 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:54 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:54 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:54 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:54 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:54 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:54 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:54 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:54 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:54 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:54 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:54 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:24:54 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/bots/1" for 66.187.233.202 at 2013-12-17 13:25:31 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBot Load (0.4ms)[0m  SELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1  [["id", "1"]]
+  Rendered bots/_show_bot.html.erb (0.5ms)
+  Rendered bots/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 33.0ms (Views: 19.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:25:31 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:25:31 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:25:31 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:25:31 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:25:31 +0000
+Served asset /bots.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:25:32 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:25:32 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:25:32 +0000
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:25:32 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:25:32 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:25:32 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:25:32 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:25:32 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:25:32 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:25:32 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:25:32 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:25:32 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:25:32 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:25:32 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:25:32 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:25:32 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:25:32 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:25:32 +0000
+Served asset /bootstrap.js - 304 Not Modified (38ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:25:33 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:25:33 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:25:33 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/bots/1/start" for 66.187.233.202 at 2013-12-17 13:25:35 +0000
+Processing by BotsController#start as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBot Load (0.2ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Completed 500 Internal Server Error in 13.5ms
+
+NameError (undefined local variable or method `parmas' for #<Swagbot:0x000000043ab8b8>):
+  lib/swagbot.rb:23:in `initialize'
+  app/controllers/application_controller.rb:28:in `new'
+  app/controllers/application_controller.rb:28:in `create_bot_thread'
+  app/controllers/bots_controller.rb:64:in `start'
+
+
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.5ms)
+
+
+Started GET "/bots/1/start" for 66.187.233.202 at 2013-12-17 13:26:07 +0000
+Processing by BotsController#start as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBot Load (0.2ms)[0m  SELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1  [["id", "1"]]
+Completed 500 Internal Server Error in 65.9ms
+
+Errno::ECONNREFUSED (Connection refused - connect(2)):
+  lib/swagbot.rb:53:in `initialize'
+  lib/swagbot.rb:53:in `open'
+  lib/swagbot.rb:53:in `connect'
+  app/controllers/application_controller.rb:29:in `create_bot_thread'
+  app/controllers/bots_controller.rb:64:in `start'
+
+
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.7ms)
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+Connecting to database specified by database.yml
+
+
+Started GET "/bots/1" for 66.187.233.202 at 2013-12-17 13:26:35 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mBot Load (0.3ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered bots/_show_bot.html.erb (1.5ms)
+  Rendered bots/show.html.erb within layouts/application (40.0ms)
+Completed 200 OK in 119.2ms (Views: 103.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:26:36 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:26:36 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:26:36 +0000
+Served asset /glyphicons.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:26:36 +0000
+Served asset /application.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:26:36 +0000
+Served asset /bots.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:26:36 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:26:36 +0000
+Served asset /welcome.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:26:36 +0000
+Served asset /jquery.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:26:36 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:26:36 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:26:36 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:26:36 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:26:36 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:26:36 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:26:36 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:26:36 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (45ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:26:36 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:26:36 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:26:37 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:26:37 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:26:37 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:26:37 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (20ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:26:37 +0000
+Served asset /bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:26:37 +0000
+Served asset /bots.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:26:37 +0000
+Served asset /welcome.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:26:37 +0000
+Served asset /application.js - 304 Not Modified (27ms)
+
+
+Started GET "/bots/1/start" for 66.187.233.202 at 2013-12-17 13:26:38 +0000
+Processing by BotsController#start as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mBot Load (0.2ms)[0m  SELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1  [["id", "1"]]
+Completed 500 Internal Server Error in 73.8ms
+
+Errno::ECONNREFUSED (Connection refused - connect(2)):
+  lib/swagbot.rb:53:in `initialize'
+  lib/swagbot.rb:53:in `open'
+  lib/swagbot.rb:53:in `connect'
+  app/controllers/application_controller.rb:29:in `create_bot_thread'
+  app/controllers/bots_controller.rb:64:in `start'
+
+
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.8ms)
+
+
+Started DELETE "/bots/1" for 66.187.233.202 at 2013-12-17 13:27:04 +0000
+Processing by BotsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"dGzg80xxmGWwm9W3E036tU4zvyH55sBigLvK286/fsA=", "id"=>"1"}
+  [1m[36mBot Load (0.2ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (3.6ms)[0m  [1mDELETE FROM "bots" WHERE "bots"."id" = ?[0m  [["id", 1]]
+  [1m[35m (27.1ms)[0m  commit transaction
+Redirected to http://timdev:3000/bots
+Completed 302 Found in 34.9ms (ActiveRecord: 31.0ms)
+
+
+Started GET "/bots" for 66.187.233.202 at 2013-12-17 13:27:04 +0000
+Processing by BotsController#index as HTML
+  [1m[36mBot Load (0.3ms)[0m  [1mSELECT "bots".* FROM "bots" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "bots".* FROM "bots" 
+  Rendered bots/_show_bot.html.erb (0.4ms)
+  Rendered bots/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 24.7ms (Views: 22.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:05 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:05 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:05 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:05 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (40ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:05 +0000
+Served asset /bots.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:05 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:05 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:05 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:05 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:05 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:05 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:05 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:06 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:06 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:06 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:06 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:06 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:06 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:06 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:06 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:06 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:06 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:06 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:06 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:06 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:06 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/bots/new" for 66.187.233.202 at 2013-12-17 13:27:08 +0000
+Processing by BotsController#new as HTML
+  Rendered bots/_form.html.erb (12.6ms)
+  Rendered bots/new.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 77.5ms (Views: 76.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:08 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:09 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:09 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:09 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:09 +0000
+Served asset /bots.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:09 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:09 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:09 +0000
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:09 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:09 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:09 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:09 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:09 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:09 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:09 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:09 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:09 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:09 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:09 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:10 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:10 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:10 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:10 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:10 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:10 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:10 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started POST "/bots" for 66.187.233.202 at 2013-12-17 13:27:17 +0000
+Processing by BotsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dGzg80xxmGWwm9W3E036tU4zvyH55sBigLvK286/fsA=", "bot"=>{"nick"=>"betabot", "channel"=>"#thatonechannel", "server"=>"", "port"=>"", "server_password"=>"[FILTERED]", "nickserv_password"=>"[FILTERED]"}, "commit"=>"Create New Bot"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "bots" ("channel", "created_at", "nick", "nickserv_password", "port", "server", "server_password", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["channel", "#thatonechannel"], ["created_at", Tue, 17 Dec 2013 13:27:17 UTC +00:00], ["nick", "betabot"], ["nickserv_password", ""], ["port", nil], ["server", ""], ["server_password", ""], ["updated_at", Tue, 17 Dec 2013 13:27:17 UTC +00:00]]
+  [1m[36m (17.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://timdev:3000/bots/5
+Completed 302 Found in 24.7ms (ActiveRecord: 19.5ms)
+
+
+Started GET "/bots/5" for 66.187.233.202 at 2013-12-17 13:27:17 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mBot Load (0.2ms)[0m  SELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1  [["id", "5"]]
+  Rendered bots/_show_bot.html.erb (0.5ms)
+  Rendered bots/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 20.1ms (Views: 18.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:18 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:18 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:18 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:18 +0000
+Served asset /bots.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:18 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:18 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:18 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:18 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:18 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:18 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:18 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:18 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:18 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:18 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:18 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:18 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:18 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:18 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:19 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:19 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:19 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:19 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:19 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:19 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:19 +0000
+Served asset /application.js - 304 Not Modified (42ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:19 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started DELETE "/bots/5" for 66.187.233.202 at 2013-12-17 13:27:21 +0000
+Processing by BotsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"dGzg80xxmGWwm9W3E036tU4zvyH55sBigLvK286/fsA=", "id"=>"5"}
+  [1m[36mBot Load (0.2ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "5"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "bots" WHERE "bots"."id" = ?[0m  [["id", 5]]
+  [1m[35m (20.2ms)[0m  commit transaction
+Redirected to http://timdev:3000/bots
+Completed 302 Found in 23.1ms (ActiveRecord: 20.7ms)
+
+
+Started GET "/bots" for 66.187.233.202 at 2013-12-17 13:27:22 +0000
+Processing by BotsController#index as HTML
+  [1m[36mBot Load (0.3ms)[0m  [1mSELECT "bots".* FROM "bots" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "bots".* FROM "bots" 
+  Rendered bots/_show_bot.html.erb (0.4ms)
+  Rendered bots/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 20.6ms (Views: 19.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:22 +0000
+Served asset /bots.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:22 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:22 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:22 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:22 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:22 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:22 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:22 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:22 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:22 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:22 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:22 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:23 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:23 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:23 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:23 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:23 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:23 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:23 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:23 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:23 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:23 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:23 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:23 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (40ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:23 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:23 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/bots/new" for 66.187.233.202 at 2013-12-17 13:27:25 +0000
+Processing by BotsController#new as HTML
+  Rendered bots/_form.html.erb (4.8ms)
+  Rendered bots/new.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 23.2ms (Views: 22.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:26 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:26 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:26 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:26 +0000
+Served asset /bots.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:26 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:26 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:26 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:26 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:26 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:26 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:26 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:26 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:26 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:26 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:26 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:26 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:26 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:26 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:27 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:27 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:27 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:27 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:27 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:27 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:27 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:27 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started POST "/bots" for 66.187.233.202 at 2013-12-17 13:27:43 +0000
+Processing by BotsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dGzg80xxmGWwm9W3E036tU4zvyH55sBigLvK286/fsA=", "bot"=>{"nick"=>"betabot", "channel"=>"#thatonechannel", "server"=>"irc.devel.redhat.com", "port"=>"6667", "server_password"=>"[FILTERED]", "nickserv_password"=>"[FILTERED]"}, "commit"=>"Create New Bot"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "bots" ("channel", "created_at", "nick", "nickserv_password", "port", "server", "server_password", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["channel", "#thatonechannel"], ["created_at", Tue, 17 Dec 2013 13:27:43 UTC +00:00], ["nick", "betabot"], ["nickserv_password", "swagswag"], ["port", 6667], ["server", "irc.devel.redhat.com"], ["server_password", ""], ["updated_at", Tue, 17 Dec 2013 13:27:43 UTC +00:00]]
+  [1m[36m (28.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://timdev:3000/bots/6
+Completed 302 Found in 31.5ms (ActiveRecord: 28.7ms)
+
+
+Started GET "/bots/6" for 66.187.233.202 at 2013-12-17 13:27:43 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mBot Load (0.2ms)[0m  SELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1  [["id", "6"]]
+  Rendered bots/_show_bot.html.erb (0.4ms)
+  Rendered bots/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 19.2ms (Views: 18.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:44 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:44 +0000
+Served asset /bots.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:44 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:44 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:44 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:44 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:27:44 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:44 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:44 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:44 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:44 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:44 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:44 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:44 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:44 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:44 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:44 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:44 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:45 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:45 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:45 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:45 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:45 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:45 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:45 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:27:45 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/bots/6/start" for 66.187.233.202 at 2013-12-17 13:27:49 +0000
+Processing by BotsController#start as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mBot Load (0.2ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "6"]]
+Completed 500 Internal Server Error in 1.4ms
+
+NoMethodError (undefined method `[]' for nil:NilClass):
+  app/controllers/bots_controller.rb:63:in `start'
+
+
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.9ms)
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+Connecting to database specified by database.yml
+
+
+Started GET "/bots/6" for 66.187.233.202 at 2013-12-17 13:29:10 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mBot Load (0.3ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "6"]]
+  Rendered bots/_show_bot.html.erb (1.5ms)
+  Rendered bots/show.html.erb within layouts/application (40.4ms)
+Completed 200 OK in 119.8ms (Views: 103.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:29:10 +0000
+Served asset /application.css - 304 Not Modified (13ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:29:11 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:29:11 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:29:11 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:29:11 +0000
+Served asset /bots.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:29:11 +0000
+Served asset /glyphicons.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:29:11 +0000
+Served asset /welcome.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:29:11 +0000
+Served asset /jquery.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:29:11 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:29:11 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:29:11 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:29:11 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:29:11 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:29:11 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:29:11 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:29:11 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:29:11 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:29:11 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:29:12 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:29:12 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:29:12 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:29:12 +0000
+Served asset /bootstrap.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:29:12 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (17ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:29:12 +0000
+Served asset /bots.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:29:12 +0000
+Served asset /welcome.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:29:12 +0000
+Served asset /application.js - 304 Not Modified (27ms)
+
+
+Started GET "/bots/6/start" for 66.187.233.202 at 2013-12-17 13:29:14 +0000
+Processing by BotsController#start as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mBot Load (0.2ms)[0m  SELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1  [["id", "6"]]
+Completed 500 Internal Server Error in 76.2ms
+
+Errno::ECONNREFUSED (Connection refused - connect(2)):
+  lib/swagbot.rb:53:in `initialize'
+  lib/swagbot.rb:53:in `open'
+  lib/swagbot.rb:53:in `connect'
+  app/controllers/application_controller.rb:29:in `create_bot_thread'
+  app/controllers/bots_controller.rb:64:in `start'
+
+
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.1ms)
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+Connecting to database specified by database.yml
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+Connecting to database specified by database.yml
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+Connecting to database specified by database.yml
+
+
+Started GET "/bots/6" for 66.187.233.202 at 2013-12-17 13:30:55 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mBot Load (0.3ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "6"]]
+  Rendered bots/_show_bot.html.erb (1.4ms)
+  Rendered bots/show.html.erb within layouts/application (40.9ms)
+Completed 200 OK in 121.9ms (Views: 105.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:30:56 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:30:56 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:30:56 +0000
+Served asset /bots.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:30:56 +0000
+Served asset /glyphicons.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:30:56 +0000
+Served asset /application.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:30:56 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:30:56 +0000
+Served asset /welcome.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:30:56 +0000
+Served asset /jquery.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:30:56 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:30:56 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:30:56 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:30:56 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:30:57 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:30:57 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:30:57 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:30:57 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:30:57 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:30:57 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:30:57 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:30:57 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:30:57 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:30:57 +0000
+Served asset /bootstrap.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:30:57 +0000
+Served asset /bots.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:30:57 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (19ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:30:57 +0000
+Served asset /welcome.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:30:57 +0000
+Served asset /application.js - 304 Not Modified (27ms)
+
+
+Started GET "/bots/6/start" for 66.187.233.202 at 2013-12-17 13:30:59 +0000
+Processing by BotsController#start as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mBot Load (0.2ms)[0m  SELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1  [["id", "6"]]
+Completed 500 Internal Server Error in 79.4ms
+
+RuntimeError (nil):
+  lib/swagbot.rb:53:in `connect'
+  app/controllers/application_controller.rb:29:in `create_bot_thread'
+  app/controllers/bots_controller.rb:64:in `start'
+
+
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /home/tiwillia/.gem/ruby/gems/actionpack-3.2.15/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.0ms)
+
+
+Started GET "/bots/6/start" for 66.187.233.202 at 2013-12-17 13:32:27 +0000
+Processing by BotsController#start as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mBot Load (0.3ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "6"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" WHERE "users"."user" = 'betabot'
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" WHERE "users"."user" = 'USERSERV'[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "users" WHERE "users"."user" = 'tim'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "users" WHERE "users"."user" = 'betabot'[0m
+  [1m[35mUsers Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."user" = 'betabot' LIMIT 1
+  [1m[36mUsers Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user" = 'tim' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (4.6ms)[0m  [1mINSERT INTO "karma" ("amount", "created_at", "grantor_id", "recipient_id", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["amount", 1], ["created_at", Tue, 17 Dec 2013 13:32:41 UTC +00:00], ["grantor_id", 3], ["recipient_id", 1], ["updated_at", Tue, 17 Dec 2013 13:32:41 UTC +00:00]]
+  [1m[35m (21.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "karmastats" WHERE "karmastats"."user_id" = 1[0m
+  [1m[35mKarmastats Load (0.2ms)[0m  SELECT "karmastats".* FROM "karmastats" WHERE "karmastats"."user_id" = 1 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "karmastats" SET "total" = 3, "updated_at" = '2013-12-17 13:32:41.851831' WHERE "karmastats"."id" = 1
+  [1m[36m (15.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "users" WHERE "users"."user" = 'tim'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "users" WHERE "users"."user" = 'tim'[0m
+Completed   in 24738.8ms
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+Connecting to database specified by database.yml
+
+
+Started GET "/bots" for 66.187.233.202 at 2013-12-17 13:33:35 +0000
+Processing by BotsController#index as HTML
+  [1m[36mBot Load (0.2ms)[0m  [1mSELECT "bots".* FROM "bots" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "bots".* FROM "bots" 
+  Rendered bots/_show_bot.html.erb (1.5ms)
+  Rendered bots/_show_bot.html.erb (0.3ms)
+  Rendered bots/index.html.erb within layouts/application (42.9ms)
+Completed 200 OK in 123.0ms (Views: 106.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:33:36 +0000
+Served asset /application.css - 304 Not Modified (13ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:33:36 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:33:36 +0000
+Served asset /glyphicons.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:33:36 +0000
+Served asset /bots.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:33:36 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:33:36 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:33:36 +0000
+Served asset /welcome.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:36 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:36 +0000
+Served asset /jquery.js - 304 Not Modified (12ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:36 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:36 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:36 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:36 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:37 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:37 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (48ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:37 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:37 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:37 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:37 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:37 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:37 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:37 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (22ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:37 +0000
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:37 +0000
+Served asset /bots.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:37 +0000
+Served asset /welcome.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:37 +0000
+Served asset /application.js - 304 Not Modified (24ms)
+
+
+Started GET "/bots/6/start" for 66.187.233.202 at 2013-12-17 13:33:42 +0000
+Processing by BotsController#start as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mBot Load (0.4ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "6"]]
+Redirected to http://timdev:3000/bots/6
+Completed 302 Found in 42.0ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/bots/6" for 66.187.233.202 at 2013-12-17 13:33:43 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mBot Load (0.2ms)[0m  SELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1  [["id", "6"]]
+  Rendered bots/_show_bot.html.erb (0.5ms)
+  Rendered bots/show.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 21.7ms (Views: 19.7ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" WHERE "users"."user" = 'betabot'[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" WHERE "users"."user" = 'USERSERV'
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:33:43 +0000
+Served asset /application.css - 304 Not Modified (43ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:33:43 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:33:43 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:33:43 +0000
+Served asset /bots.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:33:43 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:33:43 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:33:44 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:44 +0000
+Served asset /jquery.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:44 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:44 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:44 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:44 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:44 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:44 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:44 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:44 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:44 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:44 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:44 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:44 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:44 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:44 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:44 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:44 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:44 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:45 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/bots/6" for 66.187.233.202 at 2013-12-17 13:33:49 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mBot Load (0.2ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "6"]]
+  Rendered bots/_show_bot.html.erb (0.5ms)
+  Rendered bots/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 64.7ms (Views: 62.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:33:49 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:33:49 +0000
+Served asset /bots.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:33:49 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:33:49 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:33:49 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:33:49 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:49 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:49 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:33:49 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:49 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:49 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:49 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:50 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:50 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:50 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:50 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:50 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:50 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:50 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:50 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:50 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:50 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:50 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:50 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:50 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:33:50 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/bots/6" for 66.187.233.202 at 2013-12-17 13:36:28 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mBot Load (0.2ms)[0m  SELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1  [["id", "6"]]
+  Rendered bots/_show_bot.html.erb (1.4ms)
+  Rendered bots/show.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 35.8ms (Views: 22.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:36:29 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:36:29 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:36:29 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:36:29 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:36:29 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:36:29 +0000
+Served asset /bots.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:36:29 +0000
+Served asset /welcome.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:36:29 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:36:29 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:36:29 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:36:29 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:36:29 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:36:30 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:36:30 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (47ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:36:30 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:36:30 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:36:30 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:36:30 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:36:30 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:36:30 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:36:30 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:36:30 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:36:30 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:36:30 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:36:30 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:36:30 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+No secret token environment variable set
+Unable to get OPENSHIFT_SECRET_TOKEN, using default
+Connecting to database specified by database.yml
+
+
+Started GET "/bots/6" for 66.187.233.202 at 2013-12-17 13:37:36 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mBot Load (0.3ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "6"]]
+  Rendered bots/_show_bot.html.erb (1.6ms)
+  Rendered bots/show.html.erb within layouts/application (41.9ms)
+Completed 200 OK in 122.9ms (Views: 106.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:37 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:37 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:37 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:37 +0000
+Served asset /application.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:37 +0000
+Served asset /bots.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:37 +0000
+Served asset /glyphicons.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:37 +0000
+Served asset /welcome.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:37 +0000
+Served asset /jquery.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:37 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:37 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:37 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:37 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:38 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:38 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:38 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:38 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:38 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:38 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:38 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:38 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:38 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:38 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (22ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:38 +0000
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:38 +0000
+Served asset /bots.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:38 +0000
+Served asset /welcome.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:38 +0000
+Served asset /application.js - 304 Not Modified (28ms)
+
+
+Started GET "/bots/6/start" for 66.187.233.202 at 2013-12-17 13:37:41 +0000
+Processing by BotsController#start as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mBot Load (0.3ms)[0m  SELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1  [["id", "6"]]
+Redirected to http://timdev:3000/bots/6
+Completed 302 Found in 42.3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/bots/6" for 66.187.233.202 at 2013-12-17 13:37:41 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mBot Load (0.2ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "6"]]
+  Rendered bots/_show_bot.html.erb (0.5ms)
+  Rendered bots/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 22.0ms (Views: 20.4ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" WHERE "users"."user" = 'betabot'
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" WHERE "users"."user" = 'USERSERV'[0m
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:41 +0000
+Served asset /bots.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:41 +0000
+Served asset /application.css - 304 Not Modified (42ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:41 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:41 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:41 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:41 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:42 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:42 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:42 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:42 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:42 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:42 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:42 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:42 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:42 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:42 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:42 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:42 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:42 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:42 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:42 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:42 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:42 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:42 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:43 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:43 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/bots/6/stop" for 66.187.233.202 at 2013-12-17 13:37:53 +0000
+Processing by BotsController#stop as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mBot Load (0.3ms)[0m  SELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1  [["id", "6"]]
+Redirected to http://timdev:3000/bots/6
+Completed 302 Found in 4.0ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/bots/6" for 66.187.233.202 at 2013-12-17 13:37:54 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mBot Load (0.2ms)[0m  [1mSELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1[0m  [["id", "6"]]
+  Rendered bots/_show_bot.html.erb (0.5ms)
+  Rendered bots/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 58.8ms (Views: 57.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:54 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:54 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:54 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:54 +0000
+Served asset /bots.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:54 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:54 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:54 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:55 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:55 +0000
+Served asset /jquery.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:55 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:55 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:55 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:55 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:55 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:55 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:55 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:55 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:55 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:55 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:55 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:55 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:55 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:55 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:55 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:55 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:55 +0000
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/bots/6" for 66.187.233.202 at 2013-12-17 13:37:57 +0000
+Processing by BotsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mBot Load (0.2ms)[0m  SELECT "bots".* FROM "bots" WHERE "bots"."id" = ? LIMIT 1  [["id", "6"]]
+  Rendered bots/_show_bot.html.erb (0.5ms)
+  Rendered bots/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 59.4ms (Views: 58.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:58 +0000
+Served asset /application.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:58 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:58 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:58 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:58 +0000
+Served asset /bots.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:58 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:58 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:37:58 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:58 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:58 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:58 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:58 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:58 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:58 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:58 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:58 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:58 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:58 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:59 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:59 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:59 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:59 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:59 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:59 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:59 +0000
+Served asset /application.js - 304 Not Modified (43ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:37:59 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/bots/index" for 66.187.233.202 at 2013-12-17 13:51:02 +0000
+Processing by BotsController#index as HTML
+  [1m[36mBot Load (0.3ms)[0m  [1mSELECT "bots".* FROM "bots" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "bots".* FROM "bots" 
+  Rendered bots/_show_bot.html.erb (0.5ms)
+  Rendered bots/_show_bot.html.erb (0.4ms)
+  Rendered bots/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 24.7ms (Views: 22.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 66.187.233.202 at 2013-12-17 13:51:02 +0000
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/bootstrap.css?body=1" for 66.187.233.202 at 2013-12-17 13:51:03 +0000
+Served asset /twitter-bootstrap-static/bootstrap.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.css?body=1" for 66.187.233.202 at 2013-12-17 13:51:03 +0000
+Served asset /bots.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 66.187.233.202 at 2013-12-17 13:51:03 +0000
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/glyphicons.css?body=1" for 66.187.233.202 at 2013-12-17 13:51:03 +0000
+Served asset /glyphicons.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-bootstrap-static/fontawesome.css?body=1" for 66.187.233.202 at 2013-12-17 13:51:03 +0000
+Served asset /twitter-bootstrap-static/fontawesome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.css?body=1" for 66.187.233.202 at 2013-12-17 13:51:03 +0000
+Served asset /welcome.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 66.187.233.202 at 2013-12-17 13:51:03 +0000
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 66.187.233.202 at 2013-12-17 13:51:03 +0000
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/alert.js?body=1" for 66.187.233.202 at 2013-12-17 13:51:03 +0000
+Served asset /twitter/bootstrap/alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/modal.js?body=1" for 66.187.233.202 at 2013-12-17 13:51:03 +0000
+Served asset /twitter/bootstrap/modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/transition.js?body=1" for 66.187.233.202 at 2013-12-17 13:51:03 +0000
+Served asset /twitter/bootstrap/transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/dropdown.js?body=1" for 66.187.233.202 at 2013-12-17 13:51:03 +0000
+Served asset /twitter/bootstrap/dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/scrollspy.js?body=1" for 66.187.233.202 at 2013-12-17 13:51:03 +0000
+Served asset /twitter/bootstrap/scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tab.js?body=1" for 66.187.233.202 at 2013-12-17 13:51:03 +0000
+Served asset /twitter/bootstrap/tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/tooltip.js?body=1" for 66.187.233.202 at 2013-12-17 13:51:03 +0000
+Served asset /twitter/bootstrap/tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/popover.js?body=1" for 66.187.233.202 at 2013-12-17 13:51:03 +0000
+Served asset /twitter/bootstrap/popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/button.js?body=1" for 66.187.233.202 at 2013-12-17 13:51:03 +0000
+Served asset /twitter/bootstrap/button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/collapse.js?body=1" for 66.187.233.202 at 2013-12-17 13:51:03 +0000
+Served asset /twitter/bootstrap/collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/carousel.js?body=1" for 66.187.233.202 at 2013-12-17 13:51:04 +0000
+Served asset /twitter/bootstrap/carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/affix.js?body=1" for 66.187.233.202 at 2013-12-17 13:51:04 +0000
+Served asset /twitter/bootstrap/affix.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:51:04 +0000
+Served asset /twitter/bootstrap.js - 304 Not Modified (48ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 66.187.233.202 at 2013-12-17 13:51:04 +0000
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bots.js?body=1" for 66.187.233.202 at 2013-12-17 13:51:04 +0000
+Served asset /bots.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/welcome.js?body=1" for 66.187.233.202 at 2013-12-17 13:51:04 +0000
+Served asset /welcome.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 66.187.233.202 at 2013-12-17 13:51:04 +0000
+Served asset /application.js - 304 Not Modified (3ms)

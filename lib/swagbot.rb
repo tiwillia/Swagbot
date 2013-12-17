@@ -19,8 +19,8 @@ require 'nokogiri'
 def initialize(params)
 	@timers = Hash.new
   @userposting = "nil"
-  @host = params[:host]
-	@port = parmas[:port]
+  @host = params[:server]
+	@port = params[:port]
 	@nick = params[:nick]
 	@chan = params[:channel]
   @server_password = params[:server_password]

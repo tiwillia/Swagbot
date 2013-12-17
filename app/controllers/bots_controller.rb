@@ -62,7 +62,7 @@ def start
   check_bot_controls_exist(@bot.id)
   if not @@bot_controls[@bot.id][:thread]
     if create_bot_thread(@bot)
-      flash[:success] = "Started " + @bot.nick.capitalize + "."
+      flash[:success] = "1Started " + @bot.nick.capitalize + "."
     else
       flash[:error] = @bot.nick.capitalize + " is already running."
     end
@@ -70,8 +70,8 @@ def start
     if @@bot_controls[@bot.id][:state] == "running"
       flash[:error] = @bot.nick.capitalize + " is already running."
     else
-      bot_control[:queue] << "start"
-      flash[:success] = "Started " + @bot.nick.capitalize + "."
+      @@bot_controls[:queue] << "start"
+      flash[:success] = "2Started " + @bot.nick.capitalize + "."
     end
   end
   redirect_to bot_path(@bot)
