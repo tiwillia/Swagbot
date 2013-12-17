@@ -1,0 +1,28 @@
+<div class="well">
+  <div class="row">
+    <div class="col-sm-8">
+      <p>
+        <dl class="dl-horizontal">
+          <dt>Server Url</dt>
+            <dd><%= @bot.server %>/<%= @bot.port %></dd>
+          <dt>Main Channel</dt>
+            <dd><%= @bot.channel %></dd>
+          <dt>Status</dt>
+            <% if defined? @@bot_controls[@bot.id][:state] %>
+            <dd><%= @@bot_controls[@bot.id][:state].capitalize %></dd>
+            <% else %>
+            <dd class="text-warning">Not started</dd>
+            <% end %>
+        </dl>
+      </p>
+    </div>
+    <div class="col-sm-4">
+      <div class="btn-group btn-group-md">
+        <%= link_to 'Start', "/bots/#{@bot.id}/start", :class => "btn btn-success" %>
+        <%= link_to 'Stop', "/bots/#{@bot.id}/stop", :class => "btn btn-warning" %>
+        <%= link_to 'Restart', "/bots/#{@bot.id}/restart", :class => "btn btn-info" %>
+        <%= link_to 'Destroy', "/bots/#{@bot.id}", :method => 'delete', :class => "btn btn-danger", data: { confirm: "Are you sure you want to delete #{@bot.nick.capitalize}? This is irreversible." } %>
+      </div>
+    </div>
+  </div>
+</div>

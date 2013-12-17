@@ -3,6 +3,8 @@ RailsApp::Application.routes.draw do
   get 'welcome/help'
   match 'bots/index' => 'bots#index'
   match 'bots/:id/start' => 'bots#start'
+  match 'bots/:id/stop' => 'bots#stop'
+  match 'bots/:id/restart' => 'bots#restart'
   resources :bots
   root :to => 'welcome#index'
   

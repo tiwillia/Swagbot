@@ -1,10 +1,2 @@
-<h1 class=title>Swagbot</h1>
-<p>
-<b><u><%= @bot.nick %></u></b><br>
-<ul>
-  <li><%= link_to 'Start', "/bots/#{@bot.id}/start" %></li><br>
-  <li><%= link_to 'Stop', bot_path(@bot.id), method: :stop %></li><br>
-  <li><%= link_to 'Restart', bot_path(@bot.id) %></li><br>
-  <li><%= link_to 'Delete', bot_path(@bot.id), method: :delete %></li><br>
-</ul>
-</p>
+<h1 class=title><%= @bot.nick.capitalize %></h1>
+<%= render "show_bot" %>

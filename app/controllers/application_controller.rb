@@ -18,13 +18,31 @@ class ApplicationController < ActionController::Base
   def create_bot_thread(bot) 
     if not @@bot_controls[bot.id][:thread]
       @@bot_controls[bot.id][:thread] = Thread.new {
-        bot_ob = Swagbot.new(bot.server, bot.port, bot.nick, bot.channel)
+        params = {  :server => bot.server, 
+                    :port => bot.port, 
+                    :nick => bot.nick, 
+                    :channel => bot.channel,
+                    :server_password => bot.server_password,
+                    :nickserv_password => bot.nickserv_password
+                 }
+        bot_ob = Swagbot.new(params)
         bot_ob.connect()
         loop {
           command = @@bot_controls[bot.id][:queue].pop(true) rescue nil
           if command
-            puts "queue popped for some reason?"
-            puts command
+            case command
+            when "start"
+              bot_ob.connect
+              @@bot_controls[bot.id][:state] = "running"
+            when "stop"
+              bot_ob.kill
+              @@bot_controls[bot.id][:state] = "stopped"
+            when "restart"
+              bot_ob.kill
+              @@bot_controls[bot.id][:state] = "stopped"
+              bot_ob.connect
+              @@bot_controls[bot.id][:state] = "running"
+            end
           else
             puts bot_ob.inspect
             bot_ob.loop()

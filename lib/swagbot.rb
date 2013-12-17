@@ -16,13 +16,15 @@ require 'pg'
 require 'nokogiri'
 
 # Initialize variables
-def initialize(host, port, nick, chan)
+def initialize(params)
 	@timers = Hash.new
   @userposting = "nil"
-  @host = host
-	@port = port
-	@nick = nick
-	@chan = chan
+  @host = params[:host]
+	@port = parmas[:port]
+	@nick = params[:nick]
+	@chan = params[:channel]
+  @server_password = params[:server_password]
+  @nickserv_password = params[:nickserv_password]
 end
 
 # Small function to easily send commands
@@ -49,11 +51,15 @@ end
 # And joins the @chan
 def connect()
 	@socket = TCPSocket.open(@host, @port)
+  if @server_password
+    send "PASS #{@server_password}"
+  end
 	send "USER #{@nick} 0 * #{@nick}"
 	send "NICK #{@nick}"
-  send ":source PRIVMSG userserv :login #{@nick} #{CONFIG[:nickserv_password]}"
+  if @nickserv_password
+    send ":source PRIVMSG userserv :login #{@nick} #{@nickserv_password}"
+  end
 	send "JOIN #{@chan}"
-	`logger "#{@nick} connected to #{@host}"`
 end
 
 # Closes the socket connection
