@@ -1,7 +1,11 @@
 RailsApp::Application.routes.draw do
-  get "welcome/index"
+  get 'welcome/index'
+  get 'welcome/help'
+  match 'bots/index' => 'bots#index'
+  match 'bots/:id/start' => 'bots#start'
   resources :bots
-  root :to => 'bots#index'
+  root :to => 'welcome#index'
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -49,14 +49,9 @@ end
 # And joins the @chan
 def connect()
 	@socket = TCPSocket.open(@host, @port)
-  if CONFIG[:server_password]
-    send "PASS #{CONFIG[:server_password]}"
-  end
 	send "USER #{@nick} 0 * #{@nick}"
 	send "NICK #{@nick}"
-  if CONFIG[:nickserv_password]
-  	send ":source PRIVMSG userserv :login #{@nick} #{CONFIG[:nickserv_password]}"
-  end
+  send ":source PRIVMSG userserv :login #{@nick} #{CONFIG[:nickserv_password]}"
 	send "JOIN #{@chan}"
 	`logger "#{@nick} connected to #{@host}"`
 end

@@ -11,14 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130821012700) do
+ActiveRecord::Schema.define(:version => 20131214170205) do
 
   create_table "bots", :force => true do |t|
     t.string   "nick"
     t.string   "channel"
-    t.string   "irc_file"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "server"
+    t.integer  "port"
+    t.string   "server_password"
+    t.string   "nickserv_password"
   end
 
   create_table "definitions", :force => true do |t|

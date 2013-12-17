@@ -3,75 +3,91 @@ class BotsController < ApplicationController
 # Simple index
 # This should list all bots and
 def index
-  @bot = Bot.all
-  redirect_to(:action => "new") and return if @bot.empty?
-  if @bot.many?
-    Bot.destroy_all
-    redirect_to(:action => "new")
-  end
-  @bot = Bot.first
-  if !defined?(@@queue)
-    p "Not Defined "
-    create(@bot.id)
-  end
-end
-
-# Create a new bot
-def create(*p)
-  if p.empty?
-    @bot = Bot.new(bot_params)
-    @bot.save
+  if not Bot.all.empty?
+    @bots = Bot.all
   else
-    @bot = Bot.find(p[0])
+    @bot = Bot.new
+    redirect_to new_bot_path(@bot)
   end
-  @@queue = Queue.new
-  @@queue << "start"
-  puts "Loading new bot"
-#  bot_thread = Thread.new {
-    bot = Swagbot.new(CONFIG[:irc_server_url], CONFIG[:irc_server_port], @bot.nick, @bot.channel)
-    puts bot.inspect.split
-    loop {
-    popit = @@queue.pop(true) rescue nil
-    if popit
-      case popit
-      when "start"
-        bot.connect()
-        sleep(2)
-      when "stop"
-        bot.kill()
-#        Thread.exit
-      end
-    else
-      bot.loop()
-    end
-    }
-#   }
-  sleep(2)
-  redirect_to bots_path
 end
 
-def stop
-  @queue << "stop"
-  redirect_to bots_path
+def show
+  @bot = Bot.find(params[:id]) 
 end
 
 def edit
+  @bot = Bot.find(params[:id])
 end
 
-def delete
-  stop
-  @bot = Bot.all
-  @bot.destroy_all
-  redirect_to(:action => "new")
+def update
+  @bot = Bot.find(params[:id])
+  if @bot.update_attributes(thought_params)
+    flash[:success] = @bot.nick + ' was successfully updated.'
+    redirect_to @bot
+  else
+    flash[:error] = 'Could not update ' + @bot.nick + '.'
+    redirect_to edit_bot_path(@bot)
+  end
 end
 
 def new
   @bot = Bot.new
 end
 
+# Create a new bot
+def create
+  @bot = Bot.new(bot_params)
+  if @bot.save
+    flash[:success] = @bot.nick + ' successfully created.'
+    redirect_to @bot
+  else
+    flash[:error] = 'Couldn not create ' + @bot.nick + '.'
+    redirect_to new_bot_path
+  end
+end
+
+def start
+  @bot = Bot.find(params[:id])
+  create_bot_controls(@bot.id)
+  if not @@bot_controls[@bot.id][:thread]
+    if create_bot_thread(@bot)
+      flash[:success] = "Started " + @bot.nick.capitalize
+    else
+      flash[:error] = @bot.nick.capitalize + " is already running."
+    end
+  else
+    if @@bot_controls[@bot.id][:state] == "running"
+      flash[:error] = @bot.nick.capitalize + " is already running."
+    else
+      bot_control[:queue] << "start"
+      flash[:success] = "Started " + @bot.nick.capitalize
+    end
+  end
+  redirect_to bot_path(@bot)
+end
+
+def stop
+  @bot = Bot.find(params[:id])
+  if @@bot_controls[@bot.id][:thread]
+    if @@bot_controls[@bot.id][:state] = "running"
+      @@bot_controls[@bot.id][:queue] << "stop"
+      flash[:success] = "Stopped " + @bot.nick.capitalize
+    else
+      flash[:error] = @bot.nick.capitalize + " is not currently running"
+    end
+  else
+    flash[:error] = @bot.nick.capitalize + " is not currently running"
+  end 
+  redirect_to bot_path(@bot)
+end
+
+def restart
+  @bot = Bot.find(params[:id]) 
+end
+
 private
 def bot_params
-  params.require(:bot).permit(:nick, :channel, :irc_file)
+  params.require(:bot).permit!
 end
 
 end

@@ -1,9 +1,11 @@
-<h1 class=title>Swagbot</h1>
-<p>
-<b><u><%= @bot.nick %></u></b><br>
-<ul>
-  <li><%= link_to 'Start', bot_path(@bot.id), method: :start %></li><br>
-  <li><%= link_to 'Stop', bot_path(@bot.id), method: :stop %></li><br>
-  <li><%= link_to 'Delete', bot_path(@bot.id), method: :delete %></li><br>
-</ul>
-</p>
+<h1 class=title>Bots</h1>
+<% @bots.each do |bot| %>
+  <div class="well">
+    <p class="lead"><%= link_to bot.nick.capitalize, bot_path(bot) %></p>
+    <p>
+      <ul>
+        <li><%= bot.server %></li>
+      </ul>
+    </p>
+  </div>
+<% end %>
