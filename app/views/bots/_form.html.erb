@@ -1,0 +1,40 @@
+<%= form_for @bot, :html => {:class => "form-horizontal", :role => "form" } do |b| %>
+  <p>
+    <div class="form-group">
+      <%= b.label :nick, :class => "col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <%= b.text_field :nick, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= b.label :channel, :class => "col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <%= b.text_field :channel, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= b.label :server, :class => "col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <%= b.text_field :server, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= b.label :port, :class => "col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <%= b.text_field :port, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= b.label :server_password, :class => "col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <%= b.password_field :server_password, :class => 'form-control' %>
+      </div>
+    </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-6">
+      <%= b.submit 'Create New Bot', :class => "btn btn-default" %>
+    </div>
+  </div>
+  </p>
+<% end %>
+

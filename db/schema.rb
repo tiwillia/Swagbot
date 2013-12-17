@@ -9,57 +9,57 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended that you check this file into your version control system.
+# It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130821012700) do
+ActiveRecord::Schema.define(:version => 20131214170205) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "bots", force: true do |t|
+  create_table "bots", :force => true do |t|
     t.string   "nick"
     t.string   "channel"
-    t.string   "irc_file"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "server"
+    t.integer  "port"
+    t.string   "server_password"
+    t.string   "nickserv_password"
   end
 
-  create_table "definitions", force: true do |t|
+  create_table "definitions", :force => true do |t|
     t.integer  "recorder_id"
-    t.text     "word"
+    t.string   "word"
     t.text     "definition"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
-  create_table "karma", force: true do |t|
+  create_table "karma", :force => true do |t|
     t.integer  "grantor_id"
     t.integer  "recipient_id"
     t.integer  "amount"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
-  create_table "karmastats", force: true do |t|
+  create_table "karmastats", :force => true do |t|
     t.integer  "user_id"
     t.integer  "total"
     t.integer  "rank"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  create_table "quotes", force: true do |t|
+  create_table "quotes", :force => true do |t|
     t.integer  "recorder_id"
     t.integer  "quotee_id"
     t.text     "quote"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
-  create_table "users", force: true do |t|
-    t.text     "user"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "users", :force => true do |t|
+    t.string   "user"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

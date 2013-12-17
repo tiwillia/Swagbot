@@ -1,4 +1,8 @@
+# Configuration goes here in YAML
+# These can be called in code with CONFIG[:key]
+project_name: "Swagbot"
 karma_timeout: 5
 nickserv_password: "swagswag"
-irc_server_url: "irc.devel.redhat.com"
-irc_server_port: 6667
+#irc_server_url: "hyperion.feralhosting.com"
+#irc_server_port: 6967
+#server_password: "mygooglesgone"

@@ -51,7 +51,7 @@ def connect()
 	@socket = TCPSocket.open(@host, @port)
 	send "USER #{@nick} 0 * #{@nick}"
 	send "NICK #{@nick}"
-	send ":source PRIVMSG userserv :login #{@nick} #{CONFIG[:nickserv_password]}"
+  send ":source PRIVMSG userserv :login #{@nick} #{CONFIG[:nickserv_password]}"
 	send "JOIN #{@chan}"
 	`logger "#{@nick} connected to #{@host}"`
 end
@@ -66,7 +66,7 @@ end
 # Return the corresponding User ActiveRecord::Relation object
 def getuser(user)
   if Users.where(:user => user).present?
-    Users.find_by(user: user)
+    Users.find_by_user(user)
   else
     new_user = Users.new(user: user)
     new_user.save
@@ -95,7 +95,8 @@ def editkarma(giver, receiver, type)
 	#Here we need to parse the db for name, get the number, add one to the number
 	#Syntax of the db will be user:number\n
   recipient = getuser(receiver)
-  grantor = Users.find_by(user: giver) 
+  grantor = Users.find_by_user(giver)
+
   # Add timer
   # check for the timer before we set the timer, obviously.
   time = @timers.fetch(receiver, nil)
@@ -126,8 +127,8 @@ def editkarma(giver, receiver, type)
   karma_entry.save
 
   # Update the user's karma running total in karmastats
-  if Karmastats.find_by(user_id: recipient.id).present?
-    stat = Karmastats.find_by(user_id: recipient.id)
+  if Karmastats.where(user_id: recipient.id).present?
+    stat = Karmastats.find_by_user_id(recipient.id)
     stat.total = stat.total + karma_amount
     stat.save
   else
@@ -135,25 +136,6 @@ def editkarma(giver, receiver, type)
     stat.save
   end  
 
-=begin 
-  # Re-calculate the rank of EVERYthing in the karmastats database
-  # Note: This is inefficient and will need to be fixed if scaling is considered
-  counter = 1
-  KarmaStats.where.not(total: 0).order('total DESC').each do |x|
-    x.rank = counter
-    x.save
-    counter += 1
-  end  
-  
-  # If no rank is present (A new karma user), don't output a message
-  if stat.rank.present?
-    rank_msg = " (rank #{stat.rank})"
-  else
-    rank_msg = ""
-  end
-=end
-
-#	sendchn("#{receiver} now has #{stat.total} karma.#{rank_msg}")
 	sendchn("#{receiver} now has #{stat.total} karma.")
 end
 
@@ -163,14 +145,14 @@ def rank(who)
 	#if a who is specified, display their rank.
 	#Might also use this as a way to add on the to editkarma command
   counter = 1
-  Karmastats.where.not(total: 0).order('total DESC').each do |x|
+  Karmastats.where(:total != 0).order('total DESC').each do |x|
     x.rank = counter
     x.save
     counter += 1
   end
 
   if who == "all"
-		Karmastats.where.not(total: 0).order('rank ASC').limit(5).each do |x|
+		Karmastats.where(:total != 0).order('rank ASC').limit(5).each do |x|
       user_obj = Users.find(x.user_id)
 			sendchn("#{x.rank}: #{user_obj.user} with #{x.total} points of karma")
 		end
@@ -178,7 +160,7 @@ def rank(who)
 		user = getuser(who)
 
     if Karmastats.where(user_id: user.id).present?
-      stat = Karmastats.find_by(user_id: user.id)
+      stat = Karmastats.find_by_user_id(user.id)
       rank = stat.rank
       case
       when rank.to_s.match(/^1.$/)
@@ -225,7 +207,8 @@ end
 
 def echo_random_quote(chan)
   sendchn("No quotes have ever been added, use \"#{@nick}, addquote user quote\" to add one.") and return if Quotes.all.empty?
-  quote_ar = Quotes.all.ids
+  quote_ar = Array.new
+  Quotes.all.each { |q| quote_ar << q.id }
   id = quote_ar[rdnum(Quotes.count) - 1]
   quote = Quotes.find(id.to_i)
   quotee = Users.find(quote.quotee_id)
@@ -278,12 +261,14 @@ end
 # Definitions can be accessed with the echo_definition method
 def add_definition(word, definition, recorder)
 	recorder = getuser(recorder)
+  word = word.downcase
   definition = Definitions.create(recorder_id: recorder.id, word: word, definition: definition)
   definition.save
   sendchn("Ok, I'll remember #{word}")
 end
 
 def forget_definition(word)
+  word = word.downcase
 	definition = Definitions.where(word: word).order('id ASC')
   if definition.present?
     definition.last.destroy
@@ -295,6 +280,7 @@ end
 
 # Sends the definition added with add_definition
 def echo_definition_by_word(word)
+  word = word.downcase
   if !Definitions.where(word: word).blank?
 	  Definitions.where(word: word).each do |d|
       sendchn("#{d.word} is #{d.definition}")
@@ -351,7 +337,7 @@ def loop()
 
   # Add the user to the users table if they do not exist
   if !@userposting.blank?
-    if Users.find_by(user: @userposting).blank?
+    if Users.where(user: @userposting).blank?
       new_user = Users.create(user: @userposting)
       new_user.save
     end	

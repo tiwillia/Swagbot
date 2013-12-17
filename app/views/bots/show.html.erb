@@ -2,9 +2,9 @@
 <p>
 <b><u><%= @bot.nick %></u></b><br>
 <ul>
-  <li><%= link_to 'Start', bot_path(@bot.id), method: :start %></li><br>
+  <li><%= link_to 'Start', "/bots/#{@bot.id}/start" %></li><br>
   <li><%= link_to 'Stop', bot_path(@bot.id), method: :stop %></li><br>
-  <li><%= link_to 'Restart', restart_bot_path(@bot.id) %></li><br>
+  <li><%= link_to 'Restart', bot_path(@bot.id) %></li><br>
   <li><%= link_to 'Delete', bot_path(@bot.id), method: :delete %></li><br>
 </ul>
 </p>
