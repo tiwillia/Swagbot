@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131217183757) do
+ActiveRecord::Schema.define(:version => 20131217213946) do
 
   create_table "bots", :force => true do |t|
     t.string   "nick"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20131217183757) do
     t.integer  "port"
     t.string   "server_password"
     t.string   "nickserv_password"
+    t.integer  "karma_timeout"
   end
 
   create_table "definitions", :force => true do |t|

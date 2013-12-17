@@ -1,4 +1,4 @@
-class Karma_entry < ActiveRecord::Base
+class KarmaEntry < ActiveRecord::Base
 
   belongs_to :bot
 end

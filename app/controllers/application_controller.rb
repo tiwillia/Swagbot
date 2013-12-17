@@ -53,7 +53,12 @@ class ApplicationController < ActionController::Base
             end
           else
             puts bot.inspect
-            bot.loop()
+            begin
+              bot.loop() 
+            rescue => exception
+              puts exception.backtrace
+              puts exception.message
+            end
           end
         }
       }
