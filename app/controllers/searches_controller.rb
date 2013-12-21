@@ -12,7 +12,12 @@ class SearchesController < ApplicationController
   def quotes
     bot = Bot.find(bot_id)
     search do
-      bot.quotes.where("quote like ?", "%#{search_params}%")
+      quotes = bot.quotes.where("quote like ?", "%#{search_params}%").to_a
+      bot.users.where("user like ?", "%#{search_params}%").each do |user|
+        quotees = bot.quotes.find_by_quotee_id(user.id)
+        quotes << quotees if quotees
+      end
+      quotes.uniq.sort! {|x,y| x.id <=> y.id }
     end
   end
 
@@ -30,6 +35,11 @@ private
     if search_params
       if block_given?
         @results = yield
+        @search_query = search_params
+        if @results.empty?
+          flash[:error] = "No records found for \"" + @search_query + "\"."
+          redirect_to :back
+        end  
       else 
         flash[:error] = "Some serious shit just went down on the backend."
         redirect_to root_url

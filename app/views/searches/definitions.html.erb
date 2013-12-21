@@ -1,7 +1,23 @@
-<h1>AW SHIT</h1>
-<p>
-<%= @results.each do |result| %>
-  <% result.word %><br>
-  <% result.definition %><br><br>
-<% end %>
-</p>
+<h1>Definition search: <span class="text-muted"><%= @search_query.capitalize %></span></h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Phrase</th>
+      <th>Definition</th>
+      <th>Recorded by</th>
+      <th>Recorded at</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @results.each do |result| %>
+    <tr>
+      <td><%= result.id %></td>
+      <td><%= result.word %></td>
+      <td><%= result.definition %></td>
+      <td><%= Bot.find(result.bot_id).users.find(result.recorder_id).user %></td>
+      <td><%= result.created_at %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
