@@ -52,15 +52,29 @@
           <dt>Users with Karma</dt>
           <dd><%= @bot.karmastats.count %></dd>
         </dl>
-        <%= form_tag "/search/karma" do %>
-          <div class="input-group input-group-lg">
-          <%= hidden_field_tag 'bot_id', @bot.id %>
-          <%= search_field_tag 'query', "", :class => "form-control" %>
-          <span class="input-group-btn">
-            <%= submit_tag "Search", :class => "btn btn-default" %>
-          </span>
-          </div>
-        <% end %>
+        <hr />
+        <h4>Ranks</h4>
+          <% ranks = @bot.get_rank %>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>User</th>
+                <th>Karma</th>
+              </tr>
+            </thead>
+            <tbody align="left">
+              <% counter = 1 %>
+              <% ranks.each do |rank| %>
+                <tr>
+                  <td><%= counter %></td>
+                  <td><%= rank["user"].user %></td>
+                  <td><%= rank["stat"].total %></td>
+                  <% counter += 1 %>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
       </p>
     </div>
   </div>

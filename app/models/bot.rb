@@ -44,6 +44,41 @@ class Bot < ActiveRecord::Base
     @socket.close
   end
 
+  # This should return the karmastat and user objects
+  # of the top 5 karma recipients or a single recipient
+  def get_rank(*who)
+    
+    rank_array = Array.new
+
+    # Calculate rank
+    counter = 1
+    @bot.karmastats.where(:total != 0).order('total DESC').each do |x|
+      x.rank = counter
+      x.save
+      counter += 1
+    end
+
+    # If we are getting all ranks, not just a single user
+    if who.empty?
+      @bot.karmastats.where(:total != 0).order('rank ASC').limit(5).each do |stat|
+        user = @bot.users.find(stat.user_id)
+        rank_hash = Hash[ "user" => user, "stat" => stat ]
+        rank_array << rank_hash
+      end
+    else
+      user = getuser(who)
+
+      if @bot.karmastats.where(user_id: user.id).present?
+        stat = @bot.karmastats.find_by_user_id(user.id)
+        rank_hash = Hash[ "user" => user, "stat" => stat ]
+        rank_array << rank_hash
+      else
+        return nil
+      end
+    end
+    rank_array
+  end
+
   # This is the main loop that uses all the private methods below it.
   def loop()
     line = @socket.gets
@@ -109,7 +144,7 @@ class Bot < ActiveRecord::Base
         end
       when params.match(/^rank.*/)
         if params.eql?("rank")
-          rank("all")
+          rank
         elsif params.match("rank\ [a-zA-Z0-9\.\-\_\|]+")
           user_to_rank = params[/rank\ (.*)/, 1]
           rank(user_to_rank)
@@ -321,45 +356,41 @@ private
     sendchn("#{receiver} now has #{stat.total} karma.")
   end
 
-  def rank(who)
-    #Here we are going to create a rank command
-    #If no who is specified, list the top 5
-    #if a who is specified, display their rank.
-    #Might also use this as a way to add on the to editkarma command
-    counter = 1
-    @bot.karmastats.where(:total != 0).order('total DESC').each do |x|
-      x.rank = counter
-      x.save
-      counter += 1
-    end
-
-    if who == "all"
-      @bot.karmastats.where(:total != 0).order('rank ASC').limit(5).each do |x|
-        user_obj = @bot.users.find(x.user_id)
-        sendchn("#{x.rank}: #{user_obj.user} with #{x.total} points of karma")
-      end
+  def rank(*who)
+    if who.empty? 
+      ranks = get_rank
     else
-      user = getuser(who)
+      who = who[0]
+      ranks = get_rank(who)
+    end
+ 
+    if ranks
+      if ranks.count == 5
+        ranks.each do |r|
+          sendchn("#{r["stat"].rank}: #{r["user"].user} with #{r["stat"].total} points of karma")
+        end
+      else
+        rank = ranks[0]
+        user = rank["user"]
 
-      if @bot.karmastats.where(user_id: user.id).present?
-        stat = @bot.karmastats.find_by_user_id(user.id)
+        stat = rank["stat"]
         rank = stat.rank
         case
-        when rank.to_s.match(/^1.$/)
-          suffix = "th"
-        when rank.to_s.match(/.*[4-9,0]$/)
-          suffix = "th"
-        when rank.to_s.match(/.*3$/)
-          suffix = "rd"
-        when rank.to_s.match(/.*2$/)
-          suffix = "nd"
-        when rank.to_s.match(/.*1$/)
-          suffix = "st"
+          when rank.to_s.match(/^1.$/)
+            suffix = "th"
+          when rank.to_s.match(/.*[4-9,0]$/)
+            suffix = "th"
+          when rank.to_s.match(/.*3$/)
+            suffix = "rd"
+          when rank.to_s.match(/.*2$/)
+            suffix = "nd"
+          when rank.to_s.match(/.*1$/)
+            suffix = "st"
         end
         sendchn("#{user.user} is #{rank}#{suffix} with #{stat.total} points of karma")
-      else
-        sendchn("#{user.user} has never had karma added or subtracted.")
       end
+    else
+      sendchn("#{who} has never had karma added or subtracted.")
     end
   end
 
