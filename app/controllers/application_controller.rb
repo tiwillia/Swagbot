@@ -29,31 +29,36 @@ class ApplicationController < ActionController::Base
                     :nick => bot.nick, 
                     :channel => bot.channel,
                     :server_password => bot.server_password,
-                    :nickserv_password => bot.nickserv_password
+                    :nickserv_password => bot.nickserv_password,
+                    :bot => bot
                  }
-        bot_ob = Swagbot.new(params)
-        bot_ob.connect()
-        puts "bot started: " + bot_ob.inspect
+        bot.connect()
+        puts "bot started: " + bot.inspect
         @@bot_controls[bot.id][:state] = "running"
         loop {
           command = @@bot_controls[bot.id][:queue].pop(true) rescue nil
           if command
             case command
             when "start"
-              bot_ob.connect
+              bot.connect
               @@bot_controls[bot.id][:state] = "running"
             when "stop"
-              bot_ob.kill
+              bot.kill
               @@bot_controls[bot.id][:state] = "stopped"
             when "restart"
-              bot_ob.kill
+              bot.kill
               @@bot_controls[bot.id][:state] = "stopped"
-              bot_ob.connect
+              bot.connect
               @@bot_controls[bot.id][:state] = "running"
             end
           else
-            puts bot_ob.inspect
-            bot_ob.loop()
+            puts bot.inspect
+            begin
+              bot.loop() 
+            rescue => exception
+              puts exception.backtrace
+              puts exception.message
+            end
           end
         }
       }

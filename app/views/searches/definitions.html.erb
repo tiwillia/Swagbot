@@ -1,0 +1,27 @@
+<h1>Definition search: <span class="text-muted"><%= @search_query.capitalize %></span></h1>
+<% bot = Bot.find(@results[0].bot_id) %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Phrase</th>
+      <th>Definition</th>
+      <th>Recorded by</th>
+      <th>Recorded at</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @results.each do |result| %>
+    <tr>
+      <td><%= result.id %></td>
+      <td><%= result.word %></td>
+      <td><%= result.definition %></td>
+      <td><%= bot.users.find(result.recorder_id).user %></td>
+      <td><%= result.created_at %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<div class="col-sm-offset-11">
+  <%= link_to "Back", bot_path(bot.id), :class => "btn btn-default" %>
+</div>

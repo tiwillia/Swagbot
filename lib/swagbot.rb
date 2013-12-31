@@ -25,6 +25,7 @@ def initialize(params)
 	@chan = params[:channel]
   @server_password = params[:server_password]
   @nickserv_password = params[:nickserv_password]
+  @bot = params[:bot]
 end
 
 # Small function to easily send commands
@@ -305,22 +306,6 @@ def echo_definition_by_user(who)
       sendchn("#{d.word} is #{d.definition}")
   end
 end
-
-# Returns a random line from the file specified
-# File must be in the same directory
-# Or a full path (i.e. /home/you/Documents/file.txt)
-def pick_random_line(file)
-	chosen_line = nil
-	if not File.exists?(file)
-    File.new(file, "a")
-  end
-	File.foreach(file).each_with_index do |line, number|
-	  chosen_line = line if rand < 1.0/(number+1)
-	end
-	return chosen_line
-end
-
-# This is the main loop that keeps swagbot running
 # This is also where we evaluate what is said in the channel
 # If you would like to add a commad (swagbot: command) do it in the first case statement
 # Otherwise, use the second one.

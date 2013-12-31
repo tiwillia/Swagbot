@@ -1,0 +1,28 @@
+<h1>Quote search: <span class="text-muted"><%= @search_query.capitalize %></span></h1>
+<% bot = Bot.find(@results[0].bot_id) %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Quotee</th>
+      <th>Quote</th>
+      <th>Recorded by</th>
+      <td>Recorded at</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @results.each do |result| %>
+    <tr>
+      <td><%= result.id %></td>
+      <td><%= bot.users.find(result.quotee_id).user %></td>
+      <td><%= result.quote %></td>
+      <td><%= bot.users.find(result.recorder_id).user %></td>
+      <td><%= result.created_at %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<div class="col-sm-offset-11">
+  <%= link_to "Back", bot_path(bot.id), :class => "btn btn-default" %>
+</div>
+

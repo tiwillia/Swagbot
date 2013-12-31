@@ -37,6 +37,7 @@ end
 # Create a new bot
 def create
   @bot = Bot.new(bot_params)
+  @bot.karma_timeout = 5
   if @bot.save
     flash[:success] = @bot.nick + ' successfully created.'
     redirect_to @bot
@@ -60,7 +61,7 @@ end
 def start
   @bot = Bot.find(params[:id])
   check_bot_controls_exist(@bot.id)
-  if not @@bot_controls[@bot.id][:thread]
+  if not @@bot_controls[@bot.id][:thread] 
     if create_bot_thread(@bot)
       flash[:success] = "Started " + @bot.nick.capitalize + "."
     else

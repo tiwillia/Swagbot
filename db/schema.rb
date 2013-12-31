@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131214170205) do
+ActiveRecord::Schema.define(:version => 20131231145516) do
 
   create_table "bots", :force => true do |t|
     t.string   "nick"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20131214170205) do
     t.integer  "port"
     t.string   "server_password"
     t.string   "nickserv_password"
+    t.integer  "karma_timeout"
   end
 
   create_table "definitions", :force => true do |t|
@@ -30,14 +31,16 @@ ActiveRecord::Schema.define(:version => 20131214170205) do
     t.text     "definition"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "bot_id"
   end
 
-  create_table "karma", :force => true do |t|
+  create_table "karma_entries", :force => true do |t|
     t.integer  "grantor_id"
     t.integer  "recipient_id"
     t.integer  "amount"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "bot_id"
   end
 
   create_table "karmastats", :force => true do |t|
@@ -46,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20131214170205) do
     t.integer  "rank"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "bot_id"
   end
 
   create_table "quotes", :force => true do |t|
@@ -54,12 +58,14 @@ ActiveRecord::Schema.define(:version => 20131214170205) do
     t.text     "quote"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "bot_id"
   end
 
   create_table "users", :force => true do |t|
     t.string   "user"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "bot_id"
   end
 
 end
