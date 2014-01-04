@@ -120,7 +120,7 @@ def check_bot_controls_exist(bot_id)
   if not defined? @@bot_controls
     create_bot_controls(bot_id)
   end
-  if not defined? @@bot_controls[bot_id]
+  if not @@bot_controls[bot_id]
     create_bot_controls(bot_id)
   end
 end
