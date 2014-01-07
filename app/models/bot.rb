@@ -212,26 +212,26 @@ class Bot < ActiveRecord::Base
           sendchn("I was invited here by #{@userposting}. If I am not welcome type \"#{@nick} leave\"")
         
         # Karma assignments
-        when line.match(/^.*[\-\.\'\.\|0-9a-zA-Z]+[\+\-]{2}.*/)
+        when line.match(/^.*[\_\-\.\'\.\|0-9a-zA-Z]+[\+\-]{2}.*/)
           if @chan != @userposting
             line.split.each do |x| 
-              if x.match(/[\-\.\'\.\|0-9a-zA-Z]+\+\+/)
-                user = x[/([\-\.\'\.\|0-9a-zA-Z]*)\+\+/, 1]
+              if x.match(/[\_\-\.\'\.\|0-9a-zA-Z]+\+\+/)
+                user = x[/([\_\-\.\'\.\|0-9a-zA-Z]*)\+\+/, 1]
                 if user == @userposting
                   sendchn("Lol, yeah right.")
                 else
                   editkarma(@userposting, user, "add")
                 end
               end
-              if x.match(/[\-\.\'\.\|0-9a-zA-Z]+\-\-/)
-                user = x[/([\-\.\'\.\|0-9a-zA-Z]*)\-\-/, 1]
+              if x.match(/[\_\-\.\'\.\|0-9a-zA-Z]+\-\-/)
+                user = x[/([\_\-\.\'\.\|0-9a-zA-Z]*)\-\-/, 1]
                 editkarma(@userposting, user, "subtract")
               end
             end
           else
             sendchn("Karma can only be assigned in a channel")
           end
-        when line.match(/.*\:[\-\.\'\.\|0-9a-zA-Z]+\?$/)
+        when line.match(/.*\:[\_\-\.\'\.\|0-9a-zA-Z]+\?$/)
           word_to_echo_def = line[/([\-\_\.0-9a-zA-Z]*)\?/, 1]
           echo_definition_by_word(word_to_echo_def)
 
