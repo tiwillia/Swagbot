@@ -53,8 +53,8 @@
           <dd><%= @bot.karmastats.count %></dd>
         </dl>
         <hr />
-        <!-- <h4>Ranks</h4>
-          <%# ranks = @bot.get_rank %>
+        <h4>Ranks</h4>
+          <% ranks = @bot.get_rank %>
           <table class="table table-striped">
             <thead>
               <tr>
@@ -64,18 +64,17 @@
               </tr>
             </thead>
             <tbody align="left">
-              <%# counter = 1 %>
-              <%# ranks.each do |rank| %>
+              <% counter = 1 %>
+              <% ranks.each do |rank| %>
                 <tr>
-                  <td><%# counter %></td>
-                  <td><%# rank["user"].user %></td>
-                  <td><%# rank["stat"].total %></td>
-                  <%# counter += 1 %>
+                  <td><%= counter %></td>
+                  <td><%= rank["user"].user %></td>
+                  <td><%= rank["stat"].total %></td>
+                  <% counter += 1 %>
                 </tr>
-              <%# end %>
+              <% end %>
             </tbody>
           </table>
-          --!>
       </p>
     </div>
   </div>
