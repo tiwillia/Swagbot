@@ -52,7 +52,6 @@ class ApplicationController < ActionController::Base
               @@bot_controls[bot.id][:state] = "running"
             end
           else
-            puts bot.inspect
             begin
               bot.loop() 
             rescue => exception

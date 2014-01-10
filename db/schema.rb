@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140109232805) do
+ActiveRecord::Schema.define(:version => 20140110225249) do
 
   create_table "bot_configs", :force => true do |t|
     t.integer  "bot_id"
     t.integer  "karma_timeout",        :default => 5
     t.boolean  "echo_all_definitions", :default => true
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+    t.string   "quit_message",         :default => "Leaving..."
   end
 
   create_table "bots", :force => true do |t|

@@ -42,7 +42,7 @@ class Bot < ActiveRecord::Base
   end
 
   def kill
-    @socket.send(":source QUIT :SWAG\n", 0)
+    @socket.send(":source QUIT :#{@bot.bot_config.quit_message}\n", 0)
     @socket.close
   end
 

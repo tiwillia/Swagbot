@@ -19,6 +19,11 @@
         <td><%= select_tag :echo_all_definitions, options_for_select([["True", true],["False", false]], @bot.bot_config.echo_all_definitions.to_s), :class => 'form-control' %></td>
         <td>If set to true, the bot will echo all definitions a word has been given when asked. If set to false, the bot will echo a random definition of a word when asked.<br>  Default: True.</td> 
     </tr>
+    <tr>
+        <td><%= label_tag :quit_message, "Quit Message", :class => 'control-label' %></td>
+        <td><%= text_area_tag :quit_message, @bot.bot_config.quit_message, rows: 1, :class => 'form-control' %></td>
+        <td>This message will be displayed when the bot quits from the irc server or channel.<br>  Default: Leaving...</td> 
+    </tr>
   </tbody>
 </table>
 <div class="col-sm-offset-0">
