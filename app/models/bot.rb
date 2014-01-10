@@ -108,8 +108,8 @@ class Bot < ActiveRecord::Base
       end 
     end
 
-    if line.match(/.*\:#{@nick}[\,\:\ ]+.*/) then
-      params = line[/.*\:#{@nick}[\,\:\ ]+(.*)/, 1]
+    if line.match(/.*\:#{@nick}[\,\:\ ]+.*/i) then
+      params = line[/.*\:#{@nick}[\,\:\ ]+(.*)/i, 1]
       case
       when params.match(/^join\ \#[\-\_\.\'0-9a-zA-Z]+/)
         channel_to_join = params[/^join\ (\#[\-\_\.\'0-9a-zA-Z]+)/, 1]
