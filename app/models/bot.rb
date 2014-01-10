@@ -17,6 +17,7 @@ class Bot < ActiveRecord::Base
 
   def set_instance_vars
     @timers = Hash.new
+    @timers[:karma] = Hash.new
     @userposting = "nil"
     @host = self.server
     @port = self.port
@@ -237,7 +238,7 @@ class Bot < ActiveRecord::Base
           echo_definition_by_word(word_to_echo_def)
 
         when line.match(/.*#{@nick}\ \:\!op$/)
-            send("MODE #{@chan} +o #{@userposting}")        
+            send_server("MODE #{@chan} +o #{@userposting}")        
         
         when line.match(/.*http[s]*:\/\/[w\.]*bugzilla\.redhat\.com\/show_bug.cgi\?id=[a-zA-Z0-9]+[\ ]*/)
           url = line[/.*(http[s]*:\/\/[w\.]*bugzilla\.redhat\.com\/show_bug.cgi\?id=[a-zA-Z0-9]+)[\ ]*/, 1]
@@ -318,16 +319,25 @@ private
 
     # Add timer
     # check for the timer before we set the timer, obviously.
-    time = @timers.fetch(receiver, nil)
+    karma_timer = @timers[:karma].fetch(receiver, nil)
+    if karma_timer
+      time = @timers[:karma][receiver].fetch(grantor.user, nil)
+      puts grantor.user
+      puts @timers[:karma][receiver]
+      puts @timers[:karma][receiver][grantor.user]
+    else
+      @timers[:karma][receiver] = Hash.new
+      time = nil
+    end
     if time.to_i != 0
       if time.to_i > (Time.now.to_i - @bot.bot_config(true).karma_timeout)
-        send(":source PRIVMSG #{@userposting} :You must wait #{time.to_i - (Time.new.to_i - @bot.bot_config(true).karma_timeout)} more seconds before changing #{receiver}'s karma.\n")
+        send_server(":source PRIVMSG #{@userposting} :You must wait #{time.to_i - (Time.new.to_i - @bot.bot_config(true).karma_timeout)} more seconds before changing #{receiver}'s karma.\n")
         return
       elsif time.to_i < (Time.now.to_i - @bot.bot_config(true).karma_timeout)
-        @timers = { receiver => Time.new.to_i }
+        @timers[:karma][receiver][grantor.user] = Time.new.to_i 
       end
     else
-      @timers = { receiver => Time.new.to_i }
+      @timers[:karma][receiver][grantor.user] = Time.new.to_i 
     end
 
     # Set the Karma Amount
