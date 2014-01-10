@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
         end
       end
     end
-    if defined? @@bot_controls[bot_id]
+    if @@bot_controls[bot_id]
       if not defined? @@bot_controls[bot_id][:thread]
         @@bot_controls[bot_id][:thread] = nil
       end

@@ -61,6 +61,9 @@ end
 
 def start
   @bot = Bot.find(params[:id])
+  if @bot.bot_config.nil?
+    @bot.bot_config = BotConfig.new(bot_id: @bot.id) 
+  end
   check_bot_controls_exist(@bot.id)
   if not @@bot_controls[@bot.id][:thread] 
     if create_bot_thread(@bot)
