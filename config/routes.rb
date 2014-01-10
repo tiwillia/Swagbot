@@ -1,6 +1,8 @@
 RailsApp::Application.routes.draw do
   get 'welcome/index'
   get 'welcome/help'
+  match 'bots/:id/configuration/update' => 'bot_config#update'
+  match 'bots/:id/configuration' => 'bot_config#edit'
   match 'search/:action' => 'searches#:action'
   match 'bots/index' => 'bots#index'
   match 'bots/:id/start' => 'bots#start'

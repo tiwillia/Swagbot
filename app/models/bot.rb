@@ -1,5 +1,6 @@
 class Bot < ActiveRecord::Base
   # These associations are necessary, or all bots will use the same karama/quotes/etc tables
+  has_one :bot_config
   has_many :karma_entries
   has_many :definitions
   has_many :quotes
@@ -319,10 +320,10 @@ private
     # check for the timer before we set the timer, obviously.
     time = @timers.fetch(receiver, nil)
     if time.to_i != 0
-      if time.to_i > (Time.now.to_i - @bot.karma_timeout)
-        send(":source PRIVMSG #{@userposting} :You must wait #{time.to_i - (Time.new.to_i - @bot.karma_timeout)} more seconds before changing #{receiver}'s karma.\n")
+      if time.to_i > (Time.now.to_i - @bot.bot_config(true).karma_timeout)
+        send(":source PRIVMSG #{@userposting} :You must wait #{time.to_i - (Time.new.to_i - @bot.bot_config(true).karma_timeout)} more seconds before changing #{receiver}'s karma.\n")
         return
-      elsif time.to_i < (Time.now.to_i - @bot.karma_timeout)
+      elsif time.to_i < (Time.now.to_i - @bot.bot_config(true).karma_timeout)
         @timers = { receiver => Time.new.to_i }
       end
     else
@@ -467,7 +468,12 @@ private
   def echo_definition_by_word(word)
     word = word.downcase
     if not @bot.definitions.where(word: word).blank?
-      @bot.definitions.where(word: word).each do |d|
+      if @bot.bot_config(true).echo_all_definitions == true
+        @bot.definitions.where(word: word).each do |d|
+          sendchn("#{d.word} is #{d.definition}")
+        end
+      else
+        d = @bot.definitions.where(word: word).sample
         sendchn("#{d.word} is #{d.definition}")
       end
     end
