@@ -21,7 +21,7 @@ end
 
 def update
   @bot = Bot.find(params[:id])
-  if @bot.update_attributes(thought_params)
+  if @bot.update_attributes(bot_params)
     flash[:success] = @bot.nick + ' was successfully updated.'
     redirect_to @bot
   else
@@ -39,10 +39,11 @@ def create
   @bot = Bot.new(bot_params)
   @bot.karma_timeout = 5
   if @bot.save
+    @bot.bot_config = BotConfig.new(bot_id: @bot.id)
     flash[:success] = @bot.nick + ' successfully created.'
     redirect_to @bot
   else
-    flash[:error] = 'Couldn not create ' + @bot.nick + '.'
+    flash[:error] = 'Could not create ' + @bot.nick + '.'
     redirect_to new_bot_path
   end
 end

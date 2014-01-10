@@ -1,0 +1,31 @@
+<h1><%= @bot.nick.capitalize %>: Configuration</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Configuration</th>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <%= form_tag "/bots/#{@bot.id}/configuration/update" do %>
+        <td><%= label_tag :karma_timeout, "Karma timeout", :class => 'control-label' %></td>
+        <td><%= text_field_tag :karma_timeout, @bot.bot_config.karma_timeout, :class => 'form-control' %></td>
+        <td>This value defines how long a user must wait after changing another user's karma, before changing that user's karma again.<br>  Default: 5 seconds.</td>
+    </tr>
+    <tr>
+        <td><%= label_tag :echo_all_definitions, "Report all definitions", :class => 'control-label' %></td>
+        <td><%= select_tag :echo_all_definitions, options_for_select([["True", true],["False", false]], @bot.bot_config.echo_all_definitions.to_s), :class => 'form-control' %></td>
+        <td>If set to true, the bot will echo all definitions a word has been given when asked. If set to false, the bot will echo a random definition of a word when asked.<br>  Default: True.</td> 
+    </tr>
+  </tbody>
+</table>
+<div class="col-sm-offset-0">
+  <%= submit_tag "Submit Configuration", :class => "btn btn-default" %>
+</div>
+<% end %>
+<div class="col-sm-offset-11">
+  <%= link_to "Back", bot_path(@bot.id), :class => "btn btn-default" %>
+</div>
+
