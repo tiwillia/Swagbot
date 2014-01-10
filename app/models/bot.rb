@@ -424,7 +424,7 @@ private
     end
     quotee = getuser(who)
     if @bot.quotes.where(quotee_id: quotee.id).present?
-      quote = @bot.quotes.where(quotee_id: quotee.id).first(:offset => rand(Quotes.where(quotee_id: quotee.id).count))
+      quote = @bot.quotes.where(quotee_id: quotee.id).first(:offset => rand(@bot.quotes.where(quotee_id: quotee.id).count))
       sendchn("\"#{quote.quote}\" - #{quotee.user} \| id:#{quote.id}")
     else
       sendchn("#{quotee.user} has never been quoted")
