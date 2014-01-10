@@ -1,2 +1,6 @@
 <h1 class=title>Edit <%= @bot.nick %></h1>
 <%= render 'form' %>
+<div class="col-sm-offset-11">
+  <%= link_to "Back", bot_path(@bot.id), :class => "btn btn-default" %>
+</div>
+
