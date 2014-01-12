@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140110225249) do
+ActiveRecord::Schema.define(:version => 20140112193158) do
 
   create_table "bot_configs", :force => true do |t|
     t.integer  "bot_id"
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(:version => 20140110225249) do
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
     t.string   "quit_message",         :default => "Leaving..."
+    t.boolean  "quotes",               :default => true
+    t.boolean  "definitions",          :default => true
+    t.boolean  "karma",                :default => true
+    t.boolean  "youtube",              :default => true
+    t.boolean  "imgur",                :default => true
+    t.boolean  "bugzilla",             :default => true
   end
 
   create_table "bots", :force => true do |t|

@@ -18,7 +18,7 @@ class BotConfigController < ApplicationController
 
 private
   def config_params
-    params.permit(:quit_message, :karma_timeout, :echo_all_definitions, :id)
+    params.permit(:karma, :quotes, :definitions, :youtube, :bugzilla, :imgur, :quit_message, :karma_timeout, :echo_all_definitions, :id)
   end
 
 end

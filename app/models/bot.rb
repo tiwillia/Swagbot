@@ -42,7 +42,7 @@ class Bot < ActiveRecord::Base
   end
 
   def kill
-    @socket.send(":source QUIT :#{@bot.bot_config.quit_message}\n", 0)
+    @socket.send(":source QUIT :#{@bot.bot_config(true).quit_message}\n", 0)
     @socket.close
   end
 
@@ -96,6 +96,7 @@ class Bot < ActiveRecord::Base
     end
     
     # Ignore unifiedbot
+    # This should be removed when the configuration to add an ignore list is implemented
     if @userposting.eql?("unifiedbot")
       return
     end
@@ -111,56 +112,78 @@ class Bot < ActiveRecord::Base
     if line.match(/.*\:#{@nick}[\,\:\ ]+.*/i) then
       params = line[/.*\:#{@nick}[\,\:\ ]+(.*)/i, 1]
       case
+
+      # Join a channel
       when params.match(/^join\ \#[\-\_\.\'0-9a-zA-Z]+/)
         channel_to_join = params[/^join\ (\#[\-\_\.\'0-9a-zA-Z]+)/, 1]
         join_chan(channel_to_join)
+
+      # Leave current channel
       when params.match(/^leave/)
         if @chan == @userposting
           sendchn("Say it in the channel you want me to leave.")
         else
             leave_chan(@chan)
         end
-      when params.match(/^[\-\_\.\'\.0-9a-zA-Z]*\ is\ .*/)
-        word_to_define = params[/([\-\_\.\'0-9a-zA-Z]*)\ is/, 1]
-        definition = params[/[\-\_\ \.\'0-9a-zA-Z]*\ is\ (.*)/, 1]
-        add_definition(word_to_define, definition, @userposting)
-      when params.match(/^[\-\_\.0-9a-zA-Z]*\?/)
-        if not @bot.definitions.count.zero?
-          word_to_echo_def = params[/([\-\_\.0-9a-zA-Z]*)?/, 1]
-          echo_definition_by_word(word_to_echo_def)
+
+      # Defintions
+      when @bot.bot_config(true).definitions
+        case
+          # Add a definition
+          when params.match(/^[\-\_\.\'\.0-9a-zA-Z]*\ is\ .*/)
+            word_to_define = params[/([\-\_\.\'0-9a-zA-Z]*)\ is/, 1]
+            definition = params[/[\-\_\ \.\'0-9a-zA-Z]*\ is\ (.*)/, 1]
+            add_definition(word_to_define, definition, @userposting)
+
+          # Echo definition by word
+          when params.match(/^[\-\_\.0-9a-zA-Z]*\?/)
+            if not @bot.definitions.count.zero?
+              word_to_echo_def = params[/([\-\_\.0-9a-zA-Z]*)?/, 1]
+              echo_definition_by_word(word_to_echo_def)
+            end
+
+          # Forget a definition
+          when params.match(/^forget\ [\-\_\ 0-9a-zA-Z]*/)
+            word_to_forget = params[/forget\ ([\-\_\ 0-9a-zA-Z]*)/, 1]
+            forget_definition(word_to_forget)
         end
-      when params.match(/^forget\ [\-\_\ 0-9a-zA-Z]*/)
-        word_to_forget = params[/forget\ ([\-\_\ 0-9a-zA-Z]*)/, 1]
-        forget_definition(word_to_forget)
-      when params.match(/^addquote.*/)
-        user_to_quote = line[/addquote\ ([0-9a-zA-Z\-\_\.\|]+)\ .*/, 1]
-        new_quote = line[/addquote\ [0-9a-zA-Z\-\_\.\|]+\ (.*)/, 1]
-        addquote(@userposting, user_to_quote, new_quote)  
-      when params.match(/^quote.*/)
-        if params.match(/quote\ [0-9]+$/)
-          echo_quote_by_id(params[/quote\ (.*)/, 1])
-        elsif params.match(/quote\ [a-zA-Z0-9\.\_\-\|]+/)
-          echo_quote_by_user(params[/quote\ (.*)/, 1])
-        else
-          echo_random_quote(@chan) 
+
+      # Quotes
+      when @bot.bot_config(true).quotes
+        case
+          # Add a quote
+          when params.match(/^addquote.*/)
+            user_to_quote = line[/addquote\ ([0-9a-zA-Z\-\_\.\|]+)\ .*/, 1]
+            new_quote = line[/addquote\ [0-9a-zA-Z\-\_\.\|]+\ (.*)/, 1]
+            addquote(@userposting, user_to_quote, new_quote)  
+      
+          # Echo a quote
+          when params.match(/^quote.*/)
+            if params.match(/quote\ [0-9]+$/)
+              echo_quote_by_id(params[/quote\ (.*)/, 1])
+            elsif params.match(/quote\ [a-zA-Z0-9\.\_\-\|]+/)
+              echo_quote_by_user(params[/quote\ (.*)/, 1])
+            else
+              echo_random_quote(@chan) 
+            end
         end
-      when params.match(/^rank.*/)
-        if params.eql?("rank")
-          rank
-        elsif params.match("rank\ [a-zA-Z0-9\.\-\_\|]+")
-          user_to_rank = params[/rank\ (.*)/, 1]
-          rank(user_to_rank)
+      
+      # Echo karma ranks
+      when @bot.bot_config(true).karma
+        if params.match(/^rank.*/)
+          if params.eql?("rank")
+            rank
+          elsif params.match("rank\ [a-zA-Z0-9\.\-\_\|]+")
+            user_to_rank = params[/rank\ (.*)/, 1]
+            rank(user_to_rank)
+          end 
         end
-      when params.eql?("time")
-        time = Time.new
-        timenow = time.inspect
-        sendchn("The current time is #{timenow}")
+      
+      # Weather reporting
       when params.eql?("weather")
-        # Yahoo Weather Variables
         yahoo_url = 'http://query.yahooapis.com/v1/public/yql?format=json&q='
         query = "SELECT * FROM weather.forecast WHERE location = 27606"
         url = URI.encode(yahoo_url + query)
-        # Pull and parse data
         weather_data = JSON.parse(open(url).read)
         weather_results = weather_data["query"]["results"]["channel"]
         sendchn("------------------Weather For 27606---------------")
@@ -170,6 +193,8 @@ class Bot < ActiveRecord::Base
         sendchn("Low: #{weather_results["item"]["forecast"][0]["low"]} degrees")
         sendchn("-----------------------------------------------------------")
         
+        # Help section
+        # This desperately needs to be re-worked
         when params.match(/^help.*/)
           case 
           when  params.eql?("help")
@@ -214,47 +239,67 @@ class Bot < ActiveRecord::Base
           sendchn("I was invited here by #{@userposting}. If I am not welcome type \"#{@nick} leave\"")
         
         # Karma assignments
-        when line.match(/^.*[\_\-\.\'\.\|0-9a-zA-Z]+[\+\-]{2}.*/)
-          if @chan != @userposting
-            line.split.each do |x| 
-              if x.match(/[\_\-\.\'\.\|0-9a-zA-Z]+\+\+/)
-                user = x[/([\_\-\.\'\.\|0-9a-zA-Z]*)\+\+/, 1]
-                if user == @userposting
-                  sendchn("Lol, yeah right.")
-                else
-                  editkarma(@userposting, user, "add")
+        when @bot.bot_config(true).karma
+          if line.match(/^.*[\_\-\.\'\.\|0-9a-zA-Z]+[\+\-]{2}.*/)
+            if @chan != @userposting
+              line.split.each do |x| 
+                if x.match(/[\_\-\.\'\.\|0-9a-zA-Z]+\+\+/)
+                  user = x[/([\_\-\.\'\.\|0-9a-zA-Z]*)\+\+/, 1]
+                  if user == @userposting
+                    sendchn("Lol, yeah right.")
+                  else
+                    editkarma(@userposting, user, "add")
+                  end
+                end
+                if x.match(/[\_\-\.\'\.\|0-9a-zA-Z]+\-\-/)
+                  user = x[/([\_\-\.\'\.\|0-9a-zA-Z]*)\-\-/, 1]
+                  editkarma(@userposting, user, "subtract")
                 end
               end
-              if x.match(/[\_\-\.\'\.\|0-9a-zA-Z]+\-\-/)
-                user = x[/([\_\-\.\'\.\|0-9a-zA-Z]*)\-\-/, 1]
-                editkarma(@userposting, user, "subtract")
-              end
+            else
+              sendchn("Karma can only be assigned in a channel")
             end
-          else
-            sendchn("Karma can only be assigned in a channel")
           end
-        when line.match(/.*\:[\_\-\.\'\.\|0-9a-zA-Z]+\?$/)
-          word_to_echo_def = line[/([\-\_\.0-9a-zA-Z]*)\?/, 1]
-          echo_definition_by_word(word_to_echo_def)
 
+        # Echo definition without calling bot's nick
+        when line.match(/.*\:[\_\-\.\'\.\|0-9a-zA-Z]+\?$/)
+          if @bot.bot_config(true).definitions
+            word_to_echo_def = line[/([\-\_\.0-9a-zA-Z]*)\?/, 1]
+            echo_definition_by_word(word_to_echo_def)
+          end
+
+        # This is broken
         when line.match(/.*#{@nick}\ \:\!op$/)
             send_server("MODE #{@chan} +o #{@userposting}")        
         
+        # Bugzilla link parsing
         when line.match(/.*http[s]*:\/\/[w\.]*bugzilla\.redhat\.com\/show_bug.cgi\?id=[a-zA-Z0-9]+[\ ]*/)
-          url = line[/.*(http[s]*:\/\/[w\.]*bugzilla\.redhat\.com\/show_bug.cgi\?id=[a-zA-Z0-9]+)[\ ]*/, 1]
-          bugzilla(url)
+          if @bot.bot_config(true).bugzilla
+            url = line[/.*(http[s]*:\/\/[w\.]*bugzilla\.redhat\.com\/show_bug.cgi\?id=[a-zA-Z0-9]+)[\ ]*/, 1]
+            bugzilla(url)
+          end
 
+        # Youtube link parsing
         when line.match(/.*http[s]*:\/\/[w\.]*youtube.com\/watch.*/)
-          url = line[/.*(http[s]*:\/\/[w\.]*youtube.com\/watch\?v=[a-zA-Z0-9\-\_]+)[\ ]*/, 1]
-          youtube(url)
+          if @bot.bot_config(true).youtube
+            url = line[/.*(http[s]*:\/\/[w\.]*youtube.com\/watch\?v=[a-zA-Z0-9\-\_]+)[\ ]*/, 1]
+            youtube(url)
+          end
         
+        # Imgur link parsing
         when line.match(/.*http[s]*:\/\/[i\.]*imgur.com\/gallery\/.*/)
-          url = line[/.*(http[s]*:\/\/[i\.]*imgur.com\/gallery\/[a-zA-Z0-9\-\_]+).*/, 1]
-          imgur(url)
-
+          if @bot.bot_config(true).imgur
+            url = line[/.*(http[s]*:\/\/[i\.]*imgur.com\/gallery\/[a-zA-Z0-9\-\_]+).*/, 1]
+            imgur(url)
+          end
         when line.match(/.*http[s]*:\/\/[i\.]*imgur.com\/.*/)
-          url = line[/.*(http[s]*:\/\/[i\.]*imgur.com\/[a-zA-Z0-9\-\_]+).*/, 1]
-          imgur(url)
+          if @bot.bot_config(true).imgur
+            url = line[/.*(http[s]*:\/\/[i\.]*imgur.com\/[a-zA-Z0-9\-\_]+).*/, 1]
+            imgur(url)
+          end
+
+        # http status dogs
+        # This should be a configuration option too
         when line.match(/.*\!http\ [1-5]{1}[0-9]{2}/)
           url = line[/.*\!http\ ([1-5]{1}[0-9]{2})/, 1]
           sendchn("http://httpstatusdogs.com/" + url)

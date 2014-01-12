@@ -24,6 +24,36 @@
         <td><%= text_area_tag :quit_message, @bot.bot_config.quit_message, rows: 1, :class => 'form-control' %></td>
         <td>This message will be displayed when the bot quits from the irc server or channel.<br>  Default: Leaving...</td> 
     </tr>
+    <tr>
+        <td><%= label_tag :definitions, "Enable definitions", :class => 'control-label' %></td>
+        <td><%= select_tag :definitions, options_for_select([["True", true],["False", false]], @bot.bot_config.definitions.to_s), :class => 'form-control' %></td>
+        <td>If set to true, the bot will be able to accept definitions for words and store them. These can be 'echoed' at any time. Disabling this will not delete and definitions already stored.<br>  Default: True.</td> 
+    </tr>
+    <tr>
+        <td><%= label_tag :quotes, "Enable quotes", :class => 'control-label' %></td>
+        <td><%= select_tag :quotes, options_for_select([["True", true],["False", false]], @bot.bot_config.quotes.to_s), :class => 'form-control' %></td>
+        <td>If set to true, the bot will be able to accept quotes from users and store them. These can be 'echoed' at any time. Disabling this will not delete any quotes already stored.<br>  Default: True.</td> 
+    </tr>
+    <tr>
+        <td><%= label_tag :karma, "Enable karma", :class => 'control-label' %></td>
+        <td><%= select_tag :karma, options_for_select([["True", true],["False", false]], @bot.bot_config.karma.to_s), :class => 'form-control' %></td>
+        <td>If set to true, the bot will be able to accept karma additions and subtractions from users and store them. Disabling this will not delete any karma already stored.<br>  Default: True.</td> 
+    </tr>
+    <tr>
+        <td><%= label_tag :youtube, "Enable Youtube link parsing", :class => 'control-label' %></td>
+        <td><%= select_tag :youtube, options_for_select([["True", true],["False", false]], @bot.bot_config.youtube.to_s), :class => 'form-control' %></td>
+        <td>If set to true, the bot will parse youtube links and present the channel with the title, views, and other information about the video.<br>  Default: True.</td> 
+    </tr>
+    <tr>
+        <td><%= label_tag :imgur, "Enable Imgur link parsing", :class => 'control-label' %></td>
+        <td><%= select_tag :imgur, options_for_select([["True", true],["False", false]], @bot.bot_config.imgur.to_s), :class => 'form-control' %></td>
+        <td>If set to true, the bot will parse imgur links and present the channel with the title, score, and other information about the image.<br>  Default: True.</td> 
+    </tr>
+    <tr>
+        <td><%= label_tag :bugzilla, "Enable Bugzilla link parsing", :class => 'control-label' %></td>
+        <td><%= select_tag :bugzilla, options_for_select([["True", true],["False", false]], @bot.bot_config.bugzilla.to_s), :class => 'form-control' %></td>
+        <td>If set to true, the bot will parse bugzilla links and present the channel with the title, status, and other information about the bug.<br>  Default: True.</td> 
+    </tr>
   </tbody>
 </table>
 <div class="col-sm-offset-0">
