@@ -359,6 +359,8 @@ private
   def editkarma(giver, receiver, type)
     #Here we need to parse the db for name, get the number, add one to the number
     #Syntax of the db will be user:number\n
+    receiver.downcase!
+    grantor.downcase!
     recipient = getuser(receiver)
     grantor = @bot.users.find_by_user(giver)
 
