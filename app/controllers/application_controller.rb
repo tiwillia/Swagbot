@@ -53,7 +53,11 @@ class ApplicationController < ActionController::Base
             end
           else
             begin
-              bot.loop() 
+              # Run through the loop
+              # Also check if we should reconnect
+              if bot.loop() == "reconnect"
+                @@bot_controls[bot.id][:queue] << "restart"
+              end
             rescue => exception
               puts exception.backtrace
               puts exception.message

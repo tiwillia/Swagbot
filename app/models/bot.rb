@@ -18,6 +18,7 @@ class Bot < ActiveRecord::Base
   def set_instance_vars
     @timers = Hash.new
     @timers[:karma] = Hash.new
+    @timers[:ping] = Time.now.to_i
     @userposting = "nil"
     @host = self.server
     @port = self.port
@@ -41,9 +42,12 @@ class Bot < ActiveRecord::Base
     send_server "JOIN #{@chan}"
   end
 
+  # Kill the connection
+  # Wait 10 seconds for slow servers
   def kill
     @socket.send(":source QUIT :#{@bot.bot_config(true).quit_message}\n", 0)
     @socket.close
+    sleep 10
   end
 
   # This should return the karmastat and user objects
@@ -231,6 +235,7 @@ class Bot < ActiveRecord::Base
         # It makes sure swagbot doesn't get disconnected
         when line.match(/^PING :(.*)$/)
           send_server "PONG #{$~[1]}"
+          @timers[:ping] = Time.now.to_i 
 
         # Accept invites to channels
         when line.match(/\ INVITE #{@nick}\ \:\#.*/)
@@ -304,6 +309,12 @@ class Bot < ActiveRecord::Base
           url = line[/.*\!http\ ([1-5]{1}[0-9]{2})/, 1]
           sendchn("http://httpstatusdogs.com/" + url)
         end
+    end
+    # If the last ping was greater than 20 minutes ago
+    if (Time.now.to_i - @timers[:ping]) > 1200
+      puts "Last ping was more than 20 minutes ago"
+      @timers[:ping] = (Time.now.to_i - 600)
+      return "reconnect"
     end
     return nil
   end
