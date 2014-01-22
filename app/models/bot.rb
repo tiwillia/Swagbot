@@ -39,7 +39,7 @@ class Bot < ActiveRecord::Base
     if not @nickserv_password == ""
       send_server ":source PRIVMSG userserv :login #{@nick} #{@nickserv_password}"
     end
-    join_chan @chan
+    join_chan @bot.channel
     @bot.bot_config(true).channels.each do |chan|
       join_chan chan
     end
@@ -91,6 +91,9 @@ class Bot < ActiveRecord::Base
   # This is the main loop that uses all the private methods below it.
   def loop()
     line = @socket.gets
+    if line == nil
+      return "connection lost"
+    end
     line = line.strip
     puts line 
 

@@ -55,7 +55,12 @@ class ApplicationController < ActionController::Base
             begin
               # Run through the loop
               # Also check if we should reconnect
-              if bot.loop() == "reconnect"
+              case bot.loop()
+              when "reconnect"
+                @@bot_controls[bot.id][:queue] << "restart"
+              when "connection lost"
+                puts "Lost connection... waiting 30 seconds and retrying."
+                sleep 30
                 @@bot_controls[bot.id][:queue] << "restart"
               end
             rescue => exception
