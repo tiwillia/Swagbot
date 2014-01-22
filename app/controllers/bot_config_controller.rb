@@ -7,7 +7,9 @@ class BotConfigController < ApplicationController
   
   def update
     @bot = Bot.find(params[:id])
-    if @bot.bot_config.update_attributes(config_params)
+    parsed_params = config_params
+    parsed_params[:channels] = config_params[:channels].split(",")
+    if @bot.bot_config.update_attributes(parsed_params)
       flash[:success] = @bot.nick + ' was successfully updated.'
       redirect_to @bot
     else
@@ -18,7 +20,7 @@ class BotConfigController < ApplicationController
 
 private
   def config_params
-    params.permit(:karma, :quotes, :definitions, :youtube, :bugzilla, :imgur, :quit_message, :karma_timeout, :echo_all_definitions, :id)
+    params.permit(:karma, :quotes, :definitions, :youtube, :bugzilla, :imgur, :quit_message, :karma_timeout, :echo_all_definitions, :id, :channels)
   end
 
 end

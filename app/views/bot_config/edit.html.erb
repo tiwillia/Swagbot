@@ -15,6 +15,11 @@
         <td>This value defines how long a user must wait after changing another user's karma, before changing that user's karma again.<br>  Default: 5 seconds.</td>
     </tr>
     <tr>
+        <td><%= label_tag :channels, "Additional Channels", :class => 'control-label' %></td>
+        <td><%= text_field_tag :channels, @bot.bot_config.channels.join(","), :class => 'form-control' %></td>
+        <td>Comma seperated list of all channels the bot should auto-join.<br>  Default: <%= @bot.channel %></td> 
+    </tr>
+    <tr>
         <td><%= label_tag :echo_all_definitions, "Report all definitions", :class => 'control-label' %></td>
         <td><%= select_tag :echo_all_definitions, options_for_select([["True", true],["False", false]], @bot.bot_config.echo_all_definitions.to_s), :class => 'form-control' %></td>
         <td>If set to true, the bot will echo all definitions a word has been given when asked. If set to false, the bot will echo a random definition of a word when asked.<br>  Default: True.</td> 

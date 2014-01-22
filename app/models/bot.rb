@@ -39,7 +39,10 @@ class Bot < ActiveRecord::Base
     if not @nickserv_password == ""
       send_server ":source PRIVMSG userserv :login #{@nick} #{@nickserv_password}"
     end
-    send_server "JOIN #{@chan}"
+    join_chan @chan
+    @bot.bot_config(true).channels.each do |chan|
+      join_chan chan
+    end
   end
 
   # Kill the connection
@@ -129,6 +132,16 @@ class Bot < ActiveRecord::Base
         else
             leave_chan(@chan)
         end
+      
+      # Add channel to the auto-join list
+      when params.match(/^add-channel/)
+        channel_to_add = params[/^add-channel (.*)/, 1]
+        add_auto_join_chan(channel_to_add)
+
+      # Remove channel to the auto-join list
+      when params.match(/^remove-channel/)
+        channel_to_remove = params[/^remove-channel (.*)/, 1]
+        remove_auto_join_chan(channel_to_remove)
 
       # Defintions
       when @bot.bot_config(true).definitions
@@ -328,18 +341,54 @@ private
     @socket.send ":source PRIVMSG #{@chan} :#{msg}\n" , 0
   end
 
+  # Send non-formatted messages to the server
+  # This is best for diagnostic and manual commands
   def send_server(msg)
     @socket.send "#{msg}\n", 0
   end
 
+  # Join a channel
   def join_chan(chan)
     send_server ":source JOIN #{chan}"
   end
-  
+ 
+  # Add a channel to the auto-join list
+  def add_auto_join_chan(chan)
+    if not chan.match(/^\#/)
+      chan = "#" + chan
+    end
+    if @bot.bot_config(true).channels.include? chan
+      sendchn "#{chan} is already set to be auto-joined."
+    else
+      new_channels = @bot.bot_config(true).channels.push(chan)
+      @bot.bot_config.update_attribute(:channels, new_channels)
+      sendchn "#{chan} will be auto-joined the next time #{@nick} is started."
+      sendchn "Use '#{@nick}, join #{chan}' to join #{chan} now."
+    end
+  end
+
+  # Remove a channel to the auto-join list
+  def remove_auto_join_chan(chan)
+    if not chan.match(/^\#/)
+      chan = "#" + chan
+    end
+    if @bot.bot_config(true).channels.include? chan
+      new_channels = @bot.bot_config(true).channels.select {|c|
+        !c.match(/#{chan}/)
+      }
+      @bot.bot_config.update_attribute(:channels, new_channels)
+      sendchn "#{chan} will no longer be auto-joined."
+    else
+      sendchn "#{chan} is not in the auto-join list."
+    end
+  end
+ 
+  # Leave a channel
   def leave_chan(chan)
     send_server ":source PART #{chan}"
   end
 
+  # Generate random number seq characters long
   def rdnum(seq)
     today = DateTime.now
     seed = today.strftime(format='%3N').to_i
@@ -371,7 +420,7 @@ private
     #Here we need to parse the db for name, get the number, add one to the number
     #Syntax of the db will be user:number\n
     receiver.downcase!
-    grantor.downcase!
+    giver.downcase!
     recipient = getuser(receiver)
     grantor = @bot.users.find_by_user(giver)
 
