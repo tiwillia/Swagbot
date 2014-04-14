@@ -34,7 +34,12 @@ class ApplicationController < ActionController::Base
                  }
         Rails.logger.info "Creating new bot thread, details:"
         Rails.logger.info params.inspect
-        bot.connect()
+        begin
+          bot.connect()
+        rescue => exception
+          Rails.logger.error exception.message
+          Rails.logger.error exception.backtrace
+        end
         Rails.logger.info "Bot started: " + bot.inspect
         @@bot_controls[bot.id][:state] = "running"
         loop {
