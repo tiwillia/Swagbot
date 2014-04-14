@@ -32,8 +32,10 @@ class ApplicationController < ActionController::Base
                     :nickserv_password => bot.nickserv_password,
                     :bot => bot
                  }
+        Rails.logger.info "Creating new bot thread, details:"
+        Rails.logger.info params.inspect
         bot.connect()
-        puts "bot started: " + bot.inspect
+        Rails.logger.info "Bot started: " + bot.inspect
         @@bot_controls[bot.id][:state] = "running"
         loop {
           command = @@bot_controls[bot.id][:queue].pop(true) rescue nil
@@ -59,13 +61,13 @@ class ApplicationController < ActionController::Base
               when "reconnect"
                 @@bot_controls[bot.id][:queue] << "restart"
               when "connection lost"
-                puts "Lost connection... waiting 30 seconds and retrying."
+                Rails.logger.error "Lost connection... waiting 30 seconds and retrying."
                 sleep 30
                 @@bot_controls[bot.id][:queue] << "restart"
               end
             rescue => exception
-              puts exception.backtrace
-              puts exception.message
+              Rails.logger.error exception.message
+              Rails.logger.error exception.backtrace
             end
           end
         }
