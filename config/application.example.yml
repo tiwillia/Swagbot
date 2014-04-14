@@ -1,2 +1,9 @@
+# Configuration goes here in YAML
+# These can be called in code with CONFIG[:key]
+project_name: "Swagbot"
 karma_timeout: 5
 nickserv_password: "swagswag"
+bugzilla_username: "email@example.com"
+bugzilla_password: "somePassword"
+google_api_key: "ASD98aASDfg23AG3GA34AGAfgh22asdf"
+imgur_client_id: "asdfasdfasdf"

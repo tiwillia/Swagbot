@@ -8,6 +8,7 @@ class Swagbot
 
 require 'socket'
 require 'open-uri'
+require 'net/http'
 require 'json/ext'
 require 'rubygems'
 require 'active_record'
@@ -95,6 +96,27 @@ def rdnum(seq)
   seed = today.strftime(format='%3N').to_i
   prng = Random.new(seed)
   prng.rand(1..seq)
+end
+
+# This should go out to 'url' and just run a get request, returning the response.
+# usernamd + password should be optional
+def get_request(args)
+  if args[:url].nil?
+    return false
+  else
+    url = args[:url]
+  end
+  encoded_url = URI.encode(url)
+  uri = URI.parse(encoded_url)
+  http = Net::HTTP.new(uri.host, uri.port)
+  http.use_ssl = true
+  request = Net::HTTP::Get.new(uri.request_uri)
+  if !args[:username].nil? && !args[:password].nil?
+    request.basic_auth(args[:username], args[:password])
+  end
+  request.initialize_http_header(args[:headers]) unless args[:headers].nil?
+  response = http.request(request)
+  response
 end
 
 # Add or subtract Karma
@@ -234,35 +256,48 @@ def echo_quote_by_id(id)
 end
 
 # This will grab the title and possibly description of a bugzilla link and display it
+# https://bugzilla.redhat.com/docs/en/html/api/
 def bugzilla(url)
-  doc = Nokogiri::HTML(open(url))
-  number = url.split("=").last
-  title = doc.xpath('//span[@id="short_desc_nonedit_display"]/text()')
-  status = doc.xpath('//span[@id="static_bug_status"]/text()')
-  sendchn("Bugzilla: ##{number} \"#{title}\" : #{status}")
+  number = url[/([0-9]{6-8})/, 1]
+  response = get_request(:url => "https://bugzilla.redhat.com/jsonrpc.cgi?method=Bug.get&params=[{\"ids\":#{number}}]", :username => CONFIG[:bugzilla_username], :password => CONFIG[:bugzilla_password])
+  body = JSON.parse(response.body)
+  title = body["result"]["bugs"][0]["summary"]
+  status = body["result"]["bugs"][0]["status"]
+  product = body["result"]["bugs"][0]["product"]
+  sendchn("Bugzilla: ##{number} \"#{title}\" : #{status} : #{product}")
 end
 
 # This will grab the title of a youtube link and display it
+# https://developers.google.com/youtube/
 def youtube(url)
-  doc = Nokogiri::HTML(open(url))
-  title = doc.xpath('//span[@id="eow-title"]/@title')
-  views = doc.css('span.watch-view-count').first.content.strip
-  sendchn("Youtube: \"#{title}\" : #{views} views")
+  video_id = url[/youtube.com\/watch\?v=([a-zA-Z0-9\-\_]+)/, 1]
+  google_api_key = CONFIG[:google_api_key]
+  response = get_request(:url => "https://www.googleapis.com/youtube/v3/videos?id=#{video_id}&key=#{google_api_key}&part=snippet,contentDetails,statistics")
+  body = JSON.parse(response.body)
+  title = body["items"][0]["snippet"]["title"]
+  duration = body["items"][0]["contentDetails"]["duration"]
+  views = body["items"][0]["statistics"]["viewCount"]
+  minutes = duration[/PT([0-9]+)M([0-9]+)S/, 1]
+  seconds = duration[/PT([0-9]+)M([0-9]+)S/, 2]
+  duration = "#{minutes}:#{seconds}"
+  sendchn("Youtube: \"#{title}\" | #{duration} | #{views} views")
 end
 
 # This will grab the title of an imgur link and display it
+# https://api.imgur.com/
 def imgur(url)
-  doc = Nokogiri::HTML(open(url)) rescue nil
-  img_id = url.split("/").last
-  title = doc.xpath('//h2[@id="image-title"]/text()')
-  time = doc.xpath('//span[@id="nicetime"]/text()')
-  if time.empty?
-    time = doc.xpath('//div[@id="stats-submit-date"]/text()')
-    time = time.text.strip.gsub(/\ (\ +)/,"").gsub("\n", " ")
+  image_id = url.split("/").last
+  imgur_client_id = CONFIG[:imgur_client_id]
+  response = get_request(:url => "https://api.imgur.com/3/image/#{image_id}", :headers => {"Authorization" => "Client-ID"+imgur_client_id})
+  body = JSON.parse(response.body)
+  title = body["data"]["title"]
+  views = body["data"]["views"].to_s
+  size = body["data"]["width"].to_s + "x" + body["data"]["height"].to_s
+  if body["data"]["nsfd"] == false
+    sendchn("Imgur: \"#{title}\" | #{size} | #{views} views")
   else
-    time = "Submitted #{time}"
+    sendchn("Imgur: \"#{title}\" | #{size} | #{views} views | NSFW")
   end
-  sendchn("Imgur: \"#{title}\" #{time}")
 end
 
 # Definitions can be accessed with the echo_definition method
