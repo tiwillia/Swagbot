@@ -230,15 +230,13 @@ class Bot < ActiveRecord::Base
       ##### KARMA RANKS
       
       # Echo karma ranks
-      when @bot.bot_config(true).karma
-        if params.match(/^rank.*/)
-          if params.eql?("rank")
-            rank
-          elsif params.match("rank\ [a-zA-Z0-9\.\-\_\|]+")
-            user_to_rank = params[/rank\ (.*)/, 1]
-            rank(user_to_rank)
-          end 
-        end
+      when params.match(/^rank.*/) && karma?
+        if params.eql?("rank")
+          rank
+        elsif params.match("rank\ [a-zA-Z0-9\.\-\_\|]+")
+          user_to_rank = params[/rank\ (.*)/, 1]
+          rank(user_to_rank)
+        end 
       
       # Weather reporting
       when params.eql?("weather")
@@ -260,19 +258,19 @@ class Bot < ActiveRecord::Base
           case 
           when  params.eql?("help")
             sendchn("#{@nick}: help [command]")
-            sendchn("#{@nick}: <noun> is <definition>")
-            sendchn("#{@nick}: <noun>?")
-            sendchn("#{@nick}: addquote <name> <quote WITHOUT \"\">")
-            sendchn("#{@nick}: quote [name]")
-            sendchn("<name>++")
-            sendchn("<name>--")
-            sendchn("#{@nick} rank")
-            sendchn("#{@nick} rank <name>")
+            sendchn("#{@nick}: <noun> is <definition>") unless !definitions?
+            sendchn("#{@nick}: <noun>?") unless !definitions?
+            sendchn("#{@nick}: addquote <name> <quote WITHOUT \"\">") unless !quotes?
+            sendchn("#{@nick}: quote [name]") unless !quotes?
+            sendchn("<name>++") unless !karma?
+            sendchn("<name>--") unless !karma?
+            sendchn("#{@nick} rank") unless !karma?
+            sendchn("#{@nick} rank <name>") unless !karma?
             sendchn("#{@nick}: time")
             sendchn("#{@nick}: weather")
             sendchn("#{@nick}: leave")
             sendchn("#{@nick}: join <#channel>")                                        
-          when params.eql?("help addquote")
+          when params.eql?("help addquote") unless !quotes?
             sendchn("Usage: #{@nick}: addquote <name> <quote WITHOUT \"\">")
             sendchn("Adds a quote to the quote database")
             sendchn("Quotes can be recalled with #{@nick}: quote [name]")                                    when params.eql?("help quote")
@@ -703,14 +701,15 @@ private
     imgur_client_id = CONFIG[:imgur_client_id]
     response = get_request(:url => "https://api.imgur.com/3/image/#{image_id}", :headers => {"Authorization" => "Client-ID "+imgur_client_id})
     body = JSON.parse(response.body)
+    Rails.logger.debug "IMGUR RESPONSE: #{response.body.to_s}"
     title = body["data"]["title"]
     views = body["data"]["views"].to_s
     size = body["data"]["width"].to_s + "x" + body["data"]["height"].to_s
-    if body["data"]["nsfw"] == false
-      sendchn("Imgur: \"#{title}\" | #{size} | #{views} views")
-    else
-      sendchn("Imgur: \"#{title}\" | #{size} | #{views} views | NSFW")
-    end
+    string = "Imgur:"
+    string = string+" \"#{title}\" |" unless title.nil?
+    string = string + " #{size} | #{views} views"
+    string = string + " | NSFW" unless body["data"]["nsfw"] == false
+    sendchn(string)
   end
 
 end

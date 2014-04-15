@@ -20,7 +20,7 @@ development:
   timeout: 5000
   encoding: utf8
 
-development:
+test:
   adapter: postgresql
   database: swagbot_test
   username: tiwillia
