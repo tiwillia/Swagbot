@@ -270,17 +270,18 @@ class Bot < ActiveRecord::Base
             sendchn("#{@nick}: weather")
             sendchn("#{@nick}: leave")
             sendchn("#{@nick}: join <#channel>")                                        
-          when params.eql?("help addquote") unless !quotes?
+          when params.eql?("help addquote")
             sendchn("Usage: #{@nick}: addquote <name> <quote WITHOUT \"\">")
             sendchn("Adds a quote to the quote database")
-            sendchn("Quotes can be recalled with #{@nick}: quote [name]")                                    when params.eql?("help quote")
+            sendchn("Quotes can be recalled with #{@nick}: quote [name]")                                    
+          when params.eql?("help quote")
             sendchn("Usage: #{@nick}: quote [name]")
             sendchn("Returns a quote from the quote database")
-            sendchn("If no name is supplied, a random quote will be returned")                               when params.eql?("help time")
+            sendchn("If no name is supplied, a random quote will be returned")                               
+          when params.eql?("help time")
             sendchn("I don't know why you want help with this one #{@userposting}...")
-            sendchn("It was more of a way to test getting the time")
-            sendchn("Eventually, the time will be used for other commands")                                  when params.eql?("help weather")
-            sendchn("PLACEHOLDER")                               
+          when params.eql?("help weather")
+            sendchn("Weather is hardcoded to a zip code. Get used to it or kick me, IDGAF.")                               
           end
         end
       else
