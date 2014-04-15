@@ -20,11 +20,17 @@ postgresql: &postgresql
   min_messages: ERROR
   reconnect: false
 
+postgresql: &postgresql-dev
+  adapter: postgresql
+  database: swagbot_development
+  username: tiwillia
+  password: password
+
 defaults: &defaults
   pool: 5
   timeout: 5000
   encoding: utf8
-  <<: *<%= ENV['RAILS_DB'] || "sqlite" %>
+  <<: *<%= ENV['RAILS_DB'] || "postgresql-dev" %>
 
 development:
   <<: *defaults

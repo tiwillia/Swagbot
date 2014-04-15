@@ -11,7 +11,6 @@ class Bot < ActiveRecord::Base
   require 'socket'
   require 'open-uri'
   require 'json/ext'
-  require 'nokogiri'
   
   after_initialize :set_instance_vars
 
@@ -52,6 +51,34 @@ class Bot < ActiveRecord::Base
     @socket.close
     sleep 10
   end
+
+  ##### CONFIGURATIONS
+  
+  def definitions?
+    @bot.bot_config(true).definitions
+  end
+
+  def quotes?
+    @bot.bot_config(true).quotes
+  end
+
+  def karma?
+    @bot.bot_config(true).karma
+  end
+
+  def youtube?
+    @bot.bot_config(true).youtube
+  end
+
+  def imgur?
+    @bot.bot_config(true).imgur
+  end
+
+  def bugzilla?
+    @bot.bot_config(true).bugzilla
+  end
+
+  ##### END CONFIGURATIONS
 
   # This should return the karmastat and user objects
   # of the top 5 karma recipients or a single recipient
@@ -95,7 +122,6 @@ class Bot < ActiveRecord::Base
       return "connection lost"
     end
     line = line.strip
-    puts line 
 
     # Grab the nick of the @userposting
     @userposting = line[/^:([\|\.\-0-9a-zA-Z]*)!/, 1]
@@ -104,16 +130,24 @@ class Bot < ActiveRecord::Base
     else
       @chan = line[/\ (#[\|\.\-0-9a-zA-Z]*)\ :/, 1]
     end
+
+    Rails.logger.debug "######### MESSAGE ###########"
+    Rails.logger.debug line
+    Rails.logger.debug "User Posting: #{@userposting}"
+    Rails.logger.debug "Channel: #{@chan}"
     
     # Ignore unifiedbot
     # This should be removed when the configuration to add an ignore list is implemented
     if @userposting.eql?("unifiedbot")
+      Rails.logger.debug "Message from ignored user, ignoring message"
+      Rails.logger.debug "######### END MESSAGE ###########"
       return
     end
 
     # Add the user to the users table if they do not exist
     if not @userposting.blank?
       if @bot.users.where(user: @userposting).blank?
+        Rails.logger.debug "Added user to database"
         new_user = @bot.users.create(user: @userposting)
         new_user.save
       end 
@@ -121,72 +155,79 @@ class Bot < ActiveRecord::Base
 
     if line.match(/.*\:#{@nick}[\,\:\ ]+.*/i) then
       params = line[/.*\:#{@nick}[\,\:\ ]+(.*)/i, 1]
+      Rails.logger.debug "Parameter included: #{params}"
       case
 
       # Join a channel
       when params.match(/^join\ \#[\-\_\.\'0-9a-zA-Z]+/)
         channel_to_join = params[/^join\ (\#[\-\_\.\'0-9a-zA-Z]+)/, 1]
+        Rails.logger.debug "Joining channel #{channel_to_join}"
         join_chan(channel_to_join)
 
       # Leave current channel
       when params.match(/^leave/)
         if @chan == @userposting
+          Rails.logger.debug "Private leave message, this is incorrect"
           sendchn("Say it in the channel you want me to leave.")
         else
-            leave_chan(@chan)
+          Rails.logger.debug "Instructed to leave #{@chan}, leaving..."
+          leave_chan(@chan)
         end
       
       # Add channel to the auto-join list
       when params.match(/^add-channel/)
         channel_to_add = params[/^add-channel (.*)/, 1]
+        Rails.logger.debug "Adding channel #{channel_to_add} to the auto-join list"
         add_auto_join_chan(channel_to_add)
 
       # Remove channel to the auto-join list
       when params.match(/^remove-channel/)
         channel_to_remove = params[/^remove-channel (.*)/, 1]
+        Rails.logger.debug "Removing channel #{channel_to_remove} from the auto-join list"
         remove_auto_join_chan(channel_to_remove)
 
-      # Defintions
-      when @bot.bot_config(true).definitions
-        case
-          # Add a definition
-          when params.match(/^[\-\_\.\'\.0-9a-zA-Z]*\ is\ .*/)
-            word_to_define = params[/([\-\_\.\'0-9a-zA-Z]*)\ is/, 1]
-            definition = params[/[\-\_\ \.\'0-9a-zA-Z]*\ is\ (.*)/, 1]
-            add_definition(word_to_define, definition, @userposting)
-
-          # Echo definition by word
-          when params.match(/^[\-\_\.0-9a-zA-Z]*\?/)
-            if not @bot.definitions.count.zero?
-              word_to_echo_def = params[/([\-\_\.0-9a-zA-Z]*)?/, 1]
-              echo_definition_by_word(word_to_echo_def)
-            end
-
-          # Forget a definition
-          when params.match(/^forget\ [\-\_\ 0-9a-zA-Z]*/)
-            word_to_forget = params[/forget\ ([\-\_\ 0-9a-zA-Z]*)/, 1]
-            forget_definition(word_to_forget)
-        end
-
-      # Quotes
-      when @bot.bot_config(true).quotes
-        case
-          # Add a quote
-          when params.match(/^addquote.*/)
-            user_to_quote = line[/addquote\ ([0-9a-zA-Z\-\_\.\|]+)\ .*/, 1]
-            new_quote = line[/addquote\ [0-9a-zA-Z\-\_\.\|]+\ (.*)/, 1]
-            addquote(@userposting, user_to_quote, new_quote)  
+      ##### DEFINITONS
       
-          # Echo a quote
-          when params.match(/^quote.*/)
-            if params.match(/quote\ [0-9]+$/)
-              echo_quote_by_id(params[/quote\ (.*)/, 1])
-            elsif params.match(/quote\ [a-zA-Z0-9\.\_\-\|]+/)
-              echo_quote_by_user(params[/quote\ (.*)/, 1])
-            else
-              echo_random_quote(@chan) 
-            end
+      # Add a definition
+      when params.match(/^[\-\_\.\'\.0-9a-zA-Z]*\ is\ .*/) && definitions?
+        word_to_define = params[/([\-\_\.\'0-9a-zA-Z]*)\ is/, 1]
+        definition = params[/[\-\_\ \.\'0-9a-zA-Z]*\ is\ (.*)/, 1]
+        add_definition(word_to_define, definition, @userposting)
+
+      # Echo definition by word
+      when params.match(/^[\-\_\.0-9a-zA-Z]*\?/) && definitions?
+        if not @bot.definitions.count.zero?
+          word_to_echo_def = params[/([\-\_\.0-9a-zA-Z]*)?/, 1]
+          echo_definition_by_word(word_to_echo_def)
         end
+
+      # Forget a definition
+      when params.match(/^forget\ [\-\_\ 0-9a-zA-Z]*/) && definitions?
+        word_to_forget = params[/forget\ ([\-\_\ 0-9a-zA-Z]*)/, 1]
+        forget_definition(word_to_forget)
+
+      ##### QUOTES
+
+      # Add a quote
+      when params.match(/^addquote.*/) && quotes?
+        user_to_quote = line[/addquote\ ([0-9a-zA-Z\-\_\.\|]+)\ .*/, 1]
+        new_quote = line[/addquote\ [0-9a-zA-Z\-\_\.\|]+\ (.*)/, 1]
+        addquote(@userposting, user_to_quote, new_quote)  
+  
+      # Echo a quote
+      when params.match(/^quote.*/) && quotes?
+        Rails.logger.debug "Echoing quote, looking for type..."
+        if params.match(/quote\ [0-9]+$/)
+          quote_id = params[/quote\ (.*)/, 1]
+          Rails.logger.debug "Echoing quote by id: #{quote_id}"
+          echo_quote_by_id(quote_id)
+        elsif params.match(/quote\ [a-zA-Z0-9\.\_\-\|]+/)
+          echo_quote_by_user(params[/quote\ (.*)/, 1])
+        else
+          echo_random_quote(@chan) 
+        end
+
+      ##### KARMA RANKS
       
       # Echo karma ranks
       when @bot.bot_config(true).karma
@@ -245,7 +286,7 @@ class Bot < ActiveRecord::Base
           end
         end
       else
-        puts line
+        Rails.logger.debug "Does not include a param, treating as non-command"
         case
         # This one is super important
         # It makes sure swagbot doesn't get disconnected
@@ -260,64 +301,52 @@ class Bot < ActiveRecord::Base
           sendchn("I was invited here by #{@userposting}. If I am not welcome type \"#{@nick} leave\"")
         
         # Karma assignments
-        when @bot.bot_config(true).karma
-          if line.match(/^.*[\_\-\.\'\.\|0-9a-zA-Z]+[\+\-]{2}.*/)
-            if @chan != @userposting
-              line.split.each do |x| 
-                if x.match(/[\_\-\.\'\.\|0-9a-zA-Z]+\+\+/)
-                  user = x[/([\_\-\.\'\.\|0-9a-zA-Z]*)\+\+/, 1]
-                  if user == @userposting
-                    sendchn("Lol, yeah right.")
-                  else
-                    editkarma(@userposting, user, "add")
-                  end
-                end
-                if x.match(/[\_\-\.\'\.\|0-9a-zA-Z]+\-\-/)
-                  user = x[/([\_\-\.\'\.\|0-9a-zA-Z]*)\-\-/, 1]
-                  editkarma(@userposting, user, "subtract")
+        when line.match(/^.*[\_\-\.\'\.\|0-9a-zA-Z]+[\+\-]{2}.*/) && karma?
+          if @chan != @userposting
+            line.split.each do |x| 
+              if x.match(/[\_\-\.\'\.\|0-9a-zA-Z]+\+\+/)
+                user = x[/([\_\-\.\'\.\|0-9a-zA-Z]*)\+\+/, 1]
+                if user == @userposting
+                  sendchn("Lol, yeah right.")
+                else
+                  editkarma(@userposting, user, "add")
                 end
               end
-            else
-              sendchn("Karma can only be assigned in a channel")
+              if x.match(/[\_\-\.\'\.\|0-9a-zA-Z]+\-\-/)
+                user = x[/([\_\-\.\'\.\|0-9a-zA-Z]*)\-\-/, 1]
+                editkarma(@userposting, user, "subtract")
+              end
             end
+          else
+            sendchn("Karma can only be assigned in a channel")
           end
 
         # Echo definition without calling bot's nick
-        when line.match(/.*\:[\_\-\.\'\.\|0-9a-zA-Z]+\?$/)
-          if @bot.bot_config(true).definitions
-            word_to_echo_def = line[/([\-\_\.0-9a-zA-Z]*)\?/, 1]
-            echo_definition_by_word(word_to_echo_def)
-          end
+        when line.match(/.*\:[\_\-\.\'\.\|0-9a-zA-Z]+\?$/) && definitions?
+          word_to_echo_def = line[/([\-\_\.0-9a-zA-Z]*)\?/, 1]
+          echo_definition_by_word(word_to_echo_def)
 
         # This is broken
         when line.match(/.*#{@nick}\ \:\!op$/)
-            send_server("MODE #{@chan} +o #{@userposting}")        
+          send_server("MODE #{@chan} +o #{@userposting}")        
         
         # Bugzilla link parsing
-        when line.match(/.*http[s]*:\/\/[w\.]*bugzilla\.redhat\.com\/show_bug.cgi\?id=[a-zA-Z0-9]+[\ ]*/)
-          if @bot.bot_config(true).bugzilla
-            url = line[/.*(http[s]*:\/\/[w\.]*bugzilla\.redhat\.com\/show_bug.cgi\?id=[a-zA-Z0-9]+)[\ ]*/, 1]
-            bugzilla(url)
-          end
+        when line.match(/.*http[s]*:\/\/[w\.]*bugzilla\.redhat\.com\/show_bug.cgi\?id=[a-zA-Z0-9]+[\ ]*/) && bugzilla?
+          url = line[/.*(http[s]*:\/\/[w\.]*bugzilla\.redhat\.com\/show_bug.cgi\?id=[a-zA-Z0-9]+)[\ ]*/, 1]
+          bugzilla(url)
 
         # Youtube link parsing
-        when line.match(/.*http[s]*:\/\/[w\.]*youtube.com\/watch.*/)
-          if @bot.bot_config(true).youtube
-            url = line[/.*(http[s]*:\/\/[w\.]*youtube.com\/watch\?v=[a-zA-Z0-9\-\_]+)[\ ]*/, 1]
-            youtube(url)
-          end
+        when line.match(/.*http[s]*:\/\/[w\.]*youtube.com\/watch.*/) && youtube?
+          url = line[/.*(http[s]*:\/\/[w\.]*youtube.com\/watch\?v=[a-zA-Z0-9\-\_]+)[\ ]*/, 1]
+          youtube(url)
         
         # Imgur link parsing
-        when line.match(/.*http[s]*:\/\/[i\.]*imgur.com\/gallery\/.*/)
-          if @bot.bot_config(true).imgur
-            url = line[/.*(http[s]*:\/\/[i\.]*imgur.com\/gallery\/[a-zA-Z0-9\-\_]+).*/, 1]
-            imgur(url)
-          end
-        when line.match(/.*http[s]*:\/\/[i\.]*imgur.com\/.*/)
-          if @bot.bot_config(true).imgur
-            url = line[/.*(http[s]*:\/\/[i\.]*imgur.com\/[a-zA-Z0-9\-\_]+).*/, 1]
-            imgur(url)
-          end
+        when line.match(/.*http[s]*:\/\/[i\.]*imgur.com\/gallery\/.*/) && imgur?
+          url = line[/.*(http[s]*:\/\/[i\.]*imgur.com\/gallery\/[a-zA-Z0-9\-\_]+).*/, 1]
+          imgur(url)
+        when line.match(/.*http[s]*:\/\/[i\.]*imgur.com\/.*/) && imgur?
+          url = line[/.*(http[s]*:\/\/[i\.]*imgur.com\/[a-zA-Z0-9\-\_]+).*/, 1]
+          imgur(url)
 
         # http status dogs
         # This should be a configuration option too
@@ -326,6 +355,9 @@ class Bot < ActiveRecord::Base
           sendchn("http://httpstatusdogs.com/" + url)
         end
     end
+
+    Rails.logger.debug "######### END MESSAGE ###########"
+
     # If the last ping was greater than 20 minutes ago
     if (Time.now.to_i - @timers[:ping]) > 1200
       puts "Last ping was more than 20 minutes ago"
@@ -613,36 +645,72 @@ private
 
 #### WEB_PARSING ####
 
+  # This should go out to 'url' and just run a get request, returning the response.
+  # parameters:
+  #   :url (string, required), :username (string), :password (string), :headers (hash)
+  def get_request(args)
+    if args[:url].nil?
+      return false
+    else
+      url = args[:url]
+    end
+    encoded_url = URI.encode(url)
+    uri = URI.parse(encoded_url)
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    request = Net::HTTP::Get.new(uri.request_uri)
+    if !args[:username].nil? && !args[:password].nil?
+      request.basic_auth(args[:username], args[:password])
+    end
+    request.initialize_http_header(args[:headers]) unless args[:headers].nil?
+    response = http.request(request)
+    response
+  end
+
+
   # This will grab the title and possibly description of a bugzilla link and display it
+  # https://bugzilla.redhat.com/docs/en/html/api/
   def bugzilla(url)
-    doc = Nokogiri::HTML(open(url))
-    number = url.split("=").last
-    title = doc.xpath('//span[@id="short_desc_nonedit_display"]/text()')
-    status = doc.xpath('//span[@id="static_bug_status"]/text()')
-    sendchn("Bugzilla: ##{number} \"#{title}\" : #{status}")
+    number = url[/([0-9]{6,8})/, 1]
+    response = get_request(:url => 'https://bugzilla.redhat.com/jsonrpc.cgi?method=Bug.get&params=[{"ids":'+number+'}]', :username => CONFIG[:bugzilla_username], :password => CONFIG[:bugzilla_password])
+    body = JSON.parse(response.body)
+    title = body["result"]["bugs"][0]["summary"]
+    status = body["result"]["bugs"][0]["status"]
+    product = body["result"]["bugs"][0]["product"]
+    sendchn("Bugzilla: ##{number} \"#{title}\" : #{status} : #{product}")
   end
 
   # This will grab the title of a youtube link and display it
+  # https://developers.google.com/youtube/
   def youtube(url)
-    doc = Nokogiri::HTML(open(url))
-    title = doc.xpath('//span[@id="eow-title"]/@title')
-    views = doc.css('span.watch-view-count').first.content.strip
-    sendchn("Youtube: \"#{title}\" : #{views} views")
+    video_id = url[/youtube.com\/watch\?v=([a-zA-Z0-9\-\_]+)/, 1]
+    google_api_key = CONFIG[:google_api_key]
+    response = get_request(:url => "https://www.googleapis.com/youtube/v3/videos?id=#{video_id}&key=#{google_api_key}&part=snippet,contentDetails,statistics")
+    body = JSON.parse(response.body)
+    title = body["items"][0]["snippet"]["title"]
+    duration = body["items"][0]["contentDetails"]["duration"]
+    views = body["items"][0]["statistics"]["viewCount"]
+    minutes = duration[/PT([0-9]+)M([0-9]+)S/, 1]
+    seconds = duration[/PT([0-9]+)M([0-9]+)S/, 2]
+    duration = "#{minutes}:#{seconds}"
+    sendchn("Youtube: \"#{title}\" | #{duration} | #{views} views")
   end
 
   # This will grab the title of an imgur link and display it
+  # https://api.imgur.com/
   def imgur(url)
-    doc = Nokogiri::HTML(open(url)) rescue nil
-    img_id = url.split("/").last
-    title = doc.xpath('//h2[@id="image-title"]/text()')
-    time = doc.xpath('//span[@id="nicetime"]/text()')
-    if time.empty?
-      time = doc.xpath('//div[@id="stats-submit-date"]/text()')
-      time = time.text.strip.gsub(/\ (\ +)/,"").gsub("\n", " ")
+    image_id = url.split("/").last
+    imgur_client_id = CONFIG[:imgur_client_id]
+    response = get_request(:url => "https://api.imgur.com/3/image/#{image_id}", :headers => {"Authorization" => "Client-ID "+imgur_client_id})
+    body = JSON.parse(response.body)
+    title = body["data"]["title"]
+    views = body["data"]["views"].to_s
+    size = body["data"]["width"].to_s + "x" + body["data"]["height"].to_s
+    if body["data"]["nsfw"] == false
+      sendchn("Imgur: \"#{title}\" | #{size} | #{views} views")
     else
-      time = "Submitted #{time}"
+      sendchn("Imgur: \"#{title}\" | #{size} | #{views} views | NSFW")
     end
-    sendchn("Imgur: \"#{title}\" #{time}")
   end
 
 end
