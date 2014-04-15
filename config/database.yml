@@ -1,16 +1,4 @@
-sqlite: &sqlite
-  adapter: sqlite3
-  database: db/<%= Rails.env %>.sqlite3
-
-mysql: &mysql
-  adapter: mysql2
-  database: "<%=ENV['OPENSHIFT_APP_NAME']%>"
-  username: "<%=ENV['OPENSHIFT_MYSQL_DB_USERNAME']%>"
-  password: "<%=ENV['OPENSHIFT_MYSQL_DB_PASSWORD']%>"
-  host:     <%=ENV['OPENSHIFT_MYSQL_DB_HOST']%>
-  port:     <%=ENV['OPENSHIFT_MYSQL_DB_PORT']%>
-
-postgresql: &postgresql
+production:
   adapter: postgresql
   database: <%=ENV['OPENSHIFT_APP_NAME']%>
   username: <%=ENV['OPENSHIFT_POSTGRESQL_DB_USERNAME']%>
@@ -19,24 +7,24 @@ postgresql: &postgresql
   port:     <%=ENV['OPENSHIFT_POSTGRESQL_DB_PORT']%>
   min_messages: ERROR
   reconnect: false
+  pool: 5
+  timeout: 5000
+  encoding: utf8
 
-postgresql: &postgresql-dev
+development:
   adapter: postgresql
   database: swagbot_development
   username: tiwillia
   password: password
-
-defaults: &defaults
   pool: 5
   timeout: 5000
   encoding: utf8
-  <<: *<%= ENV['RAILS_DB'] || "postgresql-dev" %>
 
 development:
-  <<: *defaults
-
-test: &test
-  <<: *defaults
-
-production:
-  <<: *defaults
+  adapter: postgresql
+  database: swagbot_test
+  username: tiwillia
+  password: password
+  pool: 5
+  timeout: 5000
+  encoding: utf8
