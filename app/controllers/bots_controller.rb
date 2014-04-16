@@ -12,10 +12,11 @@ def index
           next
         end
         if bot.users.where(:user => user.user.downcase)
+          conflicting_user = bot.users.where(:user => user.user.downcase).first
           if bot.karmastats.where(:user_id => user.id)
             bot.karmastats.where(:user_id => user.id).each do |stat|
               if stat.total > 15
-                Rails.logger.info "#{user.user} id: #{user.id} exists and conflicts for bot #{bot.nick} id: #{bot.id} with #{stat.total}"
+                Rails.logger.info "#{user.user} id: #{user.id} exists and conflicts with #{conflicting_user} for bot #{bot.nick} id: #{bot.id} with #{stat.total}"
               end
             end
           end
