@@ -23,13 +23,11 @@ def index
               if stat.total > 15
                 Rails.logger.info "#{user.user} id: #{user.id} exists and conflicts with #{conflicting_user_name} for bot #{bot.nick} id: #{bot.id} with #{stat.total}"
                 bot.users.all.each do |user_2|
-                  if not user_2.nil?
-                  if user_2.user.downcase == user.user.downcase && user_2.user != user.user
-                    conflicting_stat = bot.karmastats.where(:user_id => user_2.id).first
+                  if not conflicting_user.nil?
+                    conflicting_stat = bot.karmastats.where(:user_id => conflicting_user.id).first
                     if conflicting.stat.total < stat.total
                       conflicting_stat.update_attributes(:total => stat.total)
                     end
-                  end
                   end
                 end
 
