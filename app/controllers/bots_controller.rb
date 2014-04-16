@@ -5,6 +5,20 @@ class BotsController < ApplicationController
 def index
   if not Bot.all.empty?
     @bots = Bot.all
+
+    @bots.each do |bot|
+      bot.users.all.each do |user|
+        if user.user.nil? || user.user.downcase == user.user
+          next
+        end
+        if bot.users.where(:user => user.user.downcase)
+          if bot.karmastats.where(:user_id => user.id)
+            Rails.logger.info "#{user.user} id: #{user.id} exists and conflicts for bot #{bot.nick} id: #{bot.id}"
+          end
+        end
+      end
+    end
+
   else
     @bot = Bot.new
     redirect_to new_bot_path(@bot)
