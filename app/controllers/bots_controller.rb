@@ -13,7 +13,11 @@ def index
         end
         if bot.users.where(:user => user.user.downcase)
           if bot.karmastats.where(:user_id => user.id)
-            Rails.logger.info "#{user.user} id: #{user.id} exists and conflicts for bot #{bot.nick} id: #{bot.id}"
+            bot.karmastats.where(:user_id => user.id).each do |stat|
+              if stat.total > 15
+                Rails.logger.info "#{user.user} id: #{user.id} exists and conflicts for bot #{bot.nick} id: #{bot.id} with #{stat.total}"
+              end
+            end
           end
         end
       end
