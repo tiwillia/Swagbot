@@ -25,7 +25,7 @@ def index
                 bot.users.all.each do |user_2|
                   if not conflicting_user.nil?
                     conflicting_stat = bot.karmastats.where(:user_id => conflicting_user.id).first
-                    if conflicting.stat.total < stat.total
+                    if conflicting_stat.total < stat.total
                       conflicting_stat.update_attributes(:total => stat.total)
                     end
                   end
