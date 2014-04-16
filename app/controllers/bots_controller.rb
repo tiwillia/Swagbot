@@ -16,7 +16,16 @@ def index
           if bot.karmastats.where(:user_id => user.id)
             bot.karmastats.where(:user_id => user.id).each do |stat|
               if stat.total > 15
-                Rails.logger.info "#{user.user} id: #{user.id} exists and conflicts with #{conflicting_user} for bot #{bot.nick} id: #{bot.id} with #{stat.total}"
+                Rails.logger.info "#{user.user} id: #{user.id} exists and conflicts with #{conflicting_user.user} for bot #{bot.nick} id: #{bot.id} with #{stat.total}"
+                bot.users.all.each do |user_2|
+                  if user_2.user.downcase == user.user.downcase && user_2.user != user.user
+                    conflicting_stat = bot.karmastats.where(:user_id => user_2.id).first
+                    if conflicting.stat.total < stat.total
+                      conflicting_stat.update_attributes(:total => stat.total)
+                    end
+                  end
+                end
+
               end
             end
           end
