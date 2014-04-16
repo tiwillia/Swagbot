@@ -2,7 +2,7 @@
 
 Irc bot with a rails backend utilizing a postgresql database customized for openshift 
 
-## Installation
+## Installation 
 
 - This is designed for openshift, the easiest way to get this going is to run:
 ```
