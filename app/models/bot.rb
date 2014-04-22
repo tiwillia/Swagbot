@@ -453,6 +453,9 @@ private
   def editkarma(giver, receiver, type)
     #Here we need to parse the db for name, get the number, add one to the number
     #Syntax of the db will be user:number\n
+    if receiver.nil?
+      return false
+    end
     receiver_orig = receiver
     receiver.downcase!
     giver.downcase!

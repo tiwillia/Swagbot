@@ -71,8 +71,9 @@ class ApplicationController < ActionController::Base
                 @@bot_controls[bot.id][:queue] << "restart"
               end
             rescue => exception
-              Rails.logger.error exception.message
-              Rails.logger.error exception.backtrace
+              Rails.logger.error "ERROR: Bot with id #{bot.id} FAILed in loop with: "
+              Rails.logger.error "ERROR: " + exception.message
+              Rails.logger.error "ERROR: " + exception.backtrace
             end
           end
         }
