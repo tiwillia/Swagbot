@@ -5,39 +5,6 @@ class BotsController < ApplicationController
 def index
   if not Bot.all.empty?
     @bots = Bot.all
-
-    @bots.each do |bot|
-      bot.users.all.each do |user|
-        if user.user.nil? || user.user.downcase == user.user
-          next
-        end
-        if bot.users.where(:user => user.user.downcase)
-          conflicting_user = bot.users.where(:user => user.user.downcase).first
-          if not conflicting_user.nil?
-            conflicting_user_name = conflicting_user.user
-          else
-            conflicting_user_name = "nil"
-          end
-          if bot.karmastats.where(:user_id => user.id)
-            bot.karmastats.where(:user_id => user.id).each do |stat|
-              if stat.total > 15
-                Rails.logger.info "#{user.user} id: #{user.id} exists and conflicts with #{conflicting_user_name} for bot #{bot.nick} id: #{bot.id} with #{stat.total}"
-                bot.users.all.each do |user_2|
-                  if not conflicting_user.nil?
-                    conflicting_stat = bot.karmastats.where(:user_id => conflicting_user.id).first
-                    if conflicting_stat.total < stat.total
-                      conflicting_stat.update_attributes(:total => stat.total)
-                    end
-                  end
-                end
-
-              end
-            end
-          end
-        end
-      end
-    end
-
   else
     @bot = Bot.new
     redirect_to new_bot_path(@bot)
