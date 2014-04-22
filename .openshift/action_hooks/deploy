@@ -16,6 +16,15 @@ if [ ! -z "$OPENSHIFT_MYSQL_DB_HOST" ]; then
 export RAILS_DB="mysql"
 fi
 
+if [ ! -e "$OPENSHIFT_REPO_DIR/config/application.yml" ]; then
+  if [ ! -e "$OPENSHIFT_DATA_DIR/application.yml" ]; then
+    echo "WARNING: No application.yml file supplied in git repo or in data dir. Using the example file. Default password is changeme."
+    cp $OPENSHIFT_REPO_DIR/config/application.example.yml $OPENSHIFT_REPO_DIR/config/application.yml
+  else
+    ln -s $OPENSHIFT_DATA_DIR/application.yml $OPENSHIFT_REPO_DIR/config/application.yml
+  fi
+fi
+
 if [ -z "$RAILS_DB" ]; then
 echo 1>&2
   echo "Could not find the database cartridge. Please run:" 1>&2
