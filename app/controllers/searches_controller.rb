@@ -1,5 +1,7 @@
 class SearchesController < ApplicationController
 
+before_filter :require_loggedin
+
   def definitions
     bot = Bot.find(bot_id)
     search do 
@@ -58,6 +60,10 @@ private
   def search_params
     params.require("query")
     params[:query]
+  end
+
+  def require_loggedin
+    redirect_to '/login' unless logged_in?
   end
 
 end

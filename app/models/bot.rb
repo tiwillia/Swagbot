@@ -667,7 +667,6 @@ private
     response
   end
 
-
   # This will grab the title and possibly description of a bugzilla link and display it
   # https://bugzilla.redhat.com/docs/en/html/api/
   def bugzilla(url)

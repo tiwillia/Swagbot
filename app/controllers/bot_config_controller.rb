@@ -1,5 +1,7 @@
 class BotConfigController < ApplicationController
 
+before_filter :require_loggedin
+
   def edit
     @bot = Bot.find(params[:id])
     @bot_config = @bot.bot_config
@@ -21,6 +23,10 @@ class BotConfigController < ApplicationController
 private
   def config_params
     params.permit(:karma, :quotes, :definitions, :youtube, :bugzilla, :imgur, :quit_message, :karma_timeout, :echo_all_definitions, :id, :channels)
+  end
+
+  def require_loggedin
+    redirect_to '/login' unless logged_in?
   end
 
 end

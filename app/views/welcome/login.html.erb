@@ -1,0 +1,24 @@
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-lg-2">
+    </div>
+    <div class="col-lg-8">
+      <div class="text-center">
+        <h1>Login</h1>
+      </div>
+      <%= form_tag '/sessions/create', :class => "form-horizontal" do %>
+        <div class="form-group">
+          <%= label_tag :password, 'Password:', :class => "col-lg-2 control-label" %>
+          <div class="col-lg-10">
+            <%= password_field_tag :password, '', :class => "form-control", :autocomplete => "off" %>
+          </div>
+          <div class="col-lg-offset-2 col-lg-10">
+            <%= submit_tag 'Log In', :class => "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-lg-2">
+    </div>
+  </div>
+</div>

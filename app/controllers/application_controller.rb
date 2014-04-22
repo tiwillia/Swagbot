@@ -83,10 +83,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
-def bot_controls
-  @@bot_controls
-end
+  def bot_controls
+    @@bot_controls
+  end
 
-helper_method :bot_controls
+  def logged_in?
+    session[:password] == CONFIG[:admin_password]
+  end
+  
+  helper_method :logged_in?
+  helper_method :bot_controls
 
 end

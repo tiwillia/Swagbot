@@ -20,9 +20,9 @@
       <div class="well well-lg" style="background-color:#D8D8D8">
       <div class="btn-group btn-group-md">
         <%= link_to 'Start', "/bots/#{@bot.id}/start", :class => "btn btn-success" %>
-        <%# link_to 'Stop', "/bots/#{@bot.id}/stop", :class => "btn btn-warning" %>
+        <%= link_to 'Stop', "/bots/#{@bot.id}/stop", :class => "btn btn-warning" %>
         <%= link_to 'Restart', "/bots/#{@bot.id}/restart", :class => "btn btn-info" %>
-        <%# link_to 'Destroy', "/bots/#{@bot.id}", :method => 'delete', :class => "btn btn-danger", data: { confirm: "Are you sure you want to delete #{@bot.nick.capitalize}? This is irreversible." } %>
+        <%= link_to 'Destroy', "/bots/#{@bot.id}", :method => 'delete', :class => "btn btn-danger", data: { confirm: "Are you sure you want to delete #{@bot.nick.capitalize}? This is irreversible." } %>
       </div>
       </div>
     </div>

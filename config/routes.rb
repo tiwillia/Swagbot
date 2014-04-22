@@ -1,6 +1,9 @@
 RailsApp::Application.routes.draw do
   get 'welcome/index'
   get 'welcome/help'
+  match 'logout' => 'sessions#destroy'
+  match 'login' => 'welcome#login'
+  post 'sessions/create' 
   match 'bots/:id/configuration/update' => 'bot_config#update'
   match 'bots/:id/configuration' => 'bot_config#edit'
   match 'search/:action' => 'searches#:action'
