@@ -453,6 +453,7 @@ private
   def editkarma(giver, receiver, type)
     #Here we need to parse the db for name, get the number, add one to the number
     #Syntax of the db will be user:number\n
+    receiver_orig = receiver
     receiver.downcase!
     giver.downcase!
     recipient = getuser(receiver)
@@ -505,7 +506,7 @@ private
       stat.save
     end
 
-    sendchn("#{receiver} now has #{stat.total} karma.")
+    sendchn("#{receiver_orig} now has #{stat.total} karma.")
   end
 
   def rank(*who)
