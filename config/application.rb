@@ -9,16 +9,17 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+if ENV['OPENSHIFT_DATA_DIR']
+  CONFIG[:config_file_location] = ENV['OPENSHIFT_DATA_DIR'] + "/application.yml"
+else
+  CONFIG[:config_file_location] = "../application.yml"
+end
+
 # This block below adds a global YAML configuration file in config/application.yml
-CONFIG = YAML.load(File.read(File.expand_path('../application.yml', __FILE__)))
+CONFIG = YAML.load(File.read(File.expand_path(CONFIG[:config_file_location], __FILE__)))
 CONFIG.merge! CONFIG.fetch(Rails.env, {})
 CONFIG.symbolize_keys!
 
-# This is required for paperclip to work with openshift
-if ENV['OPENSHIFT_DATA_DIR']
-  CONFIG[:data_dir] = ENV['OPENSHIFT_DATA_DIR']
-end
-   
 module RailsApp
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
