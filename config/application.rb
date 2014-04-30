@@ -10,13 +10,13 @@ if defined?(Bundler)
 end
 
 if ENV['OPENSHIFT_DATA_DIR']
-  CONFIG[:config_file_location] = ENV['OPENSHIFT_DATA_DIR'] + "/application.yml"
+  config_file_location = ENV['OPENSHIFT_DATA_DIR'] + "/application.yml"
 else
-  CONFIG[:config_file_location] = "../application.yml"
+  config_file_location = "../application.yml"
 end
 
 # This block below adds a global YAML configuration file in config/application.yml
-CONFIG = YAML.load(File.read(File.expand_path(CONFIG[:config_file_location], __FILE__)))
+CONFIG = YAML.load(File.read(File.expand_path(config_file_location, __FILE__)))
 CONFIG.merge! CONFIG.fetch(Rails.env, {})
 CONFIG.symbolize_keys!
 
