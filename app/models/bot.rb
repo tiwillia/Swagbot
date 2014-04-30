@@ -96,7 +96,7 @@ class Bot < ActiveRecord::Base
 
     # If we are getting all ranks, not just a single user
     if who.empty?
-      @bot.karmastats.where('total is distinct from ?', '0').order('rank ASC').limit(5).each do |stat|
+      @bot.karmastats.where('total is distinct from ?', '0').order('rank ASC').limit(@bot.bot_config(true).num_of_karma_ranks).each do |stat|
         user = @bot.users.find(stat.user_id)
         rank_hash = Hash[ "user" => user, "stat" => stat ]
         rank_array << rank_hash
@@ -521,7 +521,7 @@ private
     end
  
     if ranks
-      if ranks.count == 5
+      if ranks.count > 1
         ranks.each do |r|
           sendchn("#{r["stat"].rank}: #{r["user"].user} with #{r["stat"].total} points of karma")
         end

@@ -15,6 +15,11 @@
         <td>This value defines how long a user must wait after changing another user's karma, before changing that user's karma again.<br>  Default: 5 seconds.</td>
     </tr>
     <tr>
+        <td><%= label_tag :num_of_karma_ranks, "Number of karma ranks", :class => 'control-label' %></td>
+        <td><%= text_field_tag :num_of_karma_ranks, @bot.bot_config.num_of_karma_ranks, :class => 'form-control' %></td>
+        <td>Number of ranks that will be displayed when "bot_name, rank" is called.<br>  Default: 5</td> 
+    </tr>
+    <tr>
         <td><%= label_tag :channels, "Additional Channels", :class => 'control-label' %></td>
         <td><%= text_field_tag :channels, @bot.bot_config.channels.join(","), :class => 'form-control' %></td>
         <td>Comma seperated list of all channels the bot should auto-join.<br>  Default: <%= @bot.channel %></td> 
