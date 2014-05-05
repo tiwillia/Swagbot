@@ -96,7 +96,8 @@ class Bot < ActiveRecord::Base
 
     # If we are getting all ranks, not just a single user
     if who.empty?
-      @bot.karmastats.where('total is distinct from ?', '0').order('rank ASC').limit(@bot.bot_config(true).num_of_karma_ranks).each do |stat|
+        num_of_ranks = @bot.bot_config(true).num_of_karma_ranks
+        @bot.karmastats.where('total is distinct from ?', '0').order('rank ASC').limit(num_of_ranks).each do |stat|
         user = @bot.users.find(stat.user_id)
         rank_hash = Hash[ "user" => user, "stat" => stat ]
         rank_array << rank_hash
