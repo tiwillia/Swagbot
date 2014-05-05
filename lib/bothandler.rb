@@ -124,7 +124,7 @@ private
   def stop_bot(bot)
     if @bot_states[bot.id] != "Stopped"
       @bot_queues[bot.id] << "stop"
-      until !@bot_threads[bot_id].alive? do
+      until !@bot_threads[bot.id].alive? do
         sleep 1
       end
       bot.kill
