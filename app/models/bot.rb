@@ -240,18 +240,28 @@ class Bot < ActiveRecord::Base
         end 
       
       # Weather reporting
-      when params.eql?("weather")
-        yahoo_url = 'http://query.yahooapis.com/v1/public/yql?format=json&q='
-        query = "SELECT * FROM weather.forecast WHERE location = 27606"
-        url = URI.encode(yahoo_url + query)
-        weather_data = JSON.parse(open(url).read)
-        weather_results = weather_data["query"]["results"]["channel"]
-        sendchn("------------------Weather For 27606---------------")
-        sendchn("Current conditions: #{weather_results["wind"]["chill"]} degrees and #{weather_results["item"]["forecast"][0]["text"]}")
-        sendchn("Windspeed: #{weather_results["wind"]["speed"]}mph")
-        sendchn("High: #{weather_results["item"]["forecast"][0]["high"]} degrees")
-        sendchn("Low: #{weather_results["item"]["forecast"][0]["low"]} degrees")
-        sendchn("-----------------------------------------------------------")
+      when params.match(/^weather.*/)
+        if params.eql?("weather")
+          zip = @bot.bot_config(true).default_weather_zip
+        else
+          zip = params[/weather\ (.*)/, 1]
+        end
+        
+        if zip.length != 5 || zip.match(/[a-zA-Z]+/)
+          sendchn("Invalid zip code")
+        else
+          yahoo_url = 'http://query.yahooapis.com/v1/public/yql?format=json&q='
+          query = "SELECT * FROM weather.forecast WHERE location = #{zip}"
+          url = URI.encode(yahoo_url + query)
+          weather_data = JSON.parse(open(url).read)
+          weather_results = weather_data["query"]["results"]["channel"]
+          sendchn("------------------Weather For 27606---------------")
+          sendchn("Current conditions: #{weather_results["wind"]["chill"]} degrees and #{weather_results["item"]["forecast"][0]["text"]}")
+          sendchn("Windspeed: #{weather_results["wind"]["speed"]}mph")
+          sendchn("High: #{weather_results["item"]["forecast"][0]["high"]} degrees")
+          sendchn("Low: #{weather_results["item"]["forecast"][0]["low"]} degrees")
+          sendchn("-----------------------------------------------------------")
+        end
         
         # Help section
         # This desperately needs to be re-worked

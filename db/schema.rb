@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140430155216) do
+ActiveRecord::Schema.define(:version => 20140505141842) do
 
   create_table "bot_configs", :force => true do |t|
     t.integer  "bot_id"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(:version => 20140430155216) do
     t.boolean  "bugzilla",             :default => true
     t.text     "channels"
     t.integer  "num_of_karma_ranks",   :default => 5
+    t.boolean  "weather",              :default => true
+    t.integer  "default_weather_zip",  :default => 27606
   end
 
   create_table "bots", :force => true do |t|
