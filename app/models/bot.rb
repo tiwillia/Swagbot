@@ -45,11 +45,11 @@ class Bot < ActiveRecord::Base
   end
 
   # Kill the connection
-  # Wait 10 seconds for slow servers
+  # Wait 2 seconds for slow servers
   def kill
     send_server(":source QUIT :#{@bot.bot_config(true).quit_message}")
     @socket.close
-    sleep 10
+    sleep 2
   end
 
   ##### CONFIGURATIONS

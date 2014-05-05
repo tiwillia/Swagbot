@@ -67,6 +67,8 @@ private
     bot_id = work[:bot_id]
     if @bots[bot_id].nil?
       @bots[bot_id] = Bot.find(bot_id)
+      @bot_queues[bot_id] = Queue.new
+      @bot_states[bot_id] = "Stopped"
     end
     bot = @bots[bot_id]
 
