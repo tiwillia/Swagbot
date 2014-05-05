@@ -124,8 +124,11 @@ private
   def stop_bot(bot)
     if @bot_states[bot.id] != "Stopped"
       @bot_queues[bot.id] << "stop"
-      until !@bot_threads[bot.id].alive? do
-        sleep 1
+      count = 0
+      until !@bot_threads[bot.id].alive? || count == 6 do
+        Rails.logger.info "BOTHANDLER: Waiting for #{bot.nick} to stop..."
+        sleep 10
+        count += 1
       end
       bot.kill
       @bot_states[bot.id] = "Stopped"
@@ -142,7 +145,7 @@ private
         if command
           case command
           when "stop"
-            Thread.stop
+            Thread.kill
           end
         else
           begin
@@ -163,7 +166,7 @@ private
             @bot_states[bot.id] = "Stopped"
             @bots[bot.id] = Bot.find(bot.id)
             enqueue({:bot_id => bot.id, :action => "start"})
-            Thread.stop
+            Thread.kill
           end 
         end 
       }
