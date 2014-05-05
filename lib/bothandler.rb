@@ -125,7 +125,11 @@ private
     if @bot_states[bot.id] != "Stopped"
       @bot_queues[bot.id] << "stop"
       count = 0
-      until !@bot_threads[bot.id].alive? || count == 6 do
+      until !@bot_threads[bot.id].alive? do
+        if count == 6
+          Rails.logger.error "BOTHANDLER: ERROR thread for #{bot.nick} never stopped, forcefully killing it."
+          @bot_threads[bot.id].kill
+        end
         Rails.logger.info "BOTHANDLER: Waiting for #{bot.nick} to stop..."
         sleep 10
         count += 1
