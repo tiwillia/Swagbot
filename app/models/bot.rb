@@ -78,6 +78,10 @@ class Bot < ActiveRecord::Base
     @bot.bot_config(true).bugzilla
   end
 
+  def weather?
+    @bot.bot_config(true).weather
+  end
+
   ##### END CONFIGURATIONS
 
   # This should return the karmastat and user objects
@@ -240,9 +244,9 @@ class Bot < ActiveRecord::Base
         end 
       
       # Weather reporting
-      when params.match(/^weather.*/)
+      when params.match(/^weather.*/) && weather?
         if params.eql?("weather")
-          zip = @bot.bot_config(true).default_weather_zip
+          zip = @bot.bot_config(true).default_weather_zip.to_s
         else
           zip = params[/weather\ (.*)/, 1]
         end
@@ -255,7 +259,7 @@ class Bot < ActiveRecord::Base
           url = URI.encode(yahoo_url + query)
           weather_data = JSON.parse(open(url).read)
           weather_results = weather_data["query"]["results"]["channel"]
-          sendchn("------------------Weather For 27606---------------")
+          sendchn("------------------Weather For #{zip}---------------")
           sendchn("Current conditions: #{weather_results["wind"]["chill"]} degrees and #{weather_results["item"]["forecast"][0]["text"]}")
           sendchn("Windspeed: #{weather_results["wind"]["speed"]}mph")
           sendchn("High: #{weather_results["item"]["forecast"][0]["high"]} degrees")

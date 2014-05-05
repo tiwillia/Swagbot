@@ -22,7 +22,7 @@ before_filter :require_loggedin
 
 private
   def config_params
-    params.permit(:karma, :quotes, :definitions, :youtube, :bugzilla, :imgur, :quit_message, :karma_timeout, :echo_all_definitions, :id, :channels, :num_of_karma_ranks)
+    params.permit(:karma, :quotes, :definitions, :youtube, :bugzilla, :imgur, :quit_message, :karma_timeout, :echo_all_definitions, :id, :channels, :num_of_karma_ranks, :weather, :default_weather_zip)
   end
 
   def require_loggedin
