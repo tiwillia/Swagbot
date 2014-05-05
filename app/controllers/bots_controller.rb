@@ -1,6 +1,7 @@
 class BotsController < ApplicationController
 
   before_filter :require_loggedin
+  require 'bothandler'
 
   # Simple index
   # This should list all bots and
@@ -66,54 +67,22 @@ class BotsController < ApplicationController
     if @bot.bot_config.nil?
       @bot.bot_config = BotConfig.new(bot_id: @bot.id) 
     end
-    check_bot_controls_exist(@bot.id)
-    if not @@bot_controls[@bot.id][:thread] 
-      if create_bot_thread(@bot)
-        flash[:success] = "Started " + @bot.nick.capitalize + "."
-      else
-        flash[:error] = @bot.nick.capitalize + " is already running."
-      end
-    else
-      if @@bot_controls[@bot.id][:state] == "running"
-        flash[:error] = @bot.nick.capitalize + " is already running."
-      else
-        @@bot_controls[:queue] << "start"
-        flash[:success] = "Started " + @bot.nick.capitalize + "."
-      end
-    end
+    BOT_HANDLER.enqueue({:bot_id => @bot.id, :action => "start"})
+    flash[:success] = "#{@bot.nick} queued to start."
     redirect_to bot_path(@bot)
   end
 
   def stop
     @bot = Bot.find(params[:id])
-    check_bot_controls_exist(@bot.id)
-    if @@bot_controls[@bot.id][:thread]
-      if @@bot_controls[@bot.id][:state] = "running"
-        @@bot_controls[@bot.id][:queue] << "stop"
-        flash[:success] = "Stopped " + @bot.nick.capitalize + "."
-      else
-        flash[:error] = @bot.nick.capitalize + " is not currently running."
-      end
-    else
-      flash[:error] = @bot.nick.capitalize + " has never been started."
-    end 
+    BOT_HANDLER.enqueue({:bot_id => @bot.id, :action => "stop"})
+    flash[:success] = "#{@bot.nick} queued to stop."
     redirect_to bot_path(@bot)
   end
 
   def restart
     @bot = Bot.find(params[:id]) 
-    check_bot_controls_exist(@bot.id)
-    if @@bot_controls[@bot.id][:thread]
-      if @@bot_controls[@bot.id][:state] = "running"
-        @@bot_controls[@bot.id][:queue] << "restart"
-        flash[:success] = "Restarted " + @bot.nick.capitalize + "."
-      else
-        @@bot_controls[@bot.id][:queue] << "start"
-        flash[:success] = @bot.nick.capitalize + " was not running, started bot."
-      end
-    else
-      flash[:error] = @bot.nick.capitalize + " has never been started."
-    end 
+    BOT_HANDLER.enqueue({:bot_id => @bot.id, :action => "restart"})
+    flash[:success] = "#{@bot.nick} queued to restart."
     redirect_to bot_path(@bot)
   end
 
@@ -125,15 +94,6 @@ class BotsController < ApplicationController
 
   def bot_params
     params.require(:bot).permit!
-  end
-
-  def check_bot_controls_exist(bot_id)
-    if not defined? @@bot_controls
-      create_bot_controls(bot_id)
-    end
-    if not @@bot_controls[bot_id]
-      create_bot_controls(bot_id)
-    end
   end
 
 end

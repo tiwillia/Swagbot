@@ -8,8 +8,8 @@
           <dt>Main Channel</dt>
             <dd><%= @bot.channel %></dd>
           <dt>Status</dt>
-            <% if defined? bot_controls[@bot.id][:state] %>
-            <dd><%= bot_controls[@bot.id][:state].capitalize %></dd>
+            <% if BOT_HANDLER.state(@bot.id) %>
+            <dd><%= BOT_HANDLER.state(@bot.id) %></dd>
             <% else %>
             <dd class="text-warning">Not started</dd>
             <% end %>

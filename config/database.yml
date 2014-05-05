@@ -7,7 +7,7 @@ production:
   port:     <%=ENV['OPENSHIFT_POSTGRESQL_DB_PORT']%>
   min_messages: ERROR
   reconnect: false
-  pool: 5
+  pool: 10
   timeout: 5000
   encoding: utf8
 
@@ -16,7 +16,7 @@ development:
   database: swagbot_development
   username: tiwillia
   password: password
-  pool: 5
+  pool: 10
   timeout: 5000
   encoding: utf8
 
@@ -25,6 +25,6 @@ test:
   database: swagbot_test
   username: tiwillia
   password: password
-  pool: 5
+  pool: 10
   timeout: 5000
   encoding: utf8

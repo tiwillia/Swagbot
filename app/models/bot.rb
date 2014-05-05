@@ -47,7 +47,8 @@ class Bot < ActiveRecord::Base
   # Kill the connection
   # Wait 10 seconds for slow servers
   def kill
-    @socket.send(":source QUIT :#{@bot.bot_config(true).quit_message}\n", 0)
+    Rails.logger.debug "#{@socket.inspect}"
+    send_server(":source QUIT :#{@bot.bot_config(true).quit_message}")
     @socket.close
     sleep 10
   end
@@ -700,6 +701,7 @@ private
   # This will grab the title of a youtube link and display it
   # https://developers.google.com/youtube/
   def youtube(url)
+    raise "TESTING SHIT"
     video_id = url[/youtube.com\/watch\?v=([a-zA-Z0-9\-\_]+)/, 1]
     google_api_key = CONFIG[:google_api_key]
     response = get_request(:url => "https://www.googleapis.com/youtube/v3/videos?id=#{video_id}&key=#{google_api_key}&part=snippet,contentDetails,statistics")
