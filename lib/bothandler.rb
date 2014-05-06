@@ -33,11 +33,13 @@ class BotHandler
       start
     end
   end
-  
+ 
+  # Check if the head thread is running 
   def running?
     @thread && @thread.alive?
   end
 
+  # return the state of a bot
   def state(bot_id)
     @bot_states[bot_id]
   end
@@ -61,7 +63,7 @@ private
     end
   end
 
-  # We actually do the work here
+  # Parse the work and begin the correct action
   def do_work(work)
 
     bot_id = work[:bot_id]
@@ -109,6 +111,7 @@ private
     end
   end
 
+  # Start a bot thread
   # bot should be an object, not an id
   def start_bot(bot) 
     if @bot_states[bot.id] != "Running"
@@ -121,6 +124,8 @@ private
     end
   end
 
+  # Stop a bot thread
+  # bot should be an object, not an id
   def stop_bot(bot)
     if @bot_states[bot.id] != "Stopped"
       @bot_queues[bot.id] << "stop"
@@ -141,6 +146,7 @@ private
     end
   end
 
+  # Create the bot thread
   # bot should be an actual bot object, not an id
   def create_thread(bot)
     @bot_threads[bot.id] = Thread.new {
