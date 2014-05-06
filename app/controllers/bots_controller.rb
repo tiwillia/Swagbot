@@ -42,7 +42,7 @@ class BotsController < ApplicationController
     @bot = Bot.new(bot_params)
     @bot.karma_timeout = 5
     if @bot.save
-      @bot.bot_config = BotConfig.new(bot_id: @bot.id, channels: [bot_params[:channel]])
+      @bot.create_bot_config(bot_id: @bot.id, channels: [bot_params[:channel]], operators: [])
       flash[:success] = @bot.nick + ' successfully created.'
       redirect_to @bot
     else

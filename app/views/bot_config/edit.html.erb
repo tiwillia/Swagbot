@@ -25,6 +25,21 @@
         <td>Comma seperated list of all channels the bot should auto-join.<br>  Default: <%= @bot.channel %></td> 
     </tr>
     <tr>
+        <td><%= label_tag :operator_control, "Enable operator control", :class => 'control-label' %></td>
+        <td><%= select_tag :operator_control, options_for_select([["True", true],["False", false]], @bot.bot_config.operator_control.to_s), :class => 'form-control' %></td>
+        <td>If set to true, the bot will give accepted users operator status when a user says <code>!op</code> in channel<br>  Default: True.</td> 
+    </tr>
+    <tr>
+        <td><%= label_tag :operator_any_user, "Allow any user to become operator", :class => 'control-label' %></td>
+        <td><%= select_tag :operator_any_user, options_for_select([["True", true],["False", false]], @bot.bot_config.operator_any_user.to_s), :class => 'form-control' %></td>
+        <td>If set to true, the bot will any user to become operator if operator control is enabled.<br>  Default: True.</td> 
+    </tr>
+    <tr>
+        <td><%= label_tag :operators, "Allowed Operators", :class => 'control-label' %></td>
+        <td><%= text_field_tag :operators, @bot.bot_config.operators.join(","), :class => 'form-control' %></td>
+        <td>Comma seperated list of all allowed operators of the channel. This is only used if 'Allow any user to become operator' is set to False.<br>  Default: []</td> 
+    </tr>
+    <tr>
         <td><%= label_tag :echo_all_definitions, "Report all definitions", :class => 'control-label' %></td>
         <td><%= select_tag :echo_all_definitions, options_for_select([["True", true],["False", false]], @bot.bot_config.echo_all_definitions.to_s), :class => 'form-control' %></td>
         <td>If set to true, the bot will echo all definitions a word has been given when asked. If set to false, the bot will echo a random definition of a word when asked.<br>  Default: True.</td> 

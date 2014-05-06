@@ -82,6 +82,14 @@ class Bot < ActiveRecord::Base
     @bot.bot_config(true).weather
   end
 
+  def operator_control?
+    @bot.bot_config(true).operator_control
+  end
+
+  def operator_list?
+    !@bot.bot_config(true).operator_any_user
+  end
+
   ##### END CONFIGURATIONS
 
   # This should return the karmastat and user objects
@@ -340,9 +348,17 @@ class Bot < ActiveRecord::Base
           word_to_echo_def = line[/([\-\_\.0-9a-zA-Z]*)\?/, 1]
           echo_definition_by_word(word_to_echo_def)
 
-        # This is broken
-        when line.match(/.*#{@nick}\ \:\!op$/)
-          send_server("MODE #{@chan} +o #{@userposting}")        
+        # This should set the user posting as operator, if possible.
+        when line.match(/.*\:\!op$/)
+          if operator_control?
+            if operator_list? 
+              if @bot.bot_config(true).operators.include?(@userposting) 
+                send_server("MODE #{@chan} +o #{@userposting}")        
+              end
+            else
+              send_server("MODE #{@chan} +o #{@userposting}")
+            end
+          end
         
         # Bugzilla link parsing
         when line.match(/.*http[s]*:\/\/[w\.]*bugzilla\.redhat\.com\/show_bug.cgi\?id=[a-zA-Z0-9]+[\ ]*/) && bugzilla?

@@ -3,5 +3,6 @@ class BotConfig < ActiveRecord::Base
   
   belongs_to :bot
 
-  serialize :channels
+  serialize :channels 
+  serialize :operators
 end
