@@ -487,7 +487,7 @@ private
     if receiver.nil? || giver.nil?
       return false
     end
-    receiver_orig = receiver
+    receiver_orig = receiver.dup
     receiver.downcase!
     giver.downcase!
     recipient = getuser(receiver)
