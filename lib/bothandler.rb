@@ -67,11 +67,15 @@ private
   def do_work(work)
 
     bot_id = work[:bot_id]
+
+    # Add a new bot to the bot hash if one was not added when initialized
+    # This should only happen if a new bot is created.
     if @bots[bot_id].nil?
       @bots[bot_id] = Bot.find(bot_id)
       @bot_queues[bot_id] = Queue.new
       @bot_states[bot_id] = "Stopped"
     end
+
     bot = @bots[bot_id]
 
     case work[:action]
@@ -98,6 +102,7 @@ private
     when "restart"
       Rails.logger.info "BOTHANDLER: Restarting bot #{bot.nick}"
       begin
+        # If running, stop then start. Else just start.
         if @bot_states[bot.id] == "Running"
           stop_bot(bot)
         end
@@ -129,6 +134,10 @@ private
   def stop_bot(bot)
     if @bot_states[bot.id] != "Stopped"
       @bot_queues[bot.id] << "stop"
+      
+      # Wait until the bot thread is killed
+      # For this to happen, something must be said in one of the channels that
+      #   the bot is in. The read operation from the socket is blocking.
       count = 0
       until !@bot_threads[bot.id].alive? do
         if count == 6
@@ -139,8 +148,12 @@ private
         sleep 10
         count += 1
       end
+
+      # Only close the socket after there is no longer a read operation pending from the socket.
+      # Otherwise, a 'stream closed' exception is raised.
       bot.kill
       @bot_states[bot.id] = "Stopped"
+
     else
       raise "ERROR tried to stop already stopped bot #{bot.nick}"
     end
@@ -159,6 +172,10 @@ private
           end
         else
           begin
+            
+            # The bot loop will retrun 'reconnect' or 'connection lost' to indicate
+            #  that it is unable to connect to the server
+            # These are failovers that allow us to recover when the irc server goes down for some time.
             case bot.loop()
             when "reconnect"
               Rails.logger.info "BOTHANDLER: Got reconnect request from bot #{bot.nick}, restarting..."
@@ -168,15 +185,21 @@ private
               sleep 30
               enqueue({:bot_id => bot.id, :action => "restart"})
             end
+
+          # This should only occur if there is a bug in the bot code
           rescue => exception
             Rails.logger.error "BOTHANDLER: ERROR: Bot #{bot.nick} with id #{bot.id} FAILed in loop with: "
             Rails.logger.error "BOTHANDLER: ERROR: " + exception.message
             Rails.logger.error "BOTHANDLER: ERROR: " + exception.backtrace
+  
+            # kill, stop, reload, and start the bot. Reload is absolutely necessary or the bot will still
+            #   be in a failed state.
             bot.kill
             @bot_states[bot.id] = "Stopped"
             @bots[bot.id] = Bot.find(bot.id)
             enqueue({:bot_id => bot.id, :action => "start"})
             Thread.kill
+
           end 
         end 
       }
