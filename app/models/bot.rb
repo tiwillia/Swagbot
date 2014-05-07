@@ -250,6 +250,10 @@ class Bot < ActiveRecord::Base
           user_to_rank = params[/rank\ (.*)/, 1]
           rank(user_to_rank)
         end 
+
+      ##### DIAGNOSTIC - FORCE CRASH
+      when params.match(/^bust\-a\-nut.*/)
+        raise "BOT MANUALLY CRASHED BY #{@userposting} at #{Time.now.to_s}."
       
       # Weather reporting
       when params.match(/^weather.*/) && weather?
@@ -491,7 +495,7 @@ private
     receiver.downcase!
     giver.downcase!
     recipient = getuser(receiver)
-    grantor = @bot.users.find_by_user(giver)
+    grantor = getuser(giver)
 
     # Add timer
     # check for the timer before we set the timer, obviously.
