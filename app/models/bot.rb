@@ -810,6 +810,10 @@ private
     request = Net::HTTP::Get.new(uri.request_uri)
     request.add_field('Content-Type', 'application/x-www-form-urlencoded')
     response = http.request(request)
+    
+    Rails.logger.debug "DIAG: Response: #{response.inspect}"
+    Rails.logger.debug "DIAG: Response code: #{response.code}"
+    Rails.logger.debug "DIAG: Response message: #{response.code}"
 
     # Parse response
     JSON.parse(response.body)
