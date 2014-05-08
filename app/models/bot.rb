@@ -289,7 +289,7 @@ class Bot < ActiveRecord::Base
           plate = params[/check\ ([a-zA-Z0-9\ \&\-\_]+)/, 1]
         end
         plate = "Cloud Prods & Envs" unless plate != "cloud"
-        check_ncq(plate)
+        check_ncq(plate, @userposting)
       
       # Weather reporting
       when params.match(/^weather.*/) && weather?
@@ -742,11 +742,17 @@ private
   end
 
   # This go through a plate and pulls only the unassigned cases.
-  def check_ncq(plate)
+  def check_ncq(plate, user_to_ping = nil)
     Rails.logger.debug "DIAG: plate parameter passed: #{plate}"
     plate = get_plate(plate)
     Rails.logger.debug "DIAG: plate hash key count: #{plate.keys.count}"
     
+    if user_to_ping
+      ping = user_to_ping
+    else
+      ping = @bot.bot_config(true).ncq_watch_ping_term
+    end
+
     ncq_cases = []
     ncq_case_nums = []
     plate["cases"].each do |ca|
@@ -776,7 +782,7 @@ private
         end
       end
     else
-      sendchn("New cases: " + ncq_case_nums.join(", "))
+      sendchn("#{ping}, new cases: " + ncq_case_nums.join(", ")) unless ncq_case_nums.empty?
     end
     Rails.logger.debug "DIAG: NCQ case nums: #{ncq_case_nums.inspect}"
   end
