@@ -5,4 +5,5 @@ class BotConfig < ActiveRecord::Base
 
   serialize :channels 
   serialize :operators
+  serialize :ncq_watch_plates
 end

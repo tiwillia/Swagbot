@@ -18,6 +18,7 @@ class Bot < ActiveRecord::Base
     @timers = Hash.new
     @timers[:karma] = Hash.new
     @timers[:ping] = Time.now.to_i
+    @timers[:ncq_watcher] = Time.now
     @userposting = "nil"
     @host = self.server
     @port = self.port
@@ -90,6 +91,14 @@ class Bot < ActiveRecord::Base
     !@bot.bot_config(true).operator_any_user
   end
 
+  def ncq_watcher?
+    @bot.bot_config(true).ncq_watcher
+  end
+
+  def ncq_watch_details?
+    @bot.bot_config(true).ncq_watch_details
+  end
+
   ##### END CONFIGURATIONS
 
   # This should return the karmastat and user objects
@@ -130,6 +139,8 @@ class Bot < ActiveRecord::Base
 
   # This is the main loop that uses all the private methods below it.
   def loop()
+  
+    # Get line from socket - BLOCKING
     line = @socket.gets
     if line == nil
       return "connection lost"
@@ -149,6 +160,20 @@ class Bot < ActiveRecord::Base
     Rails.logger.debug "User Posting: #{@userposting}"
     Rails.logger.debug "Channel: #{@chan}"
     
+    ## NCQ WATCHER AUTO CHECKER
+    # Check NCQ Timer to do NCQ things
+    if ncq_watcher?
+      old_time = @timers[:ncq_watcher]
+      seconds_past = Time.now - old_time
+      if seconds_past > @bot.bot_config(true).ncq_watch_interval
+        Rails.logger.debug "Checking NCQ for plates: #{@bot.bot_config(true).ncq_watch_plates.inspect}"
+        @bot.bot_config(true).ncq_watch_plates.each do |plate|
+          check_ncq(plate)
+          @timers[:ncq_watcher] = Time.now
+        end
+      end
+    end
+
     # Ignore unifiedbot
     # This should be removed when the configuration to add an ignore list is implemented
     if @userposting.eql?("unifiedbot")
@@ -254,6 +279,17 @@ class Bot < ActiveRecord::Base
       ##### DIAGNOSTIC - FORCE CRASH
       when params.match(/^bust\-a\-nut.*/)
         raise "BOT MANUALLY CRASHED BY #{@userposting} at #{Time.now.to_s}."
+
+      ##### NCQ Check
+      when params.match(/check.*/)
+        if params.eql?("check")
+          sendchn("No sbr specified, checking defaults. Use #{@nick}, check <plate>.")
+          plate = @bot.bot_config(true).ncq_watch_plates.first
+        else
+          plate = params[/check\ ([a-zA-Z0-9\ \&\-\_]+)/, 1]
+        end
+        plate = "Cloud Prods & Envs" unless plate != "cloud"
+        check_ncq(plate)
       
       # Weather reporting
       when params.match(/^weather.*/) && weather?
@@ -703,6 +739,74 @@ private
     request.initialize_http_header(args[:headers]) unless args[:headers].nil?
     response = http.request(request)
     response
+  end
+
+  # This go through a plate and pulls only the unassigned cases.
+  def check_ncq(plate)
+    Rails.logger.debug "DIAG: plate parameter passed: #{plate}"
+    plate = get_plate(plate)
+    Rails.logger.debug "DIAG: plate hash key count: #{plate.keys.count}"
+    
+    ncq_cases = []
+    ncq_case_nums = []
+    plate["cases"].each do |ca|
+      Rails.logger.debug "DIAG: Checking case #{ca["casenumber"]}"
+      if ca["internal_status"] == "Unassigned"
+        if ca["tz_offset"].match(/^-[4-9]\:00/)
+          Rails.logger.debug "DIAG: Reporting case #{ca["casenumber"]}"
+          ncq_cases << ca
+          ncq_case_nums << ca["casenumber"]
+        end
+      end
+    end
+  
+    if ncq_watch_details?
+      ncq_cases.each do |ca|
+        number = ca["casenumber"]
+        subject = ca["subject"]
+        strategic = ca["strategic"]
+        sbt = ca["sbt"]
+        account_name = ca["account_name"]
+        product = ca["short_product"]
+        sbr = ca["sbr_group"]
+        if ca["strategic"] == "false"
+          sendchn("#{sbt} | #{sbr} | #{number} #{account_name} | #{product} | #{subject}")
+        else
+          sendchn("#{sbt} | #{sbr} | #{number} STRAT #{account_name} | #{product} | #{subject}")
+        end
+      end
+    else
+      sendchn("New cases: " + ncq_case_nums.join(", "))
+    end
+    Rails.logger.debug "DIAG: NCQ case nums: #{ncq_case_nums.inspect}"
+  end
+
+  # This will go out to unified and get a plate in JSON form
+  # returns Hash of parsed JSON
+  def get_plate(plate)
+    url = "https://unified.gsslab.rdu2.redhat.com/ajax/" if url.nil?
+
+    # Encode the url
+    encoded_url = URI.encode(url)
+    uri = URI.parse(encoded_url)
+    uri.scheme = 'https'
+
+    # Set query parameters
+    params = { :sso_username => CONFIG[:rhn_username], :command => "show plate #{plate}", :command_type => "EXTERNAL" }
+    uri.query = URI.encode_www_form(params)    
+
+    # create http connection
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    
+    #Generate request
+    request = Net::HTTP::Get.new(uri.request_uri)
+    request.add_field('Content-Type', 'application/x-www-form-urlencoded')
+    response = http.request(request)
+
+    # Parse response
+    JSON.parse(response.body)
   end
 
   # This will grab the title and possibly description of a bugzilla link and display it

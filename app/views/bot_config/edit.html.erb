@@ -80,6 +80,31 @@
         <td>If set to true, the bot will parse bugzilla links and present the channel with the title, status, and other information about the bug.<br>  Default: True.</td> 
     </tr>
     <tr>
+        <td><%= label_tag :ncq_watcher, "Enable NCQ watching", :class => 'control-label' %></td>
+        <td><%= select_tag :ncq_watcher, options_for_select([["True", true],["False", false]], @bot.bot_config.ncq_watcher.to_s), :class => 'form-control' %></td>
+        <td>If set to true, the bot will watch the New Case Queue for the selected Sbrs. It will periodically check the queue and ping the new cases in channel.<br>  Default: False.</td> 
+    </tr>
+    <tr>
+        <td><%= label_tag :ncq_watch_interval, "NCQ check intervall", :class => 'control-label' %></td>
+        <td><%= text_field_tag :ncq_watch_interval, @bot.bot_config(true).ncq_watch_interval.to_s, :class => 'form-control' %></td>
+        <td>Amount of time in seconds to wait between each ncq check.<br>  Default: 300 (5 minutes)</td> 
+    </tr>
+    <tr>
+        <td><%= label_tag :ncq_watch_plates, "NCQ watcher plates", :class => 'control-label' %></td>
+        <td><%= text_field_tag :ncq_watch_plates, @bot.bot_config.ncq_watch_plates.join(","), :class => 'form-control' %></td>
+        <td>Comma seperated list of all plates to check. Reccomended to use only one plate or the channel may be spammed.<br>  Default: Cloud Prods & Envs</td> 
+    </tr>
+    <tr>
+        <td><%= label_tag :ncq_watch_ping_term, "NCQ watch ping term", :class => 'control-label' %></td>
+        <td><%= text_field_tag :ncq_watch_ping_Term, @bot.bot_config(true).ncq_watch_ping_term, :class => 'form-control' %></td>
+        <td>Term to ping when pinging the channel about new cases.<br>  Default: all</td> 
+    </tr>
+    <tr>
+        <td><%= label_tag :ncq_watch_details, "Detailed NCQ cases", :class => 'control-label' %></td>
+        <td><%= select_tag :ncq_watch_details, options_for_select([["True", true],["False", false]], @bot.bot_config.ncq_watch_details.to_s), :class => 'form-control' %></td>
+        <td>If set to true, the bot will post each case in a single line with all of the case details. If set to false, the bot will just ping case numbers. <br>  Default: False.</td> 
+    </tr>
+    <tr>
         <td><%= label_tag :weather, "Enable weather querying", :class => 'control-label' %></td>
         <td><%= select_tag :weather, options_for_select([["True", true],["False", false]], @bot.bot_config.weather.to_s), :class => 'form-control' %></td>
         <td>If set to true, the bot will respond to the weather parameter with the current weather for the specified (or default) zip code.<br>  Default: True.</td> 

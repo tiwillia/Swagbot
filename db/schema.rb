@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140506192225) do
+ActiveRecord::Schema.define(:version => 20140508013159) do
 
   create_table "bot_configs", :force => true do |t|
     t.integer  "bot_id"
@@ -33,6 +33,11 @@ ActiveRecord::Schema.define(:version => 20140506192225) do
     t.boolean  "operator_control",     :default => true
     t.boolean  "operator_any_user",    :default => true
     t.text     "operators"
+    t.boolean  "ncq_watcher",          :default => false
+    t.integer  "ncq_watch_interval",   :default => 300
+    t.text     "ncq_watch_plates"
+    t.string   "ncq_watch_ping_term",  :default => "all"
+    t.boolean  "ncq_watch_details",    :default => false
   end
 
   create_table "bots", :force => true do |t|

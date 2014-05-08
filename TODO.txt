@@ -1,0 +1,37 @@
+Add a way to have the bot periodically (at a configurable interval) check the ncq for a product or sbr.
+
+Should keep a list (in memory) of cases already pinged out. Should only ping new ones it has not pinged before.
+
+Use the JSON unified curl stuff to get JSON data back from unified
+
+Should be able to use the timers already created for karma timeout for the interval.
+
+Unified shiz:
+=======================
+<erich> tim, http://pastebin.test.redhat.com/207762 
+<erich> tim curl -Lv --get --data-urlencode "sso_username=rhn-support-edrich" --data-urlencode "command=show plate Webservers" --data-urlencode "command_type=EXTERNAL"  http://unified.gsslab.rdu2.redhat.com/ajax/
+<erich> tim, note you may want to change that is uses the -k flag with curl and so that it uses https://
+<erich> tim, also change the sbr
+=======================
+
+Configuration directives needed:
+- enable ncq checking
+- ncq check interval
+- list of sbr's or products to check
+- Term to ping whole channel
+
+appliaction.yml directive to add:
+- rhn_username
+
+Bot replies to add:
+- Reply to 'bot_name, check <sbr/product>
+
+STATE:
+- Finished get_plate operation
+- Finished check for unassigned cases operation
+- Added config options
+- Need to add config options on view
+- Need to tweak and refine shit
+- Need to maybe add an option for geo
+
+
