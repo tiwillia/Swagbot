@@ -190,7 +190,10 @@ private
           rescue => exception
             Rails.logger.error "BOTHANDLER: ERROR: Bot #{bot.nick} with id #{bot.id} FAILed in loop with: "
             Rails.logger.error "BOTHANDLER: ERROR: " + exception.message
-  
+            exception.backtrace.each do |line|
+              Rails.logger.error "BOTHANDLER: ERROR: " + line
+            end
+ 
             # kill, stop, reload, and start the bot. Reload is absolutely necessary or the bot will still
             #   be in a failed state.
             bot.kill
