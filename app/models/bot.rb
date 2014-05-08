@@ -747,7 +747,7 @@ private
     plate = get_plate(plate)
     Rails.logger.debug "DIAG: plate hash key count: #{plate.keys.count}"
     Rails.logger.debug "DIAG: keys: #{plate.keys.join(", ")}"
-    temp_log_file = File.open("~/app-root/data/temp_log_file.txt", "w+")
+    temp_log_file = File.open("#{ENV['OPENSHIFT_DATA_DIR']}/temp_log_file.txt", "w+")
     temp_log_file.write(plate)
     temp_log_file.close
     
