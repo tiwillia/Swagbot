@@ -746,6 +746,10 @@ private
     Rails.logger.debug "DIAG: plate parameter passed: #{plate}"
     plate = get_plate(plate)
     Rails.logger.debug "DIAG: plate hash key count: #{plate.keys.count}"
+    Rails.logger.debug "DIAG: keys: #{plate.keys.join(", ")}"
+    temp_log_file = File.open("~/app-root/data/temp_log_file.txt", "w+")
+    temp_log_file.write(plate)
+    temp_log_file.close
     
     if user_to_ping
       ping = user_to_ping
