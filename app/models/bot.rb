@@ -27,6 +27,8 @@ class Bot < ActiveRecord::Base
     @server_password = self.server_password
     @nickserv_password = self.nickserv_password
     @bot = self
+
+    @socket_timeout = 15
   
     @mentioned_cases = [] 
   end
@@ -156,11 +158,19 @@ class Bot < ActiveRecord::Base
   # This is the main loop that uses all the private methods below it.
   def loop()
   
-    # Get line from socket - BLOCKING
-    line = @socket.gets
+    # Get line from socket with a timeout
+    if IO.select([@socket], nil, nil, @socket_timeout)
+      line = @socket.gets
+    else
+      Rails.logger.debug "No activity in channel for #{@socket_timeout} seconds"
+      line = "TIMEOUT"
+    end
+
     if line == nil
       return "connection lost"
     end
+
+    # Strip the line of 
     line = line.strip
 
     # Grab the nick of the @userposting
@@ -188,6 +198,11 @@ class Bot < ActiveRecord::Base
           @timers[:ncq_watcher] = Time.now
         end
       end
+    end
+
+    # When it times out, we need to wait until after the ncq_watcher to exit.
+    if line == "TIMEOUT"
+      return nil
     end
 
     # Ignore unifiedbot
