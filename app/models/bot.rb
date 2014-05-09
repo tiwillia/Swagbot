@@ -7,32 +7,45 @@ class Bot < ActiveRecord::Base
   has_many :karmastats
   has_many :users
 
-  # Not sure how many of these are necessary, but we will find out.
+  # Socket to create connections
   require 'socket'
+
+  # Open-uri and JSONfor API interactions
   require 'open-uri'
   require 'json/ext'
   
+  # After the bot is initialized, create instance variables
+  # This is similar to overwriting the initialize method
   after_initialize :set_instance_vars
 
+  # Initialize
   def set_instance_vars
+    # Set initial timeout values
     @timers = Hash.new
     @timers[:karma] = Hash.new
     @timers[:ping] = Time.now.to_i
     @timers[:ncq_watcher] = Time.now
+
+    # initialize userposting - must be defined
     @userposting = "nil"
+
+    # Define server connection settings
     @host = self.server
     @port = self.port
     @nick = self.nick
     @chan = self.channel
     @server_password = self.server_password
     @nickserv_password = self.nickserv_password
+    @socket_timeout = 15
+
+    # Unnecessary, but prettier than running 'self.xxxx' all over the place.
     @bot = self
 
-    @socket_timeout = 15
-  
+    # Created mentioned cases array  
     @mentioned_cases = [] 
   end
 
+  # Create a tcp socket to the specified server and join the irc channels
   def connect
     @socket = TCPSocket.open(@host, @port)
     if not @server_password == ""
@@ -200,7 +213,7 @@ class Bot < ActiveRecord::Base
       end
     end
 
-    # When it times out, we need to wait until after the ncq_watcher to exit.
+    # When the socket times out, we need to wait until after the ncq_watcher to exit.
     if line == "TIMEOUT"
       return nil
     end
@@ -532,6 +545,7 @@ private
     prng.rand(1..seq)
   end
 
+  # Return a user object from a username string
   def getuser(user)
     if @bot.users.where(:user => user).present?
       @bot.users.find_by_user(user)
@@ -542,6 +556,7 @@ private
     end
   end
 
+  # Return a user object from an id integer or string
   def getuser_by_id(id)
     if @bot.users.where(:id => id).present?
       @bot.users.find(id)
@@ -552,6 +567,7 @@ private
 
 #### KARMA ####
 
+  # Add or remove karma, depending on type
   def editkarma(giver, receiver, type)
     #Here we need to parse the db for name, get the number, add one to the number
     #Syntax of the db will be user:number\n
@@ -614,11 +630,11 @@ private
     sendchn("#{receiver_orig} now has #{stat.total} karma.")
   end
 
-  def rank(*who)
-    if who.empty? 
+  # Get ranks and send them to the channel, as necessary.
+  def rank(who = nil)
+    if who.nil? 
       ranks = get_rank
     else
-      who = who[0]
       ranks = get_rank(who)
     end
  
@@ -663,7 +679,7 @@ private
     sendchn("Quote for #{quotee.user} added with id: #{quote_obj.id}")
   end
 
-  # Reads a quote
+  # Sends a random quote for a specific user to the channel
   def echo_quote_by_user(who)
     if @bot.quotes.count.zero?
       sendchn("No quotes have ever been added, use \"#{@nick}, addquote user quote\" to add one.")
@@ -678,6 +694,7 @@ private
     end
   end
 
+  # Sends a random quote to the channel
   def echo_random_quote(chan)
     sendchn("No quotes have ever been added, use \"#{@nick}, addquote user quote\" to add one.") and return if @bot.quotes.all.empty?
     quote_ar = Array.new
@@ -688,6 +705,7 @@ private
     sendchn("\"#{quote.quote}\" - #{quotee.user} \| id:#{quote.id}")
   end
 
+  # Sends a quote of a specific id to the channel
   def echo_quote_by_id(id)
     sendchn("No quotes have ever been added, use \"#{@nick}, addquote user quote\" to add one.") and return if @bot.quotes.all.empty?
     if @bot.quotes.where(id: id).present?
@@ -710,6 +728,7 @@ private
     sendchn("Ok, I'll remember #{word}")
   end
 
+  # Forget the latest definition for a specific word
   def forget_definition(word)
     word = word.downcase
     definition = @bot.definitions.where(word: word).order('id ASC')
@@ -736,12 +755,14 @@ private
     end
   end
 
+  # Send a definition to the channel by its id
   def echo_definition_by_id(id)
     @bot.definitions.where(id: id).each do |d|
         sendchn("#{d.word} is #{d.definition}")
     end
   end
 
+  # Send definitions made by a specific user to the channel
   def echo_definition_by_user(who)
     @bot.definitions.where(recorder: who).each do |d|
         sendchn("#{d.word} is #{d.definition}")
