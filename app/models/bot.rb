@@ -113,13 +113,18 @@ class Bot < ActiveRecord::Base
     # Calculate rank
     counter = 1
    
-    @bot.karmastats.where('total is distinct from ?', '0').order('total DESC').limit(num_of_ranks).each do |x|
-      x.update_attributes(:rank => counter)
-      counter += 1
-    end
 
     # If we are getting all ranks, not just a single user
     if who.empty?
+  
+        # Calculate only the top X ranks
+        @bot.karmastats.where('total is distinct from ?', '0').order('total DESC').limit(num_of_ranks).each do |x|
+          if x.rank != counter
+            x.update_attributes(:rank => counter)
+          end
+          counter += 1
+        end
+  
         @bot.karmastats.where('total is distinct from ?', '0').order('rank ASC').limit(num_of_ranks).each do |stat|
         user = @bot.users.find(stat.user_id)
         rank_hash = Hash[ "user" => user, "stat" => stat ]
@@ -127,6 +132,15 @@ class Bot < ActiveRecord::Base
       end
     else
       user = getuser(who)
+
+      # Calculate all the ranks
+      # TODO this is an extremely hefty operation
+      @bot.karmastats.where('total is distinct from ?', '0').order('total DESC').each do |x|
+        if x.rank != counter
+          x.update_attributes(:rank => counter)
+        end
+        counter += 1
+      end
 
       if @bot.karmastats.where(user_id: user.id).present?
         stat = @bot.karmastats.find_by_user_id(user.id)
