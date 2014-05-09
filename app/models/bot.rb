@@ -26,7 +26,9 @@ class Bot < ActiveRecord::Base
     @chan = self.channel
     @server_password = self.server_password
     @nickserv_password = self.nickserv_password
-    @bot = self 
+    @bot = self
+  
+    @mentioned_cases = [] 
   end
 
   def connect
@@ -747,7 +749,11 @@ private
     plate = get_plate(plate)
     Rails.logger.debug "DIAG: plate hash key count: #{plate.keys.count}"
     Rails.logger.debug "DIAG: keys: #{plate.keys.join(", ")}"
-    temp_log_file = File.open("#{ENV['OPENSHIFT_DATA_DIR']}/temp_log_file.txt", "w+")
+    if ENV['OPENSHIFT_DATA_DIR']
+      temp_log_file = File.open("#{ENV['OPENSHIFT_DATA_DIR']}/temp_log_file.txt", "w+")
+    else
+      temp_log_file = File.open("#{Rails.root}/tmp/temp_log_file.txt", "w+")
+    end 
     temp_log_file.write(plate)
     temp_log_file.close
     
@@ -761,15 +767,22 @@ private
     ncq_case_nums = []
     plate["cases"].each do |ca|
       Rails.logger.debug "DIAG: Checking case #{ca["casenumber"]}"
-      if ca["internal_status"] == "Unassigned"
-        if ca["tz_offset"].match(/^-[4-9]\:00/)
-          Rails.logger.debug "DIAG: Reporting case #{ca["casenumber"]}"
-          ncq_cases << ca
-          ncq_case_nums << ca["casenumber"]
+      if not @mentioned_cases.include?(ca["casenumber"])
+        if ca["internal_status"] == "Unassigned"
+          if ca["tz_offset"].match(/^-[4-9]\:00/)
+            Rails.logger.debug "DIAG: Reporting case #{ca["casenumber"]}"
+            ncq_cases << ca
+            ncq_case_nums << ca["casenumber"]
+          end
         end
       end
     end
-  
+ 
+    # Track cases mentioned only if auto-checked
+    if ncq_watcher?
+      ncq_case_nums.each {|canum| @mentioned_cases << canum }
+    end
+
     if ncq_watch_details?
       ncq_cases.each do |ca|
         number = ca["casenumber"]
