@@ -108,18 +108,18 @@ class Bot < ActiveRecord::Base
   def get_rank(*who)
     
     rank_array = Array.new
+    num_of_ranks = @bot.bot_config(true).num_of_karma_ranks
 
     # Calculate rank
     counter = 1
-    @bot.karmastats.where('total is distinct from ?', '0').order('total DESC').each do |x|
-      x.rank = counter
-      x.save
+   
+    @bot.karmastats.where('total is distinct from ?', '0').order('total DESC').limit(num_of_ranks).each do |x|
+      x.update_attributes(:rank => counter)
       counter += 1
     end
 
     # If we are getting all ranks, not just a single user
     if who.empty?
-        num_of_ranks = @bot.bot_config(true).num_of_karma_ranks
         @bot.karmastats.where('total is distinct from ?', '0').order('rank ASC').limit(num_of_ranks).each do |stat|
         user = @bot.users.find(stat.user_id)
         rank_hash = Hash[ "user" => user, "stat" => stat ]
