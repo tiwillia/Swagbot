@@ -13,6 +13,7 @@ before_filter :require_loggedin
     parsed_params[:channels] = config_params[:channels].split(",")
     parsed_params[:operators] = config_params[:operators].split(",")
     parsed_params[:ncq_watch_plates] = config_params[:ncq_watch_plates].split(",")
+    parsed_params[:ignored_users] = config_params[:ignored_users].split(",")
     if @bot.bot_config.update_attributes(parsed_params)
       flash[:success] = @bot.nick + ' was successfully updated.'
       redirect_to @bot

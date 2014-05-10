@@ -222,19 +222,22 @@ class Bot < ActiveRecord::Base
 
     # Ignore unifiedbot
     # This should be removed when the configuration to add an ignore list is implemented
-    if @bot.bot_config(true).ignored_users.include? @userposting
-      Rails.logger.debug "Message from ignored user #{@userposting}, ignoring message"
-      Rails.logger.debug "######### END MESSAGE ###########"
-      return
-    end
 
     # Add the user to the users table if they do not exist
     if not @userposting.blank?
+
+      if @bot.bot_config(true).ignored_users.include? @userposting
+        Rails.logger.debug "Message from ignored user #{@userposting}, ignoring message"
+        Rails.logger.debug "######### END MESSAGE ###########"
+        return
+      end
+
       if @bot.users.where(user: @userposting).blank?
         Rails.logger.debug "Added user to database"
         new_user = @bot.users.create(user: @userposting)
         new_user.save
       end 
+
     end
 
     if line.match(/.*\:#{@nick}[\,\:\ ]+.*/i) then
@@ -676,9 +679,10 @@ private
   def addquote(recorder, quotee, quote)
     recorder = getuser(recorder)
     quotee = getuser(quotee)
-    quote_obj = @bot.quotes.new(recorder_id: recorder.id, quotee_id: quotee.id, quote: quote)
+    bot_specific_quote_id = @bot.quotes.count + 1
+    quote_obj = @bot.quotes.new(recorder_id: recorder.id, quotee_id: quotee.id, quote: quote, bot_specific_quote_id: bot_specific_quote_id)
     quote_obj.save
-    sendchn("Quote for #{quotee.user} added with id: #{quote_obj.id}")
+    sendchn("Quote for #{quotee.user} added with id: #{quote_obj.bot_specific_quote_id}")
   end
 
   # Sends a random quote for a specific user to the channel
@@ -690,7 +694,7 @@ private
     quotee = getuser(who)
     if @bot.quotes.where(quotee_id: quotee.id).present?
       quote = @bot.quotes.where(quotee_id: quotee.id).first(:offset => rand(@bot.quotes.where(quotee_id: quotee.id).count))
-      sendchn("\"#{quote.quote}\" - #{quotee.user} \| id:#{quote.id}")
+      sendchn("\"#{quote.quote}\" - #{quotee.user} \| id:#{quote.bot_specific_quote_id}")
     else
       sendchn("#{quotee.user} has never been quoted")
     end
@@ -704,16 +708,16 @@ private
     id = quote_ar[rdnum(@bot.quotes.count) - 1]
     quote = @bot.quotes.find(id.to_i)
     quotee = @bot.users.find(quote.quotee_id)
-    sendchn("\"#{quote.quote}\" - #{quotee.user} \| id:#{quote.id}")
+    sendchn("\"#{quote.quote}\" - #{quotee.user} \| id:#{quote.bot_specific_quote_id}")
   end
 
   # Sends a quote of a specific id to the channel
   def echo_quote_by_id(id)
     sendchn("No quotes have ever been added, use \"#{@nick}, addquote user quote\" to add one.") and return if @bot.quotes.all.empty?
-    if @bot.quotes.where(id: id).present?
-      quote = @bot.quotes.find(id)
+    if @bot.quotes.where(bot_specific_quote_id: id).present?
+      quote = @bot.quotes.find_by_bot_specific_quote_id(id)
       quotee = getuser_by_id(quote.quotee_id)
-      sendchn("\"#{quote.quote}\" - #{quotee.user} \| id:#{quote.id}")
+      sendchn("\"#{quote.quote}\" - #{quotee.user} \| id:#{quote.bot_specific_quote_id}")
     else
        sendchn("No quote with id: #{id} exists.")
     end

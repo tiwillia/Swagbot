@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140510141618) do
+ActiveRecord::Schema.define(:version => 20140510192725) do
 
   create_table "bot_configs", :force => true do |t|
     t.integer  "bot_id"
@@ -84,9 +84,10 @@ ActiveRecord::Schema.define(:version => 20140510141618) do
     t.integer  "recorder_id"
     t.integer  "quotee_id"
     t.text     "quote"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
     t.integer  "bot_id"
+    t.integer  "bot_specific_quote_id"
   end
 
   create_table "users", :force => true do |t|
