@@ -356,12 +356,12 @@ class Bot < ActiveRecord::Base
           url = URI.encode(yahoo_url + query)
           weather_data = JSON.parse(open(url).read)
           weather_results = weather_data["query"]["results"]["channel"]
-          sendchn("------------------Weather For #{zip}---------------")
-          sendchn("Current conditions: #{weather_results["wind"]["chill"]} degrees and #{weather_results["item"]["forecast"][0]["text"]}")
-          sendchn("Windspeed: #{weather_results["wind"]["speed"]}mph")
-          sendchn("High: #{weather_results["item"]["forecast"][0]["high"]} degrees")
-          sendchn("Low: #{weather_results["item"]["forecast"][0]["low"]} degrees")
-          sendchn("-----------------------------------------------------------")
+          sendchn("-=[-------------- Weather For #{zip} --------------]=-")
+          sendchn("   Conditions:  #{weather_results["wind"]["chill"]} degrees and #{weather_results["item"]["forecast"][0]["text"]}")
+          sendchn("   Windspeed:   #{weather_results["wind"]["speed"]}mph")
+          sendchn("   High:        #{weather_results["item"]["forecast"][0]["high"]} degrees")
+          sendchn("   Low:         #{weather_results["item"]["forecast"][0]["low"]} degrees")
+          sendchn("-=[------------------------------------------------]=-")
         end
         
         # Help section
