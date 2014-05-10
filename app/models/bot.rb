@@ -172,7 +172,8 @@ class Bot < ActiveRecord::Base
   def loop()
   
     # Get line from socket with a timeout
-    if IO.select([@socket], nil, nil, @socket_timeout)
+    within_timeout = IO.select([@socket], nil, nil, @socket_timeout)
+    if within_timeout
       line = @socket.gets
     else
       Rails.logger.debug "No activity in channel for #{@socket_timeout} seconds"
@@ -215,13 +216,14 @@ class Bot < ActiveRecord::Base
 
     # When the socket times out, we need to wait until after the ncq_watcher to exit.
     if line == "TIMEOUT"
+      Rails.logger.debug "######### END MESSAGE ###########"
       return nil
     end
 
     # Ignore unifiedbot
     # This should be removed when the configuration to add an ignore list is implemented
-    if @userposting.eql?("unifiedbot")
-      Rails.logger.debug "Message from ignored user, ignoring message"
+    if @bot.bot_config(true).ignored_users.include? @userposting
+      Rails.logger.debug "Message from ignored user #{@userposting}, ignoring message"
       Rails.logger.debug "######### END MESSAGE ###########"
       return
     end

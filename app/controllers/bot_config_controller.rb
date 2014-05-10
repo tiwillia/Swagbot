@@ -24,7 +24,7 @@ before_filter :require_loggedin
 
 private
   def config_params
-    params.permit(:karma, :quotes, :definitions, :youtube, :bugzilla, :imgur, :quit_message, :karma_timeout, :echo_all_definitions, :id, :channels, :num_of_karma_ranks, :weather, :default_weather_zip, :operators, :operator_any_user, :operator_control, :ncq_watcher, :ncq_watch_plates, :ncq_watch_interval, :ncq_watch_ping_term, :ncq_watch_details)
+    params.permit(:karma, :quotes, :definitions, :youtube, :bugzilla, :imgur, :quit_message, :karma_timeout, :echo_all_definitions, :id, :channels, :num_of_karma_ranks, :weather, :default_weather_zip, :operators, :operator_any_user, :operator_control, :ncq_watcher, :ncq_watch_plates, :ncq_watch_interval, :ncq_watch_ping_term, :ncq_watch_details, :ignored_users)
   end
 
   def require_loggedin

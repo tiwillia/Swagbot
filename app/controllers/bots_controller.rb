@@ -45,7 +45,8 @@ class BotsController < ApplicationController
       @bot.create_bot_config(bot_id: @bot.id, 
                              channels: [bot_params[:channel]], 
                              operators: [],
-                             ncq_watch_plates: ["Cloud Prods & Envs"])
+                             ncq_watch_plates: ["Cloud Prods & Envs"],
+                             ignored_users: ["unifiedbot"])
       flash[:success] = @bot.nick + ' successfully created.'
       redirect_to @bot
     else

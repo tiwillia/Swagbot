@@ -40,6 +40,11 @@
         <td>Comma seperated list of all allowed operators of the channel. This is only used if 'Allow any user to become operator' is set to False.<br>  Default: []</td> 
     </tr>
     <tr>
+        <td><%= label_tag :ignored_users, "Ignored users", :class => 'control-label' %></td>
+        <td><%= text_field_tag :ignored_users, @bot.bot_config.ignored_users.join(","), :class => 'form-control' %></td>
+        <td>Comma seperated list of all users the bot will ignore. Anything the user posts will be ignored by the bot.<br>  Default: unifiedbot</td> 
+    </tr>
+    <tr>
         <td><%= label_tag :echo_all_definitions, "Report all definitions", :class => 'control-label' %></td>
         <td><%= select_tag :echo_all_definitions, options_for_select([["True", true],["False", false]], @bot.bot_config.echo_all_definitions.to_s), :class => 'form-control' %></td>
         <td>If set to true, the bot will echo all definitions a word has been given when asked. If set to false, the bot will echo a random definition of a word when asked.<br>  Default: True.</td> 
