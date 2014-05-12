@@ -10,7 +10,7 @@ rhc app-create APP_NAME ruby-1.9 postgresql-9.2
 ```
 - Then, run the below to push the code to the application:
 ```
-cd etherpad
+cd APP_NAME
 git remote add upstream -m master https://github.com/tiwillia/Swagbot.git
 git pull -s recursive -X theirs upstream master
 # Note that the git pull above can be used later on to pull updates to the application
