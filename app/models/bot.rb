@@ -486,7 +486,7 @@ class Bot < ActiveRecord::Base
     return nil
   end
 
-private
+#private
  
 #### UTILITIES ####
  
@@ -800,18 +800,25 @@ private
   end
 
   # This go through a plate and pulls only the unassigned cases.
-  def check_ncq(plate, user_to_ping = nil)
-    Rails.logger.debug "DIAG: plate parameter passed: #{plate}"
-    plate = get_plate(plate)
-    Rails.logger.debug "DIAG: plate hash key count: #{plate.keys.count}"
-    Rails.logger.debug "DIAG: keys: #{plate.keys.join(", ")}"
-    if ENV['OPENSHIFT_DATA_DIR']
-      temp_log_file = File.open("#{ENV['OPENSHIFT_DATA_DIR']}/temp_log_file.txt", "w+")
+  def check_ncq(plate_name, user_to_ping = nil)
+    Rails.logger.debug "DIAG: plate parameter passed: #{plate_name}"
+    plate = Array.new
+
+    if CONFIG[:ncq_plates].include? plate_name
+      # Create plate from actual plate
+      all_plate_cases = unified_cmd("show plate #{plate_name}")["cases"]
+      all_plate_cases.each do |ca|
+        plate << ca if ca["internal_status"] == "Unassigned"
+      end 
     else
-      temp_log_file = File.open("#{Rails.root}/tmp/temp_log_file.txt", "w+")
-    end 
-    temp_log_file.write(plate)
-    temp_log_file.close
+      # Create plate from a product
+      unassigned_cases = unified_cmd("show unassigned rhel")["cases"]
+      unassigned_cases.each do |ca|
+        plate << ca if ca["product"].include? plate_name
+      end
+    end
+
+    Rails.logger.debug "DIAG: plate case count: #{plate.count}"
     
     if user_to_ping
       ping = user_to_ping
@@ -821,15 +828,13 @@ private
 
     ncq_cases = []
     ncq_case_nums = []
-    plate["cases"].each do |ca|
+    plate.each do |ca|
       Rails.logger.debug "DIAG: Checking case #{ca["casenumber"]}"
       if not @mentioned_cases.include?(ca["casenumber"])
-        if ca["internal_status"] == "Unassigned"
-          if ca["tz_offset"].match(/^-[4-9]\:00/)
-            Rails.logger.debug "DIAG: Reporting case #{ca["casenumber"]}"
-            ncq_cases << ca
-            ncq_case_nums << ca["casenumber"]
-          end
+        if ca["tz_offset"].match(/^-[4-9]\:00/)
+          Rails.logger.debug "DIAG: Reporting case #{ca["casenumber"]}"
+          ncq_cases << ca
+          ncq_case_nums << ca["casenumber"]
         end
       end
     end
@@ -862,8 +867,8 @@ private
 
   # This will go out to unified and get a plate in JSON form
   # returns Hash of parsed JSON
-  def get_plate(plate)
-    url = "https://unified.gsslab.rdu2.redhat.com/ajax/" if url.nil?
+  def unified_cmd(command)
+    url = "https://unified.gsslab.rdu2.redhat.com/ajax/"
 
     # Encode the url
     encoded_url = URI.encode(url)
@@ -871,7 +876,7 @@ private
     uri.scheme = 'https'
 
     # Set query parameters
-    params = { :sso_username => CONFIG[:rhn_username], :command => "show plate #{plate}", :command_type => "EXTERNAL" }
+    params = { :sso_username => CONFIG[:rhn_username], :command => command, :command_type => "EXTERNAL" }
     uri.query = URI.encode_www_form(params)    
 
     # create http connection
