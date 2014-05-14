@@ -492,6 +492,7 @@ class Bot < ActiveRecord::Base
  
   # Small function to easily send messages to @chan
   def sendchn(msg)
+    @chan = self.channel if @chan.nil?
     @socket.send ":source PRIVMSG #{@chan} :#{msg}\n" , 0
   end
 
@@ -858,9 +859,11 @@ class Bot < ActiveRecord::Base
         else
           sendchn("#{sbt} | #{sbr} | #{number} STRAT #{account_name} | #{product} | #{subject}")
         end
+        Rails.logger.debug "DIAG: Reported detailed case #{number}"
       end
     else
       sendchn("#{ping}, new cases: " + ncq_case_nums.join(", ")) unless ncq_case_nums.empty?
+      Rails.logger.debug "DIAG: Reported case numbers #{ncq_case_nums.join(",")}"
     end
     Rails.logger.debug "DIAG: NCQ case nums: #{ncq_case_nums.inspect}"
   end
