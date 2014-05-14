@@ -1,10 +1,21 @@
 # Configuration goes here in YAML
 # These can be called in code with CONFIG[:key]
+
+# Name of the project
 project_name: "Swagbot"
-karma_timeout: 5
-nickserv_password: "swagswag"
+
+# Sign up for bugzilla free at http://bugzilla.redhat.com/
 bugzilla_username: "email@example.com"
 bugzilla_password: "somePassword"
+
+# Get an api key at https://code.google.com/apis/console
 google_api_key: "ASD98aASDfg23AG3GA34AGAfgh22asdf"
+
+# Get a client id at http://api.imgur.com/oauth2/addclient
 imgur_client_id: "asdfasdfasdf"
+
+# Password to access the bots
 admin_password: "changeme"
+
+# Red Hat internal username, if you use the NCQ Watcher feature
+rhn_username: "rhn-support-jwhitehurst"
