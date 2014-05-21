@@ -25,6 +25,7 @@ class Bot < ActiveRecord::Base
     @timers[:karma] = Hash.new
     @timers[:ping] = Time.now.to_i
     @timers[:ncq_watcher] = Time.now
+    @timers[:mentioned_cases] = Hash.new
 
     # initialize userposting - must be defined
     @userposting = "nil"
@@ -815,12 +816,15 @@ class Bot < ActiveRecord::Base
       # Create plate from a product
       unassigned_cases = unified_cmd("show unassigned rhel")["cases"]
       unassigned_cases.each do |ca|
-        plate << ca if ca["product"].include? plate_name
+        next if ca["product"].nil?
+        plate << ca if ca["product"].downcase.include? plate_name.downcase
       end
     end
 
     Rails.logger.debug "DIAG: plate case count: #{plate.count}"
-    
+
+    # Ping the user if provided as a parameter
+    # otherwise, ping using the ping term    
     if user_to_ping
       ping = user_to_ping
     else
@@ -830,6 +834,14 @@ class Bot < ActiveRecord::Base
     ncq_cases = []
     ncq_case_nums = []
     plate.each do |ca|
+      # Check if a mentioned case should be mentioned again
+      if @mentioned_cases.include?(ca["casenumber"])
+        old_time = @timers[:mentioned_cases][ca["casenumber"]]
+        seconds_past = Time.now - old_time
+        if seconds_past > @bot.bot_config.ncq_watcher_mentioned_case_clear_seconds
+          @mentioned_cases.delete(ca["casenumber"])
+        end
+      end
       Rails.logger.debug "DIAG: Checking case #{ca["casenumber"]}"
       if not @mentioned_cases.include?(ca["casenumber"])
         if ca["tz_offset"].match(/^-[4-9]\:00/)
@@ -842,7 +854,10 @@ class Bot < ActiveRecord::Base
  
     # Track cases mentioned only if auto-checked
     if ncq_watcher?
-      ncq_case_nums.each {|canum| @mentioned_cases << canum }
+      ncq_case_nums.each do |canum| 
+        @mentioned_cases << canum
+        @timers[:mentioned_cases][canum] = Time.now
+      end
     end
 
     if ncq_watch_details?

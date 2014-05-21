@@ -90,9 +90,14 @@
         <td>If set to true, the bot will watch the New Case Queue for the selected Sbrs. It will periodically check the queue and ping the new cases in channel.<br>  Default: False.</td> 
     </tr>
     <tr>
-        <td><%= label_tag :ncq_watch_interval, "NCQ check intervall", :class => 'control-label' %></td>
+        <td><%= label_tag :ncq_watch_interval, "NCQ check interval", :class => 'control-label' %></td>
         <td><%= text_field_tag :ncq_watch_interval, @bot.bot_config(true).ncq_watch_interval.to_s, :class => 'form-control' %></td>
         <td>Amount of time in seconds to wait between each ncq check.<br>  Default: 300 (5 minutes)</td> 
+    </tr>
+    <tr>
+        <td><%= label_tag :ncq_watcher_mentioned_case_clear_seconds, "NCQ repeat interval", :class => 'control-label' %></td>
+        <td><%= text_field_tag :ncq_watcher_mentioned_case_clear_seconds, @bot.bot_config(true).ncq_watcher_mentioned_case_clear_seconds.to_s, :class => 'form-control' %></td>
+        <td>Amount of time in seconds to wait to repeat an NCQ case that has not been owned yet.<br>  Default: 1800 (30 minutes)</td> 
     </tr>
     <tr>
         <td><%= label_tag :ncq_watch_plates, "NCQ watcher plates", :class => 'control-label' %></td>

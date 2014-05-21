@@ -11,34 +11,35 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140510192725) do
+ActiveRecord::Schema.define(:version => 20140516205829) do
 
   create_table "bot_configs", :force => true do |t|
     t.integer  "bot_id"
-    t.integer  "karma_timeout",        :default => 5
-    t.boolean  "echo_all_definitions", :default => true
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
-    t.string   "quit_message",         :default => "Leaving..."
-    t.boolean  "quotes",               :default => true
-    t.boolean  "definitions",          :default => true
-    t.boolean  "karma",                :default => true
-    t.boolean  "youtube",              :default => true
-    t.boolean  "imgur",                :default => true
-    t.boolean  "bugzilla",             :default => true
+    t.integer  "karma_timeout",                            :default => 5
+    t.boolean  "echo_all_definitions",                     :default => true
+    t.datetime "created_at",                                                         :null => false
+    t.datetime "updated_at",                                                         :null => false
+    t.string   "quit_message",                             :default => "Leaving..."
+    t.boolean  "quotes",                                   :default => true
+    t.boolean  "definitions",                              :default => true
+    t.boolean  "karma",                                    :default => true
+    t.boolean  "youtube",                                  :default => true
+    t.boolean  "imgur",                                    :default => true
+    t.boolean  "bugzilla",                                 :default => true
     t.text     "channels"
-    t.integer  "num_of_karma_ranks",   :default => 5
-    t.boolean  "weather",              :default => true
-    t.integer  "default_weather_zip",  :default => 27606
-    t.boolean  "operator_control",     :default => true
-    t.boolean  "operator_any_user",    :default => true
+    t.integer  "num_of_karma_ranks",                       :default => 5
+    t.boolean  "weather",                                  :default => true
+    t.integer  "default_weather_zip",                      :default => 27606
+    t.boolean  "operator_control",                         :default => true
+    t.boolean  "operator_any_user",                        :default => true
     t.text     "operators"
-    t.boolean  "ncq_watcher",          :default => false
-    t.integer  "ncq_watch_interval",   :default => 300
+    t.boolean  "ncq_watcher",                              :default => false
+    t.integer  "ncq_watch_interval",                       :default => 300
     t.text     "ncq_watch_plates"
-    t.string   "ncq_watch_ping_term",  :default => "all"
-    t.boolean  "ncq_watch_details",    :default => false
+    t.string   "ncq_watch_ping_term",                      :default => "all"
+    t.boolean  "ncq_watch_details",                        :default => false
     t.text     "ignored_users"
+    t.integer  "ncq_watcher_mentioned_case_clear_seconds", :default => 1800
   end
 
   create_table "bots", :force => true do |t|
