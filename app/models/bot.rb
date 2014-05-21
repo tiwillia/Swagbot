@@ -844,11 +844,9 @@ class Bot < ActiveRecord::Base
       end
       Rails.logger.debug "DIAG: Checking case #{ca["casenumber"]}"
       if not @mentioned_cases.include?(ca["casenumber"])
-        if ca["tz_offset"].match(/^-[4-9]\:00/)
-          Rails.logger.debug "DIAG: Reporting case #{ca["casenumber"]}"
-          ncq_cases << ca
-          ncq_case_nums << ca["casenumber"]
-        end
+        Rails.logger.debug "DIAG: Reporting case #{ca["casenumber"]}"
+        ncq_cases << ca
+        ncq_case_nums << ca["casenumber"]
       end
     end
  
