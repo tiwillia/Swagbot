@@ -480,10 +480,11 @@ class Bot < ActiveRecord::Base
 
     # If the last ping was greater than 20 minutes ago
     if (Time.now.to_i - @timers[:ping]) > 1200
-      puts "Last ping was more than 20 minutes ago"
+      Rails.logger.error "Last ping was more than 20 minutes ago for #{@bot.nick} with id #{@bot.id}"
       @timers[:ping] = (Time.now.to_i - 600)
       return "reconnect"
     end
+
     return nil
   end
 
@@ -592,9 +593,6 @@ class Bot < ActiveRecord::Base
     karma_timer = @timers[:karma].fetch(receiver, nil)
     if karma_timer
       time = @timers[:karma][receiver].fetch(grantor.user, nil)
-      puts grantor.user
-      puts @timers[:karma][receiver]
-      puts @timers[:karma][receiver][grantor.user]
     else
       @timers[:karma][receiver] = Hash.new
       time = nil
