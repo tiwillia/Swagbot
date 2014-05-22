@@ -479,8 +479,8 @@ class Bot < ActiveRecord::Base
     Rails.logger.debug "######### END MESSAGE ###########"
 
     # If the last ping was greater than 20 minutes ago
-    if (Time.now.to_i - @timers[:ping]) > 1200
-      Rails.logger.error "Last ping was more than 20 minutes ago for #{@bot.nick} with id #{@bot.id}"
+    if (Time.now.to_i - @timers[:ping]) > 1800
+      Rails.logger.error "Last ping was more than 30 minutes ago for #{@bot.nick} with id #{@bot.id}"
       @timers[:ping] = (Time.now.to_i - 600)
       return "reconnect"
     end
