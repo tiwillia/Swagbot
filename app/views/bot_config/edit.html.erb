@@ -70,6 +70,11 @@
         <td>If set to true, the bot will be able to accept karma additions and subtractions from users and store them. Disabling this will not delete any karma already stored.<br>  Default: True.</td> 
     </tr>
     <tr>
+        <td><%= label_tag :reminders, "Enable reminders", :class => 'control-label' %></td>
+        <td><%= select_tag :reminders, options_for_select([["True", true],["False", false]], @bot.bot_config.reminders.to_s), :class => 'form-control' %></td>
+        <td>If set to true, the bot will be able to store reminders. It will then ping users and remind them at the specified time.<br>  Default: True.</td> 
+    </tr>
+    <tr>
         <td><%= label_tag :youtube, "Enable Youtube link parsing", :class => 'control-label' %></td>
         <td><%= select_tag :youtube, options_for_select([["True", true],["False", false]], @bot.bot_config.youtube.to_s), :class => 'form-control' %></td>
         <td>If set to true, the bot will parse youtube links and present the channel with the title, views, and other information about the video.<br>  Default: True.</td> 

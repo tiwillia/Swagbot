@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140516205829) do
+ActiveRecord::Schema.define(:version => 20140602234211) do
 
   create_table "bot_configs", :force => true do |t|
     t.integer  "bot_id"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20140516205829) do
     t.boolean  "ncq_watch_details",                        :default => false
     t.text     "ignored_users"
     t.integer  "ncq_watcher_mentioned_case_clear_seconds", :default => 1800
+    t.boolean  "reminders",                                :default => true
   end
 
   create_table "bots", :force => true do |t|

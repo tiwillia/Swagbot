@@ -26,6 +26,7 @@ class Bot < ActiveRecord::Base
     @timers[:ping] = Time.now.to_i
     @timers[:ncq_watcher] = Time.now
     @timers[:mentioned_cases] = Hash.new
+    @timers[:reminders] = Array.new
 
     # initialize userposting - must be defined
     @userposting = "nil"
@@ -115,6 +116,10 @@ class Bot < ActiveRecord::Base
 
   def ncq_watch_details?
     @bot.bot_config(true).ncq_watch_details
+  end
+  
+  def reminders?
+    @bot.bot_config(true).reminders
   end
 
   ##### END CONFIGURATIONS
@@ -213,6 +218,12 @@ class Bot < ActiveRecord::Base
           @timers[:ncq_watcher] = Time.now
         end
       end
+    end
+
+    ## Reminder checker
+    # Check if any reminders are ready if they are enabled
+    if reminders?
+      check_reminders
     end
 
     # When the socket times out, we need to wait until after the ncq_watcher to exit.
@@ -340,6 +351,15 @@ class Bot < ActiveRecord::Base
         end
         plate = "Cloud Prods & Envs" unless plate != "cloud"
         check_ncq(plate, @userposting)
+
+      ##### REMINDERS
+      when params.match(/remindme.*/) && reminders?
+        # Reminders are in the format:
+        #  bot_name, remindme at 00:00 01/01/01 "reminder text"
+        string = params[/remindme\ at\ .*\ "(.*)"/, 1]
+        time = params[/remindme\ at\ ([0-9\:]+\ [0-9\/]+)\ .*/, 1]
+        user = @userposting
+        set_reminder(user, string, time)
       
       # Weather reporting
       when params.match(/^weather.*/) && weather?
@@ -379,6 +399,7 @@ class Bot < ActiveRecord::Base
             sendchn("<name>--") unless !karma?
             sendchn("#{@nick} rank") unless !karma?
             sendchn("#{@nick} rank <name>") unless !karma?
+            sendchn("#{@nick} remindme at 00:00 1/1/00 \"Reminder string\"") if reminders?
             sendchn("#{@nick}: time")
             sendchn("#{@nick}: weather")
             sendchn("#{@nick}: leave")
@@ -493,9 +514,17 @@ class Bot < ActiveRecord::Base
 #### UTILITIES ####
  
   # Small function to easily send messages to @chan
-  def sendchn(msg)
-    @chan = self.channel if @chan.nil?
-    @socket.send ":source PRIVMSG #{@chan} :#{msg}\n" , 0
+  def sendchn(msg, channel=nil)
+    if channel.nil?
+      if @chan.nil?
+        chan = self.channel
+      else
+        chan = @chan
+      end 
+    else
+      chan = channel
+    end
+    @socket.send ":source PRIVMSG #{chan} :#{msg}\n" , 0
   end
 
   # Send non-formatted messages to the server
@@ -955,6 +984,35 @@ class Bot < ActiveRecord::Base
     string = string + " #{size} | #{views} views"
     string = string + " | NSFW" unless body["data"]["nsfw"] == false
     sendchn(string)
+  end
+
+  #### REMINDERS
+
+  def check_reminders
+    @timers[:reminders].each do |rem|
+      if rem[:time] < Time.now
+        Rails.logger.debug("Reminder ready | user: #{rem[:user]} | time: #{rem[:time]} | string: #{rem[:string]} | channel: #{rem[:channel]}")
+        remind(rem[:user], rem[:string], rem[:channel])
+        @timers[:reminders].delete(rem)
+      end
+    end
+  end
+
+  def set_reminder(user, string, time)
+    begin
+      parsed_time = DateTime.strptime("#{time} -0400", "%H:%M %m/%d/%y %z")
+    rescue => e
+      Rails.logger.debug("Reminder submitted with incorrect date: #{time}")
+      Rails.logger.debug(e.message)
+      sendchn("Incorrect date, follow the format: #{@bot.nick}, remindme at 00:00 1/1/00 \"Reminder text\"")
+      return
+    end
+    @timers[:reminders] << {:user => user, :string => string, :time => parsed_time, :channel => @chan}
+    sendchn("#{user}, I will remind you at #{parsed_time.strftime("%H:%M %-m/%-d/%y")}")
+  end
+
+  def remind(user, string, channel)
+    sendchn("#{user}, #{string}", channel)     
   end
 
 end
