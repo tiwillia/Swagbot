@@ -431,7 +431,7 @@ class Bot < ActiveRecord::Base
         when line.match(/\ INVITE #{@nick}\ \:\#.*/)
           invited_channel = line[/#{@nick}\ \:(\#.*)/, 1]
           join_chan(invited_channel)
-          sendchn("I was invited here by #{@userposting}. If I am not welcome type \"#{@nick} leave\"")
+          sendchn("I was invited here by #{@userposting}. If I am not welcome type \"#{@nick} leave\"", invited_channel)
         
         # Karma assignments
         when line.match(/^.*[\_\-\.\'\.\|0-9a-zA-Z]+[\+\-]{2}.*/) && karma?
