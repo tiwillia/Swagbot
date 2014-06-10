@@ -878,7 +878,7 @@ class Bot < ActiveRecord::Base
         end
       end
       Rails.logger.debug "DIAG: Checking case #{ca["casenumber"]}"
-      if not @mentioned_cases.include?(ca["casenumber"]) && @shutup_cases.include?(ca["casenumber"])
+      if not @mentioned_cases.include?(ca["casenumber"]) || @shutup_cases.include?(ca["casenumber"])
         Rails.logger.debug "DIAG: Reporting case #{ca["casenumber"]}"
         ncq_cases << ca
         ncq_case_nums << ca["casenumber"]
