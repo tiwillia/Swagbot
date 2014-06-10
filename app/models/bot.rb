@@ -44,7 +44,11 @@ class Bot < ActiveRecord::Base
     @bot = self
 
     # Created mentioned cases array  
-    @mentioned_cases = [] 
+    @mentioned_cases = []
+
+    # Create shutup cases array
+    # This is used to stop the bot from pinging about specific cases
+    @shutup_cases = [] 
   end
 
   # Create a tcp socket to the specified server and join the irc channels
@@ -351,6 +355,10 @@ class Bot < ActiveRecord::Base
         end
         plate = "Cloud Prods & Envs" unless plate != "cloud"
         check_ncq(plate, @userposting)
+      when params.match(/shutup\ [0-9]+/)
+        case_num = params[/shutup\ ([0-9]+)/, 1]
+        @shutup_cases << case_num
+        sendchn("#{@userposting}, I will not mention #{case_num} again.")
 
       ##### REMINDERS
       when params.match(/remindme.*/) && reminders?
@@ -870,7 +878,7 @@ class Bot < ActiveRecord::Base
         end
       end
       Rails.logger.debug "DIAG: Checking case #{ca["casenumber"]}"
-      if not @mentioned_cases.include?(ca["casenumber"])
+      if not @mentioned_cases.include?(ca["casenumber"]) && @shutup_cases.include?(ca["casenumber"])
         Rails.logger.debug "DIAG: Reporting case #{ca["casenumber"]}"
         ncq_cases << ca
         ncq_case_nums << ca["casenumber"]
