@@ -13,7 +13,7 @@
   <tbody>
   <% @results.each do |result| %>
     <tr>
-      <td><%= result.id %></td>
+      <td><%= result.bot_specific_quote_id %></td>
       <td><%= bot.users.find(result.quotee_id).user %></td>
       <td><%= result.quote %></td>
       <td><%= bot.users.find(result.recorder_id).user %></td>
