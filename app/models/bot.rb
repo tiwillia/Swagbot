@@ -1,6 +1,7 @@
 class Bot < ActiveRecord::Base
   # These associations are necessary, or all bots will use the same karama/quotes/etc tables
   has_one :bot_config
+  has_many :ncq_rules
   has_many :karma_entries
   has_many :definitions
   has_many :quotes
@@ -216,9 +217,9 @@ class Bot < ActiveRecord::Base
       old_time = @timers[:ncq_watcher]
       seconds_past = Time.now - old_time
       if seconds_past > @bot.bot_config(true).ncq_watch_interval
-        Rails.logger.debug "Checking NCQ for plates: #{@bot.bot_config(true).ncq_watch_plates.inspect}"
-        @bot.bot_config(true).ncq_watch_plates.each do |plate|
-          check_ncq(plate)
+        Rails.logger.debug "Checking NCQ for plates: #{@bot.ncq_rules.all.inspect}"
+        @bot.ncq_rules.all.each do |rule|
+          check_ncq(rule)
           @timers[:ncq_watcher] = Time.now
         end
       end
@@ -348,13 +349,16 @@ class Bot < ActiveRecord::Base
       ##### NCQ Check
       when params.match(/check.*/)
         if params.eql?("check")
-          sendchn("No sbr specified, checking defaults. Use #{@nick}, check <plate>.")
-          plate = @bot.bot_config(true).ncq_watch_plates.first
+          sendchn("No sbr or product specified, checking defaults. Use #{@nick}, check <plate>.")
+          rules = @bot.ncq_rules
+          rules.each do |rule|
+            check_ncq(rule, @userposting)
+          end
         else
-          plate = params[/check\ ([a-zA-Z0-9\ \&\-\_]+)/, 1]
+          rule_string = params[/check\ ([a-zA-Z0-9\ \&\-\_]+)/, 1]
+          check_ncq(rule_string, @userposting)
         end
-        plate = "Cloud Prods & Envs" unless plate != "cloud"
-        check_ncq(plate, @userposting)
+
       when params.match(/shutup\ [0-9]+/)
         case_num = params[/shutup\ ([0-9]+)/, 1]
         @shutup_cases << case_num
@@ -669,6 +673,8 @@ class Bot < ActiveRecord::Base
       stat.save
     end
 
+    message = "#{receiver_orig} now has #{stat.total} karma."
+    message += " Hail our dark lord Satan!! May it rain blood this day!"
     sendchn("#{receiver_orig} now has #{stat.total} karma.")
   end
 
@@ -837,13 +843,16 @@ class Bot < ActiveRecord::Base
   end
 
   # This go through a plate and pulls only the unassigned cases.
-  def check_ncq(plate_name, user_to_ping = nil)
-    Rails.logger.debug "DIAG: plate parameter passed: #{plate_name}"
+  def check_ncq(rule, user_to_ping = nil)
+    Rails.logger.debug "DIAG: rule parameter passed: #{rule.inspect}"
+    if rule.class == String
+      rule = @bot.ncq_rules.new(:search_type => "plate", :match_string => rule, :use_default_ping_term => true) 
+    end
     plate = Array.new
 
-    if CONFIG[:ncq_plates].include? plate_name
+    if rule.search_type == "plate"
       # Create plate from actual plate
-      all_plate_cases = unified_cmd("show plate #{plate_name}")["cases"]
+      all_plate_cases = unified_cmd("show plate #{rule.match_string}")["cases"]
       all_plate_cases.each do |ca|
         plate << ca if ca["internal_status"] == "Unassigned"
       end 
@@ -852,7 +861,7 @@ class Bot < ActiveRecord::Base
       unassigned_cases = unified_cmd("show unassigned rhel")["cases"]
       unassigned_cases.each do |ca|
         next if ca["product"].nil?
-        plate << ca if ca["product"].downcase.include? plate_name.downcase
+        plate << ca if ca["product"].downcase.include? rule.match_string.downcase
       end
     end
 
@@ -862,8 +871,10 @@ class Bot < ActiveRecord::Base
     # otherwise, ping using the ping term    
     if user_to_ping
       ping = user_to_ping
-    else
+    elsif rule.use_default_ping_term == true
       ping = @bot.bot_config(true).ncq_watch_ping_term
+    else
+      ping = rule.ping_term
     end
 
     ncq_cases = []
@@ -982,6 +993,10 @@ class Bot < ActiveRecord::Base
     image_id = url.split("/").last
     imgur_client_id = CONFIG[:imgur_client_id]
     response = get_request(:url => "https://api.imgur.com/3/image/#{image_id}", :headers => {"Authorization" => "Client-ID "+imgur_client_id})
+    if response.body.match(/^\<html.*/)
+      Rails.logger.error "Imgur response was html, not commenting on link."
+      return nil
+    end
     body = JSON.parse(response.body)
     Rails.logger.debug "IMGUR RESPONSE: #{response.body.to_s}"
     title = body["data"]["title"]
