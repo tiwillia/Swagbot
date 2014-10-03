@@ -1,17 +1,21 @@
 RailsApp::Application.routes.draw do
+  get "ncq_rule/create"
+
+  get "ncq_rule/destroy"
+
   get 'welcome/index'
   get 'welcome/help'
   match 'logout' => 'sessions#destroy'
   match 'login' => 'welcome#login'
   post 'sessions/create' 
-  match 'bots/:id/configuration/update' => 'bot_config#update'
-  match 'bots/:id/configuration' => 'bot_config#edit'
   match 'search/:action' => 'searches#:action'
   match 'bots/index' => 'bots#index'
   match 'bots/:id/start' => 'bots#start'
   match 'bots/:id/stop' => 'bots#stop'
   match 'bots/:id/restart' => 'bots#restart'
   resources :bots
+  resources :bot_configs
+  resources :ncq_rules
   root :to => 'welcome#index'
   
 

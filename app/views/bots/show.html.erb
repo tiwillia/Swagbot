@@ -2,7 +2,7 @@
 <%= render "show_bot" %>
 <div class="row">
   <div class="col-sm-4 text-center">
-    <div class="well well-small">
+    <div class="well well-small" style="height:375px">
       <h3><b>Definitions</b></h3>
       <hr />
       <p>
@@ -19,11 +19,28 @@
           </span>
           </div>
         <% end %>
+        <hr />
+        <%= form_for @bot.bot_config :html => {:class => "form-horizontal"} do |f| %>
+          <div class="form-group">
+            <%= f.label :definitions, "Enable definitions", :class => 'col-sm-6 control-label' %>
+            <div class="col-sm-6">
+              <%= f.select :definitions, options_for_select([["True", true],["False", false]], @bot.bot_config.definitions.to_s), {}, {:class => 'form-control'} %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :echo_all_definitions, "Echo all definitions", :class => 'col-sm-6 control-label' %>
+            <div class="col-sm-6">
+              <%= f.select :echo_all_definitions, options_for_select([["True", true],["False", false]], @bot.bot_config.echo_all_definitions.to_s), {}, {:class => 'form-control'} %>
+            </div>
+          </div>
+          <br><br><br><br>
+          <%= submit_tag "Submit Changes", :class => "btn btn-default" %>
+        <% end %>
       </p>
     </div>
   </div>
   <div class="col-sm-4 text-center">
-    <div class="well well-small">
+    <div class="well well-small" style="height:375px">
       <h3><b>Quotes</b></h3>
       <hr />
       <p>
@@ -41,10 +58,21 @@
           </div>
         <% end %>
       </p>
+      <hr />
+      <%= form_for @bot.bot_config :html => {:class => "form-horizontal"} do |f| %>
+        <div class="form-group">
+          <%= f.label :karma, "Enable Quotes", :class => 'col-sm-6 control-label' %>
+          <div class="col-sm-6">
+            <%= f.select :quotes, options_for_select([["True", true],["False", false]], @bot.bot_config.quotes.to_s), {}, {:class => 'form-control'} %>
+          </div>
+        </div>
+        <br><br>
+        <%= submit_tag "Submit Changes", :class => "btn btn-default" %>
+      <% end %>
     </div>
   </div>
   <div class="col-sm-4 text-center">
-    <div class="well well-small">
+    <div class="well well-small" style="height:375px">
       <h3><b>Karma</b></h3>
       <hr />
       <p>
@@ -52,36 +80,225 @@
           <dt>Users with Karma</dt>
           <dd><%= @bot.karmastats.count %></dd>
         </dl>
-        <hr />
-        <h4>Ranks</h4>
-          <% ranks = @bot.get_rank %>
-          <table class="table table-striped">
-            <thead>
+        <h4><a href="#" class="btn btn-lg btn-default">Show Ranks</a></h4>
+        <% ranks = @bot.get_rank %>
+        <table class="table table-striped" hidden="true">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>User</th>
+              <th>Karma</th>
+            </tr>
+          </thead>
+          <tbody align="left">
+            <% counter = 1 %>
+            <% ranks.each do |rank| %>
               <tr>
-                <th>Rank</th>
-                <th>User</th>
-                <th>Karma</th>
+                <td><%= counter %></td>
+                <td><%= rank["user"].user %></td>
+                <td><%= rank["stat"].total %></td>
+                <% counter += 1 %>
               </tr>
-            </thead>
-            <tbody align="left">
-              <% counter = 1 %>
-              <% ranks.each do |rank| %>
-                <tr>
-                  <td><%= counter %></td>
-                  <td><%= rank["user"].user %></td>
-                  <td><%= rank["stat"].total %></td>
-                  <% counter += 1 %>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
+            <% end %>
+          </tbody>
+        </table>
       </p>
+      <hr />
+      <%= form_for @bot.bot_config :html => {:class => "form-horizontal"} do |f| %>
+        <div class="form-group">
+          <%= f.label :karma, "Enable Karma", :class => 'col-sm-6 control-label' %>
+          <div class="col-sm-6">
+            <%= f.select :karma, options_for_select([["True", true],["False", false]], @bot.bot_config.karma.to_s), {}, {:class => 'form-control'} %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :karma_timeout, "Karma timeout", :class => 'col-sm-6 control-label' %>
+          <div class="col-sm-6">
+            <%= f.text_field :karma_timeout, :value => @bot.bot_config.karma_timeout.to_s, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :num_of_karma_ranks, "# of Karma Ranks", :class => 'col-sm-6 control-label' %>
+          <div class="col-sm-6">
+            <%= f.text_field :num_of_karma_ranks, :value => @bot.bot_config.num_of_karma_ranks.to_s, :class => 'form-control' %>
+          </div>
+        </div>
+        <br><br><br><br>
+        <%= submit_tag "Submit Changes", :class => "btn btn-default" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-4 text-center">
+    <div class="well well-small" style="height:375px">
+      <h3><b>User Control</b></h3>
+      <hr />
+      <%= form_for @bot.bot_config :html => {:class => "form-horizontal"} do |f| %>
+        <div class="form-group">
+          <%= f.label :operator_control, "Enable Op Control", :class => 'col-sm-6 control-label' %>
+          <div class="col-sm-6">
+            <%= f.select :operator_control, options_for_select([["True", true],["False", false]], @bot.bot_config.operator_control.to_s), {}, {:class => 'form-control'} %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :operator_any_user, "Op Any user", :class => 'col-sm-6 control-label' %>
+          <div class="col-sm-6">
+            <%= f.select :operator_any_user, options_for_select([["True", true],["False", false]], @bot.bot_config.operator_any_user.to_s), {}, {:class => 'form-control'} %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :operators, "Allowed Operators", :class => 'col-sm-6 control-label' %>
+          <div class="col-sm-6">
+            <%= f.text_field :operators, :value => @bot.bot_config.operators.join(","), :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :ignored_users, "Globally ignored users", :class => 'col-sm-6 control-label' %>
+          <div class="col-sm-6">
+            <%= f.text_field :ignored_users, :value => @bot.bot_config.ignored_users.join(","), :class => 'form-control' %>
+          </div>
+        </div>
+        <br><br><br><br><bR><bR><bR><bR>
+        <%= submit_tag "Submit Changes", :class => "btn btn-default" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-8 text-center">
+    <div class="well well-small" style="height:375px">
+      <h3><b>Other Settings</b></h3>
+      <hr />
+      <%= form_for @bot.bot_config :html => {:class => "form-horizontal"} do |f| %>
+      <div class="col-md-8">
+        <div class="form-group">
+          <%= f.label :channels, "Channels to Auto-join", :class => 'col-sm-6 control-label' %>
+          <div class="col-sm-6">
+            <%= f.text_field :channels, :value => @bot.bot_config.channels.join(","), :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :quit_message, "Quit message", :class => 'col-sm-6 control-label' %>
+          <div class="col-sm-6">
+            <%= f.text_field :quit_message, :value => @bot.bot_config.quit_message, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :reminders, "Enable reminders", :class => 'col-sm-6 control-label' %>
+          <div class="col-sm-6">
+            <%= f.select :reminders, options_for_select([["True", true],["False", false]], @bot.bot_config.reminders.to_s), {}, {:class => 'form-control'} %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :weather, "Enable weather reporting", :class => 'col-sm-6 control-label' %>
+          <div class="col-sm-6">
+            <%= f.select :weather, options_for_select([["True", true],["False", false]], @bot.bot_config.weather.to_s), {}, {:class => 'form-control'} %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :default_weather_zip, "Default weather zip code", :class => 'col-sm-6 control-label' %>
+          <div class="col-sm-6">
+            <%= f.text_field :default_weather_zip, :value => @bot.bot_config.default_weather_zip, :class => 'form-control' %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h4>Link Parsing</h4>
+        <div class="form-group">
+          <%= f.label :imgur, "Imgur", :class => 'col-sm-6 control-label' %>
+          <div class="col-sm-6">
+            <%= f.select :imgur, options_for_select([["True", true],["False", false]], @bot.bot_config.imgur.to_s), {}, {:class => 'form-control'} %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :youtube, "Youtube", :class => 'col-sm-6 control-label' %>
+          <div class="col-sm-6">
+            <%= f.select :youtube, options_for_select([["True", true],["False", false]], @bot.bot_config.youtube.to_s), {}, {:class => 'form-control'} %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :bugzilla, "Bugzilla", :class => 'col-sm-6 control-label' %>
+          <div class="col-sm-6">
+            <%= f.select :bugzilla, options_for_select([["True", true],["False", false]], @bot.bot_config.bugzilla.to_s), {}, {:class => 'form-control'} %>
+          </div>
+        </div>
+        <br><br><br><br><bR><bR><bR><bR>
+        <%= submit_tag "Submit Changes", :class => "btn btn-default" %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 text-center">
+    <div class="well well-small" style="height:375px">
+      <h3><b>New Case Queue Checking</b></h3>
+      <hr />
+      <div class="col-md-5">
+      <%= form_for @bot.bot_config :html => {:class => "form-horizontal"} do |f| %>
+        <div class="form-group">
+          <%= f.label :ncq_watcher, "Enable automatic queue checking", :class => 'col-sm-9 control-label' %>
+          <div class="col-sm-3">
+            <%= f.select :ncq_watcher, options_for_select([["True", true],["False", false]], @bot.bot_config.ncq_watcher.to_s), {}, {:class => 'form-control'} %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :ncq_watch_interval, "NCQ automatic checking interval", :class => 'col-sm-9 control-label' %>
+          <div class="col-sm-3">
+            <%= f.text_field :ncq_watch_interval, :value => @bot.bot_config.ncq_watch_interval, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :ncq_watcher_mentioned_case_clear_seconds, "NCQ case repeat interval", :class => 'col-sm-9 control-label' %>
+          <div class="col-sm-3">
+            <%= f.text_field :ncq_watcher_mentioned_case_clear_seconds, :value => @bot.bot_config.ncq_watcher_mentioned_case_clear_seconds, :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :ncq_watch_ping_term, "NCQ automatic check default ping term", :class => 'col-sm-9 control-label' %>
+          <div class="col-sm-3">
+            <%= f.text_field :ncq_watch_ping_term, :value => @bot.bot_config.ncq_watch_ping_term, :class => 'form-control' %>
+          </div>
+        </div>
+        <br><br><br><br><bR><bR><bR><bR>
+        <%= submit_tag "Submit Changes", :class => "btn btn-default" %>
+      <% end %>
+    </div>
+    <div class="col-md-7">
+      <h4 class="text-center">NCQ Check Rules</h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <td><b>Match String</b></td>
+            <td><b>Type</b></td>
+            <td class="col-md-3"><b>Default ping</b></td>
+            <td><b>Ping term</b></td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @bot.ncq_rules.each do |rule| %>
+            <tr>
+              <td><%= rule.match_string %></td>
+              <td><%= rule.search_type.titleize %></td>
+              <td><%= rule.use_default_ping_term ? raw('<span class="glyphicon glyphicon-ok"></span>') : raw('<span class="glyphicon glyphicon-remove"></span>') %></td>
+              <td><%= rule.ping_term.titleize %></td>
+              <td><a href="/ncq_rules/<%= rule.id %>" class="btn btn-sm btn-danger" data-method="delete"><span class="glyphicon glyphicon-remove"></span></a></td>
+            </tr>
+          <% end %>
+          <tr>
+            <%= form_for @bot.ncq_rules.new do |f| %>
+              <%= f.hidden_field :bot_id, :value => @bot.id %>
+            <td><%= f.text_field :match_string, :placeholder => "Match String", :class => 'form-control' %></td>
+            <td class="col-md-3"><%= f.select :search_type, options_for_select([["Plate", "plate"],["Product", "product"]]), {}, {:class => 'form-control'}%></td>
+            <td><%= f.check_box :use_default_ping_term, :class => 'form-control', :checked => false %></td>
+            <td><%= f.text_field :ping_term, :class => 'form-control' %></td>
+            <td><%= f.submit "Add", :class => "btn btn-sm btn-success" %></td>
+          <% end %>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
 <div class="col-sm-offset-11">
   <%= link_to "Edit Bot Details", edit_bot_path(@bot), :class => "btn btn-default" %>
-  <%= link_to "Edit Config", "/bots/#{@bot.id}/configuration", :class => "btn btn-default" %>
+  <%#= link_to "Edit Config", "/bots/#{@bot.id}/configuration", :class => "btn btn-default" %>
   <%= link_to "Back", '/bots/index', :class => "btn btn-default" %>
 </div>
 

@@ -11,12 +11,17 @@ TODO list:
 In Progress Notes:
 -=~~~~~~~~~~~~~~~~~~~~~~~~~~=-
 1) NCQ check rules
-   - Create a database table with the following:
+   - DONE Create a database table with the following:
      - use_default_ping_term  (Use the default ping term instead)
      - ping_term   (Term to ping in channel
      - search_type ("plate" or "product")
      - math_string  (string for plate or product)
      - bot_id
-   - Bot should use these rules to cehck the ncq and ping the correct person
+   - DONE Bot should use these rules to cehck the ncq and ping the correct person
    - Add a view of some sort specifically to add the ncq rules (perhaps wait till 3)
+
+3) Re-vamp views
+   - DONE Allow bot_configs to be a resource in config/routes
+   - The bot show page should contain many boxes, each with information about that component as well as configuration
+   - All forms should be submitted via javascript calls. No reload of the page should be necessary.
 
