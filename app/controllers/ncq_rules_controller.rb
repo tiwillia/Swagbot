@@ -3,7 +3,6 @@ class NcqRulesController < ApplicationController
   def create
     @ncq_rule = NcqRule.new(ncq_params)
     if @ncq_rule.save
-      binding.pry
       flash[:success] = "NCQ watcher rule added."
       redirect_to :back
     else
