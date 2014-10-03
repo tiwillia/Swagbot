@@ -1,4 +1,4 @@
-class BotConfigController < ApplicationController
+class BotConfigsController < ApplicationController
 
 before_filter :require_loggedin
 
@@ -10,10 +10,10 @@ before_filter :require_loggedin
   def update
     @bot = Bot.find(params[:id])
     parsed_params = config_params
-    parsed_params[:channels] = config_params[:channels].split(",")
-    parsed_params[:operators] = config_params[:operators].split(",")
-    parsed_params[:ncq_watch_plates] = config_params[:ncq_watch_plates].split(",")
-    parsed_params[:ignored_users] = config_params[:ignored_users].split(",")
+    parsed_params[:channels] = config_params[:channels].split(",") if config_params[:channels]
+    parsed_params[:operators] = config_params[:operators].split(",") if config_params[:operators]
+    parsed_params[:ncq_watch_plates] = config_params[:ncq_watch_plates].split(",") if config_params[:ncq_watch_plates]
+    parsed_params[:ignored_users] = config_params[:ignored_users].split(",")if config_params[:ignored_users]
     if @bot.bot_config.update_attributes(parsed_params)
       flash[:success] = @bot.nick + ' was successfully updated.'
       redirect_to @bot

@@ -1,5 +1,5 @@
 class BotHandler
- 
+
 # This is the handler that controls bots and their respective threads.
 # 'start' creates a single thread that watches for work
 #     work must be in the format {:bot_id => bot.id, :action => "start|stop|restart"}

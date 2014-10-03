@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140602234211) do
+ActiveRecord::Schema.define(:version => 20140707174819) do
 
   create_table "bot_configs", :force => true do |t|
     t.integer  "bot_id"
@@ -80,6 +80,14 @@ ActiveRecord::Schema.define(:version => 20140602234211) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "bot_id"
+  end
+
+  create_table "ncq_rules", :force => true do |t|
+    t.boolean "use_default_ping_term", :default => true
+    t.string  "ping_term"
+    t.string  "search_type"
+    t.string  "match_string"
+    t.integer "bot_id"
   end
 
   create_table "quotes", :force => true do |t|
