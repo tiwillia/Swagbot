@@ -362,7 +362,7 @@ class Bot < ActiveRecord::Base
       when params.match(/shutup\ [0-9]+/)
         case_num = params[/shutup\ ([0-9]+)/, 1]
         @shutup_cases << case_num
-        sendchn("#{@userposting}, I will not mention #{case_num} again.")
+        sendchn("#{@userposting}, I will not mention that case again.")
 
       ##### REMINDERS
       when params.match(/remindme.*/) && reminders?
@@ -446,19 +446,19 @@ class Bot < ActiveRecord::Base
           sendchn("I was invited here by #{@userposting}. If I am not welcome type \"#{@nick} leave\"", invited_channel)
         
         # Karma assignments
-        when line.match(/^.*[\_\-\.\'\.\|0-9a-zA-Z]+[\+\-]{2}.*/) && karma?
+        when line.match(/^.*[\(\)\{\}\_\-\.\'\.\|0-9a-zA-Z]+[\+\-]{2}.*/) && karma?
           if @chan != @userposting
             line.split.each do |x| 
-              if x.match(/[\_\-\.\'\.\|0-9a-zA-Z]+\+\+/)
-                user = x[/([\_\-\.\'\.\|0-9a-zA-Z]*)\+\+/, 1]
+              if x.match(/[\(\)\{\}\_\-\.\'\.\|0-9a-zA-Z]+\+\+/)
+                user = x[/([\(\)\{\}\_\-\.\'\.\|0-9a-zA-Z]*)\+\+/, 1]
                 if user == @userposting
                   sendchn("Lol, yeah right.")
                 else
                   editkarma(@userposting, user, "add")
                 end
               end
-              if x.match(/[\_\-\.\'\.\|0-9a-zA-Z]+\-\-/)
-                user = x[/([\_\-\.\'\.\|0-9a-zA-Z]*)\-\-/, 1]
+              if x.match(/[\(\)\{\}\_\-\.\'\.\|0-9a-zA-Z]+\-\-/)
+                user = x[/([\(\)\{\}\_\-\.\'\.\|0-9a-zA-Z]*)\-\-/, 1]
                 editkarma(@userposting, user, "subtract")
               end
             end
