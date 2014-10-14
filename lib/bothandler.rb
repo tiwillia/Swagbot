@@ -112,8 +112,15 @@ private
         Rails.logger.error "BOTHANDLER: ERROR could not restart bot #{e.inspect}"
       end
       
+    when "say"
+      Rails.logger.info "BOTHANDLER: Saying message #{work[:message]}"
+      say_message(bot, work[:message])
 
     end
+  end
+
+  def say_message(bot, message)
+    bot.sendchn(message)
   end
 
   # Start a bot thread

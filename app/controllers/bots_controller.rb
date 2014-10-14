@@ -1,6 +1,6 @@
 class BotsController < ApplicationController
 
-  before_filter :require_loggedin
+  before_filter :require_loggedin, :except => :say
   require 'bothandler'
 
   # Simple index
@@ -88,6 +88,20 @@ class BotsController < ApplicationController
     BOT_HANDLER.enqueue({:bot_id => @bot.id, :action => "restart"})
     flash[:success] = "#{@bot.nick} queued to restart."
     redirect_to bot_path(@bot)
+  end
+
+  def say
+    @bot = Bot.find(params[:id])
+    if params[:pw] == CONFIG[:admin_password]
+      BOT_HANDLER.enqueue({:bot_id => @bot.id, :action => "say", :message => params[:message]})
+      respond_to do |format|
+        format.json { render :json => {"report" => "Message sent!"} }
+      end
+    else
+      respond_to do |format|
+        format.json { render :json => {"report" => "UNAUTHORIZED"} }
+      end
+    end
   end
 
   private

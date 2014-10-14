@@ -13,6 +13,7 @@ RailsApp::Application.routes.draw do
   match 'bots/:id/start' => 'bots#start'
   match 'bots/:id/stop' => 'bots#stop'
   match 'bots/:id/restart' => 'bots#restart'
+  match 'bots/:id/say' => 'bots#say'
   resources :bots
   resources :bot_configs
   resources :ncq_rules
