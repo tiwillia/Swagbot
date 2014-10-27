@@ -965,10 +965,14 @@ class Bot < ActiveRecord::Base
     number = url[/([0-9]{6,8})/, 1]
     response = get_request(:url => 'https://bugzilla.redhat.com/jsonrpc.cgi?method=Bug.get&params=[{"ids":'+number+'}]', :username => CONFIG[:bugzilla_username], :password => CONFIG[:bugzilla_password])
     body = JSON.parse(response.body)
-    title = body["result"]["bugs"][0]["summary"]
-    status = body["result"]["bugs"][0]["status"]
-    product = body["result"]["bugs"][0]["product"]
-    sendchn("Bugzilla: ##{number} \"#{title}\" : #{status} : #{product}")
+    begin
+      title = body["result"]["bugs"][0]["summary"]
+      status = body["result"]["bugs"][0]["status"]
+      product = body["result"]["bugs"][0]["product"]
+      sendchn("Bugzilla: ##{number} \"#{title}\" : #{status} : #{product}")
+    rescue => e
+      Rails.logger.error "Bugzilla with number #{number} failed to parse with error: #{e.message}"
+    end
   end
 
   # This will grab the title of a youtube link and display it
