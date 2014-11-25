@@ -67,6 +67,7 @@ class Bot < ActiveRecord::Base
     @bot.bot_config(true).channels.each do |chan|
       join_chan chan
     end
+    @socket 
   end
 
   # Kill the connection
@@ -181,7 +182,7 @@ class Bot < ActiveRecord::Base
 
   # This is the main loop that uses all the private methods below it.
   def loop()
-  
+ 
     # Get line from socket with a timeout
     within_timeout = IO.select([@socket], nil, nil, @socket_timeout)
     if within_timeout
