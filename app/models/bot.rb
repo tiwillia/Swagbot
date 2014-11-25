@@ -196,6 +196,12 @@ class Bot < ActiveRecord::Base
       return "connection lost"
     end
 
+    if line.include?("Sorry, server is full - try later")
+      Rails.logger.error "ERROR: #{self.nick} could not connect due to full server. Retrying..."
+      sleep 10
+      raise "ERROR: #{self.nick} could not connect due to full server. Retrying..."
+    end
+
     # Strip the line of 
     line = line.strip
 
