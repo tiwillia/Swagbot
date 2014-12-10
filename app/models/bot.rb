@@ -272,8 +272,13 @@ class Bot < ActiveRecord::Base
       # Join a channel
       when params.match(/^join\ \#[\-\_\.\'0-9a-zA-Z]+/)
         channel_to_join = params[/^join\ (\#[\-\_\.\'0-9a-zA-Z]+)/, 1]
+        password = params[/^join\ \#[\-\_\.\'0-9a-zA-Z]+\ ([\-\_\.\'0-9a-zA-Z]+)/, 1]
         Rails.logger.debug "Joining channel #{channel_to_join}"
-        join_chan(channel_to_join)
+        if password.nil?
+          join_chan(channel_to_join)
+        else
+          join_chan(channel_to_join, password)
+        end
 
       # Leave current channel
       when params.match(/^leave/)
@@ -553,8 +558,8 @@ class Bot < ActiveRecord::Base
   end
 
   # Join a channel
-  def join_chan(chan)
-    send_server ":source JOIN #{chan}"
+  def join_chan(chan, password="")
+    send_server ":source JOIN #{chan} #{password}"
   end
  
   # Add a channel to the auto-join list
