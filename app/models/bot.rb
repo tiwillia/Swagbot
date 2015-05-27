@@ -527,7 +527,7 @@ class Bot < ActiveRecord::Base
     if (Time.now.to_i - @timers[:ping]) > 1800
       Rails.logger.error "Last ping was more than 30 minutes ago for #{@bot.nick} with id #{@bot.id}"
       @timers[:ping] = (Time.now.to_i - 600)
-#      return "reconnect"
+      return "reconnect"
     end
 
     return nil

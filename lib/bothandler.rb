@@ -150,12 +150,14 @@ private
     if force
       Rails.logger.info "BOTHANDLER: Forcefully killing #{bot.nick} with id #{bot.id}."
       begin
+        bot.kill
         bot.force_stop
       rescue => e
         Rails.logger.error "BOTHANDLER: #{e.message}"
+      ensure
+        @bot_threads[bot.id].kill if @bot_threads[bot.id].alive?
+        @bot_states[bot.id] = "Stopped"
       end
-      @bot_threads[bot.id].kill if @bot_threads[bot.id].alive?
-      @bot_states[bot.id] = "Stopped"
       return
     end
     if @bot_states[bot.id] != "Stopped"
@@ -205,7 +207,7 @@ private
             case bot.loop()
             when "reconnect"
               Rails.logger.info "BOTHANDLER: Got reconnect request from bot #{bot.nick}, restarting..."
-              enqueue({:bot_id => bot.id, :action => "restart"})
+              enqueue({:bot_id => bot.id, :action => "restart", :force => true})
             when "connection lost"
               Rails.logger.error "BOTHANDLER: Lost connection... waiting 30 seconds and retrying."
               sleep 30
