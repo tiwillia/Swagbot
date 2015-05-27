@@ -356,7 +356,7 @@ class Bot < ActiveRecord::Base
 
       ##### DIAGNOSTIC - FORCE CRASH
       when params.match(/^bust\-a\-nut.*/)
-        raise "BOT MANUALLY CRASHED BY #{@userposting} at #{Time.now.to_s}."
+        force_stop
 
       ##### NCQ Check
       when params.match(/check.*/)
@@ -536,7 +536,11 @@ class Bot < ActiveRecord::Base
 #private
  
 #### UTILITIES ####
- 
+
+  def force_stop
+    raise "BOT MANUALLY CRASHED BY #{@userposting} at #{Time.now.to_s}."
+  end
+
   # Small function to easily send messages to @chan
   def sendchn(msg, channel=nil)
     if channel.nil?

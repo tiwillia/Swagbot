@@ -93,7 +93,11 @@ private
     when "stop"
       Rails.logger.info "BOTHANDLER: Stopping bot #{bot.nick}"
       begin
-        stop_bot(bot)
+        if work[:force]
+          stop_bot(bot, true)
+        else
+          stop_bot(bot, false)
+        end
         Rails.logger.info "BOTHANDLER: Stopped bot #{bot.nick}"
       rescue => e
         Rails.logger.error "BOTHANDLER: ERROR could not stop bot #{e.inspect}"
@@ -104,7 +108,11 @@ private
       begin
         # If running, stop then start. Else just start.
         if @bot_states[bot.id] == "Running"
-          stop_bot(bot)
+          if work[:force]
+            stop_bot(bot, true)
+          else
+            stop_bot(bot, false)
+          end
         end
         start_bot(bot)
         Rails.logger.info "BOTHANDLER: Restarted bot #{bot.nick}"
@@ -138,7 +146,18 @@ private
 
   # Stop a bot thread
   # bot should be an object, not an id
-  def stop_bot(bot)
+  def stop_bot(bot, force=false)
+    if force
+      Rails.logger.info "BOTHANDLER: Forcefully killing #{bot.nick} with id #{bot.id}."
+      begin
+        bot.force_stop
+      rescue => e
+        Rails.logger.error "BOTHANDLER: #{e.message}"
+      end
+      @bot_threads[bot.id].kill if @bot_threads[bot.id].alive?
+      @bot_states[bot.id] = "Stopped"
+      return
+    end
     if @bot_states[bot.id] != "Stopped"
       @bot_queues[bot.id] << "stop"
       

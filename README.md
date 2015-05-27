@@ -1,5 +1,5 @@
 # Swagbot
-
+ 
 Irc bot with a rails backend utilizing a postgresql database customized for openshift 
 
 ## Installation 

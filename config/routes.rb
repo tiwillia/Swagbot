@@ -12,6 +12,7 @@ RailsApp::Application.routes.draw do
   match 'bots/index' => 'bots#index'
   match 'bots/:id/start' => 'bots#start'
   match 'bots/:id/stop' => 'bots#stop'
+  match 'bots/:id/force_stop' => 'bots#force_stop'
   match 'bots/:id/restart' => 'bots#restart'
   match 'bots/:id/say' => 'bots#say'
   resources :bots

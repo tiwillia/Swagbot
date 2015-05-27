@@ -83,6 +83,13 @@ class BotsController < ApplicationController
     redirect_to bot_path(@bot)
   end
 
+  def force_stop
+    @bot = Bot.find(params[:id])
+    BOT_HANDLER.enqueue({:bot_id => @bot.id, :action => "stop", :force => true})
+    flash[:success] = "#{@bot.nick} queued to forcefully stop."
+    redirect_to bot_path(@bot)
+  end
+
   def restart
     @bot = Bot.find(params[:id]) 
     BOT_HANDLER.enqueue({:bot_id => @bot.id, :action => "restart"})
