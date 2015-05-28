@@ -414,32 +414,32 @@ class Bot < ActiveRecord::Base
         when params.match(/^help.*/)
           case 
           when  params.eql?("help")
-            sendchn("#{@nick}: help [command]")
-            sendchn("#{@nick}: <noun> is <definition>") unless !definitions?
-            sendchn("#{@nick}: <noun>?") unless !definitions?
-            sendchn("#{@nick}: addquote <name> <quote WITHOUT \"\">") unless !quotes?
-            sendchn("#{@nick}: quote [name]") unless !quotes?
-            sendchn("<name>++") unless !karma?
-            sendchn("<name>--") unless !karma?
-            sendchn("#{@nick} rank") unless !karma?
-            sendchn("#{@nick} rank <name>") unless !karma?
-            sendchn("#{@nick} remindme at 00:00 1/1/00 \"Reminder string\"") if reminders?
-            sendchn("#{@nick}: time")
-            sendchn("#{@nick}: weather")
-            sendchn("#{@nick}: leave")
-            sendchn("#{@nick}: join <#channel>")                                        
+            sendchn("#{@nick}: help [command]", @userposting)
+            sendchn("#{@nick}: <noun> is <definition>", @userposting) unless !definitions?
+            sendchn("#{@nick}: <noun>?", @userposting) unless !definitions?
+            sendchn("#{@nick}: addquote <name> <quote WITHOUT \"\">", @userposting) unless !quotes?
+            sendchn("#{@nick}: quote [name]", @userposting) unless !quotes?
+            sendchn("<name>++", @userposting) unless !karma?
+            sendchn("<name>--", @userposting) unless !karma?
+            sendchn("#{@nick} rank", @userposting) unless !karma?
+            sendchn("#{@nick} rank <name>", @userposting) unless !karma?
+            sendchn("#{@nick} remindme at 00:00 1/1/00 \"Reminder string\"", @userposting) if reminders?
+            sendchn("#{@nick}: time", @userposting)
+            sendchn("#{@nick}: weather", @userposting)
+            sendchn("#{@nick}: leave", @userposting)
+            sendchn("#{@nick}: join <#channel>", @userposting)
           when params.eql?("help addquote")
-            sendchn("Usage: #{@nick}: addquote <name> <quote WITHOUT \"\">")
-            sendchn("Adds a quote to the quote database")
-            sendchn("Quotes can be recalled with #{@nick}: quote [name]")                                    
+            sendchn("Usage: #{@nick}: addquote <name> <quote WITHOUT \"\">", @userposting)
+            sendchn("Adds a quote to the quote database", @userposting)
+            sendchn("Quotes can be recalled with #{@nick}: quote [name]", @userposting)
           when params.eql?("help quote")
-            sendchn("Usage: #{@nick}: quote [name]")
-            sendchn("Returns a quote from the quote database")
-            sendchn("If no name is supplied, a random quote will be returned")                               
+            sendchn("Usage: #{@nick}: quote [name]", @userposting)
+            sendchn("Returns a quote from the quote database", @userposting)
+            sendchn("If no name is supplied, a random quote will be returned", @userposting)
           when params.eql?("help time")
             sendchn("I don't know why you want help with this one #{@userposting}...")
           when params.eql?("help weather")
-            sendchn("Weather is hardcoded to a zip code. Get used to it or kick me, IDGAF.")                               
+            sendchn("Usage: #{@nick}: weather [zip_code]")
           end
         end
       else
