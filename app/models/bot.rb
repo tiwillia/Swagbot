@@ -868,16 +868,17 @@ class Bot < ActiveRecord::Base
 
     if rule.search_type == "plate"
       # Create plate from actual plate
-      all_plate_cases = unified_cmd("show plate #{rule.match_string}")["cases"]
-      all_plate_cases.each do |ca|
-        plate << ca if ca["internal_status"] == "Unassigned"
-      end 
+      plate = unified_query("(sbrGroup includes [\"#{rule.match_string}\"]) and (internalStatus is \"Unassigned\")")
     else
       # Create plate from a product
-      unassigned_cases = unified_cmd("show unassigned rhel")["cases"]
+      unassigned_cases = unified_query("internalStatus is \"Unassigned\"")
       unassigned_cases.each do |ca|
-        next if ca["product"].nil?
-        plate << ca if ca["product"].downcase.include? rule.match_string.downcase
+        begin
+          product = ca["product"]["resource"]["line"]["resource"]["name"]
+        rescue
+          next
+        end
+        plate << ca if product.downcase.include? rule.match_string.downcase
       end
     end
 
@@ -945,8 +946,13 @@ class Bot < ActiveRecord::Base
 
   # This will go out to unified and get a plate in JSON form
   # returns Hash of parsed JSON
-  def unified_cmd(command)
-    url = "https://unified.gsslab.rdu2.redhat.com/ajax/"
+  def unified_query(query)
+    # old deprecated url:
+    # url = "https://unified.gsslab.rdu2.redhat.com/ajax/"
+    #
+    # API Docs: https://docs.engineering.redhat.com/display/UNIFIED/Querying+Support+Cases
+    # NOTE the new api does not accept single quotes, use double.
+    url = "https://unified.gsslab.rdu2.redhat.com/case?where=" + query
 
     # Encode the url
     encoded_url = URI.encode(url)
@@ -954,19 +960,25 @@ class Bot < ActiveRecord::Base
     uri.scheme = 'https'
 
     # Set query parameters
-    params = { :sso_username => CONFIG[:rhn_username], :command => command, :command_type => "EXTERNAL" }
-    uri.query = URI.encode_www_form(params)    
+    # These aren't necessary in the new api schema
+    #params = { :sso_username => CONFIG[:rhn_username], :command => command, :command_type => "EXTERNAL" }
+    #uri.query = URI.encode_www_form(params)    
 
     # create http connection
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    http.read_timeout = 120
     
     #Generate request
     request = Net::HTTP::Get.new(uri.request_uri)
     request.add_field('Content-Type', 'application/x-www-form-urlencoded')
     response = http.request(request)
-    
+    if response.code != '200'
+      Rails.logger.error "Got non-200 code from unified, skipping"
+      return []
+    end 
+
     Rails.logger.debug "DIAG: Response: #{response.inspect}"
     Rails.logger.debug "DIAG: Response code: #{response.code}"
     Rails.logger.debug "DIAG: Response message: #{response.code}"
